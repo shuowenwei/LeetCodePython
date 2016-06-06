@@ -12,6 +12,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # solution from http://www.jiuzhang.com/solutions/reverse-bits/
         res = 0
         i = 0 
         while n >= 1:
