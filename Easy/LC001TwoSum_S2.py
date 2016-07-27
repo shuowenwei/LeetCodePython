@@ -19,6 +19,7 @@ class Solution(object):
         length = len(nums)
         for i in range(length):
             neededVal = target - nums[i]
+
             """
             method 1
             
@@ -27,6 +28,7 @@ class Solution(object):
             if neededVal in dictHashMap and i != dictHashMap[neededVal]:
                 return [dictHashMap[neededVal], i] 
             """
+
             
             """
             method 2

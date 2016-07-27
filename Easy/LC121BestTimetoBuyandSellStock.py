@@ -2,7 +2,10 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/discuss/97355/share-my-simple-python-code-using-method-with-explaination
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+solution link: 
+ 	https://leetcode.com/discuss/97355/share-my-simple-python-code-using-method-with-explaination
 
 """
 class Solution(object):
