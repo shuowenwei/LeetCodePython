@@ -2,7 +2,7 @@
 """
 @author: Wei, Shuowen
 
-httpsleetcode.comproblemssingle-number
+https://leetcode.com/problems/single-number/
 
 """
 
