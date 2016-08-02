@@ -8,7 +8,7 @@ Note:
 Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
 Solution reference link: 
-	https://discuss.leetcode.com/topic/2031/challenge-me-thx/2
+	https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers/2
 
 """
 class Solution(object):
@@ -29,11 +29,14 @@ class Solution(object):
             if v == 1:
                 return k 
         """
-        
-        ones = 0 
-        twos = 0
+        # don't understand ...............
+        x1 = 0 
+        x2 = 0 
+        mask = 0 
         for e in nums:
-            ones = (ones ^ e) & ~twos
-            twos = (twos ^ e) & ~ones
-        return ones 
-
+            x2 ^= x1 & e
+            x1 ^= e
+            mask = ~(x1 & x2)
+            x2 &= mask
+            x1 &= mask
+        return x1
