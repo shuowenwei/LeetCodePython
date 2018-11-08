@@ -28,3 +28,17 @@ class Solution(object):
         if max_all < 0:
             max_all = 0
         return max_all
+
+        """
+        if len(prices) < 2:
+            return 0 
+        
+        profit = [prices[i] - prices[i-1] for i in range(1,len(prices))]
+
+        max_last = max_all = 0 
+        
+        for p in profit:
+            max_last = max(p, p + max_last)
+            max_all = max(max_last, max_all)
+        return max(0, max_all)
+        """

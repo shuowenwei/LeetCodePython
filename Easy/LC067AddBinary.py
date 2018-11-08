@@ -26,12 +26,12 @@ class Solution(object):
         while len_s >= 0:
             res[len_l+1] = str( (int(l[len_l])+int(s[len_s])+int(carry))%2 )
             #print(res)
-            carry = str( (int(l[len_l])+int(s[len_s])+int(carry))/2 )
+            carry = str( (int(l[len_l])+int(s[len_s])+int(carry))//2 )
             len_l -= 1
             len_s -= 1
         while len_l >= 0:
             res[len_l+1] = str( (int(l[len_l])+int(carry))%2 )
-            carry = str( (int(l[len_l])+int(carry))/2 )
+            carry = str( (int(l[len_l])+int(carry))//2 )
             len_l -= 1
         res[0] = carry 
         res_str = ''.join(res)
