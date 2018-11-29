@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/custom-sort-string/
 
+solution: https://leetcode.com/problems/custom-sort-string/discuss/126559/Easy-Python-Solution
+
 """
 class Solution(object):
     def customSortString(self, S, T):
