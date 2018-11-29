@@ -24,7 +24,7 @@ class Solution:
             tmp.append((inter.end, False))
 
         # 排序
-        tmp = sorted(tmp, key=lambda v: (v[0], v[1]))
+        tmp = sorted(tmp, key=lambda v: (v[0], v[1])) # False==0 should be first when time is the same. (True is 1)
 
         n = 0
         max_num = 0

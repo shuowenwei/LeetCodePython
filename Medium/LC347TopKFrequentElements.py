@@ -27,4 +27,15 @@ class Solution(object):
         res = [] 
         for i in range(k):
             res.append(lst[i][1])
-        return res 
+        return res
+        """
+        from collections import Counter
+        numsCnter = Counter(nums)
+        res = [(num, cnt) for num, cnt in numsCnter.items() ]
+        res.sort(key=lambda x: x[1], reverse =True)
+        return [x[0] for x in res[:k]]
+        #rt = [] 
+        #for i in range(k):
+        #    rt.append(res[i][0]) 
+        #return rt 
+        """

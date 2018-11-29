@@ -26,9 +26,9 @@ class Solution(object):
         
         while current is not None: 
             temp = current.next 
-            current.next = pre
-            pre = current
-            current = temp 
+            current.next = pre # "left of =" is "right of = in the last line" 
+            pre = current      # "left of =" is "right of = in the last line" 
+            current = temp     # in the last line, "left of =" is "right of = in the first line" 
         head = pre
         
         return head 

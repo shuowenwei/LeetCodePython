@@ -12,19 +12,21 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        if len(s)!=len(t):
+        if len(s) != len(t):
             return False 
-        
-        HashMap_s = {} 
-        HashMap_t = {} 
-        for i in range(len(s)):
-            if s[i] in HashMap_s and t[i] in HashMap_t: 
-                if HashMap_s[s[i]] != t[i] or HashMap_t[t[i]] != s[i]:
+        map_s = {} 
+        map_t = {} 
+        for ss, tt in zip(s, t):
+            # must show up at the same time 
+            if ss in map_s and tt in map_t: 
+                if map_s[ss] != tt or map_t[tt] != ss:
                     return False 
-            elif s[i] not in HashMap_s and t[i] not in HashMap_t:
-                HashMap_s[s[i]] = t[i] 
-                HashMap_t[t[i]] = s[i]
+            # must be no show at the same time 
+            elif ss not in map_s and tt not in map_t: 
+                map_s[ss] = tt 
+                map_t[tt] =ss
             else:
                 return False 
-        return True
+        return True 
+                
         
