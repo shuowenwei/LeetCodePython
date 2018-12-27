@@ -25,6 +25,8 @@ class Solution(object):
         # s could be '' but '' is not None 
         first_match = (s is not None and len(s) > 0) and p[0] in {s[0], '.'} 
         if len(p) >= 2 and p[1] == '*':
+            # 1st part: when p[1] is *, p[0] is ., s='abcde', p='.*ade'
+            # 2nd part: when p[1] is *, s='aaabc', p='a*bc' 
             return (self.isMatch(s, p[2:])) or (first_match and self.isMatch(s[1:], p))
         else: 
             return first_match and self.isMatch(s[1:], p[1:])
