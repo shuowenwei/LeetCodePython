@@ -13,6 +13,9 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+
+        return len(s.strip().split(' ')[-1])
+        """
         if s == '':
             return 0 
         if ' ' not in s:
@@ -20,3 +23,4 @@ class Solution(object):
             
         x = s.strip().split(' ')
         return len(x[-1]) 
+        """
