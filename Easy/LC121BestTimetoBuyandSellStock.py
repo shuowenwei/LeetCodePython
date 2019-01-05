@@ -15,6 +15,18 @@ class Solution(object):
         :rtype: int
         """
         if len(prices) < 2:
+            return 0 
+        
+        profit = [prices[i] - prices[i-1] for i in range(1,len(prices))]
+        runningSum = 0 
+        maxAll = 0 
+        for p in profit:
+            runningSum = max(p, p + runningSum)
+            maxAll = max(runningSum, maxAll)
+        return maxAll
+
+        """
+        if len(prices) < 2:
              return 0 
              
         max_last = 0 
@@ -30,15 +42,4 @@ class Solution(object):
         return max_all
 
         """
-        if len(prices) < 2:
-            return 0 
-        
-        profit = [prices[i] - prices[i-1] for i in range(1,len(prices))]
 
-        max_last = max_all = 0 
-        
-        for p in profit:
-            max_last = max(p, p + max_last)
-            max_all = max(max_last, max_all)
-        return max(0, max_all)
-        """
