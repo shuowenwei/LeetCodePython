@@ -19,6 +19,36 @@ class Solution(object):
         :rtype: ListNode
         """
         if not headA or not headB:
+            return None 
+        pA, pB = headA, headB
+        stackA, stackB = 0, 0
+        while stackA <= 1 and stackB <= 1:
+            if pA == pB:
+                return pA
+            if pA.next is None and pB.next is None:
+                pA = headB
+                pB = headA
+                stackA += 1 
+                stackB += 1
+            elif pA.next is None and pB.next is not None:
+                pA = headB
+                pB = pB.next
+                stackA += 1 
+            elif pA.next is not None and pB.next is None:
+                pB = headA
+                pA = pA.next
+                stackB += 1
+            elif pA.next is not None and pB.next is not None:
+                pA = pA.next
+                pB = pB.next
+
+        if pA is not None and pA == pB:
+            return pA
+        else:
+            return None
+
+        """
+        if not headA or not headB:
             return None
         # make B a circle 
         t2 = headB
@@ -51,5 +81,5 @@ class Solution(object):
         
         t2.next = None  # not changes B's structure 
         return tmp
-
+        """
         
