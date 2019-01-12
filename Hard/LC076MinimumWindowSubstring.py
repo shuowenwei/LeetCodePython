@@ -40,6 +40,7 @@ class Solution:
                 tCounter[s[leftMost]] = tCounter[s[leftMost]] + 1
                 if tCounter[s[leftMost]] > 0: 
                     match_cnt -= 1 
+                    
         if match_length == sys.maxsize:
             return ''
         return s[match_start: match_start+match_length]

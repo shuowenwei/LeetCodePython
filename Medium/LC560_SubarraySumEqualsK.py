@@ -33,3 +33,5 @@ class Solution:
             hash_table[running_sum] += 1 
         
         return total
+
+        
