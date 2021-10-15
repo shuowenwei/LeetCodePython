@@ -1,10 +1,10 @@
 # https://labuladong.gitee.io/algo/1/5/
 
 class TreeNode(object):
-    def __init__(self, val):
+    def __init__(self, val=0, left=None, right=None):
         self.val = val
-        self.left = None
-        self.right = None
+        self.left = left
+        self.right = right
 
 # // 计算从起点 start 到终点 target 的最近距离
 from collections import deque 
