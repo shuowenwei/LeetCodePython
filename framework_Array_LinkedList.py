@@ -7,7 +7,6 @@ def traverse(arr):
         pass 
 
 
-
 # /* 基本的单链表节点 */
 class ListNode(object):
     def __init__(self, val):
