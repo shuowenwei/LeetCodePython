@@ -23,13 +23,13 @@ def traverse(root: N_TreeNode):
 
 
 
+# 思考一个二叉树节点需要做什么，到底用什么遍历顺序就清楚了。
 def traverse(root: TreeNode):
     # 前序遍历代码位置
     traverse(root.left)
     # 中序遍历代码位置
     traverse(root.right)
     # 后序遍历代码位置
-
 
 # 举个例子，比如说我们的经典算法「快速排序」和「归并排序」，对于这两个算法，你有什么理解？
 # 如果你告诉我，快速排序就是个二叉树的前序遍历，
