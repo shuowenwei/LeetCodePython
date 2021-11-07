@@ -36,3 +36,13 @@ def traverse(root: TreeNode):
 # 归并排序就是个二叉树的后序遍历，那么我就知道你是个算法高手了。
 
 
+
+def BST(root: TreeNode, target: int):
+    if (root.val == target): 
+        # 找到目标，做点什么
+        pass 
+    if (root.val < target): 
+        BST(root.right, target)
+    if (root.val > target):
+        BST(root.left, target)
+
