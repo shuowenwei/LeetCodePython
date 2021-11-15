@@ -31,10 +31,12 @@ class Solution(object):
                 return root.left
             else: # root.left is not None and root.right is not None:
                 # First find the right most leaf of the left sub-tree
-                rightmost_LeftSubTree = root.left 
-                while rightmost_LeftSubTree.right:
-                    rightmost_LeftSubTree = rightmost_LeftSubTree.right
-                rightmost_LeftSubTree.right = root.right
+                leftSubTree_mostRight = root.left 
+                while leftSubTree_mostRight.right:
+                    leftSubTree_mostRight = leftSubTree_mostRight.right
+                # Attach right child to the right of that leaf
+                leftSubTree_mostRight.right = root.right
+                # Return left child instead of root, a.k.a delete root
                 return root.left
         elif key < root.val:
             root.left = self.deleteNode(root.left, key)

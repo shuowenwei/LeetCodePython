@@ -37,7 +37,7 @@ class BST(object):
     # LC450 https://leetcode.com/problems/delete-node-in-a-bst/
     # 情况 1：A 恰好是末端节点，两个子节点都为空，那么它可以当场去世了。
     # 情况 2：A 只有一个非空子节点，那么它要让这个孩子接替自己的位置。
-    # 情况 3：A 有两个子节点，麻烦了，为了不破坏 BST 的性质，A 必须找到左子树中最大的那个节点，或者右子树中最小的那个节点来接替自己。我们以第二种方式讲解。
+    # 情况 3：A 有两个子节点，麻烦了，为了不破坏 BST 的性质，A 必须找到左子树中最大的那个节点，或者右子树中最小的那个节点来接替自己。
     def deleteNode(self, root, key):
         if root is None:
             return None 
