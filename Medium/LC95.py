@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/unique-binary-search-trees-ii/
 
+labuladong: https://labuladong.gitee.io/algo/2/18/26/
+
 solution: https://leetcode.com/problems/unique-binary-search-trees-ii/solution/
 
 """
@@ -20,9 +22,10 @@ class Solution(object):
         :type n: int
         :rtype: List[TreeNode]
         """
+        # solution 1: 
+        """
         if n == 0:
             return []
-        
         def gen_trees(start, end):
             if start > end:
                 return None
@@ -42,4 +45,25 @@ class Solution(object):
             return all_trees 
         
         return gen_trees(1, n) if n else []
-        
+        """
+        # solution 2: 
+        memo = [[ [] for i in range(n+1)] for j in range(n+1)]
+        def construct(low, high):
+            res = []
+            if low > high:
+                res.append(None)
+                return res
+            if len(memo[low][high]) != 0:
+                return memo[low][high]
+            for i in range(low, high+1): 
+                leftTrees = construct(low, i-1)
+                rightTrees = construct(i+1, high)
+                for l in leftTrees:
+                    for r in rightTrees:
+                        root = TreeNode(i)
+                        root.left = l
+                        root.right = r
+                        res.append(root)
+            memo[low][high] = res
+            return res
+        return construct(1, n)
