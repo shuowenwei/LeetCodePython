@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 
+https://labuladong.gitee.io/algo/2/18/28/
+
 solution link: https://leetcode.com/problems/serialize-and-deserialize-binary-tree/discuss/74395/Neat-python-solution-in-both-DFS-and-BFS
 
 """
@@ -135,10 +137,6 @@ class Codec:
 # deser = Codec()
 # ans = deser.deserialize(ser.serialize(root))
 
-
-
-1630.43 / 28689.76 = 0.05682968418000012
-
-1413.81 / 28199.04 = 0.05013681316810785
-
-1873.95 / 35893.54 = 0.05220855897746503 
+# PS：一般语境下，单单前序遍历结果是不能还原二叉树结构的，因为缺少空指针的信息，
+# 至少要得到前、中、后序遍历中的两种才能还原二叉树。
+# 但是这里的 node 列表包含空指针的信息，所以只使用 node 列表就可以还原二叉树。
