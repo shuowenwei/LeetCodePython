@@ -140,3 +140,98 @@ class Codec:
 # PS：一般语境下，单单前序遍历结果是不能还原二叉树结构的，因为缺少空指针的信息，
 # 至少要得到前、中、后序遍历中的两种才能还原二叉树。
 # 但是这里的 node 列表包含空指针的信息，所以只使用 node 列表就可以还原二叉树。
+
+class Codec:
+    
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+        
+        :type root: TreeNode
+        :rtype: str
+        """
+        preorder = []
+        def traverse(root):
+            if root is None:
+                preorder.append('#')
+                return 
+            preorder.append(root.val)
+            traverse(root.left)
+            traverse(root.right)
+        traverse(root)
+        res = ','.join([str(val) for val in preorder])
+        return res
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        if data == '':
+            return None
+        preorder = data.split(',')
+        
+        def reconstruction(preorder):
+            rootVal = preorder.pop(0)
+            if rootVal == '#':
+                return None 
+            root = TreeNode(int(rootVal))
+            root.left = reconstruction(preorder)
+            root.right = reconstruction(preorder)
+            return root
+        root = reconstruction(preorder)
+        return root 
+        
+
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# ans = deser.deserialize(ser.serialize(root))
+
+
+
+class Codec:
+    
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+        
+        :type root: TreeNode
+        :rtype: str
+        """
+        postorder = []
+        def traverse(root):
+            if root is None:
+                postorder.append('#')
+                return
+            traverse(root.left)
+            traverse(root.right)
+            postorder.append(root.val)
+        traverse(root)
+        res = ','.join([str(val) for val in postorder])
+        return res
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        if data == '':
+            return None
+        postorder = data.split(',')
+        
+        def reconstruction(postorder):
+            rootVal = postorder.pop()
+            if rootVal == '#':
+                return None 
+            root = TreeNode(int(rootVal))
+            root.right = reconstruction(postorder)
+            root.left = reconstruction(postorder)
+            return root
+        root = reconstruction(postorder)
+        return root 
+
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# ans = deser.deserialize(ser.serialize(root))
