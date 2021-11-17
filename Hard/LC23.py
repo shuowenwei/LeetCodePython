@@ -21,17 +21,21 @@ class Solution(object):
         :rtype: ListNode
         """
         if not lists:
-            return None 
-        
-        import heapq 
+            return None
+
+        # the new_head.next is to be returned 
         new_head = ListNode(0)
         cur = new_head
+        # initialize heap
+        import heapq 
         hq = [(ln.val, i) for i, ln in enumerate(lists) if ln is not None]
         heapq.heapify(hq)
+        # find the smallest val among the k listnodes
         while hq:
             min_val, ln_index = heapq.heappop(hq)
             cur.next = ListNode(min_val)
             cur = cur.next 
+            # the pointer of the linked list has the min val, must move to the next and push into the heap
             lists[ln_index] = lists[ln_index].next
             if lists[ln_index] is not None: 
                 heapq.heappush(hq, (lists[ln_index].val, ln_index) )
