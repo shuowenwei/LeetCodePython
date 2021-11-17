@@ -46,15 +46,18 @@ class Solution(object):
         """
         # solution 2:
         p1 = p2 = head
-        i = 0 
-        while i < n:
-            p2 = p2.next 
-            i += 1
-        if p2 is None:
-            return head.next 
+        i = 0
+
+        for i in range(n):
+            p2 = p2.next  # p2 先走 n 步
+
+        if p2 is None: # head is to be returbed 
+            return head.next
+
         while p2 is not None and p2.next is not None:
             p1 = p1.next 
             p2 = p2.next
+            
         if p1.next is not None:
             p1.next = p1.next.next 
             return head 
