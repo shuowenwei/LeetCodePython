@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
+labuladong: https://labuladong.gitee.io/algo/2/17/16/
+
 """
 
 # Definition for singly-linked list.
@@ -18,34 +20,17 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        if not headA or not headB:
-            return None 
-        pA, pB = headA, headB
-        stackA, stackB = 0, 0
-        while stackA <= 1 and stackB <= 1:
-            if pA == pB:
-                return pA
-            if pA.next is None and pB.next is None:
+        pA, pB = headA, headB 
+        while pA != pB:
+            if pA is None:
                 pA = headB
+            else:
+                pA = pA.next 
+            if pB is None:
                 pB = headA
-                stackA += 1 
-                stackB += 1
-            elif pA.next is None and pB.next is not None:
-                pA = headB
+            else: 
                 pB = pB.next
-                stackA += 1 
-            elif pA.next is not None and pB.next is None:
-                pB = headA
-                pA = pA.next
-                stackB += 1
-            elif pA.next is not None and pB.next is not None:
-                pA = pA.next
-                pB = pB.next
-
-        if pA is not None and pA == pB:
-            return pA
-        else:
-            return None
+        return pA 
 
         """
         if not headA or not headB:
