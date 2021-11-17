@@ -24,15 +24,15 @@ class Solution(object):
             return root # None or p or q exists in the tree? 
         leftLCA = self.lowestCommonAncestor(root.left, p, q)
         rightLCA = self.lowestCommonAncestor(root.right, p, q)
-        
+        # do sth in post order
         if leftLCA is not None and rightLCA is not None:
             return root
-        # elif leftLCA is not None and rightLCA is None:
-        #     return leftLCA 
-        # elif leftLCA is None and rightLCA is not None:
-        #     return rightLCA
-        else:
-            return leftLCA or rightLCA
+        elif leftLCA is not None and rightLCA is None:
+            return leftLCA 
+        elif leftLCA is None and rightLCA is not None:
+            return rightLCA
+        else: # both leftLCA and rightLCA are None
+            return None #leftLCA or rightLCA
 """
         # Solution 2: Time Limit Exceeded
         # help function 
