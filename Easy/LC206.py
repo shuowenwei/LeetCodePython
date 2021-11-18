@@ -6,6 +6,8 @@ https://leetcode.com/problems/reverse-linked-list/
 
 labuladong: https://labuladong.gitee.io/algo/2/17/17/
 
+labuladong: https://labuladong.gitee.io/algo/2/17/18/
+
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -29,11 +31,14 @@ class Solution(object):
         # return last 
         
         # solution 2: one extra pointer
+        # def reverseList(self, head, till=None):
         pre = None 
         cur = head
-        while cur is not None:
-            tmp = cur.next
+        nxt = head 
+        while cur is not None: #(cur != till)
+            nxt = cur.next
             cur.next = pre
             pre = cur
-            cur = tmp
+            cur = nxt
         return pre
+            

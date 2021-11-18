@@ -37,11 +37,13 @@ class Solution(object):
         first_part.next = pre    
         return dummyHead.next
     
-#         pre = None 
-#         cur = head
-#         while cur is not None:
-#             tmp = cur.next
-#             cur.next = pre
-#             pre = cur
-#             cur = tmp
-#         return pre
+        # # def reverseList(self, head, till=None):
+        # pre = None 
+        # cur = head
+        # nxt = head 
+        # while cur is not None: #(cur != till)
+        #     nxt = cur.next
+        #     cur.next = pre
+        #     pre = cur
+        #     cur = nxt
+        # return pre
