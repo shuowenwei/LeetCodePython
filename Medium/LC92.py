@@ -18,25 +18,42 @@ class Solution(object):
         :type right: int
         :rtype: ListNode
         """
+        def reverseWholeLinkedList(head, till=None):
+            pre = None 
+            cur = head 
+            nxt = head 
+            while cur is not till:
+                nxt = cur.next
+                cur.next = pre
+                pre = cur 
+                cur = nxt 
+            return pre, cur
+        
         dummyHead = ListNode(-1)
         dummyHead.next = head 
         first_part = dummyHead
         for i in range(left-1):
             first_part = first_part.next
         
-        # reverse [m-n]
-        pre = None
-        cur = first_part.next 
-        for i in range(right-left+1):
-            tmp = cur.next 
-            cur.next = pre
-            pre = cur
-            cur = tmp 
-
+        b = head
+        for i in range(right):
+            b = b.next
+        pre, cur = reverseWholeLinkedList(first_part.next, b)
+        
+        # # reverse [left-right]
+        # pre = None
+        # cur = first_part.next 
+        # for i in range(right-left+1):
+        #     tmp = cur.next 
+        #     cur.next = pre
+        #     pre = cur
+        #     cur = tmp
+        
         first_part.next.next = cur # first_part.next still points to 2
-        first_part.next = pre    
+        first_part.next = pre
         return dummyHead.next
     
+        # notes from LC206
         # # def reverseList(self, head, till=None):
         # pre = None 
         # cur = head
