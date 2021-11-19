@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/palindrome-linked-list/
 
+labuladong: https://labuladong.gitee.io/algo/2/17/19/
+
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -21,18 +23,21 @@ class Solution(object):
         # Python solution using a stack with O(N) time complexity and O(N/2) space complexity 
         if not head or not head.next: 
             return True 
-        stack = [] 
         fast = slow = current = head 
         # get the midpoint (slow) 
         while fast and fast.next:
             fast = fast.next.next
             slow = slow.next 
-            
-        # push the 2nd hal into the stack 
-        stack.append(slow.val) 
-        while slow.next: 
+        
+        # 如果fast指针没有指向null，说明链表长度为奇数，slow还要再前进一步：
+        if fast is not None:  
             slow = slow.next
+
+        # push the 2nd hal into the stack 
+        stack = [] 
+        while slow:
             stack.append(slow.val) 
+            slow = slow.next
         
         # comparison
         while stack: 
@@ -40,5 +45,18 @@ class Solution(object):
                 return False
             current = current.next 
         return True 
-            
+        
+        """
+        # solution 2: post order taverse
+        left = head 
+        pList = [left]
+        def traverse(right):
+            if right is None:
+                return True
+            res = traverse(right.next)
+            res = res and (pList[0].val == right.val)
+            pList[0] = pList[0].next 
+            return res
+        return traverse(head)
+        """
         

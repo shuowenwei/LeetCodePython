@@ -23,6 +23,13 @@ def traverse(head: ListNode):
     # // 递归访问 head.val
     traverse(head.next)
 
+# 链表兼具递归结构，树结构不过是链表的衍生。那么，链表其实也可以有前序遍历和后序遍历：
+def traverse(head: ListNode):
+    # // 前序遍历代码
+    traverse(head.next)
+    # // 后序遍历代码
+
+
 # 1、合并两个有序链表
 # 2、合并 k 个有序链表
 # 3、寻找单链表的倒数第 k 个节点
