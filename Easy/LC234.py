@@ -58,5 +58,35 @@ class Solution(object):
             pList[0] = pList[0].next 
             return res
         return traverse(head)
+        
+        # solution 3: minmimal memory
+        def reverseWholeLinkedList(head, till=None):
+            pre = None 
+            cur = head 
+            nxt = head 
+            while cur is not till:
+                nxt = cur.next
+                cur.next = pre
+                pre = cur 
+                cur = nxt 
+            return pre, cur
+        
+        fast = slow = head 
+        # get the midpoint (slow) 
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next 
+        # 如果fast指针没有指向null，说明链表长度为奇数，slow还要再前进一步：
+        if fast is not None:  
+            slow = slow.next
+        
+        left = head
+        right, _ = reverseWholeLinkedList(slow)
+        while right:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+        return True
         """
         
