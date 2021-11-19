@@ -14,10 +14,8 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        if amount == 0:
-            return 0 
+        """ solution 1: use a dictionary as a dp_table  
         dp_table = {0:0}
-        
         def getMinCoins(coins, amount):
             if amount < 0:
                 return -1 
@@ -35,5 +33,20 @@ class Solution(object):
                 dp_table[amount] = res 
             return res
         
-        final_res = getMinCoins(coins, amount)
+        _ = getMinCoins(coins, amount)
         return dp_table[amount]
+        """
+        # solution 2: use an array as a dp_table  
+        dp_table = [amount+1]*(amount+1)
+        dp_table[0] = 0 
+        for i in range(amount+1):
+            for c in coins:
+                if amount - c < 0:
+                    continue
+                else:
+                    dp_table[i] = min(dp_table[i], dp_table[i-c] + 1)
+        if dp_table[amount] == amount+1:
+            return -1 
+        else:
+            return dp_table[amount]
+
