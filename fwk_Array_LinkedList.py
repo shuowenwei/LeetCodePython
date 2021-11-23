@@ -45,3 +45,14 @@ def traverse(head: ListNode):
 # 876.链表的中间结点（简单）
 # 160.相交链表（简单）
 # 19.删除链表的倒数第 N 个结点（中等）
+
+def reverseWholeLinkedList(head, till=None):
+    pre = None 
+    cur = head 
+    nxt = head 
+    while cur is not till:
+        nxt = cur.next
+        cur.next = pre
+        pre = cur 
+        cur = nxt 
+    return pre, cur
