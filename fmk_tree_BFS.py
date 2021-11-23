@@ -6,6 +6,7 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
+# 问题的本质就是让你在一幅「图」中找到从起点 start 到终点 target 的最近距离
 # // 计算从起点 start 到终点 target 的最近距离
 from collections import deque 
 def BFS(start: TreeNode, target:TreeNode):
@@ -31,3 +32,8 @@ def BFS(start: TreeNode, target:TreeNode):
                     visited.add(x)
         # /* 划重点：更新步数在这里 */
         step += 1
+    
+# BFS 相对 DFS 的最主要的区别是：BFS 找到的路径一定是最短的，但代价就是空间复杂度可能比 DFS 大很多
+# 假设给你的这个二叉树是满二叉树，节点数为 N，对于 DFS 算法来说，空间复杂度无非就是递归堆栈，最坏情况下顶多就是树的高度，也就是 O(logN)。
+# 但是你想想 BFS 算法，队列中每次都会储存着二叉树一层的节点，这样的话最坏情况下空间复杂度应该是树的最底层节点的数量，也就是 N/2，用 Big O 表示的话也就是 O(N)。
+# 由此观之，BFS 还是有代价的，一般来说在找最短路径的时候使用 BFS，其他时候还是 DFS 使用得多一些（主要是递归代码好写）。
