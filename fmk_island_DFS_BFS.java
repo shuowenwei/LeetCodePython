@@ -6,6 +6,7 @@
 //         self.right = right
 
 // 岛屿系列题目的核心考点就是用 DFS/BFS 算法遍历二维数组。
+// 因为二维矩阵本质上是一幅「图」，所以遍历的过程中需要一个 visited 布尔数组防止走回头路
 
 // 二叉树遍历框架
 void traverse(TreeNode root) {
