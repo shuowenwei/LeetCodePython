@@ -16,25 +16,32 @@ class Solution(object):
         def getNextOptions(s):
             s_neighbors = []
             for i in range(len(s)):
-                oneUp = s[:i-1] + str((int(s[i])+1)%10) + s[i+1:]
-                oneDown = s[:i-1] + str((int(s[i])-11)%10) + s[i+1:]
-                s_neighbors.append(oneUp)
-                s_neighbors.append(oneDown)
-            return s_neighbors            
+                oneUp, oneDown = list(s), list(s)
+                oneUp[i] = str((int(s[i])+1)%10)
+                oneDown[i] = str((int(s[i])-1)%10)
+                s_neighbors.append(''.join(oneUp))
+                s_neighbors.append(''.join(oneDown))
+            return s_neighbors
         
         res = 0 
         q = deque()
+        visited = set()
         q.append('0000')
-        while q is not None: 
+        
+        while len(q) > 0:
             queue_size = len(q)
             for i in range(queue_size):
                 cur = q.popleft()
-                if cur == target:
-                    return res 
+                if cur in deadends:
+                    continue
+                elif cur == target:
+                    return res
                 else:
                     cur_neighbors = getNextOptions(cur)
+                    # print(cur, ':', cur_neighbors)
                     for cn in cur_neighbors:
-                        if cn not in deadends:
+                        if cn not in visited: # wrong: cn not in deadends and ...
                             q.append(cn)
+                            visited.add(cn)
             res += 1
         return -1
