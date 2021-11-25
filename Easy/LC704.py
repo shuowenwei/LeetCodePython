@@ -14,14 +14,14 @@ class Solution(object):
         """
         left = 0
         right = len(nums) - 1
-        mid = (left + right) / 2
+        mid = left + (right - left) / 2 # prevent possible overflow 
         while left <= right:
             if nums[mid] == target:
                 return mid
             elif nums[mid] < target:
                 left = mid + 1
-                mid = (left + right) / 2
+                mid = left + (right - left) / 2
             elif nums[mid] > target:
                 right = mid - 1 
-                mid = (left + right) / 2
+                mid = left + (right - left) / 2
         return -1
