@@ -20,7 +20,7 @@ def slidingWindow(s, t):
         print(f"window: [%d, %d)\n", left, right) 
         # /********************/
 
-        while (window needs shrink):
+        while "window needs shrink":
             # // d 是将移出窗口的字符
             d = s[left]
             # // 左移窗口

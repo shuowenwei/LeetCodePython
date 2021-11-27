@@ -2,20 +2,23 @@
 """
 @author: Wei, Shuowen
 
-http://mlwiki.org/index.php/Gram_Matrices
+https://leetcode.com/problems/permutation-in-string/
 
 labuladong: https://labuladong.gitee.io/algo/1/9/
 
 """
 class Solution(object):
-    def findAnagrams(self, s, p):
+    def checkInclusion(self, s1, s2):
         """
-        :type s: str
-        :type p: str
-        :rtype: List[int]
+        :type s1: str
+        :type s2: str
+        :rtype: bool
         """
-        t = p
-        res = []
+        t = s1 
+        s = s2
+        if len(s) < len(t):
+            return ''
+        
         need = {char: t.count(char) for char in t}
         window = {char: 0 for char in t}
         left, right = 0, 0 
@@ -32,14 +35,16 @@ class Solution(object):
                 left = right 
                 window = {char: 0 for char in t}
                 valid = 0
+            # the substring of s2 should only contains 
+            # the permutations of s1, not any other chars
             while right - left >= len(t):
                 if valid == len(need):
-                    res.append(left)
+                    return True 
                 d = s[left]
                 left += 1
                 if need.get(d) is not None:
                     if window[d] == need[d]:
                         valid -= 1
                     window[d] -= 1
-        return res
-                
+        return False
+
