@@ -5,7 +5,7 @@
 def binarySearch(nums, target):
     left = 0
     right = len(nums) - 1 
-    while left <= right:
+    while left <= right: # break when left == right + 1 
         mid = (left + right) / 2 
         if nums[mid] == target:
             return mid
@@ -18,7 +18,7 @@ def binarySearch(nums, target):
 def left_bound(nums, target):
     left = 0
     right = len(nums) - 1 
-    while left <= right:
+    while left <= right: # break when left == right + 1 
         mid = (left + right) / 2 
         if nums[mid] == target:
             right = mid - 1 
@@ -34,7 +34,7 @@ def left_bound(nums, target):
 def right_bound(nums, target):
     left = 0
     right = len(nums) - 1 
-    while left <= right:
+    while left <= right: # break when left == right + 1 
         mid = (left + right) / 2 
         if nums[mid] == target:
             left = mid + 1 
@@ -44,7 +44,8 @@ def right_bound(nums, target):
             right = mid - 1
     if right < 0 or nums[right] != target:
         return -1 
-    return left 
+    return right
+
 
 # 搜索一个元素时，搜索区间两端闭。
 # while条件带等号，否则需要打补丁。
