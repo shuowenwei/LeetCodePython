@@ -32,6 +32,18 @@ class Solution(object):
             dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
             dp[i][1] = max(dp[i-1][1], 0 - prices[i]) # dp[i-1][0][0] is always 0
         return int(dp[n-1][0]) # at (n-1)th day, no stock left 
+
+        """
+        n = len(prices)
+        dp_i_0 = 0
+        dp_i_1 = -2**31+1 # AKA: dp[i-1][1]
+        for i in range(n):
+            # dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
+            dp_i_0 = max(dp_i_0, dp_i_1 + prices[i]) 
+            # dp[i][1] = max(dp[i-1][1], 0 - prices[i])
+            dp_i_1 = max(dp_i_1, -prices[i])
+        return dp_i_0 
+        """
         
         """
         if len(prices) < 2:
