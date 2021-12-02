@@ -6,6 +6,8 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 labuladong: https://labuladong.gitee.io/algo/1/11/
 
+LC121, LC122, LC123, LC188, LC309, LC714
+
 solution link: 
  	https://leetcode.com/discuss/97355/share-my-simple-python-code-using-method-with-explaination
 
