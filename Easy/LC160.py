@@ -4,7 +4,9 @@
 
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
-labuladong: https://labuladong.gitee.io/algo/2/17/16/
+labuladong: https://labuladong.gitee.io/algo/1/6/
+
+LC21, LC23, LC141, LC142, LC876, LC160, LC19
 
 """
 
