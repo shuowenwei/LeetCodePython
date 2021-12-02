@@ -6,6 +6,8 @@ https://leetcode.com/problems/number-of-closed-islands/
 
 labuladong: https://labuladong.gitee.io/algo/1/7/
 
+LC200, LC1254, LC1020, LC695, LC1905, LC694
+
 """
 class Solution(object):
     def closedIsland(self, grid):

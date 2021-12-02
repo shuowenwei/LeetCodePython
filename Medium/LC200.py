@@ -8,6 +8,8 @@ solution: https://leetcode.com/problems/number-of-islands/discuss/56340/Python-S
 
 labuladong: https://labuladong.gitee.io/algo/1/7/
 
+LC200, LC1254, LC1020, LC695, LC1905, LC694
+
 """
 class Solution(object):
     def numIslands(self, grid):

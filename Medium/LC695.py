@@ -6,6 +6,8 @@ https://leetcode.com/problems/max-area-of-island/
 
 labuladong: https://leetcode.com/problems/number-of-enclaves/
 
+LC200, LC1254, LC1020, LC695, LC1905, LC694
+
 """
 class Solution(object):
     def maxAreaOfIsland(self, grid):
