@@ -21,26 +21,8 @@ class Solution(object):
         # // base case: dp[n] = 0
         dp = [0]*(len(nums)+2)
         for i in range(len(nums)-1, -1, -1):
-            dp[i] = max(dp[i+1], +nums[i] + dp[i+2])
+            dp[i] = max(dp[i+1], nums[i] + dp[i+2])
         return dp[0]
-
-        """
-        if len(nums) == 0:
-            return 0
-        if len(nums) == 1:
-            return nums[0]
-        if len(nums) == 2:
-            return max(nums[0],nums[1])
-            
-        maxRob = []
-        maxRob.append(nums[0])
-        maxRob.append(max(nums[0],nums[1]))
-        for i in range(2,len(nums)):
-            betterChoice = max( maxRob[i-1], maxRob[i-2]+nums[i] )
-            maxRob.append(betterChoice) 
-        return maxRob[-1]
-        """
-
 
         """solution 2: dp with memo table, top down
         memo = [-1]*len(nums)
