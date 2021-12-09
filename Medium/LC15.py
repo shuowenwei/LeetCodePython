@@ -4,6 +4,10 @@
 
 https://leetcode.com/problems/3sum/
 
+labuladong: https://labuladong.gitee.io/algo/1/13/
+
+LC1, LC15, LC18
+
 """
 class Solution(object):
     def threeSum(self, nums):
