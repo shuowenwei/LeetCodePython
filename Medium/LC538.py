@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/convert-bst-to-greater-tree/
 
+LC538, LC1038
+
 """
 
 # Definition for a binary tree node.

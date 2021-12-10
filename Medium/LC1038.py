@@ -3,6 +3,9 @@
 @author: Wei, Shuowen
 
 https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/
+
+LC538, LC1038
+
 """
 
 # Definition for a binary tree node.
