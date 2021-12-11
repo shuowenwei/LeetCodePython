@@ -44,6 +44,3 @@ class Solution(object):
         if p2 and not p1: 
             newHead.next = p2
         return res.next
-            
-        return newHead 
-

@@ -12,7 +12,6 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        """ 
         # solution 1: two pointers 
         left, right = 0, len(numbers)-1
         while left < right: 
@@ -38,3 +37,4 @@ class Solution(object):
                     right = mid - 1 
                 else:
                     left = mid + 1
+        """ 
