@@ -15,10 +15,10 @@ class Solution(object):
         # solution 1: two pointers 
         left, right = 0, len(numbers)-1
         while left < right: 
-            two_sum = numbers[left] + numbers[right]
-            if two_sum == target:
+            twoSum = numbers[left] + numbers[right]
+            if twoSum == target:
                 return [left+1, right+1]
-            elif two_sum < target:
+            elif twoSum < target:
                 left += 1
             else:
                 right -= 1
