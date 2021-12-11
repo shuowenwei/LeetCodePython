@@ -158,8 +158,7 @@ class Codec:
             traverse(root.left)
             traverse(root.right)
         traverse(root)
-        res = ','.join([str(val) for val in preorder])
-        return res
+        return ','.join([str(val) for val in preorder])
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -181,8 +180,6 @@ class Codec:
             return root
         root = reconstruction(preorder)
         return root 
-        
-
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
 # deser = Codec()
@@ -207,8 +204,7 @@ class Codec:
             traverse(root.right)
             postorder.append(root.val)
         traverse(root)
-        res = ','.join([str(val) for val in postorder])
-        return res
+        return ','.join([str(val) for val in postorder])
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -230,7 +226,6 @@ class Codec:
             return root
         root = reconstruction(postorder)
         return root 
-
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
 # deser = Codec()
