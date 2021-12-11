@@ -6,6 +6,8 @@ https://leetcode.com/problems/permutation-in-string/
 
 labuladong: https://labuladong.gitee.io/algo/1/9/
 
+lC76, LC567, LC438, LC3
+
 """
 class Solution(object):
     def checkInclusion(self, s1, s2):

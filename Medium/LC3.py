@@ -6,6 +6,8 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 labuladong: https://labuladong.gitee.io/algo/1/9/
 
+lC76, LC567, LC438, LC3
+
 solution: https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1781/Python-solution-with-comments. 
 
 https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/

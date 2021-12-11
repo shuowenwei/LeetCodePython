@@ -6,6 +6,8 @@ http://mlwiki.org/index.php/Gram_Matrices
 
 labuladong: https://labuladong.gitee.io/algo/1/9/
 
+lC76, LC567, LC438, LC3
+
 """
 class Solution(object):
     def findAnagrams(self, s, p):
