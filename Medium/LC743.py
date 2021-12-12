@@ -17,14 +17,12 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        graph = {}
-        for src, dst, weight in times:
-            if src in graph:
-                graph[src].append((dst, weight))
-            else:
-                graph[src] = [(dst, weight)]
-
+        import collections
         import heapq
+        graph = collections.defaultdict(list)
+        for src, dst, weight in times:
+            graph[src].append((dst, weight))
+            
         hp = [(0, k)]
         heapq.heapify(hp)
         elapsedTime = [0] + [2**31-1]*n
@@ -32,8 +30,7 @@ class Solution(object):
             time, node = heapq.heappop(hp)
             if time < elapsedTime[node]:
                 elapsedTime[node] = time
-                if graph.get(node) is not None:
-                    for v, w in graph.get(node):
-                        heapq.heappush(hp, (time+w, v))
+                for v, w in graph[node]:
+                    heapq.heappush(hp, (time+w, v))
         mx = max(elapsedTime)
         return mx if mx < 2**31-1 else -1
