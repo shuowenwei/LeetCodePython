@@ -47,10 +47,10 @@ class Solution(object):
         print('final......',probToAllNodes)
         return 0.0 
 
-n = 3
-edges=[[0,1],[1,2],[0,2]]
-succProb=[0.5,0.5,0.2]
-start=0
-end=2
-ob = Solution() 
-ob.maxProbability(n, edges, succProb, start, end)
+# n = 3
+# edges=[[0,1],[1,2],[0,2]]
+# succProb=[0.5,0.5,0.2]
+# start=0
+# end=2
+# ob = Solution() 
+# ob.maxProbability(n, edges, succProb, start, end)
