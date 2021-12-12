@@ -6,6 +6,8 @@ https://leetcode.com/problems/palindrome-linked-list/
 
 labuladong: https://labuladong.gitee.io/algo/2/17/19/
 
+LC92, LC25, LC234
+
 """
 # Definition for singly-linked list.
 # class ListNode(object):
