@@ -3,6 +3,11 @@
 @author: Wei, Shuowen
 
 https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/submissions/
+
+https://labuladong.gitee.io/algo/2/18/22/
+
+LC654, LC105, LC106 
+
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
