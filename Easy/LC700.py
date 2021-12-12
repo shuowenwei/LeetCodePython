@@ -4,6 +4,10 @@
 
 https://leetcode.com/problems/search-in-a-binary-search-tree/
 
+https://labuladong.gitee.io/algo/2/18/25/
+
+LC450, LC701, LC700, LC98
+
 """
 
 # Definition for a binary tree node.
