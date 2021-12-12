@@ -6,6 +6,8 @@ https://leetcode.com/problems/unique-binary-search-trees-ii/
 
 labuladong: https://labuladong.gitee.io/algo/2/18/26/
 
+LC95, LC96
+
 solution: https://leetcode.com/problems/unique-binary-search-trees-ii/solution/
 
 """
