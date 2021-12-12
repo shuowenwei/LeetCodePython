@@ -47,5 +47,12 @@ class Solution(object):
                 efferts[curNode[0]][curNode[1]] = curEffort
                 for nextEfforts, nextNode in graph[(curNode[0], curNode[1])]:
                     adj_i, adj_j = nextNode
-                    heapq.heappush(hp, (nextEfforts+curEffort, (adj_i, adj_j)))
+                    heapq.heappush(hp, (max(nextEfforts,curEffort), (adj_i, adj_j)))
+                    # A route's effort is the maximum absolute difference in heights 
+                    # between two consecutive cells of the route.
         return -1 
+
+
+heights = [[1,2,2],[3,8,2],[5,3,5]]
+ob = Solution()
+ob.minimumEffortPath(heights)
