@@ -4,6 +4,10 @@
 
 https://leetcode.com/problems/invert-binary-tree/
 
+https://labuladong.gitee.io/algo/2/18/21/
+
+LC226, LC114, LC116
+
 """
 # Definition for a binary tree node.
 # class TreeNode(object):

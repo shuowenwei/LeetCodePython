@@ -4,6 +4,10 @@
 
 https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 
+https://labuladong.gitee.io/algo/2/18/21/
+
+LC226, LC114, LC116
+
 """
 
 # Definition for a binary tree node.

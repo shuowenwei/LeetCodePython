@@ -4,6 +4,10 @@
 
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 
+https://labuladong.gitee.io/algo/2/18/21/
+
+LC226, LC114, LC116
+
 """
 """
 # Definition for a Node.
