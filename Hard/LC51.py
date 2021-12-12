@@ -6,6 +6,8 @@ https://leetcode.com/problems/n-queens/
 
 labuladong: https://labuladong.gitee.io/algo/1/4/
 
+LC46, LC51 
+
 """
 class Solution(object):
     def solveNQueens(self, n):

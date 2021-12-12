@@ -6,6 +6,8 @@ https://leetcode.com/problems/permutations/
 
 labuladong: https://labuladong.gitee.io/algo/1/4/
 
+LC46, LC51 
+
 """
 class Solution(object):
     def permute(self, nums):
