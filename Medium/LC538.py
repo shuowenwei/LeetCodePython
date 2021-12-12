@@ -4,7 +4,9 @@
 
 https://leetcode.com/problems/convert-bst-to-greater-tree/
 
-LC538, LC1038
+https://labuladong.gitee.io/algo/2/18/24/
+
+LC230, LC538, LC1038
 
 """
 
