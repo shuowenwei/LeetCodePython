@@ -1,5 +1,14 @@
 // https://labuladong.gitee.io/algo/2/19/34/
 
+
+// 邻接矩阵
+// graph[x] 存储 x 的所有邻居节点以及对应的权重
+List<int[]>[] graph;
+
+// 邻接矩阵
+// matrix[x][y] 记录 x 指向 y 的边的权重，0 表示不相邻
+int[][] matrix;
+
 // 记录被遍历过的节点
 boolean[] visited;
 // 记录从起点到当前节点的路径
