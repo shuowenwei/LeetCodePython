@@ -4,11 +4,10 @@
 
 https://leetcode.com/problems/course-schedule/
 
-https://labuladong.gitee.io/algo/2/19/34/
-
 https://labuladong.gitee.io/algo/2/19/35/
 
 LC797, LC207, LC210
+LC785, LC886
 
 """
 class Solution(object):
