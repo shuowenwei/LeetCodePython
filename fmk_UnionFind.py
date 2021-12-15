@@ -58,13 +58,13 @@ class Solution(object):
         rowNum, colNum = len(board), len(board[0])
         uf = UnionFind(rowNum*colNum+1)
         dummy = rowNum*colNum
-        
+        # // 将首列和末列的 O 与 dummy 连通
         for i in range(rowNum):
             if board[i][0] == 'O':
                 uf.union(dummy, i*colNum)
             if board[i][colNum-1] == 'O':
                 uf.union(dummy, i*colNum + colNum-1)
-
+        # // 将首行和末行的 O 与 dummy 连通
         for j in range(colNum):
             if board[0][j] == 'O':
                 uf.union(dummy, j)
@@ -83,7 +83,18 @@ class Solution(object):
                         uf.union(cur, (i+1)*colNum + j)
                     if j < colNum-1 and board[i][j+1] == 'O':
                         uf.union(cur, i*colNum + j+1)
-        
+
+        # directions = [[1,0], [0,1], [-1,0], [0,-1]]
+        # for i in range(1, rowNum-1):
+        #     for j in range(1, colNum-1):
+        #         if board[i][j] == 'O':
+        #             # // 将此 O 与上下左右的 O 连通
+        #             for di, dj in directions:
+        #                 x = i + di
+        #                 y = j + dj
+        #                 if board[x][y] == 'O':
+        #                     uf.union(i*colNum + j, x*colNum + y)
+
         for i in range(rowNum):
             for j in range(colNum):
                 if not uf.connected(dummy, i*colNum + j):
