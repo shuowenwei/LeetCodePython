@@ -28,12 +28,13 @@ class UnionFind(object):
         # 可见，调用 find 函数每次向树根遍历的同时，顺手将树高缩短了，最终所有树高都不会超过 3（union 的时候树高可能达到 3）。
         while self.parent[x] != x:
             self.parent[x] = self.parent[self.parent[x]] # O(1)
+            x = self.parent[x]
         return x
         
     def count(self):
         return self.cnt
 
-    def connected(p, q):
+    def connected(self, p, q):
         rootP = self.find(p) 
         rootQ = self.find(q)
         return rootP == rootQ
@@ -45,5 +46,49 @@ class UnionFind(object):
 # 因为路径压缩保证了树高为常数（不超过 3），那么树就算不平衡，高度也是常数，基本没什么影响。
 # 论时间复杂度的话，确实，不需要重量平衡也是 O(1)。但是如果加上 size 数组辅助，效率还是略微高一些。
 
-uf = UnionFind(10)
-print(uf.count())
+
+# LC130: https://leetcode.com/problems/surrounded-regions/
+"""
+class Solution(object):
+    def solve(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: None Do not return anything, modify board in-place instead.
+        """
+        rowNum, colNum = len(board), len(board[0])
+        uf = UnionFind(rowNum*colNum+1)
+        dummy = rowNum*colNum
+        for i in range(rowNum):
+            if board[i][0] == 'O':
+                uf.union(dummy, i*colNum)
+            if board[i][colNum-1] == 'O':
+                uf.union(dummy, i*colNum + colNum-1)
+                
+        for j in range(colNum):
+            if board[0][j] == 'O':
+                uf.union(dummy, j)
+            if board[rowNum-1][j] == 'O':
+                uf.union(dummy, (rowNum-1)*colNum + j)
+
+        for i in range(rowNum):
+            for j in range(colNum):
+                if board[0][j] == 'O':
+                    if i > 0: 
+                        uf.union(dummy, (i-1)*colNum + j)
+                    if j > 0: 
+                        uf.union(dummy, i*colNum + j-1) 
+                    if i < rowNum-1: 
+                        uf.union(dummy, (i+1)*colNum + j)
+                    if j < colNum-1:
+                        uf.union(dummy, i*colNum + j+1)
+
+        for i in range(rowNum):
+            for j in range(colNum):
+                if not uf.connected(dummy, i*colNum + j):
+                    board[i][j] = 'X'
+                    
+board = [["O","O","O","O","X","X"],["O","O","O","O","O","O"],["O","X","O","X","O","O"],["O","X","O","O","X","O"],["O","X","O","X","O","O"],["O","X","O","O","O","O"]]
+ob =Solution()
+ob.solve(board)
+print(board)
+"""
