@@ -58,12 +58,13 @@ class Solution(object):
         rowNum, colNum = len(board), len(board[0])
         uf = UnionFind(rowNum*colNum+1)
         dummy = rowNum*colNum
+        
         for i in range(rowNum):
             if board[i][0] == 'O':
                 uf.union(dummy, i*colNum)
             if board[i][colNum-1] == 'O':
                 uf.union(dummy, i*colNum + colNum-1)
-                
+
         for j in range(colNum):
             if board[0][j] == 'O':
                 uf.union(dummy, j)
@@ -72,16 +73,17 @@ class Solution(object):
 
         for i in range(rowNum):
             for j in range(colNum):
-                if board[0][j] == 'O':
-                    if i > 0: 
-                        uf.union(dummy, (i-1)*colNum + j)
-                    if j > 0: 
-                        uf.union(dummy, i*colNum + j-1) 
-                    if i < rowNum-1: 
-                        uf.union(dummy, (i+1)*colNum + j)
-                    if j < colNum-1:
-                        uf.union(dummy, i*colNum + j+1)
-
+                if board[i][j] == 'O':
+                    cur = i*colNum + j
+                    if i > 0 and board[i-1][j] == 'O':
+                        uf.union(cur, (i-1)*colNum + j)
+                    if j > 0 and board[i][j-1] == 'O':
+                        uf.union(cur, i*colNum + j-1) 
+                    if i < rowNum-1 and board[i+1][j] == 'O':
+                        uf.union(cur, (i+1)*colNum + j)
+                    if j < colNum-1 and board[i][j+1] == 'O':
+                        uf.union(cur, i*colNum + j+1)
+        
         for i in range(rowNum):
             for j in range(colNum):
                 if not uf.connected(dummy, i*colNum + j):
