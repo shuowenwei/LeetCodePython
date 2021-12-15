@@ -14,13 +14,11 @@ class Solution(object):
         """
         visited = [False]*len(M)
         def dfs(node):
-            # this is wrong, hence comment out, must figure out why!!!
-            # if visited[node]:
-            #     return
+            if visited[node]:
+                return
             visited[node] = True
             for neighbor, isAdjacent in enumerate(M[node]):
                 if isAdjacent == 1 and not visited[neighbor]:
-                    visited[neighbor] = True
                     dfs(neighbor)
 
         res = 0
