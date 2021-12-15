@@ -7,7 +7,7 @@ https://leetcode.com/problems/number-of-connected-components-in-an-undirected-gr
 LC323, LC130, LC990
 LC547
 
-https://www.youtube.com/watch?v=8f1XPm4WOUc: 
+LeetCode Premium: https://www.youtube.com/watch?v=8f1XPm4WOUc: 
 """
 class Solution(object):
     def countComponents(self, n, edges):
