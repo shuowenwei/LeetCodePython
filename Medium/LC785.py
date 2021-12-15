@@ -19,6 +19,7 @@ class Solution(object):
         ok = [True]
         visited = [False] * len(graph)
         color = [False] * len(graph)
+        # solution 1: graph traverse
         def traverse(graph, s):
             if ok[-1] is False:
                 return 
@@ -36,8 +37,28 @@ class Solution(object):
                     # // 若相同，则此图不是二分图
                         ok.append(False)
                         return 
-
+                    
+        # solution 2: BFS
+        from collections import deque
+        def traverseBFS(graph, s):
+            visited[s] = True
+            q = deque([s])
+            while q and ok[-1]:
+                cur_node = q.popleft()
+                for neighbor in graph[cur_node]:
+                    if visited[neighbor] is False:
+                        color[neighbor] = not color[cur_node]
+                        visited[neighbor] = True
+                        q.append(neighbor)
+                    else:
+                        if color[neighbor] == color[cur_node]:
+                            ok.append(False)
+                            return
+                        
         for i in range(len(graph)):
             if visited[i] is False:
                 traverse(graph, i)
+                # traverseBFS(graph, i) # solution 2
         return ok[-1]
+
+
