@@ -9,13 +9,19 @@ https://labuladong.gitee.io/algo/2/19/36/
 LC797, LC207, LC210
 LC785, LC886
 
-"""
+""" 
 class Solution(object):
-    def isBipartite(self, graph):
+    def possibleBipartition(self, n, dislikes):
         """
-        :type graph: List[List[int]]
+        :type n: int
+        :type dislikes: List[List[int]]
         :rtype: bool
         """
+        graph = [[] for i in range(n)]
+        for u,v in dislikes:
+            graph[u-1].append(v-1)
+            graph[v-1].append(u-1)
+        # everything below is identical to LC785 
         ok = [True]
         visited = [False] * len(graph)
         color = [False] * len(graph)
@@ -35,8 +41,7 @@ class Solution(object):
                     if color[neighbor] == color[s]:
                     # // 若相同，则此图不是二分图
                         ok.append(False)
-                        return 
-
+                        return
         for i in range(len(graph)):
             if visited[i] is False:
                 traverse(graph, i)
