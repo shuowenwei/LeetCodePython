@@ -27,7 +27,7 @@ class UnionFind(object):
     def find(self, x):
         # 可见，调用 find 函数每次向树根遍历的同时，顺手将树高缩短了，最终所有树高都不会超过 3（union 的时候树高可能达到 3）。
         while self.parent[x] != x:
-            parent[x] = parent[parent[x]] # O(1)
+            self.parent[x] = self.parent[self.parent[x]] # O(1)
         return x
         
     def count(self):
