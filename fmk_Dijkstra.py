@@ -1,31 +1,30 @@
 # // https://labuladong.gitee.io/algo/1/10/
 
 
-# nodes: 1...n 
-# 1 <= start <= n 
+def Dijkstra():
+    # nodes: 1...n 
+    # 1 <= start <= n 
+    n = 10 
+    start = 1 
+    times = [(1,2,10)] # (v-->u: takes 10 seconds) 
 
-n = 10 
-start = 1 
-times = [(1,2,10)] # (v-->u: takes 10 seconds) 
+    import collections
+    import heapq 
+    graph = collections.defaultdict(list)
+    for src, dst, weight in times:
+        graph[src].append((dst, weight))
 
-import collections
-import heapq 
+    distTo = [0] + [2**31-1]*n
+    hp = [(0, start)] 
+    heapq.heapify(hp)
 
-graph = collections.defaultdict(list)
-for src, dst, weight in times:
-    graph[src].append((dst, weight))
-
-distTo = [0] + [2**31-1]*n
-hp = [(0, start)] 
-heapq.heapify(hp)
-
-while hp:
-    time, node = heapq.heappop(hp)
-    if time < distTo[node]:
-        distTo[node] = time
-        for v, w in graph.get(node):
-            heapq.heappush(hp, (time+w, v))
-return distTo
+    while hp:
+        time, node = heapq.heappop(hp)
+        if time < distTo[node]:
+            distTo[node] = time
+            for v, w in graph.get(node):
+                heapq.heappush(hp, (time+w, v))
+    return distTo
 
 """
 class State {
