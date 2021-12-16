@@ -42,7 +42,7 @@ class Solution(object):
         def isConnected(n1, n2):
             return find(n1) == find(n2)
         
-        connections = sorted(connections, lambda x: x[2])
+        connections = sorted(connections, key=lambda x: x[2])
         for u,v,w in connections:
             if isConnected(u, v):
                 continue
