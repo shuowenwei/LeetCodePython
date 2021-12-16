@@ -2,7 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/min-cost-to-connect-all-points/
+https://leetcode.com/problems/graph-valid-tree/
 
 https://labuladong.gitee.io/algo/2/19/39/
 

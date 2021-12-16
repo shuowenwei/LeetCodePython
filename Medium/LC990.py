@@ -6,6 +6,7 @@ https://leetcode.com/problems/number-of-connected-components-in-an-undirected-gr
 
 LC323, LC130, LC990
 LC547
+LC261, LC1135, LC1584
 """
 class UnionFind(object):
     def __init__(self, count):
