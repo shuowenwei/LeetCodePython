@@ -15,7 +15,6 @@ class Node(object):
         self.next = next
         self.prev = prev
 
-
 class DoubleList(object): 
     # // 初始化双向链表的数据
     def __init__(self, head=Node(0,0), tail=Node(0,0) ):
@@ -35,7 +34,10 @@ class DoubleList(object):
         
     # // 删除链表中的 x 节点（x 一定存在）
     # // 由于是双链表且给的是目标 Node 节点，时间 O(1)
-    def remove(self, x: Node):
+    def remove(self, x):
+        """
+        :type x: node
+        """
         x.prev.next = x.next 
         x.next.prev = x.prev 
         self.size -= 1 
@@ -52,9 +54,12 @@ class DoubleList(object):
     def getSize(self):
         return self.size
 
-class LRU(object): 
+class LRUCache(object): 
     def __init__(self, capacity):
-        self.map = dict() # k: node --> v: val
+        """
+        :type capacity: int
+        """
+        self.map = dict() # map key:int --> node:Node
         self.cap = capacity
         self.cache = DoubleList()
     
@@ -76,15 +81,24 @@ class LRU(object):
     def removeLeastRecently(self):
         deletedNode = self.cache.removeFirst()
         deletedKey = deletedNode.key
-        self.map.pop(deletedKey)
+        del self.map[deletedKey]
         
-    def get(self, key: int): 
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
         if self.map.get(key) is None:
             return -1 
         self.makeRecently(key)
         return self.map[key].val
     
-    def put(key: int, val: int):
+    def put(self, key, val):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
         if self.map.get(key): 
             self.deleteKey(key)
             self.addRecently(key, val)
