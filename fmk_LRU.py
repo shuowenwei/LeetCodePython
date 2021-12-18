@@ -76,7 +76,7 @@ class LRU(object):
     def removeLeastRecently(self):
         deletedNode = self.cache.removeFirst()
         deletedKey = deletedNode.key
-        self.map.pop(key)
+        self.map.pop(deletedKey)
         
     def get(self, key: int): 
         if self.map.get(key) is None:
