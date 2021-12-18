@@ -18,12 +18,12 @@ class Node(object):
 
 class DoubleList(object): 
     # // 初始化双向链表的数据
-    def __init__(self, head=Node(0,0), tail=Node(0,0) ):
+    def __init__(self, capacity, head=Node(0,0), tail=Node(0,0) ):
         self.head = head
         self.tail = tail
-        head.next = tail 
-        tail.prev = head 
-        self.size = 0
+        self.head.next = self.tail 
+        self.tail.prev = self.head 
+        self.size = capacity
         
     # // 在链表尾部添加节点 x，时间 O(1)
     def addLast(self, x: Node): 
