@@ -72,9 +72,8 @@ class LFUCache(object):
         :type capacity: int
         """
         import collections
-        self.key2Val = dict() # hashmap key:int --> val:int
-        self.key2Freq = dict() # hashmap key:int --> freq:int
-        self.freq2Keys = collections.defaultdict(DoubleList) # hashmap freq:int --> keys:DoubleList
+        self.key2Val = dict() # hashmap key:int --> node: ListNode
+        self.freq2Keys = collections.defaultdict(DoubleList) # hashmap freq:int --> keys:DoubleList[ListNode]
         self.cap = capacity
         self.minFreq = 0
         
@@ -86,7 +85,7 @@ class LFUCache(object):
         if key not in self.key2Val:
             return -1 
         self.increaseFreq(key)
-        return self.key2Val[key]
+        return self.key2Val[key].val
     
     def put(self, key, value):
         """
@@ -105,18 +104,18 @@ class LFUCache(object):
         self.key2Val[key] = value
         self.key2Freq[key] += 1
         if key not in self.freq2Keys[1]:
-            self.freq2Keys[1].add(key) # .append()
+            self.freq2Keys[1].add(key) # .append()  ?????
         self.minFreq = 1
 
     def increaseFreq(self, key):
         oldFreq = self.key2Freq[key]
-        self.key2Freq[key] += 1
-        del freq2Keys[oldFreq]
+        self.key2Freq[key].freq += 1
+        newFreq = self.key2Freq[key].freq
+        self.freq2Keys[oldFreq].remove(key)
+        self.freq2Keys[newFreq].addLast(key)
+        if oldFreq == self.minFreq and self.freq2Keys[oldFreq].getSize() == 0:
+            self.minFreq += 1 
         
-        if key not in self.freq2Keys[1]:
-            self.freq2Keys[1].add(key) # .append()
-        
-
     def removeMinFreqKey(self, key):
         keyList = self.freq2Keys[self.minFreq]
         deletedKey = keyList.popleft()
