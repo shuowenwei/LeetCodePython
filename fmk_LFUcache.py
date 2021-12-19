@@ -19,13 +19,14 @@
 
 # LC146, LC460
 
-class Node(object):
+class ListNode(object):
     def __init__(self, key=0, val=0, next=None, prev=None):
         self.key = key
         self.val = val
+        self.freq = 1
         self.next = next
         self.prev = prev
-
+        
 class DoubleList(object): 
     # // 初始化双向链表的数据
     def __init__(self, head=Node(0,0), tail=Node(0,0) ):
@@ -70,9 +71,10 @@ class LFUCache(object):
         """
         :type capacity: int
         """
+        import collections
         self.key2Val = dict() # hashmap key:int --> val:int
         self.key2Freq = dict() # hashmap key:int --> freq:int
-        self.freq2Keys = dict() # hashmap freq:int --> keys:list[Nodes]???
+        self.freq2Keys = collections.defaultdict(DoubleList) # hashmap freq:int --> keys:DoubleList
         self.cap = capacity
         self.minFreq = 0
         
@@ -107,10 +109,25 @@ class LFUCache(object):
         self.minFreq = 1
 
     def increaseFreq(self, key):
-        self.key2Freq[key] += 1 
+        oldFreq = self.key2Freq[key]
+        self.key2Freq[key] += 1
+        del freq2Keys[oldFreq]
+        
+        if key not in self.freq2Keys[1]:
+            self.freq2Keys[1].add(key) # .append()
+        
 
     def removeMinFreqKey(self, key):
-        pass 
+        keyList = self.freq2Keys[self.minFreq]
+        deletedKey = keyList.popleft()
+        if len(keyList) == 0: 
+            del self.freq2Keys[self.minFreq] 
+            # // 问：这里需要更新 minFreq 的值吗？ - No
+            # 实际上没办法快速计算minFreq，只能线性遍历FK表或者KF表来计算，这样肯定不能保证 O(1) 的时间复杂度。
+            # 但是，其实这里没必要更新minFreq变量，因为你想想removeMinFreqKey这个函数是在什么时候调用？在put方法中插入新key时可能调用。
+            # 而你回头看put的代码，插入新key时一定会把minFreq更新成 1，所以说即便这里minFreq变了，我们也不需要管它。
+        del self.key2Val[deletedKey]
+        del self.key2Freq[deletedKey]
 
     # def makeRecently(self, key):
     #     node = self.map[key]
