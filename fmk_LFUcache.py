@@ -1,5 +1,6 @@
 # https://labuladong.gitee.io/algo/2/20/44/
 # https://mp.weixin.qq.com/s/oXv03m1J8TwtHwMJEZ1ApQ
+# (recommended) https://leetcode.com/problems/lfu-cache/discuss/800188/Python-O(1)-using-DLL-and-Dictionary
 # LFU - Least Frequently Used
 
 # 而 LFU 算法相当于是把数据按照访问频次进行排序，这个需求恐怕没有那么简单，
@@ -98,7 +99,7 @@ class LFUCache(object):
             self.increaseFreq(key)
             return # must return here if key exists !!!
         
-        if self.cap <= len(self.key2Val):
+        if self.cap == len(self.key2Val):
             self.removeMinFreqKey()
             
         newNode = ListNode(key, value)
