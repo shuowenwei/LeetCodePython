@@ -95,7 +95,7 @@ class LFUCache(object):
         """
         if key in self.key2Val:
             self.key2Val[key] = value 
-            self.increaseFreq(key, val)
+            self.increaseFreq(key)
             return # must return here if key exists !!!
         
         if self.cap <= len(self.key2Val):
@@ -104,17 +104,15 @@ class LFUCache(object):
         newNode = ListNode(key, value)
         self.key2Val[key] = newNode
         self.minFreq = 1
-        if self.freq2Keys.get(1) :
-            self.freq2Keys[1].addLast(newNode)
-        else: 
-            self.freq2Keys[1] = DoubleList(head=ListNode(0,0), tail=newNode)
-
+        self.freq2Keys[1].addLast(newNode)
+        
     def increaseFreq(self, key):
-        oldFreq = self.key2Freq[key].freq
-        self.key2Freq[key].freq += 1
-        newFreq = self.key2Freq[key].freq
-        self.freq2Keys[oldFreq].remove(key)
-        self.freq2Keys[newFreq].addLast(key)
+        node = self.key2Val[key]
+        oldFreq = node.freq
+        node.freq += 1
+        newFreq = node.freq
+        self.freq2Keys[oldFreq].remove(node)
+        self.freq2Keys[newFreq].addLast(node)
         if oldFreq == self.minFreq and self.freq2Keys[oldFreq].getSize() == 0:
             self.minFreq += 1 
         
