@@ -10,7 +10,7 @@
 
 # LC146, LC460
 
-class Node(object):
+class ListNode(object):
     def __init__(self, key=0, val=0, next=None, prev=None):
         self.key = key
         self.val = val
@@ -19,7 +19,7 @@ class Node(object):
 
 class DoubleList(object): 
     # // 初始化双向链表的数据
-    def __init__(self, head=Node(0,0), tail=Node(0,0) ):
+    def __init__(self, head=ListNode(0,0), tail=ListNode(0,0) ):
         self.head = head
         self.tail = tail
         self.head.next = self.tail 
@@ -38,7 +38,7 @@ class DoubleList(object):
     # // 由于是双链表且给的是目标 Node 节点，时间 O(1)
     def remove(self, x):
         """
-        :type x: node
+        :type x: ListNode
         """
         x.prev.next = x.next 
         x.next.prev = x.prev 
@@ -61,7 +61,7 @@ class LRUCache(object):
         """
         :type capacity: int
         """
-        self.map = dict() # map key:int --> node:Node
+        self.map = dict() # map key:int --> node: ListNode
         self.cap = capacity
         self.cache = DoubleList()
     
@@ -71,7 +71,7 @@ class LRUCache(object):
         self.cache.addLast(node) # // 重新插到队尾
         
     def addRecently(self, key, val):
-        newNode = Node(key, val)
+        newNode = ListNode(key, val)
         self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
         self.map[key] = newNode # // 别忘了在 map 中添加 key 的映射
         
