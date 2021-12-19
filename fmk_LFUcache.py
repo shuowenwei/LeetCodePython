@@ -96,7 +96,7 @@ class LFUCache(object):
         :rtype: None
         """
         if key in self.key2Val:
-            self.key2Val[key] = value 
+            self.key2Val[key].val = value 
             self.increaseFreq(key)
             return # must return here if key exists !!!
         
