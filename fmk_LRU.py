@@ -81,7 +81,9 @@ class LRUCache(object):
     def removeLeastRecently(self):
         deletedNode = self.cache.removeFirst()
         deletedKey = deletedNode.key
-        del self.map[deletedKey]
+        # print('key to remove:', deletedKey, self.map.get(deletedKey))
+        if self.map.get(deletedKey) is not None:
+            del self.map[deletedKey]
         
     def get(self, key):
         """
@@ -102,8 +104,15 @@ class LRUCache(object):
         if self.map.get(key): 
             self.deleteKey(key)
             self.addRecently(key, val)
-         
+            return # must return here if key exists !!!
+        
         if self.cap == self.cache.getSize():
+            # // 删除最久未使用的元素
             self.removeLeastRecently()
-            
+        # // 添加为最近使用的元素
         self.addRecently(key, val)
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
