@@ -95,6 +95,8 @@ class LFUCache(object):
         :type value: int
         :rtype: None
         """
+        if self.cap <= 0:
+            return
         if key in self.key2Val:
             self.key2Val[key].val = value 
             self.increaseFreq(key)
