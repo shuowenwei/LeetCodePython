@@ -19,7 +19,6 @@
 # 就应该从 freq 对应的 key 列表中删除，加到 freq+1 对应的 key 的列表中。
 
 # LC146, LC460
-
 class ListNode(object):
     def __init__(self, key=0, val=0, next=None, prev=None):
         self.key = key
@@ -30,9 +29,9 @@ class ListNode(object):
         
 class DoubleList(object): 
     # // 初始化双向链表的数据
-    def __init__(self, head=ListNode(0,0), tail=ListNode(0,0) ):
-        self.head = head
-        self.tail = tail
+    def __init__(self):
+        self.head = ListNode(0,0)
+        self.tail = ListNode(0,0)
         self.head.next = self.tail 
         self.tail.prev = self.head 
         self.size = 0
@@ -86,6 +85,8 @@ class LFUCache(object):
         if key not in self.key2Val:
             return -1 
         self.increaseFreq(key)
+        # print('GET:', 'self.freq2Keys[1] size', self.freq2Keys[1].getSize(), \
+        #       'self.freq2Keys[2] size', self.freq2Keys[2].getSize(), 'minFreq:', self.minFreq)
         return self.key2Val[key].val
     
     def put(self, key, value):
@@ -106,12 +107,15 @@ class LFUCache(object):
         self.key2Val[key] = newNode
         self.minFreq = 1
         self.freq2Keys[1].addLast(newNode)
+        # print('PUT', 'self.freq2Keys[1] size', self.freq2Keys[1].getSize(), \
+        #       'self.freq2Keys[2] size', self.freq2Keys[2].getSize(), 'minFreq:', self.minFreq)
         
     def increaseFreq(self, key):
         node = self.key2Val[key]
         oldFreq = node.freq
         node.freq += 1
         newFreq = node.freq
+        # print('oldFreq',oldFreq, 'newFreq',newFreq)
         self.freq2Keys[oldFreq].remove(node)
         self.freq2Keys[newFreq].addLast(node)
         if oldFreq == self.minFreq and self.freq2Keys[oldFreq].getSize() == 0:
@@ -120,35 +124,17 @@ class LFUCache(object):
     def removeMinFreqKey(self):
         keyList = self.freq2Keys[self.minFreq]
         deletedKey = keyList.removeFirst()
-        if keyList.getSize() == 0: 
-            del self.freq2Keys[self.minFreq] 
+        # print('removeMinFreqKey is called, keyList size:', keyList.getSize() )
+        # print('REMOVE:', 'self.freq2Keys[1] size', self.freq2Keys[1].getSize(), \
+        #       'self.freq2Keys[2] size', self.freq2Keys[2].getSize(), 'minFreq:', self.minFreq)
+        # if keyList.getSize() == 0: 
+        #     del self.freq2Keys[self.minFreq] 
             # // 问：这里需要更新 minFreq 的值吗？ - No
             # 实际上没办法快速计算minFreq，只能线性遍历FK表或者KF表来计算，这样肯定不能保证 O(1) 的时间复杂度。
             # 但是，其实这里没必要更新minFreq变量，因为你想想removeMinFreqKey这个函数是在什么时候调用？在put方法中插入新key时可能调用。
             # 而你回头看put的代码，插入新key时一定会把minFreq更新成 1，所以说即便这里minFreq变了，我们也不需要管它。
+        # print('keys to be deleted: ', deletedKey.key, 'among', self.key2Val)
         del self.key2Val[deletedKey.key]
-
-    # def makeRecently(self, key):
-    #     node = self.map[key]
-    #     self.cache.remove(node) # // 先从链表中删除这个节点
-    #     self.cache.addLast(node) # // 重新插到队尾
-        
-    # def addRecently(self, key, val):
-    #     newNode = Node(key, val)
-    #     self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
-    #     self.map[key] = newNode # // 别忘了在 map 中添加 key 的映射
-        
-    # def deleteKey(self, key): 
-    #     node = self.map[key]
-    #     self.cache.remove(node) # // 从链表中删除
-    #     self.map.pop(key) # // 从 map 中删除
-
-    # def removeLeastRecently(self):
-    #     deletedNode = self.cache.removeFirst()
-    #     deletedKey = deletedNode.key
-    #     # print('key to remove:', deletedKey, self.map.get(deletedKey))
-    #     if self.map.get(deletedKey) is not None:
-    #         del self.map[deletedKey]
         
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
