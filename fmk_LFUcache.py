@@ -1,4 +1,5 @@
 # https://labuladong.gitee.io/algo/2/20/44/
+# https://mp.weixin.qq.com/s/oXv03m1J8TwtHwMJEZ1ApQ
 # LFU - Least Frequently Used
 
 # 而 LFU 算法相当于是把数据按照访问频次进行排序，这个需求恐怕没有那么简单，
@@ -64,64 +65,75 @@ class DoubleList(object):
     def getSize(self):
         return self.size
 
-class LRUCache(object): 
+class LFUCache(object): 
     def __init__(self, capacity):
         """
         :type capacity: int
         """
-        self.map = dict() # map key:int --> node:Node
+        self.key2Val = dict() # hashmap key:int --> val:int
+        self.key2Freq = dict() # hashmap key:int --> freq:int
+        self.freq2Keys = dict() # hashmap freq:int --> keys:list[Nodes]???
         self.cap = capacity
-        self.cache = DoubleList()
-    
-    def makeRecently(self, key):
-        node = self.map[key]
-        self.cache.remove(node) # // 先从链表中删除这个节点
-        self.cache.addLast(node) # // 重新插到队尾
-        
-    def addRecently(self, key, val):
-        newNode = Node(key, val)
-        self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
-        self.map[key] = newNode # // 别忘了在 map 中添加 key 的映射
-        
-    def deleteKey(self, key): 
-        node = self.map[key]
-        self.cache.remove(node) # // 从链表中删除
-        self.map.pop(key) # // 从 map 中删除
-
-    def removeLeastRecently(self):
-        deletedNode = self.cache.removeFirst()
-        deletedKey = deletedNode.key
-        # print('key to remove:', deletedKey, self.map.get(deletedKey))
-        if self.map.get(deletedKey) is not None:
-            del self.map[deletedKey]
+        self.minFreq = 0
         
     def get(self, key):
         """
         :type key: int
         :rtype: int
         """
-        if self.map.get(key) is None:
+        if key not in self.key2Val:
             return -1 
-        self.makeRecently(key)
-        return self.map[key].val
+        self.increaseFreq(key)
+        return self.key2Val[key]
     
-    def put(self, key, val):
+    def put(self, key, value):
         """
         :type key: int
         :type value: int
         :rtype: None
         """
-        if self.map.get(key): 
-            self.deleteKey(key)
-            self.addRecently(key, val)
+        if self.key2Val.get(key):
+            self.key2Val[key] = value 
+            self.increaseFreq(key, val)
             return # must return here if key exists !!!
         
-        if self.cap == self.cache.getSize():
-            # // 删除最久未使用的元素
-            self.removeLeastRecently()
-        # // 添加为最近使用的元素
-        self.addRecently(key, val)
+        if self.cap <= len(self.key2Val):
+            self.removeMinFreqKey()
+            
+        self.key2Val[key] = value
+        self.key2Freq[key] += 1
+        if key not in self.freq2Keys[1]:
+            self.freq2Keys[1].add(key) # .append()
+        self.minFreq = 1
 
+    def increaseFreq(self, key):
+        self.key2Freq[key] += 1 
+
+    def removeMinFreqKey(self, key):
+        pass 
+
+    # def makeRecently(self, key):
+    #     node = self.map[key]
+    #     self.cache.remove(node) # // 先从链表中删除这个节点
+    #     self.cache.addLast(node) # // 重新插到队尾
+        
+    # def addRecently(self, key, val):
+    #     newNode = Node(key, val)
+    #     self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
+    #     self.map[key] = newNode # // 别忘了在 map 中添加 key 的映射
+        
+    # def deleteKey(self, key): 
+    #     node = self.map[key]
+    #     self.cache.remove(node) # // 从链表中删除
+    #     self.map.pop(key) # // 从 map 中删除
+
+    # def removeLeastRecently(self):
+    #     deletedNode = self.cache.removeFirst()
+    #     deletedKey = deletedNode.key
+    #     # print('key to remove:', deletedKey, self.map.get(deletedKey))
+    #     if self.map.get(deletedKey) is not None:
+    #         del self.map[deletedKey]
+        
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)
