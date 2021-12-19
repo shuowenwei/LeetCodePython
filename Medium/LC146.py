@@ -60,41 +60,41 @@ class LRUCache(object):
         """
         :type capacity: int
         """
-        self.map = dict() # map key:int --> node: ListNode
+        self.key2Node = dict() # key:int --> node: ListNode
         self.cap = capacity
         self.cache = DoubleList()
     
     def makeRecently(self, key):
-        node = self.map[key]
+        node = self.key2Node[key]
         self.cache.remove(node) # // 先从链表中删除这个节点
         self.cache.addLast(node) # // 重新插到队尾
         
     def addRecently(self, key, val):
         newNode = ListNode(key, val)
         self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
-        self.map[key] = newNode # // 别忘了在 map 中添加 key 的映射
+        self.key2Node[key] = newNode # // 别忘了在 key2Node 中添加 key 的映射
         
     def deleteKey(self, key): 
-        node = self.map[key]
+        node = self.key2Node[key]
         self.cache.remove(node) # // 从链表中删除
-        self.map.pop(key) # // 从 map 中删除
+        self.key2Node.pop(key) # // 从 map 中删除
 
     def removeLeastRecently(self):
         deletedNode = self.cache.removeFirst()
         deletedKey = deletedNode.key
-        # print('key to remove:', deletedKey, self.map.get(deletedKey))
-        if self.map.get(deletedKey) is not None:
-            del self.map[deletedKey]
+        # print('key to remove:', deletedKey, self.key2Node.get(deletedKey))
+        if self.key2Node.get(deletedKey) is not None:
+            del self.key2Node[deletedKey]
         
     def get(self, key):
         """
         :type key: int
         :rtype: int
         """
-        if self.map.get(key) is None:
+        if self.key2Node.get(key) is None:
             return -1 
         self.makeRecently(key)
-        return self.map[key].val
+        return self.key2Node[key].val
     
     def put(self, key, val):
         """
@@ -102,7 +102,7 @@ class LRUCache(object):
         :type value: int
         :rtype: None
         """
-        if self.map.get(key): 
+        if self.key2Node.get(key): 
             self.deleteKey(key)
             self.addRecently(key, val)
             return # must return here if key exists !!!
