@@ -29,7 +29,7 @@ class ListNode(object):
         
 class DoubleList(object): 
     # // 初始化双向链表的数据
-    def __init__(self, head=Node(0,0), tail=Node(0,0) ):
+    def __init__(self, head=ListNode(0,0), tail=ListNode(0,0) ):
         self.head = head
         self.tail = tail
         self.head.next = self.tail 
@@ -107,10 +107,10 @@ class LFUCache(object):
         if self.freq2Keys.get(1) :
             self.freq2Keys[1].addLast(newNode)
         else: 
-            self.freq2Keys[1] = DoubleList(head=Node(0,0), tail=newNode)
+            self.freq2Keys[1] = DoubleList(head=ListNode(0,0), tail=newNode)
 
     def increaseFreq(self, key):
-        oldFreq = self.key2Freq[key]
+        oldFreq = self.key2Freq[key].freq
         self.key2Freq[key].freq += 1
         newFreq = self.key2Freq[key].freq
         self.freq2Keys[oldFreq].remove(key)
