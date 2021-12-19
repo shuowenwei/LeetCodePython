@@ -72,7 +72,7 @@ class LFUCache(object):
         :type capacity: int
         """
         import collections
-        self.key2Val = dict() # hashmap key:int --> node: ListNode
+        self.key2Node = dict() # hashmap key:int --> node: ListNode
         self.freq2Keys = collections.defaultdict(DoubleList) # hashmap freq:int --> keys:DoubleList[ListNode]
         self.cap = capacity
         self.minFreq = 0
@@ -82,12 +82,12 @@ class LFUCache(object):
         :type key: int
         :rtype: int
         """
-        if key not in self.key2Val:
+        if key not in self.key2Node:
             return -1 
         self.increaseFreq(key)
         # print('GET:', 'self.freq2Keys[1] size', self.freq2Keys[1].getSize(), \
         #       'self.freq2Keys[2] size', self.freq2Keys[2].getSize(), 'minFreq:', self.minFreq)
-        return self.key2Val[key].val
+        return self.key2Node[key].val
     
     def put(self, key, value):
         """
@@ -97,23 +97,23 @@ class LFUCache(object):
         """
         if self.cap <= 0:
             return
-        if key in self.key2Val:
-            self.key2Val[key].val = value 
+        if key in self.key2Node:
+            self.key2Node[key].val = value 
             self.increaseFreq(key)
             return # must return here if key exists !!!
         
-        if self.cap == len(self.key2Val):
+        if self.cap == len(self.key2Node):
             self.removeMinFreqKey()
             
         newNode = ListNode(key, value)
-        self.key2Val[key] = newNode
+        self.key2Node[key] = newNode
         self.minFreq = 1
         self.freq2Keys[1].addLast(newNode)
         # print('PUT', 'self.freq2Keys[1] size', self.freq2Keys[1].getSize(), \
         #       'self.freq2Keys[2] size', self.freq2Keys[2].getSize(), 'minFreq:', self.minFreq)
         
     def increaseFreq(self, key):
-        node = self.key2Val[key]
+        node = self.key2Node[key]
         oldFreq = node.freq
         node.freq += 1
         newFreq = node.freq
@@ -129,14 +129,14 @@ class LFUCache(object):
         # print('removeMinFreqKey is called, keyList size:', keyList.getSize() )
         # print('REMOVE:', 'self.freq2Keys[1] size', self.freq2Keys[1].getSize(), \
         #       'self.freq2Keys[2] size', self.freq2Keys[2].getSize(), 'minFreq:', self.minFreq)
-        # if keyList.getSize() == 0: 
-        #     del self.freq2Keys[self.minFreq] 
+        if keyList.getSize() == 0: 
+            del self.freq2Keys[self.minFreq] 
             # // 问：这里需要更新 minFreq 的值吗？ - No
             # 实际上没办法快速计算minFreq，只能线性遍历FK表或者KF表来计算，这样肯定不能保证 O(1) 的时间复杂度。
             # 但是，其实这里没必要更新minFreq变量，因为你想想removeMinFreqKey这个函数是在什么时候调用？在put方法中插入新key时可能调用。
             # 而你回头看put的代码，插入新key时一定会把minFreq更新成 1，所以说即便这里minFreq变了，我们也不需要管它。
-        # print('keys to be deleted: ', deletedKey.key, 'among', self.key2Val)
-        del self.key2Val[deletedKey.key]
+        # print('keys to be deleted: ', deletedKey.key, 'among', self.key2Node)
+        del self.key2Node[deletedKey.key]
         
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
