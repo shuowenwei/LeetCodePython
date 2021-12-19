@@ -116,16 +116,16 @@ class LFUCache(object):
         if oldFreq == self.minFreq and self.freq2Keys[oldFreq].getSize() == 0:
             self.minFreq += 1 
         
-    def removeMinFreqKey(self, key):
+    def removeMinFreqKey(self):
         keyList = self.freq2Keys[self.minFreq]
         deletedKey = keyList.removeFirst()
-        if deletedKey.getSize() == 0: 
+        if keyList.getSize() == 0: 
             del self.freq2Keys[self.minFreq] 
             # // 问：这里需要更新 minFreq 的值吗？ - No
             # 实际上没办法快速计算minFreq，只能线性遍历FK表或者KF表来计算，这样肯定不能保证 O(1) 的时间复杂度。
             # 但是，其实这里没必要更新minFreq变量，因为你想想removeMinFreqKey这个函数是在什么时候调用？在put方法中插入新key时可能调用。
             # 而你回头看put的代码，插入新key时一定会把minFreq更新成 1，所以说即便这里minFreq变了，我们也不需要管它。
-        del self.key2Val[deletedKey]
+        del self.key2Val[deletedKey.key]
 
     # def makeRecently(self, key):
     #     node = self.map[key]
