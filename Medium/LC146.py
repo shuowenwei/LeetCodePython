@@ -18,9 +18,9 @@ class ListNode(object):
 
 class DoubleList(object): 
     # // 初始化双向链表的数据
-    def __init__(self, head=ListNode(0,0), tail=ListNode(0,0) ):
-        self.head = head
-        self.tail = tail
+    def __init__(self):
+        self.head = ListNode(0,0)
+        self.tail = ListNode(0,0)
         self.head.next = self.tail 
         self.tail.prev = self.head 
         self.size = 0
