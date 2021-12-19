@@ -93,7 +93,7 @@ class LFUCache(object):
         :type value: int
         :rtype: None
         """
-        if self.key2Val.get(key):
+        if key in self.key2Val:
             self.key2Val[key] = value 
             self.increaseFreq(key, val)
             return # must return here if key exists !!!
@@ -101,11 +101,13 @@ class LFUCache(object):
         if self.cap <= len(self.key2Val):
             self.removeMinFreqKey()
             
-        self.key2Val[key] = value
-        self.key2Freq[key] += 1
-        if key not in self.freq2Keys[1]:
-            self.freq2Keys[1].add(key) # .append()  ?????
+        newNode = ListNode(key, value)
+        self.key2Val[key] = newNode
         self.minFreq = 1
+        if self.freq2Keys.get(1) :
+            self.freq2Keys[1].addLast(newNode)
+        else: 
+            self.freq2Keys[1] = DoubleList(head=Node(0,0), tail=newNode)
 
     def increaseFreq(self, key):
         oldFreq = self.key2Freq[key]
@@ -118,15 +120,14 @@ class LFUCache(object):
         
     def removeMinFreqKey(self, key):
         keyList = self.freq2Keys[self.minFreq]
-        deletedKey = keyList.popleft()
-        if len(keyList) == 0: 
+        deletedKey = keyList.removeFirst()
+        if deletedKey.getSize() == 0: 
             del self.freq2Keys[self.minFreq] 
             # // 问：这里需要更新 minFreq 的值吗？ - No
             # 实际上没办法快速计算minFreq，只能线性遍历FK表或者KF表来计算，这样肯定不能保证 O(1) 的时间复杂度。
             # 但是，其实这里没必要更新minFreq变量，因为你想想removeMinFreqKey这个函数是在什么时候调用？在put方法中插入新key时可能调用。
             # 而你回头看put的代码，插入新key时一定会把minFreq更新成 1，所以说即便这里minFreq变了，我们也不需要管它。
         del self.key2Val[deletedKey]
-        del self.key2Freq[deletedKey]
 
     # def makeRecently(self, key):
     #     node = self.map[key]
