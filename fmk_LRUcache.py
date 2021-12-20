@@ -8,8 +8,7 @@
 # 3、链表显然是支持在任意位置快速插入和删除的，改改指针就行。只不过传统的链表无法按照索引快速访问某一个位置的元素，而这里借助哈希表，
 # 可以通过 key 快速映射到任意一个链表节点，然后进行插入和删除。
 
-# LC146, LC460
-
+# LC146, LC460, LC895
 class ListNode(object):
     def __init__(self, key=0, val=0, next=None, prev=None):
         self.key = key

@@ -6,6 +6,8 @@ https://leetcode.com/problems/maximum-frequency-stack/
 
 https://labuladong.gitee.io/algo/2/20/45/
 
+LC146, LC460, LC895
+
 """
 class FreqStack(object):
     def __init__(self):

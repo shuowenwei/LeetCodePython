@@ -8,6 +8,8 @@ solution: https://leetcode.com/problems/lru-cache/discuss/45926/Python-Dict-%2B-
 and use orderedDict: https://leetcode.com/problems/lru-cache/discuss/45952/Python-concise-solution-with-comments-(Using-OrderedDict).  
 
 https://labuladong.gitee.io/algo/2/20/43/
+
+LC146, LC460, LC895
 """
 class ListNode(object):
     def __init__(self, key=0, val=0, next=None, prev=None):
