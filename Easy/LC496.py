@@ -6,7 +6,8 @@ https://leetcode.com/problems/next-greater-element-i/
 
 https://labuladong.gitee.io/algo/2/20/48/
 
-LC496, LC503, LC739
+LC496, LC739, LC503
+
 """
 class Solution(object):
     def nextGreaterElement(self, nums1, nums2):
