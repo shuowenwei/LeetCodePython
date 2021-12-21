@@ -18,7 +18,7 @@ class User(object):
 from heapq import *
 class Twitter(object):
     def __init__(self):
-        self.users = dict()
+        self.users = dict() # map userId:int to User:object
         self.time = 0
         
     def create(self, userid):
@@ -43,9 +43,16 @@ class Twitter(object):
         :type userId: int
         :rtype: List[int]
         """
-        
-        
+        feed = []
+        self.create(userId)
+        for i in self.users[userId].follows:
+            for tweetId, time in i.tweets.items():
+                feed.append((tweetId, time))
 
+        feed = sorted(feed, key=lambda x:x[1], reverse=True)
+        # feed.sort(key=lambda x:x[1], reverse=True)
+        return [f[0] for f in feed[:10]]
+    
     def follow(self, followerId, followeeId): # followeeId is the person being followed by some follower 
         """
         :type followerId: int
