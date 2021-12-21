@@ -9,6 +9,8 @@ https://mp.weixin.qq.com/s/oklQN_xjYy--_fbFkd9wMg
 
 https://leetcode.com/problems/find-median-from-data-stream/discuss/74047/JavaPython-two-heap-solution-O(log-n)-add-O(1)-find
 
+refer to: LC146, LC460, LC895, LC295
+
 """
 from heapq import *
 
