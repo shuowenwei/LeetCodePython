@@ -19,13 +19,40 @@ If our window has reached size k, append the current window maximum to the outpu
 
 solution: https://leetcode.com/problems/sliding-window-maximum/discuss/111560/Python-O(n)-solution-using-deque-with-comments
 
+labuladong: https://labuladong.gitee.io/algo/2/20/49/
+
 """
+class MonotonicQueue(object):
+    def __init__(self): 
+        import collections
+        self.q = collections.deque([])
+    def push(self, n):
+        while len(self.q) > 0 and self.q[-1] < n:
+            self.q.pop()
+        self.q.append(n)
+    def max(self):
+        return self.q[0]
+    def pop(self, n):
+        if n == self.q[0]: 
+            self.q.popleft()
 class Solution(object):
     def maxSlidingWindow(self, nums, k):
         """
         :type nums: List[int]
         :type k: int
         :rtype: List[int]
+        """
+        n = len(nums)
+        res = []
+        window = MonotonicQueue()
+        for i in range(n):
+            if i < k-1:
+                window.push(nums[i])
+            else:
+                window.push(nums[i])
+                res.append(window.max())
+                window.pop(nums[i-k+1])
+        return res 
         """
         d = collections.deque() 
         res = [] 
@@ -39,7 +66,7 @@ class Solution(object):
             if i >= k - 1: 
                 res.append(nums[d[0]])
         return res 
-    
+        """
             
         """
         from collections import deque 
