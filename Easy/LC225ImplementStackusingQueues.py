@@ -4,6 +4,9 @@
 
 https://leetcode.com/problems/implement-stack-using-queues/
 
+https://labuladong.gitee.io/algo/2/20/51/
+
+LC232, LC225
 """
 import collections 
 class MyStack:
