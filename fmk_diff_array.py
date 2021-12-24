@@ -23,7 +23,9 @@ class PrefixSum(object):
         return self.preSum[j+1] - self.preSum[i]
 
 
-# // 差分数组工具类 LC370, LC1109, LC1094
+
+# // 差分数组工具类 
+# LC370, LC1109, LC1094
 class Difference(object):
     def __init__(self, nums):
         # // 差分数组
@@ -32,11 +34,10 @@ class Difference(object):
         self.diff = [0] * n
         self.diff[0] = nums[0]
         for i in range(1, n):
-            self.diff = nums[i] - nums[i - 1]
+            self.diff[i] = nums[i] - nums[i - 1]
         
     # /* 给闭区间 [i,j] 增加 val（可以是负数）*/
     def increment(self, i, j, val):
-    # public void increment(int i, int j, int val) {
         self.diff[i] += val
         if j + 1 < len(self.diff): # 当 j+1 >= diff.length 时，说明是对 nums[i] 及以后的整个数组都进行修改，那么就不需要再给 diff 数组减 val 了。
             self.diff[j+1] -= val
