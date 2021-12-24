@@ -6,6 +6,7 @@ https://leetcode.com/problems/range-sum-query-immutable/
 
 https://labuladong.gitee.io/algo/2/21/53/
 
+LC303, LC304, LC560
 """
 class NumArray(object):
     

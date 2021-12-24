@@ -4,6 +4,10 @@
 
 https://leetcode.com/problems/range-sum-query-2d-immutable
 
+https://labuladong.gitee.io/algo/2/21/53/
+
+LC303, LC304, LC560
+
 solution reference link:  https://leetcode.com/problems/range-sum-query-2d-immutable/discuss/75448/Sharing-My-Python-solution 
 """
 class NumMatrix(object):
