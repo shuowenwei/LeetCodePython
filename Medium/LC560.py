@@ -19,16 +19,16 @@ class Solution(object):
         """
         # refer to LC303
         res = 0
-        preSum = {-1: 0}
-        n = len(nums)
-        for i in range(n):
-            preSum[i] = preSum[i-1] + nums[i]
-        
+        n = len(nums)    
+        preSum = [0]*(n+1)
+        # self.preSum[i] means sum(nums[0:i]), [0,...,i), not include nums[i]
+        for i in range(1, n+1):
+            preSum[i] = preSum[i-1] + nums[i-1]
+            
         hast_table = dict()
-        for i in range(0, n):
+        for i in range(1, n+1):
             if preSum[i] not in hast_table: 
                 hast_table[preSum[i]] = 0
-                
             if preSum[i]-k == 0: 
                 res += 1 
             if preSum[i]-k in hast_table: 

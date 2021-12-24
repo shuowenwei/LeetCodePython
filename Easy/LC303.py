@@ -14,9 +14,10 @@ class NumArray(object):
         """
         :type nums: List[int]
         """
-        self.preSum = {-1: 0}
-        for i, val in enumerate(nums):
-            self.preSum[i] = self.preSum[i-1] + val
+        self.preSum = [0]*(len(nums)+1)
+        # self.preSum[i] means sum(nums[0:i]), [0,...,i), not include nums[i]
+        for i in range(1, len(nums)+1):
+            self.preSum[i] = self.preSum[i-1] + nums[i-1]
 
     def sumRange(self, left, right):
         """
@@ -24,8 +25,7 @@ class NumArray(object):
         :type right: int
         :rtype: int
         """
-        return self.preSum[right] - self.preSum[left-1]
-
+        return self.preSum[right+1] - self.preSum[left]
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
