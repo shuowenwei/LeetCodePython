@@ -2,11 +2,13 @@
 """
 @author: Wei, Shuowen
 
+https://leetcode.com/problems/4sum/submissions/
+
 https://labuladong.gitee.io/algo/1/13/
+
 https://mp.weixin.qq.com/s/fSyJVvggxHq28a0SdmZm6Q
 
-LC15, LC18
-
+LC1, LC15, LC18
 """
 class Solution(object):
     def fourSum(self, nums, target):

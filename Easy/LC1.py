@@ -6,6 +6,11 @@ LC001TwoSum_S1
 
 https://leetcode.com/problems/two-sum/
 
+https://labuladong.gitee.io/algo/1/13/
+
+https://mp.weixin.qq.com/s/fSyJVvggxHq28a0SdmZm6Q
+
+LC1, LC15, LC18
 """
 
 class Solution(object):
