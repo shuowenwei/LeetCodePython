@@ -1,31 +1,13 @@
-# 前缀和数组 https://labuladong.gitee.io/algo/2/21/53/
+# -*- coding: utf-8 -*-
+"""
+@author: Wei, Shuowen
 
-# 差分数组 https://labuladong.gitee.io/algo/2/21/54/
+https://leetcode.com/problems/corporate-flight-bookings/
 
-class PrefixSum(object):
-    # // 前缀和数组
-    # /* 输入一个数组，构造前缀和 */
-    def __init__(self, nums):
-        n = len(nums) 
-        self.preSum = [0]*(n+1)
-        # // 计算 nums 的累加和
-        # self.preSum[i] means sum(nums[0:i]), [0,...,i), not include nums[i]
-        for i in range(1, n+1):
-            self.preSum[i] = self.preSum[i-1] + nums[i-1]
-    
-    # /* 查询闭区间 [i, j] 的累加和 */
-    def sumRange(self, i, j):
-        """
-        :type left: int
-        :type right: int
-        :rtype: int
-        """
-        return self.preSum[j+1] - self.preSum[i]
+https://labuladong.gitee.io/algo/2/21/54/
 
-
-
-# // 差分数组工具类 
-# LC370, LC1109, LC1094
+LC370, LC1109, LC1094
+"""
 class Difference(object):
     def __init__(self, nums):
         # // 差分数组
@@ -51,3 +33,15 @@ class Difference(object):
         for i in range(1, len(self.diff)):
             res[i] = res[i-1] + self.diff[i]
         return res
+
+class Solution(object):
+    def corpFlightBookings(self, bookings, n):
+        """
+        :type bookings: List[List[int]]
+        :type n: int
+        :rtype: List[int]
+        """
+        diff = Difference([0]*n)
+        for i,j,val in bookings:
+            diff.increment(i-1, j-1, val)
+        return diff.result()
