@@ -2,7 +2,12 @@
 """
 @author: Wei, Shuowen
 
+https://leetcode.com/problems/binary-search/
+
 https://labuladong.gitee.io/algo/1/8/
+https://labuladong.gitee.io/algo/2/21/57/
+
+LC704, LC34
 
 """
 class Solution(object):

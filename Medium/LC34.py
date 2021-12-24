@@ -7,6 +7,10 @@ https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-
 Solution:
 https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/14707/9-11-lines-O(log-n)
 
+https://labuladong.gitee.io/algo/1/8/
+https://labuladong.gitee.io/algo/2/21/57/
+
+LC704, LC34
 """
 class Solution(object):
     def searchRange(self, nums, target):
