@@ -10,7 +10,7 @@ https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-
 https://labuladong.gitee.io/algo/1/8/
 https://labuladong.gitee.io/algo/2/21/57/
 
-LC704, LC34
+LC704, LC34, LC875, LC1101, LC410
 """
 class Solution(object):
     def searchRange(self, nums, target):

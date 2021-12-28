@@ -2,10 +2,12 @@
 """
 @author: Wei, Shuowen
 
+https://leetcode.com/problems/koko-eating-bananas/
+
 https://labuladong.gitee.io/algo/2/21/59/
 https://mp.weixin.qq.com/s/E2cyJwMVxRosaU2-bZyTjA
 
-LC875
+LC704, LC34, LC875, LC1101, LC410
 """
 class Solution(object):
     def minEatingSpeed(self, piles, h):
