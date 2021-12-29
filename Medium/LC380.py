@@ -6,6 +6,14 @@ https://leetcode.com/problems/insert-delete-getrandom-o1/
 
 solution: https://leetcode.com/problems/insert-delete-getrandom-o1/discuss/85397/Simple-solution-in-Python
 
+https://labuladong.gitee.io/algo/2/21/61/
+
+对于 getRandom 方法，如果想「等概率」且「在 O(1) 的时间」取出元素，一定要满足：底层用数组实现，且数组必须是紧凑的。
+这样我们就可以直接生成随机数作为索引，从数组中取出该随机索引对应的元素，作为随机元素。
+但如果用数组存储元素的话，插入，删除的时间复杂度怎么可能是 O(1) 呢？
+可以做到！对数组尾部进行插入和删除操作不会涉及数据搬移，时间复杂度是 O(1)。
+所以，如果我们想在 O(1) 的时间删除数组中的某一个元素 val，可以先把这个元素交换到数组的尾部，然后再 pop 掉。
+交换两个元素必须通过索引进行交换对吧，那么我们需要一个哈希表 valToIndex 来记录每个元素值对应的索引。
 """
 
 # Definition for singly-linked list.
@@ -20,7 +28,7 @@ class RandomizedSet(object):
         Initialize your data structure here.
         """
         self.nums = []
-        self.pos = {}
+        self.val2index = {}
         
 
     def insert(self, val):
