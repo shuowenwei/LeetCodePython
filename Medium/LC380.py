@@ -14,6 +14,8 @@ https://labuladong.gitee.io/algo/2/21/61/
 可以做到！对数组尾部进行插入和删除操作不会涉及数据搬移，时间复杂度是 O(1)。
 所以，如果我们想在 O(1) 的时间删除数组中的某一个元素 val，可以先把这个元素交换到数组的尾部，然后再 pop 掉。
 交换两个元素必须通过索引进行交换对吧，那么我们需要一个哈希表 valToIndex 来记录每个元素值对应的索引。
+
+LC380, LC710
 """
 
 # Definition for singly-linked list.
@@ -30,39 +32,35 @@ class RandomizedSet(object):
         self.nums = []
         self.val2index = {}
         
-
     def insert(self, val):
         """
         Inserts a value to the set. Returns true if the set did not already contain the specified element.
         :type val: int
         :rtype: bool
         """
-        if val not in self.pos:
-            self.nums.append(val)
-            self.pos[val] = len(self.nums) - 1
-            return True 
-        return False 
+        if val in self.val2index:
+            return False
+        self.nums.append(val) # insert to the tail 
+        self.val2index[val] = len(self.nums) - 1 # index is length - 1 
+        return True 
         
-        
-
     def remove(self, val):
         """
         Removes a value from the set. Returns true if the set contained the specified element.
         :type val: int
         :rtype: bool
         """
-        if val in self.pos:
-            idx = self.pos[val]
-            last = self.nums[-1]
-            
-            self.nums[idx] = last#overwrite what's in "idx" with "last" value 
-            self.pos[last] = idx #give idx to last vale 
-            
-            self.nums.pop() # nums now contains two "last", pop one 
-            self.pos.pop(val, 0)
-            return True 
+        if val not in self.val2index:
+            return False
         
-        return False 
+        removeIndex = self.val2index[val]
+        lastValIndex = self.val2index[self.nums[-1]]
+        
+        self.nums[removeIndex] = self.nums[-1]
+        self.val2index[self.nums[-1]] = removeIndex
+        self.nums.pop()
+        del self.val2index[val]
+        return True 
 
     def getRandom(self):
         """
