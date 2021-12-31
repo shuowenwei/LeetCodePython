@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Wei, Shuowen
+
+https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/submissions/
+
+https://labuladong.gitee.io/algo/2/21/62/
+https://mp.weixin.qq.com/s/Yq49ZBEW3DJx6nXk1fMusw
+
+LC316==LC1081
+tag: monotonic-stack
+"""
+class Solution(object):
+    def smallestSubsequence(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        stack = []
+        isInStack = set()
+        charCount = {}
+        for e in s: 
+            if e in charCount:
+                charCount[e] += 1
+            else:
+                charCount[e] = 1
+        for e in s:
+            charCount[e] -= 1 # // 每遍历过一个字符，都将对应的计数减一
+            if e in isInStack:
+                continue
+            while len(stack) > 0 and stack[-1] > e:
+                # // 若之后不存在栈顶元素了，则停止 pop
+                if charCount[stack[-1]] == 0: # debug! 
+                    break
+                # // 若之后还有，则可以 pop
+                tmp = stack.pop()
+                isInStack.remove(tmp)
+            stack.append(e)
+            isInStack.add(e)
+        return ''.join(stack)
