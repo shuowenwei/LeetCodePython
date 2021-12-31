@@ -4,6 +4,9 @@
 
 https://leetcode.com/problems/remove-element/
 
+https://labuladong.gitee.io/algo/2/21/63/
+
+LC26, LC83, LC27, LC283
 """
 class Solution(object):
     def removeElement(self, nums, val):
@@ -14,13 +17,11 @@ class Solution(object):
         """
         slow = 0
         for fast in range(len(nums)):
-            if nums[fast] == val:
-                continue
-            else:
+            if nums[fast] != val:
                 nums[slow] = nums[fast]
                 slow += 1 
-        return slow      
-
+        return slow
+    
         """ 
         # solution 2:
         val_indexes = [] 
