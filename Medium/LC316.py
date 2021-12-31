@@ -25,28 +25,22 @@ class Solution(object):
                 charCount[e] += 1
             else:
                 charCount[e] = 1
-        
         for e in s:
-            # // 每遍历过一个字符，都将对应的计数减一
-            charCount[e] -= 1 
-            
+            charCount[e] -= 1 # // 每遍历过一个字符，都将对应的计数减一
             if e in isInStack:
                 continue
-            if len(stack) > 0:
-                print(ord(stack[-1]), ord(e))
             while len(stack) > 0 and ord(stack[-1]) > ord(e):
                 # // 若之后不存在栈顶元素了，则停止 pop
-                print('count ', e, charCount[e])
-                if charCount[e] == 0: 
+                if charCount[stack[-1]] == 0: # debug! 
                     break
+                # // 若之后还有，则可以 pop
                 tmp = stack.pop()
-                print('tmp ', tmp)
                 isInStack.remove(tmp)
+                
             stack.append(e)
             isInStack.add(e)
-            print(stack, charCount)
             
-        return ''.join(stack[::-1])
+        return ''.join(stack)
 
 s = "bcabc"
 obj = Solution()
