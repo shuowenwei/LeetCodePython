@@ -32,18 +32,21 @@ class Solution(object):
             
             if e in isInStack:
                 continue
-            
+            if len(stack) > 0:
+                print(ord(stack[-1]), ord(e))
             while len(stack) > 0 and ord(stack[-1]) > ord(e):
                 # // 若之后不存在栈顶元素了，则停止 pop
+                print('count ', e, charCount[e])
                 if charCount[e] == 0: 
                     break
                 tmp = stack.pop()
+                print('tmp ', tmp)
                 isInStack.remove(tmp)
             stack.append(e)
             isInStack.add(e)
             print(stack, charCount)
             
-        return ''.join(stack)
+        return ''.join(stack[::-1])
 
 s = "bcabc"
 obj = Solution()
