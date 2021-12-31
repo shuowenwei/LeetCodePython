@@ -4,6 +4,9 @@
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list/
 
+https://labuladong.gitee.io/algo/2/21/63/
+
+LC26, LC83, LC27, LC283
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -17,7 +20,19 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        
+        # solution 1: two pointers
+        slow, fast = head, head
+        while fast is not None:
+            if slow.val != fast.val:
+                slow.next = fast
+                slow = slow.next
+            fast = fast.next
+
+        if slow is not None:
+            slow.next = None
+        return head
+    
+        # solution 2:
         if head is None or head.next is None:
             return head
 
