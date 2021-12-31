@@ -28,11 +28,13 @@ class Solution(object):
                 slow = slow.next
             fast = fast.next
 
+        # // 断开与后面重复元素的连接
         if slow is not None:
             slow.next = None
         return head
     
         # solution 2:
+        """
         if head is None or head.next is None:
             return head
 
@@ -43,3 +45,4 @@ class Solution(object):
             else:
                 current = current.next
         return head 
+        """
