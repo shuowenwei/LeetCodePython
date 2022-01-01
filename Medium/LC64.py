@@ -16,14 +16,14 @@ class Solution(object):
         """
         row, col = len(grid), len(grid[0])    
         dp_table = [[0 for i in range(col)] for j in range(row)]
-        dp_table[0][0] = grid[0][0]
         for i in range(row):
             for j in range(col):
-                if i == 0:
+                if i == 0 and j == 0:
+                    dp_table[i][j] = grid[i][j]
+                elif i == 0:
                     dp_table[i][j] = grid[i][j] + dp_table[i][j-1]
                 elif j == 0: 
                     dp_table[i][j] = grid[i][j] + dp_table[i-1][j]
                 else:
                     dp_table[i][j] = grid[i][j] + min(dp_table[i][j-1], dp_table[i-1][j])
-        
         return dp_table[row-1][col-1]
