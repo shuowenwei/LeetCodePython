@@ -14,7 +14,12 @@ class Solution(object):
         """
         :type nums: List[int]
         """
-        
+        self.dict = {}
+        for index, n in enumerate(nums):
+            if n not in self.dict: 
+                self.dict[n] = [index]
+            else:
+                self.dict[n].append(index)
         
 
     def pick(self, target):
@@ -22,7 +27,8 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        
+        import random 
+        return random.choice(self.dict[target])
 
 
 # Your Solution object will be instantiated and called as such:

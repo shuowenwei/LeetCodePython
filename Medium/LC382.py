@@ -33,7 +33,7 @@ class Solution(object):
             i += 1 
             # // 生成一个 [0, i) 之间的整数
             # // 这个整数等于 0 的概率就是 1/i
-            if randint(0, i-1) == 0: 
+            if randint(0, i-1) == 0: # randint(a,b) returns a uniformly random num between [a,b] 
                 res = p.val
             p = p.next
         return res
