@@ -14,7 +14,6 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: int
         """
-        row, col = len(matrix), len(matrix[0])
         def getMinLastLevel(dp_table, i, j):
             if i == 0:
                 return 0
@@ -24,7 +23,8 @@ class Solution(object):
             if j < len(dp_table[0])-1:
                 res.append(dp_table[i-1][j+1])
             return min(res)
-            
+        
+        row, col = len(matrix), len(matrix[0])    
         dp_table = [[0 for i in range(col)] for j in range(row)]
         for i in range(row):
             for j in range(col):
