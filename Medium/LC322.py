@@ -4,8 +4,10 @@
 
 https://leetcode.com/problems/coin-change/
 
-labuladong: https://labuladong.gitee.io/algo/1/3/
+https://labuladong.gitee.io/algo/1/3/
+https://labuladong.gitee.io/algo/3/23/66/
 
+LC509, LC322
 """
 class Solution(object):
     def coinChange(self, coins, amount):
@@ -37,15 +39,11 @@ class Solution(object):
         return dp_table[amount]
         """
         # solution 2: use an array as a dp_table  
-        dp_table = [amount+1]*(amount+1)
-        dp_table[0] = 0 
+        dp_table = [2**31-1]*(amount+1)
+        dp_table[0] = 0
         for i in range(amount+1):
             for c in coins:
-                if amount - c < 0:
-                    continue
-                else:
+                if i-c >= 0:
+                    # dp_table[c] = 1 since dp_table[0] = 0
                     dp_table[i] = min(dp_table[i], dp_table[i-c] + 1)
-        if dp_table[amount] == amount+1:
-            return -1 
-        else:
-            return dp_table[amount]
+        return -1 if dp_table[amount] == 2**31-1 else dp_table[amount]
