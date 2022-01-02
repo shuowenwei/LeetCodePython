@@ -6,7 +6,7 @@ https://labuladong.gitee.io/algo/3/23/69/
 
 https://labuladong.gitee.io/algo/3/23/69/
 
-LC931, LC64, LC174
+LC931, LC64, LC174, LC514
 """
 class Solution(object):
     def minFallingPathSum(self, matrix):
