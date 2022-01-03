@@ -7,6 +7,7 @@ https://leetcode.com/problems/minimum-path-sum/
 https://labuladong.gitee.io/algo/3/26/84/
 
 LC931, LC64, LC174, LC514
+LC787
 """
 class Solution(object):
     def minPathSum(self, grid):

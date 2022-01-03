@@ -7,6 +7,7 @@ https://leetcode.com/problems/freedom-trail/
 https://labuladong.gitee.io/algo/3/26/86/
 
 LC931, LC64, LC174, LC514
+LC787
 """
 class Solution(object):
     def findRotateSteps(self, ring, key):
