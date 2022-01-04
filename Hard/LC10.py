@@ -44,9 +44,11 @@ class Solution(object):
             # base case:
             if j == len(p):
                 return i == len(s)
-            if i == len(s):
+            if i == len(s): # example: s="a", p="ab*c*"   # *: 0 or more
+                # // 如果能匹配空串，一定是字符和 * 成对儿出现
                 if (len(p) - j) % 2 == 1:
                     return False
+                # // 检查是否为 x*y*z* 这种形式
                 while j+1 < len(p):
                     if p[j+1] != '*':
                         return False 
