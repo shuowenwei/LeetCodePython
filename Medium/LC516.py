@@ -31,3 +31,18 @@ class Solution(object):
             dp_table[(i,j)] = res
             return res
         return dp(s, 0, n-1)
+
+        # same solution, but using a 2-d array
+        """
+        n = len(s)
+        dp_table = [[0 for i in range(n)] for j in range(n)] # 0 if i < j 
+        for i in range(n):
+            dp_table[i][i] = 1 
+        for i in range(n-2, -1, -1):
+            for j in range(i+1, n):
+                if s[i] == s[j]:
+                    dp_table[i][j] = dp_table[i+1][j-1] + 2
+                else:
+                    dp_table[i][j] = max( dp_table[i+1][j], dp_table[i][j-1] )
+        return dp_table[0][n-1]
+        """
