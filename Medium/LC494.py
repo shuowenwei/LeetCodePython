@@ -6,9 +6,7 @@ https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-charac
 
 https://labuladong.gitee.io/algo/3/23/72/
 
-solution reference: https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/139609/python-iterative-and-recursive-solution
-
-backtracking vs dp 
+backtracking vs dp vs backpacking problem
 """
 class Solution(object):
     def findTargetSumWays(self, nums, target):
@@ -53,4 +51,28 @@ class Solution(object):
                 
         backtrack(nums, 0, target)
         return res[0]
+        """
+        # solution 3:
+        """
+        # sum(subsetA) - sum(subsetB) = target
+        # sum(subsetA) + sum(subsetA) = target + sum(subsetA) + sum(subsetB) 
+        # sum(subsetA) = ( target + sum(nums) )/2
+        sums = sum(nums) + target
+        if sums < target or sums % 2 == 1 or sums < 0: # example: [100] -200
+            return 0 
+        else:
+            sums = sums/2
+        # dp[i][j] = x 表示，若只在前 i 个物品中选择，若当前背包的容量为 j，则最多有 x 种方法可以恰好装满背包。
+        dp = [[0 for i in range(sums+1)] for j in range(len(nums)+1)]
+        for i in range(len(nums)+1):
+            dp[i][0] = 1
+        for i in range(1, len(nums)+1):
+            for j in range(sums+1): 
+                if j >= nums[i-1]:
+                    # // 两种选择的结果之和
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j-nums[i-1]]
+                else:
+                    # // 背包的空间不足，只能选择不装物品 i
+                    dp[i][j] = dp[i-1][j]
+        return dp[len(nums)][sums]
         """
