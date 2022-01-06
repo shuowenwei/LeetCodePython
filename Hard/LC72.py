@@ -36,5 +36,22 @@ class Solution(object):
             return res 
         return dp(word1, word2, len(word1)-1, len(word2)-1)
 
-
-        
+        # solution 2: 唯一不同的是，DP table 是自底向上求解，递归解法是自顶向下求解：
+        """
+        m, n = len(word1), len(word2)
+        dp_table = [[0]*(n+1) for _ in range(m+1)]
+        # dp[i-1][j-1]: 存储 s1[0..i] 和 s2[0..j] 的最小编辑距离
+        for i in range(1, m+1):
+            dp_table[i][0] = i
+        for j in range(1, n+1):
+            dp_table[0][j] = j
+        for i in range(1, m+1):
+            for j in range(1, n+1): 
+                if word1[i-1] == word2[j-1]:
+                    dp_table[i][j] = dp_table[i-1][j-1] 
+                else:
+                    dp_table[i][j] = 1 + min(dp_table[i-1][j],
+                                             dp_table[i][j-1],
+                                             dp_table[i-1][j-1])
+        return dp_table[m][n]
+        """
