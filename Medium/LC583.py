@@ -17,7 +17,7 @@ class Solution(object):
         :rtype: int
         """
         # solution 1: refer to LC1143, find the longest common subsequence first
-        def longestCommonSubsequence(self, text1, text2):
+        def longestCommonSubsequence(text1, text2):
             dp_table = {}
             # 定义：计算 s1[i..] 和 s2[j..] 的最长公共子序列长度
             def dp(text1, text2, i, j):
