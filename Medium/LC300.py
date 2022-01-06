@@ -7,7 +7,7 @@ https://leetcode.com/problems/longest-increasing-subsequence/
 https://labuladong.gitee.io/algo/3/23/67/
 
 LC509, LC322
-LC300
+LC300, LC354
 """
 class Solution(object):
     def lengthOfLIS(self, nums):
