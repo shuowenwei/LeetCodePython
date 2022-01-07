@@ -7,7 +7,7 @@ https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
 https://labuladong.gitee.io/algo/3/24/78/
 https://mp.weixin.qq.com/s/ZhPEchewfc03xWv9VP3msg
 
-LC53, LC1143, LC583, LC712, LC72
+LC53, LC1143, LC583, LC712, LC72, LC516
 """
 class Solution(object):
     def minimumDeleteSum(self, s1, s2):
