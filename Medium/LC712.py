@@ -17,6 +17,7 @@ class Solution(object):
         :rtype: int
         """
         dp_table = {}
+        # // 定义：将 s1[i..] 和 s2[j..] 删除成相同字符串，最小的 ASCII 码之和为 dp(s1, i, s2, j)。
         def dp(s1, s2, i, j):
             if i == len(s1):
                 return sum([ord(s2[k]) for k in range(j, len(s2))])
