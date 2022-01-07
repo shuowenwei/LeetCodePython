@@ -6,7 +6,7 @@ https://leetcode.com/problems/edit-distance/
 
 https://labuladong.gitee.io/algo/3/24/74/
 
-LC53, LC1143, LC583, LC712, LC72
+LC53, LC1143, LC583, LC712, LC72, LC516
 """
 class Solution(object):
     def minDistance(self, word1, word2):
