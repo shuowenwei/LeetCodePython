@@ -35,7 +35,8 @@ class Solution(object):
             return dp(text1, text2, 0, 0)
         lcs = longestCommonSubsequence(word1, word2)
         return len(word1) + len(word2) - 2*lcs
-    
+
+        """
         # solution 2: refer to LC72
         dp_table = {}
         # 定义：dp(i, j) 返回 s1[0..i] 和 s2[0..j] 的最小编辑距离
@@ -54,5 +55,4 @@ class Solution(object):
             dp_table[(i, j)] = res 
             return res
         return dp(word1, word2, len(word1)-1, len(word2)-1)
-            
-        
+        """
