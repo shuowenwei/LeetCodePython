@@ -5,9 +5,9 @@
 https://leetcode.com/problems/coin-change/
 
 https://labuladong.gitee.io/algo/1/3/
-https://labuladong.gitee.io/algo/3/23/66/
+https://labuladong.gitee.io/algo/3/22/66/
 
-LC509, LC322, LC518
+LC509, LC322, LC518, LC416
 """
 class Solution(object):
     def coinChange(self, coins, amount):
@@ -16,8 +16,9 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        """ solution 1: use a dictionary as a dp_table  
-        dp_table = {0:0}
+        # solution 1: use a dictionary as a dp_table  
+        # """
+        dp_table = {0:0} # base case
         def getMinCoins(coins, amount):
             if amount < 0:
                 return -1 
@@ -34,7 +35,6 @@ class Solution(object):
             else:
                 dp_table[amount] = res 
             return res
-        
         _ = getMinCoins(coins, amount)
         return dp_table[amount]
         """
@@ -47,3 +47,4 @@ class Solution(object):
                     # dp_table[c] = 1 since dp_table[0] = 0
                     dp_table[i] = min(dp_table[i], dp_table[i-c] + 1)
         return -1 if dp_table[amount] == 2**31-1 else dp_table[amount]
+        """

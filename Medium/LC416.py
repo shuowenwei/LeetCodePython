@@ -6,7 +6,7 @@ https://leetcode.com/problems/partition-equal-subset-sum/
 
 https://labuladong.gitee.io/algo/3/25/82/
 0/1 backpacking
-LC416
+LC509, LC322, LC518, LC416
 """
 class Solution(object):
     def canPartition(self, nums):
