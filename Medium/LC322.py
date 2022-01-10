@@ -21,7 +21,7 @@ class Solution(object):
         dp_table = {} 
         def getMinCoins(coins, amount):
             if amount == 0: # base case
-                dp_table[0] = 0
+                dp_table[0] = 0 # or define: dp_table={0:0}
                 return 0
             if amount < 0: # base case
                 return 2**32
