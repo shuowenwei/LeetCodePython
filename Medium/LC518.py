@@ -35,6 +35,7 @@ class Solution(object):
         dp_table = [ [0] * (amount+1) for _ in range(len(coins)+1)]
         for i in range(len(coins)+1):
             dp_table[i][0] = 1
+        # note: these two for loops are exchangeable!!!!!!
         for i in range(1, len(coins)+1):
             for j in range(1, amount+1):
                 if j - coins[i-1] >= 0:
