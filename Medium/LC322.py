@@ -18,25 +18,23 @@ class Solution(object):
         """
         # solution 1: use a dictionary as a dp_table  
         # """
-        dp_table = {0:0} # base case
+        dp_table = {} 
         def getMinCoins(coins, amount):
-            if amount < 0:
-                return -1 
+            if amount == 0: # base case
+                dp_table[0] = 0
+                return 0
+            if amount < 0: # base case
+                return 2**32
             if amount in dp_table:
                 return dp_table[amount]
             res = 2**32
             for c in coins:
-                tmp_res = getMinCoins(coins, amount-c)
-                if tmp_res == -1:
-                    continue
-                res = min(res, 1 + tmp_res)
-            if res ==  2**32:
-                dp_table[amount] = -1 
-            else:
-                dp_table[amount] = res 
+                res = min(res, 1 + getMinCoins(coins, amount-c))
+            dp_table[amount] = res
             return res
-        _ = getMinCoins(coins, amount)
-        return dp_table[amount]
+        final_res = getMinCoins(coins, amount) 
+        # return -1 if final_res == 2**32 else final_res
+        return -1 if dp_table[amount] == 2**32 else dp_table[amount]
         """
         # solution 2: use an array as a dp_table  
         dp_table = [2**31-1]*(amount+1)
@@ -48,3 +46,4 @@ class Solution(object):
                     dp_table[i] = min(dp_table[i], dp_table[i-c] + 1)
         return -1 if dp_table[amount] == 2**31-1 else dp_table[amount]
         """
+    
