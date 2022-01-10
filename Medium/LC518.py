@@ -18,11 +18,11 @@ class Solution(object):
         dp_table = [0] * (amount+1)
         dp_table[0] = 1
         coins.sort()
-        for i in range(amount+1):
-            for c in coins:
+        for c in coins:
+            for i in range(amount+1):
                 if i >= c:
                     dp_table[i] = dp_table[i] + dp_table[i-c]
                 # else: # c - i > 0
                 #     continue 
-        print(dp_table)
+        # print(dp_table)
         return dp_table[amount]
