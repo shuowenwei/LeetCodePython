@@ -16,7 +16,9 @@ class Solution(object):
         """
         import numpy as np 
         n = len(prices)
-        max_k = 2 # hence k=0 and k=1 are the same 
+        max_k = 2
+        # dp[i][k][0 or 1]
+        # 0 <= i <= n - 1, 1 <= k <= K
         dp = np.zeros((n, max_k+1, 2)) # 0: no stock, 1: have stock
         for i in range(n):
             for k in range(max_k, 0, -1):
