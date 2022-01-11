@@ -35,6 +35,7 @@ class Solution(object):
         final_res = getMinCoins(coins, amount) 
         # return -1 if final_res == 2**32 else final_res
         return -1 if dp_table[amount] == 2**32 else dp_table[amount]
+    
         """
         # solution 2: use an array as a dp_table  
         dp_table = [2**31-1]*(amount+1)
@@ -46,4 +47,3 @@ class Solution(object):
                     dp_table[i] = min(dp_table[i], dp_table[i-c] + 1)
         return -1 if dp_table[amount] == 2**31-1 else dp_table[amount]
         """
-    
