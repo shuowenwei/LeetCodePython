@@ -4,10 +4,10 @@
 
 https://leetcode.com/problems/super-egg-drop/
 
-https://labuladong.gitee.io/algo/3/26/89/
+https://labuladong.gitee.io/algo/3/25/89/
 https://mp.weixin.qq.com/s/xn4LjWfaKTPQeCXR0qDqZg - dp 
 
-https://labuladong.gitee.io/algo/3/26/90/ - binary search 
+https://labuladong.gitee.io/algo/3/25/90/ - binary search 
 
 LC887
 """

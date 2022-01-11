@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/freedom-trail/
 
-https://labuladong.gitee.io/algo/3/26/86/
+https://labuladong.gitee.io/algo/3/25/86/
 
 LC931, LC64, LC174, LC514
 LC787

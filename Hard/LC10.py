@@ -6,7 +6,7 @@ https://leetcode.com/problems/regular-expression-matching/
 
 solution: https://leetcode.com/problems/regular-expression-matching/solution/
 
-https://labuladong.gitee.io/algo/3/26/88/
+https://labuladong.gitee.io/algo/3/25/88/
 https://mp.weixin.qq.com/s/rnaFK05IcFWvNN1ppNf2ug
 
 LC10

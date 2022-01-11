@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/cheapest-flights-within-k-stops/
 
-https://labuladong.gitee.io/algo/3/26/87/
+https://labuladong.gitee.io/algo/3/25/87/
 
 LC931, LC64, LC174, LC514
 LC787
