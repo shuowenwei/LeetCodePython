@@ -35,3 +35,15 @@ class Solution(object):
                     dp_table[i][j][1] = dp_table[i][j-1][0]
         # print(dp_table)     
         return dp_table[0][n-1][0] - dp_table[0][n-1][1]
+
+        # solution 2: 'Time Limit Exceeded'
+        # def dp(piles):
+        #     if len(piles) == 0:
+        #         return 0
+        #     n = len(piles)
+        #     pickFirstPile = piles[0] - dp(piles[1:]) 
+        #     pickLastPile = piles[n-1] - dp(piles[:n-1])
+        #     return max(pickFirstPile, pickLastPile)
+        # alice = dp(piles)
+        # print(alice)
+        # return alice > 0
