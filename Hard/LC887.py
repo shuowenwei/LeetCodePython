@@ -9,7 +9,7 @@ https://mp.weixin.qq.com/s/xn4LjWfaKTPQeCXR0qDqZg - dp
 
 https://labuladong.gitee.io/algo/3/25/90/ - binary search 
 
-LC887
+LC887, LC312
 """
 class Solution(object):
     def superEggDrop(self, k, n):
@@ -28,11 +28,9 @@ class Solution(object):
                 return dp_table[(k,n)]
             res = n # this is max possible
             # for i in range(1, n+1):
-            #     # 如果鸡蛋碎了，那么鸡蛋的个数K应该减一，搜索的楼层区间应该从[1..N]变为[1..i-1]共i-1层楼；
-            #     res = min(res, max(dp(k-1, i-1), 
-            #     # 如果鸡蛋没碎，那么鸡蛋的个数K不变，搜索的楼层区间应该从 [1..N]变为[i+1..N]共N-i层楼。
-            #                        dp(k, n-i)
-            #                       ) + 1) # 在第 i 楼扔了一次
+            #     res = min(res, 1 +               # 在第 i 楼扔了一次
+            #                    max(dp(k-1, i-1), # 如果鸡蛋碎了，那么鸡蛋的个数K应该减一，搜索的楼层区间应该从[1..N]变为[1..i-1]共i-1层楼；
+            #                       dp(k, n-i)))   # 如果鸡蛋没碎，那么鸡蛋的个数K不变，搜索的楼层区间应该从 [1..N]变为[i+1..N]共N-i层楼。
             low, high = 1, n
             while low <= high: 
                 mid = (low + high)/2
