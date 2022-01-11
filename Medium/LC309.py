@@ -2,10 +2,11 @@
 """
 @author: Wei, Shuowen
 
-labuladong: https://labuladong.gitee.io/algo/1/11/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+
+https://labuladong.gitee.io/algo/1/11/
 
 LC121, LC122, LC123, LC188, LC309, LC714
-
 """
 class Solution(object):
     def maxProfit(self, prices):

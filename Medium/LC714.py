@@ -4,10 +4,9 @@
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 
-labuladong: https://labuladong.gitee.io/algo/1/11/
+https://labuladong.gitee.io/algo/1/11/
 
 LC121, LC122, LC123, LC188, LC309, LC714
-
 """
 class Solution(object):
     def maxProfit(self, prices, fee):
