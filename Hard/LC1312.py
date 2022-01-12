@@ -6,7 +6,7 @@ https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrom
 
 https://labuladong.gitee.io/algo/3/25/97/
 
-LC1312
+LC234, LC5, LC1312
 """
 class Solution(object):
     def minInsertions(self, s):
