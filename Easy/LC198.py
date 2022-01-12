@@ -25,7 +25,6 @@ class Solution(object):
         #     dp[i] = max(dp[i-1], dp[i-2] + nums[i])
         # return dp[len(nums)-1]
     
-    
         # solution 1: dp with memo table, bottom up
         # // dp[i] = x 表示：
         # // 从第 i 间房子开始抢劫，最多能抢到的钱为 x
