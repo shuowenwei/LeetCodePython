@@ -43,3 +43,30 @@ class Solution(object):
             return 0
         return search(haystack, needle)
             
+            
+        # solution 2: two pointers # Time Limit Exceeded
+        # if needle == '':
+        #     return 0
+        # m, n = len(haystack), len(needle)
+        # i, j = 0, 0
+        # while i < m:
+        #     if haystack[i] == needle[j]:
+        #         i += 1
+        #         j += 1
+        #     else:
+        #         i = i-j+1
+        #         j = 0
+        #     if j == n:
+        #         return i - n 
+        # return -1
+        
+        # solution 3: passed: O(n-m)
+        if needle == '':
+            return 0
+        m, n = len(haystack), len(needle)
+        if n > m:
+            return -1 
+        for i in range(m-n+1):
+            if haystack[i:i+n] == needle:
+                return i
+        return -1 
