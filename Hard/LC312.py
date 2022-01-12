@@ -2,7 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/super-egg-drop/
+https://leetcode.com/problems/burst-balloons/
 
 https://labuladong.gitee.io/algo/3/25/91/
 https://mp.weixin.qq.com/s/I0yo0XZamm-jMpG-_B3G8g
