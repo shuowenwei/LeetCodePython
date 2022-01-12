@@ -21,24 +21,26 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        memo = {}
+        dp_table = {}
         def dp(root):
             if root is None:
                 return 0
-            if root in memo:
-                return memo[root]
-            # // 抢，然后去下下家
-            if root.left and root.right: 
-                intRob = root.val + dp(root.left.left) +  dp(root.left.right) + dp(root.right.left) + dp(root.right.right)
-            elif root.left: 
-                intRob = root.val + dp(root.left.left) +  dp(root.left.right)
+            if root in dp_table:
+                return dp_table[root]
+            res = 0 
+            # rob this root 
+            if root.left and root.right:
+                intRob = root.val + dp(root.left.left) + dp(root.left.right) + dp(root.right.left) + dp(root.right.right)
+            elif root.left:
+                intRob = root.val + dp(root.left.left) + dp(root.left.right)
             elif root.right:
                 intRob = root.val + dp(root.right.left) + dp(root.right.right)
             else:
                 intRob = root.val
-            # // 不抢，然后去下家
+            # don't rob this root
             intNotRob = dp(root.left) + dp(root.right)
-            res = max(intNotRob, intRob)
-            memo[root] = res             
-            return res         
+            res = max(intRob, intNotRob)
+            dp_table[root] = res 
+            return res
+        
         return dp(root)
