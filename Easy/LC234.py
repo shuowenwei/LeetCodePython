@@ -4,10 +4,10 @@
 
 https://leetcode.com/problems/palindrome-linked-list/
 
-labuladong: https://labuladong.gitee.io/algo/2/17/19/
+https://labuladong.gitee.io/algo/2/16/18/
 
 LC92, LC25, LC234
-
+LC234, LC5, LC1312
 """
 # Definition for singly-linked list.
 # class ListNode(object):
