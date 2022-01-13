@@ -5,21 +5,28 @@
 https://leetcode.com/problems/meeting-rooms-ii/
 
 https://labuladong.gitee.io/algo/3/26/100/
-LC435, LC452 - greedy
+
+LC435, LC452, LC253 - greedy
 """
 class Solution(object):
-    def findMinArrowShots(self, points):
+    def minMeetingRooms(self, meetings):
         """
-        :type points: List[List[int]]
+        :type meetings: List[List[int]]
         :rtype: int
         """
-        res = 0 
-        points.sort(key=lambda x: x[1]) # x[1] is the close of the interval
-        x = -2**32+1
-        for i in range(len(points)):
-            if x >= points[i][0]:
-                res += 1
+        n = len(meetings)
+        begins = [m[0] for m in meetings]
+        ends = [m[1] for m in meetings]
+        begins.sort()
+        ends.sort()
+        res, i, j = 0, 0, 0
+        count = 0 
+        while i < n and j < n: 
+            if begins[i] < ends[j]:
+                count += 1 # // 扫描到一个红点
+                i += 1
             else:
-                x = points[i][1]
-        return len(points) - res
-    
+                count -= 1 # // 扫描到一个绿点
+                j += 1
+            res = max(res, count)
+        return res 
