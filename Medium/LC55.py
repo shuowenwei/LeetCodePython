@@ -4,9 +4,9 @@
 
 https://leetcode.com/problems/jump-game/
 
-https://labuladong.gitee.io/algo/3/26/102/
+https://labuladong.gitee.io/algo/3/27/105/
 
-LC55, LC45
+LC55, LC45 - greedy
 """
 class Solution(object):
     def canJump(self, nums):
