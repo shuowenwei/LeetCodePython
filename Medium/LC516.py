@@ -18,7 +18,7 @@ class Solution(object):
         """
         dp_table = {}
         n = len(s)
-        def dp(s, i, j): # 在子串s[i..j]中，最长回文子序列的长度为dp[i][j] 
+        def dp(s, i, j): # 在子串s[i..j]中，最长回文子序列的长度为 dp_table[(i,j)]
             if i > j: 
                 return 0 
             if i == j:
