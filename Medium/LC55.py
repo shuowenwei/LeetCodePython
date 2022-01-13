@@ -19,6 +19,7 @@ class Solution(object):
         res[0] = True
         for i in range(n):
             if res[i] is True:
-                for j in range(nums[i]):
-                    res[i+j] = True
+                for j in range(nums[i]+1):
+                    if i+j < n:
+                        res[i+j] = True
         return res[n-1]
