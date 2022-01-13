@@ -2,11 +2,10 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
+https://leetcode.com/problems/meeting-rooms-ii/
 
-https://labuladong.gitee.io/algo/3/26/99/
-
-LC435, LC452, LC253 - greedy
+https://labuladong.gitee.io/algo/3/26/100/
+LC435, LC452 - greedy
 """
 class Solution(object):
     def findMinArrowShots(self, points):
@@ -23,5 +22,4 @@ class Solution(object):
             else:
                 x = points[i][1]
         return len(points) - res
-        
-        
+    

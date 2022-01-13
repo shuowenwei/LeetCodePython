@@ -6,7 +6,7 @@ https://leetcode.com/problems/non-overlapping-intervals/
 
 https://labuladong.gitee.io/algo/3/26/99/
 
-LC435, LC352 - greedy
+LC435, LC452, LC253 - greedy
 """
 class Solution(object):
     def eraseOverlapIntervals(self, intervals):
