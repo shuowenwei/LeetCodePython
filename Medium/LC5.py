@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/longest-palindromic-substring/
 
-https://labuladong.gitee.io/algo/4/31/134/
+https://labuladong.gitee.io/algo/4/32/137/
 
 LC234, LC5, LC1312, LC516
 """

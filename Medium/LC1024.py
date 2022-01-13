@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/video-stitching/
 
-https://labuladong.gitee.io/algo/3/26/101/
+https://labuladong.gitee.io/algo/3/27/104/
 
 LC435, LC452, LC253, LC1024 - greedy
 """

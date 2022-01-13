@@ -4,7 +4,8 @@
 
 https://leetcode.com/problems/implement-strstr/
 
-https://labuladong.gitee.io/algo/3/25/96/
+https://labuladong.gitee.io/algo/3/26/99/
+
 LC28 - KMP string search
 """
 class Solution(object):

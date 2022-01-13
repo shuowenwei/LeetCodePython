@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 
-https://labuladong.gitee.io/algo/3/25/97/
+https://labuladong.gitee.io/algo/3/26/100/
 
 LC234, LC5, LC1312, LC516
 """

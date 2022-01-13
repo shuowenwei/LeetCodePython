@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/palindrome-linked-list/
 
-https://labuladong.gitee.io/algo/2/16/18/
+https://labuladong.gitee.io/algo/2/17/19/
 
 LC92, LC25, LC234
 LC234, LC5, LC1312, LC516
