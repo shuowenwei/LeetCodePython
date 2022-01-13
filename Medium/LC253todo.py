@@ -6,7 +6,7 @@ https://leetcode.com/problems/meeting-rooms-ii/
 
 https://labuladong.gitee.io/algo/3/26/100/
 
-LC435, LC452, LC253 - greedy
+LC435, LC452, LC253, LC1024 - greedy
 """
 class Solution(object):
     def minMeetingRooms(self, meetings):
