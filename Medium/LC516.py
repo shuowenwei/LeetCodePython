@@ -7,7 +7,8 @@ https://leetcode.com/problems/longest-palindromic-subsequence
 https://labuladong.gitee.io/algo/3/24/79/
 https://mp.weixin.qq.com/s/zNai1pzXHeB2tQE6AdOXTA
 
-LC53, LC1143, LC583, LC712, LC72, LC516
+LC53, LC1143, LC583, LC712, LC72, LC516 - edit string / substring
+LC234, LC5, LC1312, LC516 - Palindromic
 """
 class Solution(object):
     def longestPalindromeSubseq(self, s):
