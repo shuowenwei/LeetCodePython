@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/longest-palindromic-subsequence
 
-https://labuladong.gitee.io/algo/3/24/79/
+https://labuladong.gitee.io/algo/3/23/78/
 https://mp.weixin.qq.com/s/zNai1pzXHeB2tQE6AdOXTA
 
 LC53, LC1143, LC583, LC712, LC72, LC516 - edit string / substring
