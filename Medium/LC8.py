@@ -24,7 +24,7 @@ class Solution(object):
             curr_char = s[pos]
             if flag == 'non_digit':
                 if curr_char == ' ':
-                    flag == 'non_digit':
+                    flag = 'non_digit'
                 elif curr_char in ('+', '-'):
                     flag = 'has_sign'
                     if curr_char == '-':
@@ -52,7 +52,8 @@ class Solution(object):
         val = min(val, 2**31-1)
         val = max(val, -2**31)
         return val
-    """ 
+    
+        """ my solution long ago: 
         res = '0'  #    int('0021') = 21 
         if '+' in str and '-' in str:   # input = '+-2'
             return 0 
@@ -82,5 +83,5 @@ class Solution(object):
             return max(-int(res),-2147483648)
         else:
             return min(int(res),2147483647)
-"""
+        """
 
