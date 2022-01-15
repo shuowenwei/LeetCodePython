@@ -18,8 +18,7 @@ class Solution(object):
         def backtrack(nums, i, tmp):
             if i == len(nums):
                 res.append(tmp[::])
-                return
-            
+                return            
             # do not put nums[i] in tmp
             backtrack(nums, i+1, tmp)
             
@@ -27,6 +26,19 @@ class Solution(object):
             tmp.append(nums[i])
             backtrack(nums, i+1, tmp)
             tmp.pop()
-            
+
         backtrack(nums, 0, [])
         return res 
+
+        # solution 2: 
+        """
+        res = []
+        def backtrack(nums, start, tmp):
+            res.append(tmp[::])
+            for i in range(start, len(nums)):
+                tmp.append(nums[i])
+                backtrack(nums, i+1, tmp)
+                tmp.pop()
+        backtrack(nums, 0, [])
+        return res 
+        """
