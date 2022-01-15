@@ -7,6 +7,7 @@ https://leetcode.com/problems/jump-game/
 https://labuladong.gitee.io/algo/3/27/105/
 
 LC55, LC45 - greedy
+LC1345
 """
 class Solution(object):
     def canJump(self, nums):
