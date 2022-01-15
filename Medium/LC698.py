@@ -6,7 +6,8 @@ https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
 
 https://labuladong.gitee.io/algo/4/29/109/
 
-LC698 - backtrack
+LC698, LC78, LC46, LC77
+- backtrack
 """
 class Solution(object):
     def canPartitionKSubsets(self, nums, k):
