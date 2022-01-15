@@ -16,11 +16,18 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        
         res = []
-        def backtrack(n, i, tmp):
-            if n == i:
+        def backtrack(n, start, tmp):
+            if n == start:
+                res.append(''.join(tmp))
                 return
-            
-        backtrack(n, 0, [])
-        return res 
+
+            for i in range(len(tmp)): # insert after position i
+                tmp_copy = tmp[::]
+                tmp_insert = tmp[:i] + ['(', ')'] + tmp[i:]
+                # print('select:',tmp)
+                backtrack(n, start+1, tmp_insert)
+                tmp = tmp_copy[::]
+                # print('unselect', tmp)
+        backtrack(n, 1, ['(', ')'])
+        return list(set(res))
