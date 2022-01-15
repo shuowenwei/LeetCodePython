@@ -16,21 +16,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        import copy
-        res = []
-        # print(id(res), res, '--1--')
-        def traverse(nums, track):
-            if len(nums) == len(track):
-                res.append(track[:])
+        res = [] 
+        def backtrack(nums, tmp):
+            if len(tmp) == len(nums):
+                res.append(tmp[::])
+                # import copy
                 # res.append(copy.deepcopy(track))
-                # print(id(res), res, '--2--')
-                return
-            for i in nums:
-                if i in track:
-                    continue 
-                track.append(i)
-                traverse(nums, track)
-                track.pop()
-        traverse(nums, [])
-        # print(id(res), res, '--1--')
-        return res
+                return 
+            for n in nums:
+                if n in tmp:
+                    continue
+                tmp.append(n)
+                backtrack(nums, tmp)
+                tmp.pop()
+        backtrack(nums, [])
+        return res 
