@@ -6,7 +6,7 @@ https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
 
 https://labuladong.gitee.io/algo/4/29/109/
 
-LC698, LC78, LC46, LC77
+LC698, LC78, LC46, LC77, LC22
 LC51, LC37
 - backtrack
 """
