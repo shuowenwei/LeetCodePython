@@ -20,6 +20,27 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # BFS: 
+        if root is None:
+            return 0
+        from collections import deque
+        q = deque()
+        q.append(root)
+        height = 1 
+        while q:
+            size = len(q)
+            for i in range(size):
+                curr = q.popleft()
+                if curr.left is None and curr.right is None:
+                    return height 
+                if curr.left is not None: 
+                    q.append(curr.left)
+                if curr.right is not None: 
+                    q.append(curr.right)
+            height += 1 
+        return height
+    
+        # solution 2: DFS - not a good choice 
         if root is None:
             return 0
         if None in (root.left, root.right): # DFS is bad choice here
