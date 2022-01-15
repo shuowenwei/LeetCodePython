@@ -4,9 +4,10 @@
 
 https://leetcode.com/problems/n-queens/
 
-labuladong: https://labuladong.gitee.io/algo/1/4/
+https://labuladong.gitee.io/algo/1/5/
 
-LC46, LC51
+LC698, LC78, LC46, LC77, LC51
+- backtrack
 """
 class Solution(object):
     def solveNQueens(self, n):
