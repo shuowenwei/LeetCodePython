@@ -16,6 +16,7 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
+        # my solution: it will have duplicates, hence using set
         res = []
         def backtrack(n, start, tmp):
             if n == start:
@@ -31,3 +32,22 @@ class Solution(object):
                 # print('unselect', tmp)
         backtrack(n, 1, ['(', ')'])
         return list(set(res))
+    
+        # solution 2: backtrack legit ( or ) 
+        res = []
+        def backtrack(left, right, tmp):
+            if right < left or left < 0 or right < 0:
+                return 
+            if left == 0 and right == 0:
+                res.append(''.join(tmp))
+                return
+            # choose '('
+            tmp.append('(')
+            backtrack(left-1, right, tmp)
+            tmp.pop()
+            # choose ')'
+            tmp.append(')')
+            backtrack(left, right-1, tmp)
+            tmp.pop() 
+        backtrack(n, n, [])
+        return res
