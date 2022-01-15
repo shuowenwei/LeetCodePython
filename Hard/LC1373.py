@@ -4,8 +4,9 @@
 
 https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/
 
-https://labuladong.gitee.io/algo/2/18/27/
+https://labuladong.gitee.io/algo/2/18/28/
 
+LC95, LC96, LC1373
 """
 # Definition for a binary tree node.
 # class TreeNode(object):

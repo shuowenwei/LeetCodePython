@@ -10,6 +10,7 @@ LC95, LC96
 
 solution: https://leetcode.com/problems/unique-binary-search-trees-ii/solution/
 
+LC95, LC96, LC1373
 """
 # Definition for a binary tree node.
 # class TreeNode(object):

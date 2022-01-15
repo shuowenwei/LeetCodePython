@@ -6,10 +6,7 @@ https://leetcode.com/problems/unique-binary-search-trees/
 
 labuladong: https://labuladong.gitee.io/algo/2/18/26/
 
-LC95, LC96
-
-solution: https://leetcode.com/problems/unique-binary-search-trees-ii/solution/
-
+LC95, LC96, LC1373
 """
 class Solution(object):
     def numTrees(self, n):
