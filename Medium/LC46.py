@@ -7,7 +7,8 @@ https://leetcode.com/problems/permutations/
 https://labuladong.gitee.io/algo/1/5/
 https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
 
-LC698, LC78, LC46, LC77, LC51
+LC698, LC78, LC46, LC77
+LC51, LC37
 - backtrack
 """
 class Solution(object):

@@ -6,7 +6,8 @@ https://leetcode.com/problems/n-queens/
 
 https://labuladong.gitee.io/algo/1/5/
 
-LC698, LC78, LC46, LC77, LC51
+LC698, LC78, LC46, LC77
+LC51, LC37
 - backtrack
 """
 class Solution(object):
