@@ -49,16 +49,18 @@ class Solution(object):
         visited = set()
         q = deque()
         q.append(start)
+        # visited.add(start)
         while q:
             size = len(q)
             for i in range(size):
                 cur_state = q.popleft()
-                visited.add(cur_state)
+                visited.add(cur_state) # add to visited 
                 if cur_state == target: 
                     return res
                 next_states = getNextState(cur_state)
                 for ns in next_states:
                     if ns not in visited:
                         q.append(ns)
+                        # visited.add(ns)
             res += 1
         return -1 
