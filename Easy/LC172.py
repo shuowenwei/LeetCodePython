@@ -6,7 +6,7 @@ https://leetcode.com/problems/factorial-trailing-zeroes/
 
 https://labuladong.gitee.io/algo/4/30/117/
 
-LC172, LC793
+LC172, LC793, LC204, LC372
 """
 class Solution(object):
     def trailingZeroes(self, n):
