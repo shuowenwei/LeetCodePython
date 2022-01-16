@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/maximize-distance-to-closest-person/
 
+https://leetcode.com/problems/maximize-distance-to-closest-person/discuss/1693404/C%2B%2BJavaPython-One-Pass-O(N)-oror-Count-Zeros-oror-Image-Explained
+
 """
 class Solution(object):
     def maxDistToClosest(self, seats):
@@ -11,7 +13,26 @@ class Solution(object):
         :type seats: List[int]
         :rtype: int
         """
-        # solution 1, too long too ugly 
+        zeros = 0 # length of consective zeros
+        pre_zeros, max_mid_zeros, post_zeros = 0, 0, 0
+        first_one_flag = True
+        for s in seats:
+            if s == 0:
+                zeros += 1
+            else: # s==1
+                if first_one_flag:
+                    pre_zeros = zeros
+                    first_one_flag = False 
+                else:
+                    max_mid_zeros = max(max_mid_zeros, zeros)
+                # reset consective zeros to 0 when met 1
+                zeros = 0
+        # print(s, pre_zeros, max_mid_zeros, post_zeros)
+        # the length of last piece of consective zeros is post_zeros
+        post_zeros = zeros
+        return max(pre_zeros, (max_mid_zeros+1)/2, post_zeros)
+        
+        # my solution 2, too long too ugly 
         n = len(seats)
         max_distance = 1
         leftEnd = 0
@@ -40,7 +61,7 @@ class Solution(object):
                     break
         return max(firstOne, max_distance/2, lastOne)
     
-        # my solution: Time Limit Exceeded ... O(n^2) 77/81
+        # my solution 1:  Time Limit Exceeded ... O(n^2) 77/81
         n = len(seats)
         res = [0 if s == 1 else n for s in seats]
         for i in range(n):
