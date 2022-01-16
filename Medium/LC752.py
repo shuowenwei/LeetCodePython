@@ -6,7 +6,8 @@ https://leetcode.com/problems/open-the-lock/
 
 https://labuladong.gitee.io/algo/4/29/113/
 
-LC111, LC752
+LC111, LC752, LC773
+- BFS
 """
 class Solution(object):
     def openLock(self, deadends, target):

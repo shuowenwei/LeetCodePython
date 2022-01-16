@@ -6,7 +6,8 @@ https://leetcode.com/problems/minimum-depth-of-binary-tree/submissions/
 
 https://labuladong.gitee.io/algo/4/29/113/
 
-LC111, LC752
+LC111, LC752, LC773
+- BFS
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
