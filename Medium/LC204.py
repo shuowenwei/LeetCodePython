@@ -6,7 +6,7 @@ https://leetcode.com/problems/count-primes/
 
 https://labuladong.gitee.io/algo/4/30/118/
 
-LC172, LC793, LC204, LC372
+LC172, LC793, LC204, LC372, LC268
 """
 class Solution(object):
     def countPrimes(self, n):
