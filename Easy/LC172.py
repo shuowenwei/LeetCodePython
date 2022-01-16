@@ -30,6 +30,7 @@ class Solution(object):
         while n > 0: 
             n = n / 5
             totalFives += n
+        return totalFives
         
         # solution 3: only 5, 25, 125...can increase the 0 numbers.
         if n < 5:
