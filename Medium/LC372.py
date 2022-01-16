@@ -26,14 +26,22 @@ class Solution(object):
                 res = res % base
             return res
         
-        # a**[1,5,6,4] = a**4 * (a**[1,5,6])**10, hence recursion
+        def mypow2(a, k): # computer a**k = a * a * a * .... * a (in total k 'a')
+            if k == 0:
+                return 1
+            a = a % base
+            if k % 2 == 1: # k is odd 
+                return (a * mypow2(a, k-1)) % base
+            else:
+                sub = mypow2(a, k/2)
+                return (sub*sub) % base
         
+        # a**[1,5,6,4] = a**4 * (a**[1,5,6])**10, hence recursion
         if len(b) == 0:
             return 1 
         last = b.pop()
-        part1 = mypow(a, last)
-        part2 = mypow(self.superPow(a, b), 10)
+        part1 = mypow(a, last) # or call mypow2
+        part2 = mypow(self.superPow(a, b), 10) # or call mypow2
         
         return (part1 * part2) % base 
-            
-        
+    
