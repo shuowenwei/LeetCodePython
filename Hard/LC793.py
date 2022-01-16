@@ -6,7 +6,7 @@ https://leetcode.com/problems/preimage-size-of-factorial-zeroes-function/
 
 https://labuladong.gitee.io/algo/4/30/117/
 
-LC172, LC793, LC204, LC372
+LC172, LC793, LC204, LC372, LC268
 """
 class Solution(object):
     def preimageSizeFZF(self, k):
