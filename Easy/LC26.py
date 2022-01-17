@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
-https://labuladong.gitee.io/algo/2/21/63/
+https://labuladong.gitee.io/algo/4/30/123/
 
 LC26, LC83, LC27, LC283
 """
