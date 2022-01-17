@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/linked-list-random-node/
 
-https://labuladong.gitee.io/algo/4/30/119/
+https://labuladong.gitee.io/algo/4/30/122/
 
 LC382, LC398
 """
