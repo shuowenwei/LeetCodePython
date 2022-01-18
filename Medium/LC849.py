@@ -6,6 +6,7 @@ https://leetcode.com/problems/maximize-distance-to-closest-person/
 
 https://leetcode.com/problems/maximize-distance-to-closest-person/discuss/1693404/C%2B%2BJavaPython-One-Pass-O(N)-oror-Count-Zeros-oror-Image-Explained
 
+LC849, LC605
 """
 class Solution(object):
     def maxDistToClosest(self, seats):
