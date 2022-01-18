@@ -27,7 +27,6 @@ class Solution(object):
         for i in range(n):
             if nums[i] > 0:
                 missing = i + 1
-                
         return [dup, missing] 
     
     # my solution: 

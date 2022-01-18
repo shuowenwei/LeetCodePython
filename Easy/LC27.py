@@ -15,6 +15,7 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
+        # refer to LC283, where val == 0
         slow = 0
         for fast in range(len(nums)):
             if nums[fast] != val:

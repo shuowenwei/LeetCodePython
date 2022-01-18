@@ -21,13 +21,14 @@ class Solution(object):
         :rtype: ListNode
         """
         # solution 1: two pointers
-        slow, fast = head, head
+        if head is None:
+            return None
+        slow, fast = head, head.next
         while fast is not None:
             if slow.val != fast.val:
                 slow.next = fast
                 slow = slow.next
             fast = fast.next
-
         # // 断开与后面重复元素的连接
         if slow is not None:
             slow.next = None
