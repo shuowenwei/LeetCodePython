@@ -18,7 +18,7 @@ class Solution(object):
         if 1 not in flowerbed:
             return (len(flowerbed)+1)/2 >= n 
         res = 0 
-        midZeros = []
+        # midZeros = []
         preZeros, postZeros = 0, 0
         first_one_flag = True
         zeros = 0 
@@ -31,11 +31,11 @@ class Solution(object):
                     preZeros = max(preZeros, zeros)
                     first_one_flag = False
                 else:
-                    midZeros.append(zeros)
+                    # midZeros.append(zeros)
                     res += (zeros-1)/2
                 zeros = 0
             postZeros = zeros
-        print(preZeros, midZeros, postZeros)
+        # print(preZeros, midZeros, postZeros)
         res += preZeros/2 + postZeros/2 # + sum([(m-1)/2 for m in midZeros])
         return res >= n
 
