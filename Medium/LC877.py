@@ -6,6 +6,9 @@ https://leetcode.com/problems/stone-game/
 
 https://labuladong.gitee.io/algo/3/25/92/
 
+https://labuladong.gitee.io/algo/4/30/124/
+
+LC292, LC877, LC319
 """
 class Solution(object):
     def stoneGame(self, piles):
@@ -47,3 +50,6 @@ class Solution(object):
         # alice = dp(piles)
         # print(alice)
         # return alice > 0
+        
+        # solution 3:
+        return True 
