@@ -16,31 +16,45 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        
-        def backtrack(nums, start, path):
-            if start == len(nums):
-                if len(path) >= 3:
-                    return True
+        freq = {}
+        need = {}
+        for n in nums:
+            if n not in freq:
+                freq[n] = 0
+            if n+1 not in freq:
+                freq[n+1] = 0
+            if n+2 not in freq:
+                freq[n+2] = 0
+            freq[n] += 1
+            
+        for v in nums:
+            if freq[v] == 0:
+                # // 已经被用到其他子序列中
+                continue
+            
+            # // 先判断 v 是否能接到其他子序列后面
+            if v in need and need[v] > 0:
+                # // v 可以接到之前的某个序列后面
+                freq[v] -= 1
+                # // 对 v 的需求减一
+                need[v] -= 1
+                # // 对 v + 1 的需求加一
+                if v+1 in need:
+                    need[v+1] += 1
                 else:
-                    return False
-            # add to the end of existing sequence
-            if len(path) > 0:
-                if nums[start] - path[-1] == 1:
-                    path.append(nums[start])
-                    if backtrack(nums, start+1, path):
-                        return True
-                    path.pop()
+                    need[v+1] = 1
+            elif freq[v] > 0 and freq[v+1] > 0 and freq[v+2] > 0:
+                # // 将 v 作为开头，新建一个长度为 3 的子序列 [v,v+1,v+2]
+                freq[v] -= 1
+                freq[v+1] -= 1
+                freq[v+2] -= 1
+                # // 对 v + 3 的需求加一
+                if v+3 in need:
+                    need[v+3] += 1
                 else:
-                    path = [nums[start]]
-                    if backtrack(nums, start+1, path):
-                        return True
-                    path.pop()
-                    
-            # start a new sequence
-            path = [nums[start]]
-            if backtrack(nums, start+1, path):
-                return True
-            path.pop()
-            return False 
-        
-        return backtrack(nums, 0, [])
+                    need[v+3] = 1
+            else:
+                # // 两种情况都不符合，则无法分配
+                return False
+            
+        return True
