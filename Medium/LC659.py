@@ -27,10 +27,15 @@ class Solution(object):
             if len(path) > 0:
                 if nums[start] - path[-1] == 1:
                     path.append(nums[start])
-                if backtrack(nums, start+1, path):
-                    return True
-                path.pop()
-                
+                    if backtrack(nums, start+1, path):
+                        return True
+                    path.pop()
+                else:
+                    path = [nums[start]]
+                    if backtrack(nums, start+1, path):
+                        return True
+                    path.pop()
+                    
             # start a new sequence
             path = [nums[start]]
             if backtrack(nums, start+1, path):
