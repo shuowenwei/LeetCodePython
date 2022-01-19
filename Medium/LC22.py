@@ -6,7 +6,7 @@ https://leetcode.com/problems/generate-parentheses/
 
 https://labuladong.gitee.io/algo/4/29/112/
 
-LC698, LC78, LC46, LC77, LC22
+LC698, LC78, LC46, LC77, LC22, LC659
 LC51, LC37
 - backtrack
 """
