@@ -7,7 +7,6 @@ https://leetcode.com/problems/linked-list-cycle-ii/
 labuladong: https://labuladong.gitee.io/algo/1/6/
 
 LC21, LC23, LC141, LC142, LC876, LC160, LC19
-
 """
 
 # Definition for singly-linked list.
@@ -27,15 +26,15 @@ class Solution(object):
             fast = fast.next.next
             slow = slow.next
             if fast == slow:
-                slow = head
+                # slow meet fast, reset slow to head
                 break
                 
         if fast is None or fast.next is None: # no cycle
             return None
         else:
-            slow = head
+            slow = head # or fast = head
             while slow != fast:
                 fast = fast.next 
                 slow = slow.next
-            return slow
+            return slow # return fast
             
