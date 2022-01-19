@@ -25,7 +25,7 @@ class Solution(object):
             # fully covered
             if left <= intervals[i][0] and right >= intervals[i][1]:
                 continue
-            # have some intersection/overlap
+            # have some intersection/overlap, extend 'right'
             if right >= intervals[i][0] and right <= intervals[i][1]:
                 right = intervals[i][1]
             # no overlap 
