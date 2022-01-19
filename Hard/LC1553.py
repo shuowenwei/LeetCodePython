@@ -12,6 +12,30 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # BFS is faster and saving more spaces 
+        from collections import deque
+        q = deque()
+        q.append(n)
+        step = 0 
+        visited = set()
+        while q:
+            size = len(q)
+            step += 1
+            for i in range(size):
+                x = q.popleft()
+                if x % 3 == 0 and x/3 not in visited:
+                    q.append(x/3)
+                    visited.add(x/3)
+                if x % 2 == 0 and x/2 not in visited:
+                    q.append(x/2)
+                    visited.add(x/2)
+                if x-1 not in visited:
+                    q.append(x-1)
+                    visited.add(x-1)
+                if x-1 == 0:
+                    return step
+        """ 
+        # solution 2: this dp is essential DFS 
         dp_table = {}
         upper_bound = [i for i in range(n+1)]
         def dp(n):
@@ -28,7 +52,8 @@ class Solution(object):
             dp_table[n] = res
             return res 
         return dp(n)
-        """ Time Limit Exceeded
+         
+        # solution 3: Time Limit Exceeded
         res = [i for i in range(n+1)]
         for i in range(1, n+1):
             res[i] = min(res[i], res[i-1]+1)
@@ -40,4 +65,3 @@ class Solution(object):
                 res[3*i] = min(res[3*i], res[i]+1)
         return res[n]
         """
-        
