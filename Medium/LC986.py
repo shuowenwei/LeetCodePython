@@ -19,20 +19,22 @@ class Solution(object):
         res = []
         p1, p2 = 0, 0
         while p1 < len(firstList) and p2 < len(secondList):
-            if firstList[p1][1] < secondList[p2][0]:
+            firstLeft, firstRight = firstList[p1]
+            secondLeft, secondRight = secondList[p2]
+            if firstRight < secondLeft:
                 p1 += 1
-            elif firstList[p1][0] > secondList[p2][1]:
+            elif firstLeft > secondRight:
                 p2 += 1
             else:
-                left = max(firstList[p1][0], secondList[p2][0])
-                if firstList[p1][1] > secondList[p2][1]:
-                    res.append([left, secondList[p2][1]])
+                left = max(firstLeft, secondLeft)
+                if firstRight > secondRight:
+                    res.append([left, secondRight])
                     p2 += 1
-                elif firstList[p1][1] < secondList[p2][1]:
-                    res.append([left, firstList[p1][1]])
+                elif firstRight < secondRight:
+                    res.append([left, firstRight])
                     p1 += 1
                 else: # == 
-                    res.append([left, firstList[p1][1]])
+                    res.append([left, firstRight]) # res.append([left, secondRight])
                     p1 += 1 
                     p2 += 1
         return res 
