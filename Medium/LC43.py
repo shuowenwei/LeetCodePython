@@ -6,7 +6,7 @@ https://leetcode.com/problems/multiply-strings/
 
 https://labuladong.gitee.io/algo/4/32/134/
 
-LC43
+LC43, LC224, LC227, LC772
 """
 class Solution(object):
     def multiply(self, num1, num2):
