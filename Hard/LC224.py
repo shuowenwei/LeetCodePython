@@ -6,6 +6,7 @@ https://leetcode.com/problems/basic-calculator/
 
 solution: https://leetcode.com/problems/basic-calculator/discuss/62424/Python-concise-solution-with-stack.
 
+LC43, LC224, LC227, LC772
 """
 class Solution(object):
     def calculate(self, s):
