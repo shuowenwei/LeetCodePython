@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/valid-parentheses/
 
-LC20, LC22
+LC20, LC22, LC921, LC1541
 """
 class Solution(object):
     def isValid(self, s):
