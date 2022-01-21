@@ -8,6 +8,8 @@ solution: https://leetcode.com/articles/trapping-rain-water/
 
 https://leetcode.com/problems/trapping-rain-water/discuss/17554/Share-my-one-pass-Python-solution-with-explaination
 
+https://labuladong.gitee.io/algo/4/32/136/
+
 """
 class Solution(object):
     def trap(self, height):
@@ -19,17 +21,16 @@ class Solution(object):
         res = 0 
         if not height:
             return res 
-        left = 0
-        right = len(height) - 1 
-        leftMax = height[left]
-        rightMax = height[right]
+        left, right = 0, len(height) - 1 
+        leftMax, rightMax = 0, 0 
+        # leftMax 和 rightMax 代表的是 height[0..left] 和 height[right..end] 的最高柱子高度
         while left < right:
             leftMax = max(leftMax, height[left])
             rightMax = max(rightMax, height[right])
             if leftMax <= rightMax:
                 res += leftMax - height[left]
                 left += 1 
-            if leftMax > rightMax:
+            elif leftMax > rightMax:
                 res += rightMax - height[right]
                 right -= 1
         return res 
@@ -52,21 +53,29 @@ class Solution(object):
         """ 
         
         """
-        # dynamic programming
-        res = 0
-        if not height:
-            return res 
-        leftMax = [0] * len(height)
-        rightMax = [0] * len(height) 
-        leftMax[0] = height[0] 
-        rightMax[len(height) - 1] = height[len(height) - 1]
-        for i in range(1, len(height)): 
-            leftMax[i] = max(leftMax[i-1], height[i])
-        for j in range(len(height)-2, -1, -1): 
-            rightMax[j] = max(rightMax[j+1], height[j])
+        # my solution: 所以对于这种问题，我们不要想整体，而应该去想局部；就像之前的文章写的动态规划问题处理字符串问题，不要考虑如何处理整个字符串，而是去思考应该如何处理每一个字符。
+        # 这么一想，可以发现这道题的思路其实很简单。具体来说，仅仅对于位置 i，能装下多少水呢？
+        n = len(height)
+        leftMax, rightMax = [0]*n, [0]*n
         
-        for k in range(len(height)):
-            res += max(min(leftMax[k], rightMax[k]) - height[k], 0)
+        currMax = 0
+        for i in range(n):
+            if height[i] > currMax:
+                currMax = height[i] 
+            leftMax[i] = currMax
+        
+        currMax = 0 
+        for j in range(n-1, -1, -1):
+            if height[j] > currMax:
+                currMax = height[j] 
+            rightMax[j] = currMax
+        
+        res = 0 
+        # print(leftMax)
+        # print(rightMax)
+        for i in range(n):
+            res += max(0, min(leftMax[i], rightMax[i]) - height[i]) 
+            # can't holdn negative amount of water
         return res 
         """
         
