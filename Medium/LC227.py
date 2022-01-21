@@ -14,6 +14,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # refer to LC224 and LC772
         def helper(s): # s is a list
             num = 0
             sign = '+'
