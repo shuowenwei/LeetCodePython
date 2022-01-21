@@ -23,6 +23,6 @@ class Solution(object):
                 left -= 1
             if left < 0:
                 res += 1
-                left= 0
+                left = 0
         return left + res 
                 
