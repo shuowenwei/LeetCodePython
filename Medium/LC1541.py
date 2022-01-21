@@ -30,4 +30,3 @@ class Solution(object):
                     res += 1
                     left = 1
         return res + left
-                
