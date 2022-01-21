@@ -22,7 +22,6 @@ class Solution(object):
                 char = s.pop(0)
                 if char.isdigit():
                     num = 10*num + int(char)
-
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
                     if sign == '+':
                         stack.append(num)
@@ -30,23 +29,15 @@ class Solution(object):
                         stack.append(-num)
                     # // 只要拿出前一个数字做对应运算即可
                     elif sign == '*':
-                        # stack[-1] = stack[-1] * num
-                        pre = stack.pop()
-                        stack.append(pre*num)
+                        stack[-1] = stack[-1] * num
                     elif sign == '/':
                         # python 除法向 0 取整的写法
-                        # stack[-1] = int(stack[-1] / float(num)) # write like this               
-                        pre = stack.pop()
-                        if pre >= 0:
-                            stack.append(pre/num) # / is same to //
-                        else:
-                            stack.append(-(-pre/num)) # / is not same to //, don't have to deal with % 
-                            # 3-5/2 = 3-2=1, but -5/2 = -3, so -5/2+1 =2, which is desired 
-                    # // 更新符号为当前符号，数字清零
+                        stack[-1] = int(stack[-1] / float(num)) # write like this               
                     sign = char
                     num = 0
             return sum(stack)
 
         return helper(list(s))
+    
 
 
