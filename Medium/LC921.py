@@ -14,6 +14,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # refer to LC1541
         res = 0
         left = 0 
         for ss in s:

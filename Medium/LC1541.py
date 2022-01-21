@@ -14,12 +14,13 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # refer to LC921
         res = 0
         left = 0 
         for ss in s:
             if ss == '(':
                 left += 2
-                if left % 2 == 1:
+                if left % 2 == 1: # e.g: "(()))(()))()())))"
                     # // 插入一个右括号
                     res += 1
                     left -= 1 
