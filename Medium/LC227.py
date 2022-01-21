@@ -4,8 +4,9 @@
 
 https://leetcode.com/problems/basic-calculator-ii/
 
-solution: https://leetcode.com/problems/basic-calculator-ii/discuss/63076/Python-short-solution-with-stack.
+https://labuladong.gitee.io/algo/4/32/135/
 
+LC43, LC224, LC227, LC772
 """
 class Solution(object):
     def calculate(self, s):
@@ -28,9 +29,12 @@ class Solution(object):
                     stack.append(-num)
                 # // 只要拿出前一个数字做对应运算即可
                 elif sign == '*':
+                    # stack[-1] = stack[-1] * num
                     pre = stack.pop()
                     stack.append(pre*num)
                 elif sign == '/':
+                    # python 除法向 0 取整的写法
+                    # stack[-1] = int(stack[-1] / float(num)) # write like this               
                     pre = stack.pop()
                     if pre >= 0:
                         stack.append(pre/num) # / is same to //
