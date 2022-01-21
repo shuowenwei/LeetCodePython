@@ -4,12 +4,9 @@
 
 https://leetcode.com/problems/trapping-rain-water/
 
-solution: https://leetcode.com/articles/trapping-rain-water/
-
-https://leetcode.com/problems/trapping-rain-water/discuss/17554/Share-my-one-pass-Python-solution-with-explaination
-
 https://labuladong.gitee.io/algo/4/32/136/
 
+LC42, LC11
 """
 class Solution(object):
     def trap(self, height):
@@ -35,23 +32,6 @@ class Solution(object):
                 right -= 1
         return res 
     
-        """
-        # use a stack https://leetcode.com/articles/trapping-rain-water/ 
-        res = 0 
-        stack = [] # top index's height is bounded/shorter than previous index's height 
-        for i in range(len(height)):
-            while stack and height[i] > height[stack[-1]]:
-                top = stack.pop()
-                #if empty after one pop, then there's no left bounded bar
-                if len(stack) == 0:
-                    break
-                distance = i - stack[-1] - 1
-                bounded_height = min(height[i], height[stack[-1]]) - height[top]
-                res += distance * bounded_height
-            stack.append(i)
-        return res
-        """ 
-        
         """
         # my solution: 所以对于这种问题，我们不要想整体，而应该去想局部；就像之前的文章写的动态规划问题处理字符串问题，不要考虑如何处理整个字符串，而是去思考应该如何处理每一个字符。
         # 这么一想，可以发现这道题的思路其实很简单。具体来说，仅仅对于位置 i，能装下多少水呢？
