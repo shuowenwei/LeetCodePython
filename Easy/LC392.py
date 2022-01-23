@@ -40,8 +40,8 @@ class Solution(object):
                     left = mid + 1 
                 elif nums[mid] > target:
                     right = mid - 1
-            if left > len(nums) - 1  or nums[left] != target: 
-                return -1 
+            # if left > len(nums) - 1  or nums[left] != target: 
+            #     return -1 
             return left
         
         dict_t = {}
@@ -50,12 +50,15 @@ class Solution(object):
                 dict_t[char] = [i]
             else:
                 dict_t[char].append(i)
+        # print(dict_t)
         j = 0 # 串 t 上的指针
         for i in range(len(s)):
             if s[i] not in dict_t:
                 return False
+            
             pos = left_bound(dict_t[s[i]], j)
-            if pos == len(dict_t[s[i]]):
+            # print(pos, 'target: ', j)
+            if pos == -1 or pos == len(dict_t[s[i]]):
                 return False 
             j = dict_t[s[i]][pos] + 1
         return True
