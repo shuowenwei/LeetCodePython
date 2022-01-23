@@ -9,26 +9,29 @@ def binarySearch(nums, target):
     left = 0
     right = len(nums) - 1 
     while left <= right: # break when left == right + 1 
-        mid = (left + right) / 2 
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] < target:
+        mid = left + (right - left) / 2
+        if nums[mid] < target:
             left = mid + 1
         elif nums[mid] > target:
             right = mid - 1
+        elif nums[mid] == target:
+            # // 直接返回
+            return mid
     return -1 
 
 def left_bound(nums, target):
     left = 0
     right = len(nums) - 1 
     while left <= right: # break when left == right + 1 
-        mid = (left + right) / 2 
-        if nums[mid] == target:
-            right = mid - 1 
-        elif nums[mid] < target:
-            left = mid + 1 
+        mid = left + (right - left) / 2
+        if nums[mid] < target:
+            left = mid + 1
         elif nums[mid] > target:
             right = mid - 1
+        elif nums[mid] == target:
+            # // 别返回，锁定左侧边界
+            right = mid - 1 
+    # // 最后要检查 left 越界的情况
     if left > len(nums) - 1  or nums[left] != target: 
         return -1 
     return left 
@@ -38,31 +41,18 @@ def right_bound(nums, target):
     left = 0
     right = len(nums) - 1 
     while left <= right: # break when left == right + 1 
-        mid = (left + right) / 2 
-        if nums[mid] == target:
-            left = mid + 1 
-        elif nums[mid] < target:
-            left = mid + 1 
+        mid = left + (right - left) / 2
+        if nums[mid] < target:
+            left = mid + 1
         elif nums[mid] > target:
             right = mid - 1
+        elif nums[mid] == target:
+            # // 别返回，锁定右侧边界
+            left = mid + 1 
+    # // 最后要检查 right 越界的情况
     if right < 0 or nums[right] != target:
         return -1 
     return right
-
-
-# 搜索一个元素时，搜索区间两端闭。
-# while条件带等号，否则需要打补丁。
-# if相等就返回，其他的事情甭操心。
-# mid必须加减一，因为区间两端闭。
-# while结束就凉了，凄凄惨惨返回-1。
-
-# 搜索左右边界时，搜索区间要阐明。
-# 左闭右开最常见，其余逻辑便自明。
-# while要用小于号，这样才能不漏掉。
-# if相等别返回，利用mid锁边界。
-# mid加一或减一？要看区间开或闭。
-# while结束不算完，因为你还没返回。
-# 索引可能出边界，if检查保平安。
 
 # 第一个，最基本的二分查找算法：
 # 因为我们初始化 right = nums.length - 1
