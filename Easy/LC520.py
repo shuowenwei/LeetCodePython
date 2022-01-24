@@ -11,6 +11,32 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
+        # shorter solution 
+        n = len(word)
+        if n < 2:# one letter of empty input
+            return True 
+        captitalA = ord('A')
+        captitalZ = ord('Z')
+        isCapital = [captitalA <= ord(l) <= captitalZ for l in word]
+        totalTrues = sum(isCapital)
+        if totalTrues in (0, n) or (isCapital[0] and totalTrues == 1):
+            return True 
+        else:
+            return False
+        
+        # solution versioon 2: 
+        n = len(word)
+        if n < 2:# one letter of empty input
+            return True 
+        captitalA = ord('A')
+        captitalZ = ord('Z')
+        isCapital = [captitalA <= ord(l) <= captitalZ for l in word]
+        totalTrues = sum(isCapital)
+        if totalTrues == 0 or (isCapital[0] and sum(isCapital) == 1):
+            return True 
+        else:
+            return False
+        
         if len(word) < 2:
             return True
         captitalA = ord('A')
