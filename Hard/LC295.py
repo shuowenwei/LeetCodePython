@@ -11,6 +11,7 @@ https://leetcode.com/problems/find-median-from-data-stream/discuss/74047/JavaPyt
 
 refer to: LC146, LC460, LC895, LC295
 
+LC295, LC480
 """
 from heapq import *
 
@@ -18,15 +19,15 @@ class MedianFinder(object): #the add operation is O(logn), The findMedian operat
 
     def __init__(self):
         self.minHeap = [] # holding the larger part of the stream
-#   --------
+#   ---------
 #    \     /
 #     \   /    larger part (assume always > or = the smaller part)
-#      \ / -minHeap
-# 
-#      /\  -maxHeap (all elements are negative)
-#     /  \      smaller part
+#      \ / -->minHeap
+#    median
+#      /\  -->maxHeap (all elements are negative)
+#     /  \     smaller part
 #    /    \
-#   --------
+#   ---------
         self.maxHeap = [] # holding the smaller part of the stream
 
     def addNum(self, num):
