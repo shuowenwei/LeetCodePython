@@ -15,10 +15,13 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        import heapq
+        # solution 1: using a max_heap
+        from heapq import heapify, heappop
         max_heap = [-n for n in nums]
-        heapq.heapify(max_heap)
+        heapify(max_heap)
         res = 0
         for i in range(k):
-            res = heapq.heappop(max_heap)
+            res = heappop(max_heap)
         return res 
+    
+        # solution 2
