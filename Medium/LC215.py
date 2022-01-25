@@ -6,6 +6,8 @@ https://leetcode.com/problems/kth-largest-element-in-an-array/
 
 https://labuladong.gitee.io/algo/4/31/127/
 
+https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60293/Share-my-Python-solution-with-QuickSelect-idea
+
 LC215
 """
 class Solution(object):
@@ -43,6 +45,7 @@ class Solution(object):
         return min_heap[0]
     
         # QuickSelect with shuffle to avoid worse case scenario
+        # https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60293/Share-my-Python-solution-with-QuickSelect-idea
         import random
         random.shuffle(nums)
         pivot = nums[0]
