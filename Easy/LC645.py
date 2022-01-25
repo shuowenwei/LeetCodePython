@@ -2,7 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/set-mismatch/submissions/
+https://leetcode.com/problems/set-mismatch/
 
 https://labuladong.gitee.io/algo/4/30/121/
 
