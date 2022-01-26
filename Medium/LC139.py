@@ -29,7 +29,7 @@ class Solution(object):
                     dp_table[s[:i]] = True
                     if dp(s[i:], wordDict) is True:
                         dp_table[s] = True 
-                        return True
-            dp_table[s] = False
-            return False
+                        break # this makes it faster
+            dp_table[s] = res
+            return res
         return dp(s, dict_word)
