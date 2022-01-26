@@ -2,9 +2,9 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/
+https://leetcode.com/problems/target-sum/
 
-https://labuladong.gitee.io/algo/3/23/72/
+https://labuladong.gitee.io/algo/3/23/76/
 
 backtrack vs dp vs backpacking problem
 """
@@ -16,20 +16,17 @@ class Solution(object):
         :rtype: int
         """
         # solution 2: dp, must facter than backtrack
-        if len(nums) == 0:
-            return 0
-        res = [0]
         dp_table = {}
         def dp(nums, i, diff):
             if i == len(nums):
                 if diff == 0:
                     return 1
-                return 0 
+                else:
+                    return 0
             if (i, diff) in dp_table:
                 return dp_table[(i, diff)]
-            
             res = dp(nums, i+1, diff+nums[i]) + dp(nums, i+1, diff-nums[i])
-            dp_table[(i, diff)] = res 
+            dp_table[(i, diff)] = res
             return res
         return dp(nums, 0, target)
         
