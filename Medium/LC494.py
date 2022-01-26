@@ -6,7 +6,7 @@ https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-charac
 
 https://labuladong.gitee.io/algo/3/23/72/
 
-backtracking vs dp vs backpacking problem
+backtrack vs dp vs backpacking problem
 """
 class Solution(object):
     def findTargetSumWays(self, nums, target):
@@ -15,7 +15,7 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        # solution 2: dp, must facter than backtracking
+        # solution 2: dp, must facter than backtrack
         if len(nums) == 0:
             return 0
         res = [0]
@@ -33,7 +33,7 @@ class Solution(object):
             return res
         return dp(nums, 0, target)
         
-        # solution 1: backtracking, Time Limit Exceeded, 时间复杂度为 O(2^N)，N 为 nums 的大小
+        # solution 1: backtrack, Time Limit Exceeded, 时间复杂度为 O(2^N)，N 为 nums 的大小
         """
         if len(nums) == 0:
             return 0
