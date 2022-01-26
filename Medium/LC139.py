@@ -25,11 +25,21 @@ class Solution(object):
                 return dp_table[s]
             res = False
             for i in range(len(s)):
-                if s[:i] in wordDict:
+                if s[:i] in dict_word:
                     dp_table[s[:i]] = True
-                    if dp(s[i:], wordDict) is True:
-                        dp_table[s] = True 
+                    if dp(s[i:], dict_word) is True:
+                        res = True 
                         break # this makes it faster
             dp_table[s] = res
             return res
         return dp(s, dict_word)
+
+        # solution 2: bottom up
+        dp = [False] * (len(s) + 1)
+        dp[0] = True
+        dict_word = set(wordDict)
+        for i in range(len(s)+1):
+            for j in range(i):
+                if dp[j] and s[j:i] in dict_word:
+                    dp[i] = -1
+        return dp[-1]
