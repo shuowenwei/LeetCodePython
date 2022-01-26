@@ -27,9 +27,9 @@ class Solution(object):
                     return dp_table[s]
                 res = False
                 for i in range(len(s)):
-                    if s[:i] in wordDict:
+                    if s[:i] in dict_word:
                         dp_table[s[:i]] = True
-                        if dp(s[i:], wordDict) is True:
+                        if dp(s[i:], dict_word) is True:
                             res = True 
                             break
                 dp_table[s] = res
@@ -46,3 +46,4 @@ class Solution(object):
                 res.append(w)
             shorter_words.add(w)
         return res 
+    
