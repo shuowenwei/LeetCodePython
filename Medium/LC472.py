@@ -38,6 +38,30 @@ class Solution(object):
         return res 
     
     
+        # solution 2: dfs: https://leetcode.com/problems/concatenated-words/discuss/871866/Easyway-Explanation-every-step
+        d = set(words)
+        dp_table = {}
+        def dfs(word):
+            for i in range(1, len(word)):
+                prefix = word[:i]
+                suffix = word[i:]
+                if (prefix, suffix) in dp_table:
+                    return dp_table[(prefix, suffix)]
+                if prefix in d and suffix in d:
+                    dp_table[(prefix, suffix)] = True
+                    return True
+                if prefix in d and dfs(suffix):
+                    dp_table[(prefix, suffix)] = True
+                    return True
+            return False
+        
+        res = []
+        words.sort(key = lambda x:len(x))
+        for w in words:
+            if dfs(w):
+                res.append(w)
+        return res 
+    
 a = ["","ta","ye","mf","ge","br","lq","ax","yw","rv","av","os","np","tp","po","dc","wr","vl","sc","fq","su","eo","ua","kk","cw","aa","ly","fg","nx","ww","ss","wd","fd","cr","qe","qm","lt","tg","qa","oa","ku","at","yu","ng","re","vg","gu","yy","bc","ife","lfz","qtg","wsx","ryp","fso","had","lhv","nkq","svo","hwc","lmq","mat","kmm","sox","loc","ggk","hyw","cfq","lxu","hfl","cre","lmu","lmg","twn","kng","sid","vep","mwo","kbu","pey","lqs","gfve","qfpd","tpvo","gama","qxru","ppvs","akdt","dtlg","fecd","potn","koat","pybf","cvet","vruh","ahmv","tlnc","tyff","uwkl","wrxw","bilt","nxbk","coqs","pknt","tmnm","bcxw","eaum","fump","saeq","xbuw","uoay","hghv","wcbm","khhqr","xdnnl","qghoy","kdohe","rqdll","mumbh","mqrbq","xhflc","rlaks","wnnbq","agylw","rdrls","fdnor","yyhga","wljmg","onlvy","ffjfb","soqlh","gadgt","cpdxf","rwuvd","pfgsp","apsbu","nlwpw","vhfsf","caybc","npbep","ngzdc","walsx","ykbcn","wqrom","dhthp","eyelg","kfykd","pbdrx","rqyex","smkln","rfuyp","xbspa","wruqc","tgygdt","nhcvpf","vuzygv","ocedkt","xucubv","repgcx","mwrvel","egdgye","vkmxys","kqlima","mdtrgv","vomtuy","yxfeoh","rrklkb","cymbrl","htknfa","wpccoa","bwsezd","ueolqk","ordxzm","krvnaf","nxqmxr","dmoerc","eocfru","qevdyd","armuwp","opvrnx","ugrloq","hbsfyfv","bkkxcvg","nberblt","pbcnmhf","llkmagl","qnebmfl","xbhkkfg","iddymnl","udvmara","flhyfac","aysulvk","dqhqats","wygsnxk","myctacn","qfzwuwe","erpbaxq","wlrwyuy","hrtbfnq","yoifoyg","byyvhgh","kedhvwy","rhymsno","ocbbwwd","ubheeqt","mvndmua","wqqatye","nxlbkak","tovdtkr","brdeumb","tccvslp","npsoqsw","ckorgrm","gtghfxf","adoshnx","lehdfnr","tfsrptug","gttxwpuk","hdkbdxqg","ukmcowoe","reqqzzpw","yaqgault","cypqodxr","hnegtuxx","wtsbhgkd","xwdbycdu","suhesetv","gbndakaq","dphbfaal","pgowefka","nraoenhd","rkbdlchs","pxnktxkm","ngrwqpoh","eruffmlg","bxzovyew","rmbxlcmn","oncggqvr","dnrrgmem","wuznnlyd","syxngevs","yjyssbsoc","qmmidmvkn","glafbwzdd","fctkqlroq","gqgsomonv","ogwilaswn","xwnbcuggl","bhhlovgcx","nxtsnason","dccamymhp","hyfrdngjf","naefganqo","mtkewbprs","oxpmplpcg","uztnpqhdl","fkyvqguqq","feclhbvfuk","omwufbdfxu","ilebxwbcto","monmwvytby","gsfomhvpmy","rlbskqgfvn","uzvgyeette","phouoyhvls","odknlbvxrs","mabkapuoud","fkglorkkvx","rrbhfwohfv","rglnpxfqwu","afumtqugec","hdykehkefp","wtelvsqrru","bhqultkyfq","advraqovan","urbrmmadea","xmywegmtuno","nwedtubynsb","lfvobeyolyy","eouxbldsxzm","fgxnuohrnhg","qcagsyqggcf","gcdqbcdwbwa","lfnrhgsxkhx","akyprzzphew","btgcpqwovwp","puenodlvotb","jmruuqscwjp","esfmqgvxwfy","utqfcqyrrwm","sxlngbtxmqr","typttkrpfvx","bpoaboylced","bhopoqdsref","vubuucilxyh","kddxywvgqxo","bpeohsufree","lcblwidhjpu","ngbqqmbxqcqp","dwfcayssyoqc","hbuxhwadlpto","phckcyufdqml","shwywshtdgmb","cwkuzyamnerp","xbrtspfttota","paeurdvexqlw","evxtehxtbthq","brxpfymuvfvs","vwduwmjpblqo","jfymrbafmyoc","exlwulswtvot","khxkdxflwxme","fxyfqbeoktcc","hesvnctfvdsp","ebwrcpafxzhb","goabwrqdoudf","vfelxvtggkkk","cnumquohlcgt","nvybsfrxtlfmp","dfuydrtbfypbn","wvpfyfpkvgthq","vtdxwrclpspcn","htedgvsrhchox","oyjmeqvhcrvgm","cwcchvsasdylb","svthrfmkoxbho","sfzdknoxzassc","vqsghhhutdget","dhaccuualacyl","gvyhnchlimsxc","dybjywyaodsyw","gmuyytguexnyc","rlcnvnuuqfvhw","xzluwbtmoxokk","uvouaghhcyvmlk","eqrswgkaaaohxx","thkglauzgkeuly","xhnlcrldtfthul","npdbamofynykqv","fguvomeepxoffg","ukffmudygjavem","mbntqrlwyampdg","khwnykughmwrlk","blolplosqnfcwx","wfrvxqdkhbwwef","gubqavlqffhrzz","lucidbnlysamvy","pwlumocnyuoume","lqdqrrcrwdnxeuo","uxtrdsdfzfssmel","ucgqyvopafyttrh","dutnbetocxylcey","qmqxceuohpiffaq","pmxttqftypfexlv","vlrfcsftapyujmw","mxlwbkbklbwfsvr","tdtuquartspkotm","goblttgvmndkqgg","phknqtsdtwxcktmw","pbqurqfxgqlojmws","upmsoxftumyxifyu","pstsxhplrrmbeddv","sqqoffmwkplsgbrp","yqssxzsydgllfzmo","reogbmveofvusdsx","lplrsxznfkoklxlv"]
 
 
