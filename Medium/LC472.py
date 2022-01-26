@@ -17,24 +17,14 @@ class Solution(object):
         """
         # code form LC139
         def wordBreak(s, wordDict):
-            dp_table = {}
-            dict_word = set(wordDict)
-            def dp(s, dict_word):
-                if s == '' or s in dict_word:
-                    dp_table[s] = True
-                    return True
-                if s in dp_table:
-                    return dp_table[s]
-                res = False
-                for i in range(len(s)):
-                    if s[:i] in dict_word:
-                        dp_table[s[:i]] = True
-                        if dp(s[i:], dict_word) is True:
-                            res = True 
-                            break
-                dp_table[s] = res
-                return res
-            return dp(s, dict_word)
+            dp = [False] * (len(s) + 1)
+            dp[0] = True
+            # dict_word = set(wordDict)
+            for i in range(len(s)+1):
+                for j in range(i):
+                    if dp[j] and s[j:i] in wordDict:
+                        dp[i] = -1
+            return dp[-1]
         
         res = []
         if len(words) < 2:
@@ -46,4 +36,3 @@ class Solution(object):
                 res.append(w)
             shorter_words.add(w)
         return res 
-    

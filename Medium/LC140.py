@@ -33,4 +33,5 @@ class Solution(object):
                     tmp.pop()
                     
         backtracking(s, dict_word, [], 0)
-        return res    
+        return res
+    
