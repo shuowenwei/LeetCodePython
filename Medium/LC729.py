@@ -86,11 +86,9 @@ class MyCalendar(object):
             return False
         
     def book(self, start, end):
-        """
-        :type start: int
-        :type end: int
-        :rtype: bool
-        """
+        # :type start: int
+        # :type end: int
+        # :rtype: bool
         if not self.root:
 			self.root = TreeNode(start, end)
 			return True
