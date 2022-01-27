@@ -2,10 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/my-calendar-i/
-
-
-MJ: https://www.1point3acres.com/bbs/thread-841619-1-1.html
+https://leetcode.com/problems/my-calendar-ii/
 
 LC729, LC731, LC732
 """
