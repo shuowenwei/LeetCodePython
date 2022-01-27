@@ -4,6 +4,9 @@
 
 https://leetcode.com/problems/different-ways-to-add-parentheses/
 
+https://labuladong.gitee.io/algo/4/31/130/
+
+LC241, LC282, LC43, LC224, LC227, LC772
 """
 class Solution(object):
     def __init__(self):
@@ -19,7 +22,7 @@ class Solution(object):
         res = []
         for i in range(n):
             sign = expression[i]
-            if sign in ('-', '+', '*'):
+            if sign in ('-', '+', '*'): # no divide /
                 # /****** 分 ******/
                 # // 以运算符为中心，分割成两个字符串，分别递归计算
                 left = self.diffWaysToCompute(expression[0:i]) # not including i
