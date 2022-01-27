@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/text-justification/
 
-LC1592, LC68
+LC1592, LC68, LC2138
 """
 class Solution(object):
     def reorderSpaces(self, tokens, maxWidth):

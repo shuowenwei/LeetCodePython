@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/rearrange-spaces-between-words/
 
-LC1592, LC68
+LC1592, LC68, LC2138
 """
 class Solution(object):
     def reorderSpaces(self, text):
