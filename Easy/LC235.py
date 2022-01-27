@@ -2,9 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-
-https://mp.weixin.qq.com/s/9RKzBcr3I592spAsuMH45g
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 
 LC235, LC236
 """
@@ -25,6 +23,18 @@ class Solution(object):
         """
         if root in (None, p, q):
             return root # None or p or q exists in the tree? 
+        
+        if root.val < p.val and root.val < q.val:
+            return self.lowestCommonAncestor(root.right, p, q)
+        elif root.val > p.val and root.val > q.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        else:
+            return root
+        
+    # solutiono 2: refer to LC236 directly
+    """ 
+        if root in (None, p, q):
+            return root # None or p or q exists in the tree? 
         leftLCA = self.lowestCommonAncestor(root.left, p, q)
         rightLCA = self.lowestCommonAncestor(root.right, p, q)
         # do sth in post order
@@ -36,23 +46,4 @@ class Solution(object):
             return rightLCA
         else: # both leftLCA and rightLCA are None
             return None #leftLCA or rightLCA
-"""
-        # Solution 2: Time Limit Exceeded
-        # help function 
-        def isInTree(root, nodeVal):
-            if root is None:
-                return False 
-            elif root is nodeVal:
-                return True
-            else:
-                return isInTree(root.left, nodeVal) or isInTree(root.right, nodeVal)
-            
-        if isInTree(root.left, p) and isInTree(root.left, q):
-            return self.lowestCommonAncestor(root.left, p, q)
-        elif isInTree(root.right, p) and isInTree(root.right, q):
-            return self.lowestCommonAncestor(root.right, p, q)
-        else:
-            return root
-"""
-
-        
+    """
