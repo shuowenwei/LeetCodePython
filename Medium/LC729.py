@@ -77,7 +77,7 @@ class MyCalendar(object):
             else:
                 node.right = TreeNode(s, e)
                 return True
-        elif s <= node.s:
+        elif e <= node.s:
             if node.left:
                 return self.insert(s, e, node.left)
             else:
