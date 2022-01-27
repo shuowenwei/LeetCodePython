@@ -6,7 +6,7 @@ https://leetcode.com/problems/expression-add-operators/
 
 solution: https://leetcode.com/problems/expression-add-operators/submissions/
 
-
+LC241, LC282, LC43, LC224, LC227, LC772
 """
 class Solution(object):
     # def __init__(self):

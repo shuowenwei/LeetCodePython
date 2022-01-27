@@ -2,11 +2,12 @@
 """
 @author: Wei, Shuowen
 
+https://leetcode.com/problems/basic-calculator-iii/
 
 https://ttzztt.gitbooks.io/lc/content/quant-dev/basic-calculator-iii.html
 https://labuladong.gitee.io/algo/4/32/135/
 
-LC43, LC224, LC227, LC772
+LC241, LC282, LC43, LC224, LC227, LC772
 """
 class Solution(object):
     def calculate(self, s):
