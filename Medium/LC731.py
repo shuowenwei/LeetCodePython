@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/my-calendar-ii/
 
+https://leetcode.com/problems/my-calendar-ii/discuss/109530/N2-Python-Short-and-Elegant
+
 LC729, LC731, LC732
 """
 class MyCalendarTwo(object):

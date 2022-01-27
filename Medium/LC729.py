@@ -20,6 +20,7 @@ class MyCalendar(object):
         :type end: int
         :rtype: bool
         """
+        # my long and ugly solution: 
         if len(self.clnd) == 0:
             self.clnd.append([start, end])
             return True
@@ -55,6 +56,13 @@ class MyCalendar(object):
             self.clnd = self.clnd[:insert_index] + [[start, end]] + self.clnd[insert_index:]
             # print(self.clnd)
         return flag
+    
+        # neat solution: 
+        for s, e in self.clnd:
+            if start < e and end > s:
+                return False
+        self.clnd.append((start, end))
+        return True
 
 # solution 2: Binary search tree:
 """
