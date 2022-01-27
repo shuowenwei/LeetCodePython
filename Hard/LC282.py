@@ -9,65 +9,66 @@ solution: https://leetcode.com/problems/expression-add-operators/submissions/
 LC241, LC282, LC43, LC224, LC227, LC772
 """
 class Solution(object):
-    # def __init__(self):
-    #     self.answer = [] 
-    #     self.nums = None
-    #     self.target = None
-
     def addOperators(self, num, target):
         """
         :type num: str
         :type target: int
         :rtype: List[str]
         """
-        self.nums = num
-        self.target = target
-        self.res = []
-        self.recurse(0,0, [], 0)
-        return self.res
+        # refer to LC227
+        def helper(s): # s is a list
+            num = 0
+            sign = '+'
+            stack = []
+            while len(s) > 0:
+                char = s.pop(0)
+                if char.isdigit():
+                    # if num == 0 and int(char) == 0:
+                    #     return -1
+                    num = 10*num + int(char)
+                if (not char.isdigit() and char != ' ') or len(s) == 0:
+                    if sign == '+':
+                        stack.append(num)
+                    elif sign == '-':
+                        stack.append(-num)
+                    # // 只要拿出前一个数字做对应运算即可
+                    elif sign == '*':
+                        stack[-1] = stack[-1] * num
+                    # elif sign == '/':
+                    #     # python 除法向 0 取整的写法
+                    #     stack[-1] = int(stack[-1] / float(num)) # write like this               
+                    sign = char
+                    num = 0
+            return sum(stack)
+        
+        res = []
+        total_length = len(num) + len(num) - 1 # length + gaps in between
+        def backtrack(num, total_length, index, target):
+            if index == total_length:
+                # print(helper(list(num.replace(' ',''))))
+                if helper(list(num.replace(' ',''))) == target:
+                    res.append(''.join(num.split(' ')))
+                return
+            
+            for sign in ('+', '-', '*'):
+                newNum = num[:index] + sign + num[index:]
+                backtrack(newNum, total_length, index + 2, target)
+            # Prevent cases such as (2+05) which cannot be evaluated using the eval function
+            # Cases such as 12+104 should be acceptable, but not 121+04
+            if num[index] == '0' and num[index-1] not in ('+', '-', '*', '0'): # '00' --x--> 0
+                newNum = num[:index] + ' ' + num[index:]
+                backtrack(newNum, total_length, index + 2, target)
+                
+        backtrack(num, total_length, 1, target)
+        return res 
 
-    def recurse(self, index, value, ops, prev_val):
-        nums = self.nums
-        if index == len(nums):
-            if value == self.target:
-                self.res.append("".join(ops))
-            return
-        
-        #this is the current operand, which is not necessarily a single digit 
-        currVal = 0 
-        for i in range(index, len(nums)):
-            # starting from nums[index], compute current operand on the fly 
-            currVal = currVal * 10 + int(nums[i]) 
+my = ["1+2+3+4+5+6+7+8+9","1+2+3+4+5-6*7+8*9","1+2+3+4-5*6+7*8+9","1+2+3+4-5*6-7+8*9","1+2+3-4*5+6*7+8+9","1+2+3-4*5-6+7*8+9","1+2+3-4*5-6-7+8*9","1+2+3*4+5+6*7-8-9","1+2+3*4*5+6-7-8-9","1+2-3+4*5+6*7-8-9","1+2-3-4-5*6+7+8*9","1+2-3*4+5*6+7+8+9","1+2-3*4-5+6*7+8+9","1+2-3*4-5-6+7*8+9","1+2-3*4-5-6-7+8*9","1+2*3+4*5-6+7+8+9","1+2*3*4+5*6+7-8-9","1+2*3*4-5+6*7-8-9","1-2+3*4*5-6-7+8-9","1-2-3*4+5+6+7*8-9","1-2*3+4+5+6*7+8-9","1-2*3+4+5-6+7*8-9","1-2*3+4*5+6+7+8+9","1-2*3+4*5-6*7+8*9","1-2*3-4+5*6+7+8+9","1-2*3-4-5+6*7+8+9","1-2*3-4-5-6+7*8+9","1-2*3-4-5-6-7+8*9","1-2*3*4-5-6+7+8*9","1*2+3+4+5*6+7+8-9","1*2+3+4-5+6*7+8-9","1*2+3+4-5-6+7*8-9","1*2*3+4+5+6+7+8+9","1*2*3+4+5-6*7+8*9","1*2*3+4-5*6+7*8+9","1*2*3+4-5*6-7+8*9","1*2*3-4*5+6*7+8+9","1*2*3-4*5-6+7*8+9","1*2*3-4*5-6-7+8*9","1*2*3*4+5+6-7+8+9"]   
+
+lc = ["1*2*3*4*5-6-78+9","1*2*3*4+5+6-7+8+9","1*2*3+4+5+6+7+8+9","1*2*3+4+5-6*7+8*9","1*2*3+4-5*6+7*8+9","1*2*3+4-5*6-7+8*9","1*2*3-4*5+6*7+8+9","1*2*3-4*5-6+7*8+9","1*2*3-4*5-6-7+8*9","1*2*3-45+67+8+9","1*2*34+56-7-8*9","1*2*34-5+6-7-8-9","1*2+3*4-56+78+9","1*2+3+4+5*6+7+8-9","1*2+3+4-5+6*7+8-9","1*2+3+4-5-6+7*8-9","1*2+3+45+67-8*9","1*2+3-45+6+7+8*9","1*2+34+5-6-7+8+9","1*2+34+56-7*8+9","1*2+34-5+6+7-8+9","1*2+34-56+7*8+9","1*2+34-56-7+8*9","1*2-3*4+5+67-8-9","1*2-3+4-5-6*7+89","1*2-3-4*5+67+8-9","1*2-3-4+56-7-8+9","1*2-34+5*6+7*8-9","1*23+4*5-6+7-8+9","1*23-4-56-7+89","1+2*3*4*5+6+7-89","1+2*3*4+5*6+7-8-9","1+2*3*4-5+6*7-8-9","1+2*3+4*5*6+7-89","1+2*3+4*5-6+7+8+9","1+2*3-4-5-6*7+89","1+2*34-5*6+7+8-9","1+2+3*4*5+6-7-8-9","1+2+3*4+5+6*7-8-9","1+2+3*45-6-78-9","1+2+3+4+5+6+7+8+9","1+2+3+4+5-6*7+8*9","1+2+3+4-5*6+7*8+9","1+2+3+4-5*6-7+8*9","1+2+3-4*5+6*7+8+9","1+2+3-4*5-6+7*8+9","1+2+3-4*5-6-7+8*9","1+2+3-45+67+8+9","1+2-3*4*5+6+7+89","1+2-3*4+5*6+7+8+9","1+2-3*4-5+6*7+8+9","1+2-3*4-5-6+7*8+9","1+2-3*4-5-6-7+8*9","1+2-3+4*5+6*7-8-9","1+2-3+45+6-7-8+9","1+2-3+45-6+7+8-9","1+2-3-4-5*6+7+8*9","1+2-3-45-6+7+89","1+2-34+5+6+7*8+9","1+2-34+5+6-7+8*9","1+2-34-5-6+78+9","1+23*4+5-6-7*8+9","1+23*4-5-6*7+8-9","1+23*4-56+7-8+9","1+23+4+5+6+7+8-9","1+23+4-5*6+7*8-9","1+23+4-5-67+89","1+23-4*5+6*7+8-9","1+23-4*5-6+7*8-9","1+23-4-5+6+7+8+9","1+23-4-5-6*7+8*9","1+23-45+67+8-9","1-2*3*4+5-6+78-9","1-2*3*4-5-6+7+8*9","1-2*3+4*5+6+7+8+9","1-2*3+4*5-6*7+8*9","1-2*3+4+5+6*7+8-9","1-2*3+4+5-6+7*8-9","1-2*3+4+56+7-8-9","1-2*3+45-67+8*9","1-2*3-4+5*6+7+8+9","1-2*3-4-5+6*7+8+9","1-2*3-4-5-6+7*8+9","1-2*3-4-5-6-7+8*9","1-2*34+5*6-7+89","1-2+3*4*5-6-7+8-9","1-2+3+4-5*6+78-9","1-2+3+45+6-7+8-9","1-2+3-4*5-6+78-9","1-2+3-45+6-7+89","1-2-3*4+5+6+7*8-9","1-2-3*4-5-6+78-9","1-2-3+4-5+67-8-9","1-2-3+45-6-7+8+9","1-2-34+5+6+78-9","1-2-34+56+7+8+9","1-2-34-5+6+7+8*9","1-23*4+5+6*7+89","1-23+4*5-6*7+89","1-23+4-5+67-8+9","1-23+45-67+89","1-23-4+5+67+8-9","1-23-4-5-6-7+89","12*3*4-5*6-78+9","12*3+4+5+6-7-8+9","12*3+4+5-6+7+8-9","12*3-4-5-6+7+8+9","12*3-4-56+78-9","12+3*4+5+6-7+8+9","12+3*45-6-7-89","12+3+4-56-7+89","12+3-4*5+67-8-9","12+3-45+6+78-9","12+34-5-6-7+8+9","12-3*4*5+6+78+9","12-3*4-5+67-8-9","12-3+4*5+6-7+8+9","12-3+4+56-7-8-9","12-3-4+5*6-7+8+9","12-3-4-56+7+89","12-3-45-6+78+9"]            
             
-            # If this is the first operand, we simple go onto the next recursion.
-            if index == 0: 
-                self.recurse(i+1, currVal, ops + [str(currVal)], currVal) # no 
-            else:
-                # when '*'
-                v = value - prev_val
-                self.recurse(i+1, v + (prev_val * currVal), ops + ['*' + str(currVal)], prev_val * currVal)
-                # when "+" 
-                self.recurse(i+1, value + currVal, ops + ['+' + str(currVal)], currVal)
-                # when "-"
-                self.recurse(i+1, value - currVal, ops + ['-' + str(currVal)], -currVal)
-            # If a string starts with '0', then it has to be an operand on its own. We can't have '025' as an operand. That doesn't make sense
-            if nums[index] == '0':
-                break 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        
-        
-            
+for m in my:
+    if m not in lc:
+        print(m)
+for c in lc:
+    if c not in my:
+        print(c)
