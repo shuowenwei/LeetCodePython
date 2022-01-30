@@ -4,6 +4,7 @@
 
 https://leetcode.com/problems/valid-tic-tac-toe-state/submissions/
 
+LC794, LC348
 """
 class Solution(object):
     def validTicTacToe(self, board):
