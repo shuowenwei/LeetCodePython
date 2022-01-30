@@ -4,9 +4,9 @@
 
 https://leetcode.com/problems/range-sum-query-immutable/
 
-https://labuladong.gitee.io/algo/2/21/53/
+https://labuladong.gitee.io/algo/2/21/56/
 
-LC303, LC304, LC560
+LC303, LC304, LC560, LC528
 """
 class NumArray(object):
     
