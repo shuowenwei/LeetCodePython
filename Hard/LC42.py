@@ -6,7 +6,7 @@ https://leetcode.com/problems/trapping-rain-water/
 
 https://labuladong.gitee.io/algo/4/32/136/
 
-LC42, LC11
+LC42, LC11, LC407
 """
 class Solution(object):
     def trap(self, height):
