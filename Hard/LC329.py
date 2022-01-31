@@ -34,8 +34,9 @@ class Solution(object):
         
         # print(graph)
         sorted_values.sort(key=lambda x: x[0])
+        started = set()
         dp_table = {}
-        def dfs(dp_table, i, j):
+        def dfs(i, j):
             if (i, j) in dp_table:
                 return dp_table[(i, j)]
             res = 1
@@ -43,11 +44,13 @@ class Solution(object):
                 return res
             else:
                 for ni, nj in graph[(i, j)]:
-                    res = max(res, 1 + dfs(dp_table, ni, nj))
+                    started.add((ni,nj))
+                    res = max(res, 1 + dfs(ni, nj))
             dp_table[(i, j)] = res
             return res
         final_res = 1
         for s in sorted_values:
             val, i, j = s
-            final_res = max(final_res, dfs({}, i,j) )
+            if (i,j) not in started:
+                final_res = max(final_res, dfs(i,j) )
         return final_res
