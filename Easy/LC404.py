@@ -6,22 +6,28 @@ https://leetcode.com/problems/sum-of-left-leaves/
 
 """
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution: 
-    def sumOfLeftLeaves(self, root: TreeNode) -> int: 
-        if not root: 
-            return 0 
-        # root.left is a left leaf 
-        if root.left and root.left.left is None and root.left.right is None: 
-            return root.left.val + self.sumOfLeftLeaves(root.right)
-        # root.left is a not left leaf 
-        return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right) 
-        
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def sumOfLeftLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        res_left_leaves = []
+        def traverse(node):
+            if node is None:
+                return
+            if node.left and node.left.left is None and node.left.right is None:
+                res_left_leaves.append(node.left.val)
+            traverse(node.left)
+            traverse(node.right)
+        traverse(root)
+        return sum(res_left_leaves)
+                
         """
         if root is None: 
             return 0 
