@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/trapping-rain-water-ii/
 
+https://leetcode.com/problems/trapping-rain-water-ii/discuss/89473/Heap-with-explanation-and-time-complexity
+
 LC42, LC11, LC407
 """
 class Solution(object):
@@ -12,6 +14,33 @@ class Solution(object):
         :type heightMap: List[List[int]]
         :rtype: int
         """
+        # heap, running time: O(mnlog(mn))
+        from heapq import heappush, heappop
+        row, col = len(heightMap), len(heightMap[0])
+        q = []
+        for i in range(row):
+            heappush(q, (heightMap[i][0], i, 0))
+            heappush(q, (heightMap[i][col-1], i, col-1))
+        for j in range(1, col-1):
+            heappush(q, (heightMap[0][j], 0, j))
+            heappush(q, (heightMap[row-1][j], row-1, j))
+            
+        visited = set((i,j) for _, i, j, in q)
+        res = 0
+        while q:
+            h, i, j = heappop(q)
+            for di, dj in [(1,0), (-1,0), (0,1), (0,-1)]:
+                ni = i + di
+                nj = j + dj
+                if (ni, nj) not in visited and ni >= 0 and nj >= 0 and ni < row and nj < col:
+                    visited.add((ni, nj))
+                    res += max(0, h - heightMap[ni][nj])
+                    higherHeight = max(h, heightMap[ni][nj])
+                    heappush(q, (higherHeight, ni, nj) )
+        return res
+        
+        
+""" this is not working! 
         row, col = len(heightMap), len(heightMap[0])
         
         import numpy as np 
@@ -65,3 +94,4 @@ class Solution(object):
         # print(rightHeightMap)
         return int(res)
 
+"""
