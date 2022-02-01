@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/split-array-largest-sum/
 
-https://labuladong.gitee.io/algo/2/21/59/
+https://labuladong.gitee.io/algo/2/21/63/
 https://mp.weixin.qq.com/s/E2cyJwMVxRosaU2-bZyTjA
 
 LC704, LC34, LC875, LC1101, LC410
@@ -28,16 +28,17 @@ class Solution(object):
                 else:
                     sectionSum += nums[i]
             return count
-            
+        
         low = max(nums)
         high = sum(nums)
-        while low < high: 
+        # find left boundary
+        while low <= high: 
             mid = low + (high - low)/2 
             n = splitArray(nums, mid)
             if n == m:
-                high = mid 
+                high = mid - 1
             elif n < m: 
-                high = mid 
+                high = mid - 1
             elif n > m: 
                 low = mid + 1 
         return low 
