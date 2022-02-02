@@ -45,3 +45,28 @@ class Solution(object):
                     window[d] -= 1
         return res
                 
+
+        # my other ugly solution 
+        window_size = len(p)
+        dict_s = collections.defaultdict(lambda : 0)
+        dict_p = collections.defaultdict(lambda : 0)
+        for char in p:
+            dict_p[char] += 1
+        i, j = 0, 0
+        res = []
+        while j < len(s):
+            char = s[j]
+            if char not in dict_p:
+                i = j
+                dict_s = collections.defaultdict(lambda : 0)
+            else:
+                dict_s[char] += 1
+            if j - i + 1 == window_size:
+                # print(i, j, dict_s)
+                if dict_p == dict_s:
+                    res.append(i)
+                if s[i] in dict_s:    # these two rows 
+                    dict_s[s[i]] -= 1 # are important 
+                i += 1
+            j += 1
+        return res 
