@@ -6,7 +6,7 @@ https://leetcode.com/problems/basic-calculator-ii/
 
 https://labuladong.gitee.io/algo/4/32/135/
 
-LC241, LC282, LC43, LC224, LC227, LC772
+LC241, LC282, LC43, LC224, LC227, LC772, LC150
 """
 class Solution(object):
     def calculate(self, s):

@@ -6,7 +6,7 @@ https://leetcode.com/problems/different-ways-to-add-parentheses/
 
 https://labuladong.gitee.io/algo/4/31/130/
 
-LC241, LC282, LC43, LC224, LC227, LC772
+LC241, LC282, LC43, LC224, LC227, LC772, LC150
 """
 class Solution(object):
     def __init__(self):

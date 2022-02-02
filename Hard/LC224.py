@@ -8,7 +8,7 @@ solution: https://leetcode.com/problems/basic-calculator/discuss/62424/Python-co
 
 https://labuladong.gitee.io/algo/4/32/135/
 
-LC43, LC224, LC227, LC772
+LC43, LC224, LC227, LC772, LC150
 """
 class Solution(object):
     def calculate(self, s):
