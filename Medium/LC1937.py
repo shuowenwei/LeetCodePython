@@ -2,7 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/maximum-number-of-points-with-cost/submissions/
+https://leetcode.com/problems/maximum-number-of-points-with-cost
 
 https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1344908/C%2B%2BJavaPython-3-DP-Explanation-with-pictures.
 
@@ -35,7 +35,7 @@ class Solution(object):
             for j in range(col):
                 dp_table[i][j] = max(left[j], right[j]) + points[i][j]
         return max(dp_table[row-1])
-
+"""
         # dp, bottom up
         row, col = len(points), len(points[0])
         dp_table = points[:][:]
@@ -67,3 +67,4 @@ class Solution(object):
             final_res = max(final_res, dp(points, row-1, y))
         print(dp_table)
         return final_res
+"""
