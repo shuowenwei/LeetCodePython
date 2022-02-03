@@ -6,7 +6,7 @@ https://leetcode.com/problems/parallel-courses-iii/
 
 https://leetcode.com/problems/parallel-courses-iii/discuss/1537479/C%2B%2BPython-Topology-Sort-O(M%2B-N)-Clean-and-Concise
 
-LC1834, LC2050
+LC1834, LC2050, LC630
 """
 class Solution(object):
     def minimumTime(self, n, relations, time):
