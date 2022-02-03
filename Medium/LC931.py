@@ -2,12 +2,13 @@
 """
 @author: Wei, Shuowen
 
-https://labuladong.gitee.io/algo/3/23/69/
+https://leetcode.com/problems/minimum-falling-path-sum/
 
-https://labuladong.gitee.io/algo/3/23/69/
+https://labuladong.gitee.io/algo/3/23/74/
 
 LC931, LC64, LC174, LC514
 LC787
+LC931, LC1937
 """
 class Solution(object):
     def minFallingPathSum(self, matrix):

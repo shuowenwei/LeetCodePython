@@ -6,6 +6,7 @@ https://leetcode.com/problems/maximum-number-of-points-with-cost/submissions/
 
 https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1344908/C%2B%2BJavaPython-3-DP-Explanation-with-pictures.
 
+LC931, LC1937
 """
 class Solution(object):
     def maxPoints(self, points):
