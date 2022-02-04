@@ -13,7 +13,7 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        s = list(s)
+        s = list(s) # convert to list, easy to change the item value
         stack = []
         for i in range(len(s)):
             char = s[i]

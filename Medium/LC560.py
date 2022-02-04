@@ -17,25 +17,19 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        # refer to LC303
-        res = 0
-        n = len(nums)    
-        preSum = [0]*(n+1)
-        # self.preSum[i] means sum(nums[0:i]), [0,...,i), not include nums[i]
+        n = len(nums)
+        preSum = [0] * (n+1) 
         for i in range(1, n+1):
             preSum[i] = preSum[i-1] + nums[i-1]
-            
-        hast_table = dict()
-        for i in range(1, n+1):
-            if preSum[i] not in hast_table: 
-                hast_table[preSum[i]] = 0
-            if preSum[i]-k == 0: 
-                res += 1 
-            if preSum[i]-k in hast_table: 
-                res += hast_table[preSum[i]-k]
-            # must consider k == 0, then preSum[i] == preSum[j] - 0
-            hast_table[preSum[i]] += 1            
-        # print(preSum, hast_table)
-        return res
-
         
+        res = 0 
+        dict_hash = collections.defaultdict(lambda : 0)
+        for i in range(0, n+1):
+            # for j in range(i):
+            #     if preSum[i] - preSum[j] == k:  --> preSum[i] - k == preSum[j] 
+            #         res += 1
+            if preSum[i] - k in dict_hash:
+                res += dict_hash[ preSum[i] - k ]
+                
+            dict_hash[preSum[i]] += 1
+        return res
