@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/k-closest-points-to-origin/
 
-LC215, LC973
+LC215, LC973, LC658
 """
 class Solution(object):
     def kClosest(self, points, k):
