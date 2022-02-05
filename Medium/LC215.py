@@ -8,7 +8,7 @@ https://labuladong.gitee.io/algo/4/31/127/
 
 https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60293/Share-my-Python-solution-with-QuickSelect-idea
 
-LC215
+LC215, LC973
 """
 class Solution(object):
     def findKthLargest(self, nums, k):
@@ -43,7 +43,8 @@ class Solution(object):
             if len(min_heap) > k:
                 heappop(min_heap)
         return min_heap[0]
-    
+
+        # solution 3: best and fastest, O(n)
         # QuickSelect with shuffle to avoid worse case scenario
         # https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60293/Share-my-Python-solution-with-QuickSelect-idea
         import random
