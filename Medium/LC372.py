@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/super-pow/
 
-https://labuladong.gitee.io/algo/4/30/119/
+https://labuladong.gitee.io/algo/4/30/121/
 
 LC172, LC793, LC204, LC372, LC268, LC50
 """
@@ -26,6 +26,8 @@ class Solution(object):
                 res = res % base
             return res
         
+        # refer to LC50
+        # (a * b) % k = (a % k)(b % k) % k
         def mypow2(a, k): # computer a**k = a * a * a * .... * a (in total k 'a')
             if k == 0:
                 return 1
