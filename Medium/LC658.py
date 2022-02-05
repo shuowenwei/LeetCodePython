@@ -6,7 +6,7 @@ https://leetcode.com/problems/find-k-closest-elements/
 
 https://leetcode.com/problems/find-k-closest-elements/discuss/106426/JavaC%2B%2BPython-Binary-Search-O(log(N-K)-%2B-K)
 
-LC215, LC973, LC658, LC347
+LC215, LC973, LC658, LC347, LC692
 """
 class Solution(object):
     def findClosestElements(self, arr, k, x):

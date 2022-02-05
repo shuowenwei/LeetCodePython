@@ -2,21 +2,22 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/top-k-frequent-elements/
+https://leetcode.com/problems/top-k-frequent-words/
 
 LC215, LC973, LC658, LC347, LC692
 """
 class Solution(object):
-    def topKFrequent(self, nums, k):
+    def topKFrequent(self, words, k):
         """
-        :type nums: List[int]
+        :type words: List[str]
         :type k: int
-        :rtype: List[int]
+        :rtype: List[str]
         """
         from collections import Counter
-        c = Counter(nums)
+        c = Counter(words)
         freq = [(freq, key) for key, freq in c.items()]
         
+        # refre to LC 347
         def helper(freq, k, res):
             if k <= 0:
                 return res
@@ -35,4 +36,5 @@ class Solution(object):
                 return helper(left, k - len(right + equals), res)
             
         res = helper(freq, k, [])
-        return res 
+        res.sort(key = lambda x : (-c[x], x))
+        return res[:k]
