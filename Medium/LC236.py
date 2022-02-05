@@ -30,9 +30,9 @@ class Solution(object):
         # do sth in post order
         if leftLCA and rightLCA:
             return root
-        elif leftLCA and rightLCA is None:
+        elif leftLCA: # and rightLCA is None:
             return leftLCA 
-        elif leftLCA is None and rightLCA:
+        elif rightLCA: # and leftLCA is None:
             return rightLCA
         else: # both leftLCA and rightLCA are None
             return None #leftLCA or rightLCA
