@@ -2,11 +2,11 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/count-primes/
+https://leetcode.com/problems/super-pow/
 
 https://labuladong.gitee.io/algo/4/30/119/
 
-LC172, LC793, LC204, LC372, LC268
+LC172, LC793, LC204, LC372, LC268, LC50
 """
 class Solution(object):
     def superPow(self, a, b):
