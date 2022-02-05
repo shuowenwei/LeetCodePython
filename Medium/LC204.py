@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/count-primes/
 
-https://labuladong.gitee.io/algo/4/30/118/
+https://labuladong.gitee.io/algo/4/30/120/
 
 LC172, LC793, LC204, LC372, LC268
 """
@@ -13,6 +13,7 @@ class Solution(object):
         """
         :type n: int
         :rtype: int
+        """
         """
         # naive solution: Time Limit Exceeded --- too slow
         def isPrime(num):
@@ -37,7 +38,8 @@ class Solution(object):
             if isPrime[i]:
                 res += 1 
         return res 
-    
+        """
+        
         # solution 3: Sieve of Eratosthenes : O(N * loglogN)
         if n <= 2:
             return 0
@@ -47,6 +49,6 @@ class Solution(object):
         isPrime[1] = False
         for i in range(2, int(n**0.5+1)):
             if isPrime[i]:
-                for j in range(i*2, n, i): #让 j 从 i 的平方开始遍历，而不是从 2 * i 开始：
+                for j in range(i*i, n, i): #让 j 从 i 的平方开始遍历，而不是从 2 * i 开始：
                     isPrime[j] = False
         return sum(isPrime) 
