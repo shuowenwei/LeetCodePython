@@ -14,30 +14,27 @@ class Solution(object):
         """
         :type w: List[int]
         """
-        self.n = len(w)
-        self.preSum = [0]*len(w)
-        self.preSum[0] = w[0]
-        for i in range(1, self.n):
-            self.preSum[i] = self.preSum[i-1] + w[i]
-            
+        self.preSum = [0] * (len(w) + 1)
+        for i in range(1, len(w)+1):
+            self.preSum[i] = self.preSum[i-1] + w[i-1]
+        self.n = len(self.preSum)
+        
     def pickIndex(self):
         """
         :rtype: int
         """
         import random
-        target = random.randint(1, self.preSum[self.n-1])
-        left = 0
-        right = self.n - 1
+        target = random.randint(1, self.preSum[self.n-1]) # // 在闭区间 [1, preSum[n - 1]] 中随机选择一个数字
+        left, right = 0, self.n - 1
         while left <= right:
-            mid = left + (right - left) / 2 
-            if self.preSum[mid] < target:
+            mid = left + (right - left) / 2
+            if self.preSum[mid] < target: 
                 left = mid + 1
-            elif self.preSum[mid] > target:
+            elif self.preSum[mid] > target: 
                 right = mid - 1
-            elif self.preSum[mid] == target:
-                right = mid - 1  
-        return left
-    
+            elif self.preSum[mid] ==  target: 
+                right = mid - 1 
+        return left - 1 #  // preSum 的索引偏移了一位，还原为权重数组 w 的索引
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
