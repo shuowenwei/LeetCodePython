@@ -20,17 +20,18 @@ class Solution(object):
         from heapq import heappush
         res = []
         hp = []
-        p = 0 
-        time = tasks_index[p][0] # earliest task to enter queue 
+        process_index = 0 
+        cur_time = tasks_index[process_index][0] # earliest task to enter queue 
         while len(res) < len(tasks_index): # break when all tasks are processed 
-            while p < len(tasks_index) and tasks_index[p][0] <= time:
-                enter, processtime, index = tasks_index[p]
+            # push all tasks with enter_time <= cur_time, when picking the shortest on to start
+            while process_index < len(tasks_index) and tasks_index[process_index][0] <= cur_time:
+                enter, processtime, index = tasks_index[process_index]
                 heappush(hp, (processtime, index))
-                p += 1
+                process_index += 1
             if hp:
                 processtime, index = heappop(hp)
-                time += processtime
+                cur_time += processtime
                 res.append(index)
-            elif p < len(tasks_index):
-                time = tasks_index[p][0]
+            elif process_index < len(tasks_index):
+                cur_time = tasks_index[process_index][0]
         return res 

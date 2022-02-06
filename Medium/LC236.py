@@ -6,7 +6,7 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
 https://mp.weixin.qq.com/s/9RKzBcr3I592spAsuMH45g
 
-LC235, LC236
+LC235, LC236, LC1650
 """
 # Definition for a binary tree node.
 # class TreeNode(object):

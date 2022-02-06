@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 
-LC235, LC236
+LC235, LC236, LC1650
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
