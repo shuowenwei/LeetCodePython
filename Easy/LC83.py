@@ -6,7 +6,7 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-list/
 
 https://labuladong.gitee.io/algo/4/30/123/
 
-LC26, LC83, LC27, LC283
+LC26, LC83, LC27, LC283, LC80
 """
 # Definition for singly-linked list.
 # class ListNode(object):

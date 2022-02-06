@@ -6,7 +6,7 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
 https://labuladong.gitee.io/algo/4/30/123/
 
-LC26, LC83, LC27, LC283
+LC26, LC83, LC27, LC283, LC80
 """
 class Solution(object):
     def removeDuplicates(self, nums):
