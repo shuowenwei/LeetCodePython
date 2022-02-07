@@ -46,6 +46,7 @@ def traverse(head: ListNode):
 # 160.相交链表（简单）
 # 19.删除链表的倒数第 N 个结点（中等）
 
+# LC234, LC5, LC1312, LC516
 def reverseWholeLinkedList(head, till = None):
     pre = None 
     cur = head 
