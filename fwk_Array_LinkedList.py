@@ -49,7 +49,7 @@ def traverse(head: ListNode):
 def reverseWholeLinkedList(head, till = None):
     pre = None 
     cur = head 
-    nxt = head 
+    # nxt = head 
     while cur is not till:
         nxt = cur.next
         cur.next = pre

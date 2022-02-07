@@ -7,7 +7,7 @@ https://leetcode.com/problems/reverse-linked-list/
 labuladong: https://labuladong.gitee.io/algo/2/17/17/
 
 labuladong: https://labuladong.gitee.io/algo/2/17/18/
-
+LC206
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -36,7 +36,7 @@ class Solution(object):
         # def reverseList(self, head, till = None):
         pre = None 
         cur = head
-        nxt = head 
+        # nxt = head 
         while cur is not None: #(cur != till)
             nxt = cur.next
             cur.next = pre

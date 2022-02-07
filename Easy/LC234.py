@@ -6,7 +6,7 @@ https://leetcode.com/problems/palindrome-linked-list/
 
 https://labuladong.gitee.io/algo/2/17/19/
 
-LC92, LC25, LC234
+LC92, LC25, LC234, LC206
 LC234, LC5, LC1312, LC516
 """
 # Definition for singly-linked list.
@@ -62,7 +62,7 @@ class Solution(object):
         return traverse(head)
         
         # solution 3: minmimal memory / no extra storage/space 
-        def reverseWholeLinkedList(head, till = None):
+        def reverseWholeLinkedList(head, till = None): # refer to LC206
             pre = None 
             cur = head 
             # nxt = head 

@@ -6,7 +6,7 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 labuladong: https://labuladong.gitee.io/algo/2/17/18/
 
-LC92, LC25, LC234
+LC92, LC25, LC234, LC206
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -20,7 +20,7 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        def reverseWholeLinkedList(head, till=None):
+        def reverseWholeLinkedList(head, till=None): # refer to LC206
             pre = None 
             cur = head 
             # nxt = head 

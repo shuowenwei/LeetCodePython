@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/reverse-linked-list-ii/
 
-LC92, LC25, LC234
+LC92, LC25, LC234, LC206
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -19,7 +19,7 @@ class Solution(object):
         :type right: int
         :rtype: ListNode
         """
-        def reverseWholeLinkedList(head, till = None):
+        def reverseWholeLinkedList(head, till = None): # refer to LC206
             pre = None 
             cur = head 
             # nxt = head 
@@ -51,15 +51,17 @@ class Solution(object):
         first_part.next.next = cur # point the next of the reversed part to the second part
         first_part.next = pre # first_part.next points to the new head of the reversed part
         return dummyHead.next
-    
+
         # notes from LC206
-        # # def reverseList(self, head, till=None):
-        # pre = None 
-        # cur = head
+        """
+        # def reverseList(self, head, till=None):
+        pre = None 
+        cur = head
         # nxt = head 
-        # while cur is not None: #(cur != till)
-        #     nxt = cur.next
-        #     cur.next = pre
-        #     pre = cur
-        #     cur = nxt
-        # return pre
+        while cur is not None: #(cur != till)
+            nxt = cur.next
+            cur.next = pre
+            pre = cur
+            cur = nxt
+        return pre
+        """
