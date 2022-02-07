@@ -9,9 +9,9 @@ def traverse(arr):
 
 # /* 基本的单链表节点 */
 class ListNode(object):
-    def __init__(self, val):
+    def __init__(self, val, next = None):
         self.val = val
-        self.next = None 
+        self.next = next 
 
 def traverse(head: ListNode):
     p = head 
@@ -46,7 +46,7 @@ def traverse(head: ListNode):
 # 160.相交链表（简单）
 # 19.删除链表的倒数第 N 个结点（中等）
 
-def reverseWholeLinkedList(head, till=None):
+def reverseWholeLinkedList(head, till = None):
     pre = None 
     cur = head 
     nxt = head 
@@ -56,3 +56,35 @@ def reverseWholeLinkedList(head, till=None):
         pre = cur 
         cur = nxt 
     return pre, cur
+    # pre is the new head 
+    # cur is till
+    
+"""
+class ListNode(object):
+    def __init__(self, val = 0, nxt = None):
+        self.val = val 
+        self.next = nxt 
+
+node6 = ListNode(6)
+node5 = ListNode(5, node6)
+node4 = ListNode(4, node5)
+node3 = ListNode(3, node4)
+node2 = ListNode(2, node3)
+node1 = ListNode(1, node2)
+head = ListNode(0, node1)
+
+newHead, cur = reverseWholeLinkedList(node3, node6)
+while head:
+    print(' -> ', head.val, end = ' ')
+    head = head.next 
+print()
+
+
+while newHead:
+    print(' -> ', newHead.val, end = ' ')
+    newHead = newHead.next 
+print()
+print(cur.val)
+print(node3)
+print(node3.next)
+"""

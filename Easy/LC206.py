@@ -21,17 +21,19 @@ class Solution(object):
         :rtype: ListNode
         """
         # # solution: recursive, elegant solution: https://labuladong.gitee.io/algo/2/17/17/
-        # if head is None:
-        #     return None
-        # if head.next is None:
-        #     return head
-        # last = self.reverseList(head.next)
-        # head.next.next = head
-        # head.next = None
-        # return last 
+        """
+        if head is None:
+            return None
+        if head.next is None:
+            return head
+        last = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return last 
+        """
         
         # solution 2: one extra pointer
-        # def reverseList(self, head, till=None):
+        # def reverseList(self, head, till = None):
         pre = None 
         cur = head
         nxt = head 
