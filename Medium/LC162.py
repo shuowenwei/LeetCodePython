@@ -13,6 +13,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if len(nums) <= 2:
+            return nums.index(max(nums))
+ # if an element(not the right-most one) is smaller than its right neighbor, 
+ # then there must be a peak element on its right, because the elements on its right is either 
+ #   1. always increasing  -> the right-most element is the peak
+ #   2. always decreasing  -> the left-most element is the peak
+ #   3. first increasing then decreasing -> the pivot point is the peak
+ #   4. first decreasing then increasing -> the left-most element is the peak  
+ # Therefore, we can find the peak only on its right elements( cut the array to half)
+ # The same idea applies to that an element(not the left-most one) is smaller than its left neighbor.
         left, right = 0, len(nums) - 1
         while left < right - 1:
             mid = left + (right - left) / 2
