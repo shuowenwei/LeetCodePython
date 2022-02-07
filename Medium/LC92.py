@@ -29,6 +29,8 @@ class Solution(object):
                 pre = cur 
                 cur = nxt 
             return pre, cur
+            # pre is the new head 
+            # cur is till
         
         dummyHead = ListNode(-1)
         dummyHead.next = head 

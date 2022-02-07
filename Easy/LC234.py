@@ -62,7 +62,7 @@ class Solution(object):
         return traverse(head)
         
         # solution 3: minmimal memory
-        def reverseWholeLinkedList(head, till=None):
+        def reverseWholeLinkedList(head, till = None):
             pre = None 
             cur = head 
             nxt = head 
@@ -72,6 +72,8 @@ class Solution(object):
                 pre = cur 
                 cur = nxt 
             return pre, cur
+            # pre is the new head 
+            # cur is till
         
         fast = slow = head 
         # get the midpoint (slow) 
