@@ -32,4 +32,5 @@ class Solution(object):
                 left = mid + 1 
             else:
                 right = mid - 1
+        #handle condition 1 and 2
         return left if nums[left] >= nums[right] else right
