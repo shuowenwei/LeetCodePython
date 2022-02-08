@@ -30,11 +30,11 @@ class Solution(object):
             elif k - len(left) <= len(equals):
                 for d, x, y in left + equals:
                     res.append([x, y])
-                return helper(equals, k - len(left+equals), res)
+                return helper(equals, k - len(left + equals), res)
             else:
                 for d, x, y in left + equals:
                     res.append([x, y])
-                return helper(right, k - len(equals+left), res)
+                return helper(right, k - len(left + equals), res)
             # return res
 
         res = helper(distance, k, [])
