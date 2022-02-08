@@ -23,24 +23,23 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        if not lists:
-            return None
-
-        # the new_head.next is to be returned 
-        new_head = ListNode(0)
-        cur = new_head
+        # if not lists:
+        #     return None
+        from heapq import heappush, heappop 
+        # the dummy_head.next is to be returned 
+        dummy_head = ListNode(-1)
+        cur = dummy_head
         # initialize heap
-        import heapq 
-        hq = [(ln.val, i) for i, ln in enumerate(lists) if ln is not None]
-        heapq.heapify(hq)
-        # find the smallest val among the k listnodes
-        while hq:
-            min_val, ln_index = heapq.heappop(hq)
-            cur.next = ListNode(min_val)
-            cur = cur.next 
-            # the pointer of the linked list has the min val, must move to the next and push into the heap
-            lists[ln_index] = lists[ln_index].next
-            if lists[ln_index] is not None: 
-                heapq.heappush(hq, (lists[ln_index].val, ln_index) )
+        hp = []
+        for index, ln_head in enumerate(lists):
+            if ln_head:
+                heappush(hp, (ln_head.val, ln_head, index)) # index is not even needed 
 
-        return new_head.next
+        # find the smallest val among the k listnodes
+        while hp:
+            _, node, index = heappop(hp)  # index is not even needed 
+            cur.next = node
+            cur = cur.next
+            if node.next:
+                heappush(hp, (node.next.val, node.next, index))  # index is not even needed 
+        return dummy_head.next
