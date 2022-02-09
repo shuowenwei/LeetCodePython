@@ -6,7 +6,7 @@ https://leetcode.com/problems/add-and-search-word-data-structure-design
 
 https://leetcode.com/problems/design-add-and-search-words-data-structure/discuss/774530/Python-Trie-solution-with-dfs-explained
 
-LC208, LC1804, LC648, LC211
+LC208, LC1804, LC648, LC211, LC677
 """
 class TrieNode(object):
     # Initialize your data structure here.

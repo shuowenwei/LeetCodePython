@@ -7,7 +7,7 @@ https://leetcode.com/problems/replace-words/
 https://labuladong.gitee.io/algo/2/20/47/
 
 LC79, LC212, LC208
-LC208, LC1804, LC648, LC211
+LC208, LC1804, LC648, LC211, LC677
 """
 class TrieNode(object):
     # Initialize your data structure here.
