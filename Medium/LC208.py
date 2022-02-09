@@ -6,6 +6,8 @@ https://leetcode.com/problems/implement-trie-prefix-tree/
 
 https://labuladong.gitee.io/algo/2/20/47/
 
+https://leetcode.com/problems/implement-trie-prefix-tree/discuss/58834/AC-Python-Solution
+
 LC79, LC212, LC208
 """
 class TrieNode(object):
@@ -17,33 +19,41 @@ class TrieNode(object):
 class Trie(object):
 
     def __init__(self):
-        self.root = TrieNode
+        self.root = TrieNode()
 
     def insert(self, word):
         """
         :type word: str
         :rtype: None
         """
-        for char in word:
-            if c not in self.tire:
-                self.tire[c] = {}
-            self.tire = self.tire[c]
-        
+        current = self.root
+        for letter in word:
+            current = current.children[letter]
+        current.is_word = True
 
     def search(self, word):
         """
         :type word: str
         :rtype: bool
         """
-        
+        current = self.root
+        for letter in word:
+            current = current.children.get(letter)
+            if current is None:
+                return False
+        return current.is_word 
 
     def startsWith(self, prefix):
         """
         :type prefix: str
         :rtype: bool
         """
-        
-
+        current = self.root
+        for letter in prefix:
+            current = current.children.get(letter)
+            if current is None:
+                return False
+        return True
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
