@@ -4,6 +4,7 @@
 
 https://leetcode.com/problems/word-search/
 
+LC79, LC212
 """
 class Solution(object):
     def exist(self, board, word):
