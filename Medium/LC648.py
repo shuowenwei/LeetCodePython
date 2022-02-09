@@ -2,11 +2,9 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/implement-trie-prefix-tree/
+https://leetcode.com/problems/replace-words/
 
 https://labuladong.gitee.io/algo/2/20/47/
-
-https://leetcode.com/problems/implement-trie-prefix-tree/discuss/58834/AC-Python-Solution
 
 LC79, LC212, LC208
 LC208, LC1804, LC648
@@ -55,9 +53,36 @@ class Trie(object):
             if current is None:
                 return False
         return True
-
-# Your Trie object will be instantiated and called as such:
-# obj = Trie()
-# obj.insert(word)
-# param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix)
+    
+    def shortestPrefix(self, query):
+        current = self.root
+        res = ''
+        for i in range(len(query)):
+            if current is None:
+                return ''
+            if current.is_word:
+                return res # query[:i] won't work, for single letter input such as 'a'
+            letter = query[i]
+            current = current.children[letter]
+            res += letter
+        if current.is_word is False:
+            return res
+        return res
+        
+class Solution(object):
+    def replaceWords(self, dictionary, sentence):
+        """
+        :type dictionary: List[str]
+        :type sentence: str
+        :rtype: str
+        """
+        trie = Trie()
+        for word in dictionary:
+            trie.insert(word)
+        
+        res = []
+        for sen_word in sentence.split():
+            prefix = trie.shortestPrefix(sen_word)
+            res.append(prefix)     
+        return ' '.join(res)
+    
