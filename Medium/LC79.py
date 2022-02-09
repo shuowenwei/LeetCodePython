@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/word-search/
 
+https://leetcode.com/problems/word-search/discuss/27660/Python-dfs-solution-with-comments.
+
 LC79, LC212
 """
 class Solution(object):
@@ -54,6 +56,30 @@ class Solution(object):
                     continue
         backtrack(board, word, 0, path)   
         return res[-1]
+
+        # solution refer to 
+        # https://leetcode.com/problems/word-search/discuss/27660/Python-dfs-solution-with-comments.
+        if len(word) == 0:
+            return True
+        def backtrack(board, i, j, word, visited):
+            row, col = len(board), len(board[0])
+            if len(word) == 0:
+                return True
+            if i<0 or i>=row or j<0 or j>= col or board[i][j] != word[0] or (i,j) in visited:
+                return False
+            visited.add((i,j))
+            res = backtrack(board, i+1, j, word[1:], visited) or backtrack(board, i-1, j, word[1:], visited) or backtrack(board, i, j+1, word[1:], visited) or backtrack(board, i, j-1, word[1:], visited)
+            visited.remove((i,j))
+            return res 
+        visited = set()
+        row, col = len(board), len(board[0])
+        for i in range(row):
+            for j in range(col):
+                if backtrack(board, i, j, word, visited):
+                    return True
+        return False 
+
+
 
 board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word = "ABCCED"
