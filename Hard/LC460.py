@@ -103,7 +103,7 @@ class LFUCache(object):
         
     def increaseFreq(self, key):
         node = self.key2Node[key]
-        oldFreq = node.freq
+    oldFreq = node.freq
         node.freq += 1
         newFreq = node.freq
         # print('oldFreq',oldFreq, 'newFreq',newFreq)
