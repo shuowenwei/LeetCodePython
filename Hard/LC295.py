@@ -60,3 +60,49 @@ class MedianFinder(object): #the add operation is O(logn), The findMedian operat
 # obj = MedianFinder()
 # obj.addNum(num)
 # param_2 = obj.findMedian()
+
+
+
+
+# my way
+from heapq import heappop, heappush
+class MedianFinder(object):
+    def __init__(self):
+        self.min_heap = []
+        self.max_heap = [] # always push a negative number into it  
+
+    def addNum(self, num):
+        """
+        :type num: int
+        :rtype: None
+        """
+        # always make len(self.max_heap) == len(self.min_heap)  or + 1
+        if len(self.max_heap) == 0: # when self.max_heap is empty 
+            heappush(self.max_heap, -num)
+        elif len(self.max_heap) == len(self.min_heap):
+            if num < -self.max_heap[0]: # max_heap should always have at least one element
+                heappush(self.max_heap, -num)
+            else:
+                heappush(self.min_heap, num)
+                heappush(self.max_heap, -heappop(self.min_heap))
+        else:
+            if num > -self.max_heap[0]: # max_heap should always have at least one element
+                heappush(self.min_heap, num)
+            else:
+                heappush(self.max_heap, -num)
+                heappush(self.min_heap, -heappop(self.max_heap))
+            
+    def findMedian(self):
+        """
+        :rtype: float
+        """
+        if len(self.min_heap) == len(self.max_heap):
+            return (self.min_heap[0] - self.max_heap[0]) / 2.0
+        else:
+            return - self.max_heap[0]
+
+
+# Your MedianFinder object will be instantiated and called as such:
+# obj = MedianFinder()
+# obj.addNum(num)
+# param_2 = obj.findMedian()
