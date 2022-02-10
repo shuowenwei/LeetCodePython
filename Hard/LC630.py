@@ -8,6 +8,7 @@ https://leetcode.com/problems/course-schedule-iii/discuss/104847/Python-Straight
 
 LC1834, LC2050, LC630
 greedy
+LC207, LC210, LC630
 """
 class Solution(object):
     def scheduleCourse(self, courses):

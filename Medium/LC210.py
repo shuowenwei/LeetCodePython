@@ -6,9 +6,8 @@ https://leetcode.com/problems/course-schedule-ii/
 
 https://labuladong.gitee.io/algo/2/19/35/
 
-LC797, LC207, LC210
+LC797, LC207, LC210, LC630
 LC785, LC886
-
 """
 class Solution(object):
     def findOrder(self, numCourses, prerequisites):
@@ -28,9 +27,8 @@ class Solution(object):
         postorder = []
         def traverse(graph, s):
             if onPath[s]:
-                hasCycle.append(True)
-                return
-            if visited[s] or hasCycle[-1]:
+                hasCycle[0] = True
+            if visited[s] or hasCycle[0]:
                 return
             # // 前序遍历位置
             visited[s] = True
@@ -43,12 +41,10 @@ class Solution(object):
         
         for i in range(numCourses):
             traverse(graph, i)
-            if hasCycle[-1]:
-                break
-        if hasCycle[-1]:
-            return []
-        else:
-            return postorder  # wrong: res = postorder[::-1]
+            if hasCycle[0]:
+                return []
+        return postorder  # wrong: res = postorder[::-1]
+
 numCourses = 2
 prerequisites = [[1,0]]
 
