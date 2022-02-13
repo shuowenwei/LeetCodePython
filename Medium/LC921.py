@@ -6,7 +6,7 @@ https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
 
 https://labuladong.gitee.io/algo/4/32/138/
 
-LC20, LC921, LC1541, LC1963
+LC20, LC921, LC1541, LC1963, LC301
 """
 class Solution(object):
     def minAddToMakeValid(self, s):

@@ -6,7 +6,7 @@ https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string
 
 https://labuladong.gitee.io/algo/4/32/138/
 
-LC20, LC921, LC1541
+LC20, LC921, LC1541, LC1963, LC301
 """
 class Solution(object):
     def minInsertions(self, s):

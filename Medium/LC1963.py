@@ -4,7 +4,9 @@
 
 https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/
 
-LC20, LC921, LC1541, LC1963
+https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/discuss/1390249/JavaPython-3-Space-O(1)-time-O(n)-codes-w-brief-explanation.
+
+LC20, LC921, LC1541, LC1963, LC301
 """
 class Solution(object):
     def minSwaps(self, s):
