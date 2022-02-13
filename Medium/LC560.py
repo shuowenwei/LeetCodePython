@@ -30,6 +30,9 @@ class Solution(object):
             #         res += 1
             if preSum[i] - k in dict_hash:
                 res += dict_hash[ preSum[i] - k ]
-                
             dict_hash[preSum[i]] += 1
+            # if preSum[i] not in dict_map:
+            #     dict_map[preSum[i]] = 1
+            # else:
+            #     dict_map[preSum[i]] += 1
         return res
