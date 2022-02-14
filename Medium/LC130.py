@@ -17,14 +17,13 @@ class Solution(object):
         :rtype: None Do not return anything, modify board in-place instead.
         """
         # solution 1: BFS via queue
-        from collections import deque 
-        rowNum, colNum = len(board), len(board[0])
+        row, col = len(board), len(board[0])
         # get all 'O' on the 4 edges and put in a qeueu
-        edgeO1 = [(i,j) for i in range(rowNum) for j in [0, colNum-1] if board[i][j] == 'O']
-        edgeO2 = [(i,j) for i in [0, rowNum-1] for j in range(colNum) if board[i][j] == 'O']
-        q = deque(edgeO1 + edgeO2)
+        edgeRow = [(i,j) for i in range(row) for j in [0, col-1] if board[i][j] == 'O']
+        edgeCol = [(i,j) for i in [0, row-1] for j in range(1, col-1) if board[i][j] == 'O']
+        q = collections.deque(edgeRow + edgeCol)
         while q: 
-            i,j = q.popleft()
+            i, j = q.popleft()
             if board[i][j] == 'O':
                 board[i][j] = '#'
                 # add all its neighbors to queue and check 
@@ -32,13 +31,12 @@ class Solution(object):
                     q.append((i-1, j))
                 if j > 0: 
                     q.append((i, j-1))
-                if i < rowNum-1: 
+                if i < row - 1: 
                     q.append((i+1, j))
-                if j < colNum-1: 
+                if j < col - 1: 
                     q.append((i, j+1))
-
-        for i in range(rowNum):
-            for j in range(colNum):
+        for i in range(row):
+            for j in range(col):
                 if board[i][j]== 'O':
                     board[i][j] = 'X'
                 elif board[i][j]== '#':

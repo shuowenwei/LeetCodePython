@@ -1,4 +1,4 @@
-# https://labuladong.gitee.io/algo/2/19/37/
+# https://labuladong.gitee.io/algo/2/19/38/
 
 # 我们使用森林（若干棵树）来表示图的动态连通性，用数组来具体实现这个森林。
 class UnionFind(object):
@@ -52,8 +52,8 @@ class UnionFind(object):
 class Solution(object):
     def solve(self, board):
         """
-        :type board: List[List[str]]
-        :rtype: None Do not return anything, modify board in-place instead.
+        # :type board: List[List[str]]
+        # :rtype: None Do not return anything, modify board in-place instead.
         """
         rowNum, colNum = len(board), len(board[0])
         uf = UnionFind(rowNum*colNum+1)
