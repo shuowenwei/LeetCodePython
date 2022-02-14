@@ -4,8 +4,7 @@
 
 https://leetcode.com/problems/number-of-provinces/
 
-LC323, LC130, LC990
-LC547
+LC323, LC130, LC990, LC547, LC847
 LC261, LC1135, LC1584
 """
 class Solution(object):

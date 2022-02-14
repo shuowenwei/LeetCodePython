@@ -9,6 +9,13 @@ class UnionFind(object):
         #     self.parent[i] = i
         self.size = [1 for i in range(count)]
 
+    def find(self, x):
+        # 可见，调用 find 函数每次向树根遍历的同时，顺手将树高缩短了，最终所有树高都不会超过 3（union 的时候树高可能达到 3）。
+        while self.parent[x] != x:
+            self.parent[x] = self.parent[self.parent[x]] # O(1)
+            x = self.parent[x]
+        return x
+
     def union(self, p, q):
         rootP = self.find(p) 
         rootQ = self.find(q)
@@ -23,13 +30,6 @@ class UnionFind(object):
             self.size[rootQ] += self.size[rootP]
         self.cnt -= 1
         # find , union , connected 的时间复杂度从O(N)都下降为 O(logN)，即便数据规模上亿，所需时间也非常少
-        
-    def find(self, x):
-        # 可见，调用 find 函数每次向树根遍历的同时，顺手将树高缩短了，最终所有树高都不会超过 3（union 的时候树高可能达到 3）。
-        while self.parent[x] != x:
-            self.parent[x] = self.parent[self.parent[x]] # O(1)
-            x = self.parent[x]
-        return x
         
     def count(self):
         return self.cnt
