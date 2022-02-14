@@ -46,6 +46,7 @@ class UnionFind(object):
 # 因为路径压缩保证了树高为常数（不超过 3），那么树就算不平衡，高度也是常数，基本没什么影响。
 # 论时间复杂度的话，确实，不需要重量平衡也是 O(1)。但是如果加上 size 数组辅助，效率还是略微高一些。
 
+# LC323, LC130, LC990, LC547, LC847
 
 # LC130: https://leetcode.com/problems/surrounded-regions/
 """
