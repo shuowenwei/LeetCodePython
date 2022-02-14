@@ -7,6 +7,7 @@ https://leetcode.com/problems/remove-invalid-parentheses/
 https://leetcode.com/problems/remove-invalid-parentheses/discuss/75032/Share-my-Java-BFS-solution
 
 LC20, LC921, LC1541, LC1963, LC301
+-BFS
 """
 class Solution(object):
     def removeInvalidParentheses(self, s):
