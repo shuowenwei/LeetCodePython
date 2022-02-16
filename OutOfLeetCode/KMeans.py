@@ -5,15 +5,17 @@ class K_Means:
         self.max_iter = max_iter
 
     def fit(self, data):
-
+        
+        # if len(data) < self.k:
+        #     rasie Exception("Sorry, k must be >= data length")
+        
         self.centroids = {}
-
         for i in range(self.k):
             self.centroids[i] = data[i]
 
         for i in range(self.max_iter):
+            # each iteration, initialize a new classification dictionary 
             self.classifications = {}
-
             for i in range(self.k):
                 self.classifications[i] = []
 
