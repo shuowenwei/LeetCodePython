@@ -52,10 +52,9 @@ class UnionFind(object):
 """
 class Solution(object):
     def solve(self, board):
-        """
         # :type board: List[List[str]]
         # :rtype: None Do not return anything, modify board in-place instead.
-        """
+        
         rowNum, colNum = len(board), len(board[0])
         uf = UnionFind(rowNum*colNum+1)
         dummy = rowNum*colNum
