@@ -24,14 +24,14 @@ class Solution(object):
                 return 0 
             if i == j:
                 return 1
-            if (i,j) in dp_table:
-                return dp_table[(i,j)]
+            if (i, j) in dp_table:
+                return dp_table[(i, j)]
             # 状态转移方程
             if s[i] == s[j]:
                 res = dp(s, i+1, j-1) + 2
             else:
                 res = max( dp(s, i+1, j), dp(s, i, j-1) )
-            dp_table[(i,j)] = res
+            dp_table[(i, j)] = res
             return res
         return dp(s, 0, n-1)
 
