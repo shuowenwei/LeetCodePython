@@ -5,13 +5,13 @@
 // ; 如果数据量太大，就存Pair<value, count>, 再不行就用分布式分段计算
 import java.util.*;
 public class Test {
-    PriorityQueue<Integer> bottom;
+PriorityQueue<Integer> bottom;
     PriorityQueue<Integer> top;
     TreeSet<Integer> middle;
     int totalSize;
     int percentage;
     int sumOfMiddle;
-    /** initialize your data structure here. */
+//     /** initialize your data structure here. */
     public Test() {
         bottom = new PriorityQueue<>((a, b)-> b.compareTo(a));
         top = new PriorityQueue<>();
