@@ -11,7 +11,6 @@ class Solution(object):
         :type path: str
         :rtype: str
         """
-        # path = path.replace('//', '/')
         stack = []
         tmp = ''
         for i in range(len(path)):
@@ -23,7 +22,7 @@ class Solution(object):
                 if tmp == '..':
                     if stack:
                         stack.pop()
-                elif tmp in ('.', ''):
+                elif tmp in ('.', ''): # '/'
                     pass
                 else:
                     stack.append(tmp)
