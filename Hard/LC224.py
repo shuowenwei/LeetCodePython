@@ -6,7 +6,7 @@ https://leetcode.com/problems/basic-calculator/
 
 solution: https://leetcode.com/problems/basic-calculator/discuss/62424/Python-concise-solution-with-stack.
 
-https://labuladong.gitee.io/algo/4/32/135/
+https://labuladong.gitee.io/algo/4/32/136/
 
 LC43, LC224, LC227, LC772, LC150
 """
@@ -25,7 +25,6 @@ class Solution(object):
                 char = s.popleft() # this is faster than using list(s)
                 if char.isdigit():
                     num = 10*num + int(char)
-                
                 if char == '(':
                     num = helper(s)
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
@@ -70,3 +69,34 @@ class Solution(object):
         res += sign*num 
         return res
         """
+
+"(7)-(4+0)+(4)": 
+(u'(', '+', [])
+(u'7', '+', [])
+(u')', '+', [])
+(u'-', u'(', [7])
+(u'(', u'-', [7])
+(u'4', '+', [])
+(u'+', '+', [])
+(u'0', u'+', [4])
+(u')', u'+', [4])
+(u'+', u'(', [7, -4])
+(u'(', u'+', [7, -4])
+(u'4', '+', [])
+(u')', '+', [])
+
+
+(u'(', '+', [])
+(u'7', '+', [])
+(u')', '+', [])
+(u'-', u'(', [0])
+(u'(', u'-', [0])
+(u'4', '+', [])
+(u'+', '+', [])
+(u'0', u'+', [4])
+(u')', u'+', [4])
+(u'+', u'(', [0, 0])
+(u'(', u'+', [0, 0])
+(u'4', '+', [])
+(u')', '+', [])
+
