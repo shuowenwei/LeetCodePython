@@ -17,6 +17,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        nums.sort(reverse = True)
+        return nums[k-1]
+
         # solution 1: using a max_heap, and pop k times 
         from heapq import heapify, heappop
         max_heap = [-n for n in nums]
@@ -55,7 +58,7 @@ class Solution(object):
         right = [r for r in nums if r > pivot]
         if k <= len(right):
             return self.findKthLargest(right, k)
-        elif k-len(right) <= len(equal):
+        elif k - len(right) <= len(equal):
             return equal[0]
         else:
-            return self.findKthLargest(left, k-len(right+equal))
+            return self.findKthLargest(left, k-len(right + equal))

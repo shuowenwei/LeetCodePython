@@ -70,6 +70,7 @@ class Solution(object):
         return res
         """
 
+"""
 "(7)-(4+0)+(4)": 
 (u'(', '+', [])
 (u'7', '+', [])
@@ -100,3 +101,4 @@ class Solution(object):
 (u'4', '+', [])
 (u')', '+', [])
 
+""" 
