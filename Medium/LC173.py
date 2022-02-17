@@ -25,18 +25,18 @@ class BSTIterator(object):
         self.stack = []
         self.pushLeftBranch(root)
         
-    def pushLeftBranch(self, ln):
-        while ln is not None:
-            self.stack.append(ln)
-            ln = ln.left
+    def pushLeftBranch(self, node):
+        while node:
+            self.leftTrees.append(node)
+            node = node.left
 
     def next(self):
         """
         :rtype: int
         """
-        outnode = self.stack.pop() 
-        self.pushLeftBranch(outnode.right)
-        return outnode.val 
+        outNode = self.stack.pop() 
+        self.pushLeftBranch(outNode.right)
+        return outNode.val 
 
     def hasNext(self):
         """
