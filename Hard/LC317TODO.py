@@ -7,8 +7,9 @@ https://leetcode.com/problems/shortest-distance-from-all-buildings/
 https://blog.csdn.net/qq_37821701/article/details/108906696
 
 """
+import collections
 class Solution:
-    def shortestDistance(self, grid: List[List[int]]) -> int:
+    def shortestDistance(self, grid):
         def helper(i,j):
             visited = set()
             buildings = set()
@@ -57,7 +58,7 @@ class Solution:
 
 
 class Solution:
-    def shortestDistance(self, grid: List[List[int]]) -> int:
+    def shortestDistance(self, grid):
         def bfs(i,j):
             visited = [[False]*n for _ in range(m)]
             q = collections.deque()
