@@ -20,16 +20,16 @@ class Solution(object):
         res = 0 
         # midZeros = []
         preZeros, postZeros = 0, 0
-        first_one_flag = True
+        first_1_flag = True
         zeros = 0 
         for i in range(len(flowerbed)):
             if flowerbed[i] == 0:
                 zeros += 1
             else: 
                 #flowerbed[i] == 1
-                if first_one_flag:
+                if first_1_flag:
                     preZeros = max(preZeros, zeros)
-                    first_one_flag = False
+                    first_1_flag = False
                 else:
                     # midZeros.append(zeros)
                     res += (zeros-1)/2
@@ -39,7 +39,7 @@ class Solution(object):
         res += preZeros/2 + postZeros/2 # + sum([(m-1)/2 for m in midZeros])
         return res >= n
 
-        # solution 2:
+        # solution 2: greedy~~~~~
         # https://leetcode.com/problems/can-place-flowers/discuss/1048610/Python-Simple-solution-using-counting
         res = 0 
         flowerbed = [0] + flowerbed + [0]
