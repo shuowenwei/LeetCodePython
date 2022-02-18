@@ -18,7 +18,7 @@ class Node:
 
 class Solution(object):
     def __init__(self):
-        self.dct_visited = {}
+        self.dct_oldNode2newNode = {}
 
     def copyRandomList(self, head):
         """
@@ -27,10 +27,11 @@ class Solution(object):
         """
         if head is None:
             return None
-        if head in self.dct_visited:
-            return self.dct_visited[head]
+        if head in self.dct_oldNode2newNode:
+            return self.dct_oldNode2newNode[head]
+        
         node = Node(head.val)
-        self.dct_visited[head] = node
+        self.dct_oldNode2newNode[head] = node
         
         node.next = self.copyRandomList(head.next)
         node.random = self.copyRandomList(head.random)
