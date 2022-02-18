@@ -4,6 +4,7 @@
 
 https://leetcode.com/problems/string-compression/
 
+LC443, LC1868
 """
 class Solution(object):
     def compress(self, chars):

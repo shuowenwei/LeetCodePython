@@ -72,7 +72,7 @@ class Solution(object):
 #     if c not in my:
 #         print(c)
         
-# # https://leetcode.com/problems/expression-add-operators/discuss/572099/C%2B%2BJavaPython-Backtracking-and-Evaluate-on-the-fly-Clean-and-Concise
+# https://leetcode.com/problems/expression-add-operators/discuss/572099/C%2B%2BJavaPython-Backtracking-and-Evaluate-on-the-fly-Clean-and-Concise
 class Solution:
     def addOperators(self, s, target):
         def backtrack(i, path, resultSoFar, prevNum):
@@ -82,16 +82,19 @@ class Solution:
                 return
 
             for j in range(i, len(s)):
-                if j > i and s[i] == '0': break  # Skip leading zero number
+                if j > i and s[i] == '0': 
+                    break  # Skip leading zero number
                 num = int(s[i:j + 1])
                 if i == 0:
-                    backtrack(j + 1, path + str(num), resultSoFar + num, num)  # First num, pick it without adding any operator
+                    # First num, pick it without adding any operator
+                    backtrack(j + 1, path + str(num), resultSoFar + num, num)  
                 else:
                     backtrack(j + 1, path + "+" + str(num), resultSoFar + num, num)
                     backtrack(j + 1, path + "-" + str(num), resultSoFar - num, -num)
-                    backtrack(j + 1, path + "*" + str(num), resultSoFar - prevNum + prevNum * num, prevNum * num)  # Can imagine with example: 1+2*3*4
-
+                    # Can imagine with example: 1+2*3*4
+                    backtrack(j + 1, path + "*" + str(num), resultSoFar - prevNum + prevNum * num, prevNum * num)  
         ans = []
         backtrack(0, "", 0, 0)
         return ans
+
     
