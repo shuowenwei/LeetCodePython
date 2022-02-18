@@ -22,6 +22,22 @@ class Solution(object):
         :rtype: int
         """
         res = []
+        def traverse(root, low, high):
+            if root is None:
+                return
+            if root.val < low:
+                traverse(root.right, low, high)
+            elif root.val > high:
+                traverse(root.left, low, high)
+            else:
+                res.append(root.val)
+                traverse(root.left, low, high)
+                traverse(root.right, low, high)
+        traverse(root, low, high)
+        return sum(res)
+        
+        # or 
+        res = []
         def traverse(node, low, high):
             if node is None:
                 return 
