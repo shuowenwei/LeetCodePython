@@ -72,11 +72,11 @@ class Solution(object):
                 q = head_p 
             else:
                 q = q.parent
-        return head_p.val
+        return p.val
 
 sol = Solution()
-print(sol.lowestCommonAncestor(node6, node7))
 print(sol.lowestCommonAncestor_LC160(node6, node7))
+print(sol.lowestCommonAncestor(node6, node7)) # this will change root.parent
 
 """     if TreeNode has left and right child
         root = p
