@@ -36,6 +36,7 @@ class MonotonicQueue(object):
     def pop(self, num):
         if num == self.q[0]: 
             self.q.popleft()
+
 class Solution(object):
     def maxSlidingWindow(self, nums, k):
         """
