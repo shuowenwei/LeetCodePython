@@ -59,9 +59,24 @@ class Solution(object):
             third = third.parent
             slow = slow.parent
         return slow.val
+    
+    # refer to LC160
+    def lowestCommonAncestor_LC160(self, p, q):
+        head_p, head_q = p, q
+        while p != q: 
+            if p is None:
+                p = head_q
+            else:
+                p = p.parent
+            if q is None:
+                q = head_p 
+            else:
+                q = q.parent
+        return head_p.val
 
 sol = Solution()
 print(sol.lowestCommonAncestor(node6, node7))
+print(sol.lowestCommonAncestor_LC160(node6, node7))
 
 """     if TreeNode has left and right child
         root = p
