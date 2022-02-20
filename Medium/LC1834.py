@@ -6,7 +6,7 @@ https://leetcode.com/problems/single-threaded-cpu/
 
 https://leetcode.com/problems/single-threaded-cpu/discuss/1163980/Python-Sort-then-Heap
 
-LC1834, LC2050, LC630
+LC1834, LC2050, LC630, LC636
 """
 class Solution(object):
     def getOrder(self, tasks):
