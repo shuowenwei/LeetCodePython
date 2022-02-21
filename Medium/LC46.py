@@ -8,7 +8,7 @@ https://labuladong.gitee.io/algo/1/5/
 https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
 
 LC698, LC78, LC46, LC77, LC22, LC659
-LC51, LC37
+LC51, LC37, LC47
 - backtrack
 """
 class Solution(object):
@@ -18,7 +18,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = [] 
-        def backtrack(nums, tmp):
+        def backtracking(nums, tmp):
             if len(tmp) == len(nums):
                 res.append(tmp[::])
                 # import copy
@@ -28,7 +28,7 @@ class Solution(object):
                 if n in tmp:
                     continue
                 tmp.append(n)
-                backtrack(nums, tmp)
+                backtracking(nums, tmp)
                 tmp.pop()
-        backtrack(nums, [])
+        backtracking(nums, [])
         return res 
