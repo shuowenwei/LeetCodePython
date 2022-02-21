@@ -8,6 +8,7 @@ solution: https://leetcode.com/problems/expression-add-operators/submissions/
 
 LC241, LC282, LC43, LC224, LC227, LC772, LC150
 """
+# https://leetcode.com/problems/expression-add-operators/discuss/572099/C%2B%2BJavaPython-Backtracking-and-Evaluate-on-the-fly-Clean-and-Concise
 class Solution(object):
     def addOperators(self, num, target):
         """
@@ -15,7 +16,30 @@ class Solution(object):
         :type target: int
         :rtype: List[str]
         """
-        # refer to LC227
+        res = []
+        def backtracking(num, i, path, value, prev):
+            if len(num) == i: 
+                if value == target:
+                    res.append(path)
+                return 
+            for j in range(i, len(num)):
+                if j > i and num[i] == '0': # must have j > i: "105", 5
+                    break # Skip leading zero number
+                cur_num = int(num[i:j+1])
+                if i == 0:
+                    # First num, pick it without adding any operator
+                    backtracking(num, j+1, path+str(cur_num), value + cur_num, cur_num)
+                else:
+                    backtracking(num, j+1, path+'+'+str(cur_num), value + cur_num, cur_num)
+                    backtracking(num, j+1, path+'-'+str(cur_num), value - cur_num, - cur_num)
+                    # Can imagine with example: 1+2*3*4
+                    backtracking(num, j+1, path+'*'+str(cur_num), value - prev + prev * cur_num, prev * cur_num)
+            
+        backtracking(num, 0, '', 0, 0)
+        return res 
+
+    
+""" somewhere is wrong ...
         def helper(s): # s is a list
             num = 0
             sign = '+'
@@ -71,30 +95,5 @@ class Solution(object):
 # for c in lc:
 #     if c not in my:
 #         print(c)
-        
-# https://leetcode.com/problems/expression-add-operators/discuss/572099/C%2B%2BJavaPython-Backtracking-and-Evaluate-on-the-fly-Clean-and-Concise
-class Solution:
-    def addOperators(self, s, target):
-        def backtrack(i, path, resultSoFar, prevNum):
-            if i == len(s):
-                if resultSoFar == target:
-                    ans.append(path)
-                return
-
-            for j in range(i, len(s)):
-                if j > i and s[i] == '0': 
-                    break  # Skip leading zero number
-                num = int(s[i:j + 1])
-                if i == 0:
-                    # First num, pick it without adding any operator
-                    backtrack(j + 1, path + str(num), resultSoFar + num, num)  
-                else:
-                    backtrack(j + 1, path + "+" + str(num), resultSoFar + num, num)
-                    backtrack(j + 1, path + "-" + str(num), resultSoFar - num, -num)
-                    # Can imagine with example: 1+2*3*4
-                    backtrack(j + 1, path + "*" + str(num), resultSoFar - prevNum + prevNum * num, prevNum * num)  
-        ans = []
-        backtrack(0, "", 0, 0)
-        return ans
-
-    
+"""
+ 
