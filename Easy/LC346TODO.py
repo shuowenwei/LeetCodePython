@@ -4,30 +4,31 @@
 
 https://leetcode.com/problems/moving-average-from-data-stream/
 
-https://goodtecher.com/leetcode-346-moving-average-from-data-stream/
+https://zhenyu0519.github.io/2020/07/08/lc346/
 
 Time Complexity: O(N)
 Space Complexity: O(N)
 """
 class MovingAverage:
     
-    def __init__(self, size: int):
+    def __init__(self, size):
         """
         Initialize your data structure here.
         """
-        self.numbers = []
+        self.runningSum = 0
+        self.queue = collections.deque()
         self.size = size
-        
 
-    def next(self, val: int) -> float:
-        self.numbers.append(val)
-        
-        if len(self.numbers) > self.size:
-            return sum(self.numbers[-(self.size):]) / self.size 
-                
-        return sum(self.numbers) / len(self.numbers) 
-        
-
+    def next(self, val):
+        if len(self.queue) == self.size:
+            self.runningSum -= self.queue.popleft()
+            self.queue.append(val)
+            self.runningSum += val
+            return self.runningSum / len(self.size)
+        else:
+            self.queue.append(val)
+            self.runningSum += val 
+            return self.runningSum / len(self.queue)
 
 # Your MovingAverage object will be instantiated and called as such:
 # obj = MovingAverage(size)
