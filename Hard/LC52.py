@@ -2,9 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/n-queens/
-
-https://labuladong.gitee.io/algo/1/5/
+https://leetcode.com/problems/n-queens-ii/
 
 LC698, LC78, LC46, LC77, LC22, LC659
 LC51, LC37, LC52
