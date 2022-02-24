@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/edit-distance/
 
-https://labuladong.gitee.io/algo/3/24/74/
+https://labuladong.gitee.io/algo/3/24/78/
 
 LC53, LC1143, LC583, LC712, LC72, LC516
 """
