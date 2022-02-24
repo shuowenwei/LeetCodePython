@@ -54,5 +54,5 @@ class Solution(object):
                 if s[i-1] == s[j-1]:
                     dp[i][j] = 0 if j - i < 2 else dp[i+1][j-1]
                 else:
-                    dp[i][j] = min(dp[i+1][j], dp[i][j+1]) + 1
+                    dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1
         return dp[1][n] <= k
