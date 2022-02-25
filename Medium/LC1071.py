@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/average-waiting-time/
 
-LC1071, LC
+LC1071, LC2015
 simulation
 """
 class Solution(object):
