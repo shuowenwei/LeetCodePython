@@ -41,8 +41,8 @@ class Solution(object):
         dp_table = [[0 for i in range(n)] for j in range(n)] # 0 if i < j 
         for i in range(n):
             dp_table[i][i] = 1 
-        for i in range(n-2, -1, -1):
-            for j in range(i+1, n):
+        for i in range(n - 1, -1, -1):
+            for j in range(i + 1, n):
                 if s[i] == s[j]:
                     dp_table[i][j] = dp_table[i+1][j-1] + 2
                 else:
