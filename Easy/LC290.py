@@ -5,28 +5,26 @@
 https://leetcode.com/problems/word-pattern/
 
 """
-
 class Solution(object):
-    def wordPattern(self, pattern, str):
+    def wordPattern(self, pattern, s):
         """
         :type pattern: str
-        :type str: str
+        :type s: str
         :rtype: bool
         """
-        patter_list = list(pattern)
-        str_list = str.split(' ')
+        pattern = list(pattern)
+        s_list = s.split(' ')
+        if len(s_list) != len(pattern) or len(set(s_list)) != len(set(pattern)):# "abba" vs "dog dog dog dog"
+            return False
         
-        if len(patter_list) != len(str_list) or len(set(patter_list)) != len(set(str_list)): # "abba" vs "dog dog dog dog"
-            return False 
-            
-        bijection = {}
-        for i in range(len(patter_list)):
-            if patter_list[i] not in bijection:
-                bijection[patter_list[i]] = str_list[i]
+        dict_bijection = {}
+        for pp, ss in zip(pattern, s_list):
+            if pp not in dict_bijection:
+                dict_bijection[pp] = ss
             else:
-                if bijection[patter_list[i]] != str_list[i]:
+                if dict_bijection[pp] != ss:
                     return False
-        return True 
+        return True
 
         """
         # my later longer and uglier solution: 
