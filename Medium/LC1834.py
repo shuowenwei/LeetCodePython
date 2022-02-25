@@ -17,21 +17,21 @@ class Solution(object):
         tasks_index = [(t[0], t[1], index) for index, t in enumerate(tasks)]
         tasks_index.sort(key = lambda x: x[0])
         
-        from heapq import heappush
+        from heapq import heappush, heappop
         res = []
         hp = []
-        process_index = 0 
-        cur_time = tasks_index[process_index][0] # earliest task to enter queue 
+        pointer = 0 
+        cur_time = tasks_index[pointer][0] # earliest task to enter queue 
         while len(res) < len(tasks_index): # break when all tasks are processed 
             # push all tasks with enter_time <= cur_time, when picking the shortest on to start
-            while process_index < len(tasks_index) and tasks_index[process_index][0] <= cur_time:
-                enter, processtime, index = tasks_index[process_index]
+            while pointer < len(tasks_index) and cur_time >= tasks_index[pointer][0]:
+                enter, processtime, index = tasks_index[pointer]
                 heappush(hp, (processtime, index))
-                process_index += 1
+                pointer += 1
             if hp:
                 processtime, index = heappop(hp)
                 cur_time += processtime
                 res.append(index)
-            elif process_index < len(tasks_index):
-                cur_time = tasks_index[process_index][0]
+            elif pointer < len(tasks_index):
+                cur_time = tasks_index[pointer][0]
         return res 
