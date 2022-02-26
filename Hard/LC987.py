@@ -18,42 +18,37 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        dict_order = collections.defaultdict(list)
-        
+        dct_vo2lstVals = collections.defaultdict(list)
         # solution 1: DFS 
-        def traverse(node, verticalOrder, level):
+        def traverse(node, vo, level):
             if node is None:
                 return 
-            dict_order[verticalOrder].append( (level, node.val) )
-            traverse(node.left, verticalOrder - 1, level + 1)
-            traverse(node.right, verticalOrder + 1, level + 1)
+            dct_vo2lstVals[vo].append((level, node.val))
+            traverse(node.left, vo - 1, level + 1)
+            traverse(node.right, vo + 1, level + 1)
         traverse(root, 0, 0)
         # solution 2: BFS 
         """
         q = collections.deque()
         level = 0
-        verticalOrder = 0 
-        q.append((root, verticalOrder, level))
+        vo = 0 
+        q.append((root, vo, level))
         while q:
             size = len(q)
             for i in range(size):
-                node, verticalOrder, level = q.popleft()
-                dict_order[verticalOrder].append( (level, node.val) )
+                node, vo, level = q.popleft()
+                dct_vo2lstVals[vo].append( (level, node.val) )
                 if node.left: 
-                    q.append((node.left, verticalOrder - 1, level + 1))
+                    q.append((node.left, vo - 1, level + 1))
                 if node.right:
-                    q.append((node.right, verticalOrder + 1, level + 1))
+                    q.append((node.right, vo + 1, level + 1))
         """
         # below are the same to get dict_order
-        res = [(vo, sorted(levelVal, key=lambda x: (x[0], x[1])) ) for vo, levelVal in dict_order.items()]
-        res.sort(key = lambda x: x[0])
-        # print(res)
-        lst_level_value = [lv for verticalOrder, lv in res]
-        # print(lst_level_value)
+        res = [[vo, sorted(lst, key=lambda x: (x[0], x[1]) )] for vo, lst in dct_vo2lstVals.items()]
+        res.sort(key=lambda x: x[0])
         final_res = []
-        for lst_lv in lst_level_value:
-            tmp = [v[1] for v in lst_lv]
-            final_res.append(tmp)
+        for vo, levelVals in res:
+            final_res.append([levelVal[1] for levelVal in levelVals])
         return final_res
     
     
