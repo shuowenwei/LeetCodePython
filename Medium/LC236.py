@@ -14,7 +14,8 @@ LC235, LC236, LC1650
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
+# Time: O(N), where N is number of nodes in the Binary Tree.
+# Space: O(H), where H is the heigh of Binary Tree.
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
         """
