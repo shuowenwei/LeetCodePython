@@ -38,6 +38,7 @@ class Solution(object):
                 found = True
                 res.append(cur_s)
             if found:
+                # check next string in the current q, but not adding any new strings 
                 continue
             for i in range(len(cur_s)):
                 if cur_s[i] not in ('(', ')'):

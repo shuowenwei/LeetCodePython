@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/valid-palindrome-ii/
 
-LC680, LC125
+LC680, LC125, LC1216=LC516
 """
 class Solution(object):
     def validPalindrome(self, s):
