@@ -7,7 +7,7 @@ https://leetcode.com/problems/daily-temperatures/
 https://labuladong.gitee.io/algo/2/20/48/
 
 LC496, LC739, LC503
-
+monotonic stack
 """
 class Solution(object):
     def dailyTemperatures(self, temperatures):
@@ -15,14 +15,17 @@ class Solution(object):
         :type temperatures: List[int]
         :rtype: List[int]
         """
-        res = [0]*len(temperatures)
+        n = len(temperatures)
+        res = [0] * n
         stack = []
-        for i in range(len(temperatures)-1, -1, -1):
-            while stack:
-                if temperatures[stack[-1]] <= temperatures[i]:
-                    stack.pop()
-                else:
-                    break
+        for i in range(n - 1, -1, -1):
+            while stack and temperatures[stack[-1]] <= temperatures[i]:
+                stack.pop()
+            # while stack:
+            #     if temperatures[stack[-1]] <= temperatures[i]:
+            #         stack.pop()
+            #     else:
+            #         break
             if len(stack) == 0:
                 res[i] = 0
             else:

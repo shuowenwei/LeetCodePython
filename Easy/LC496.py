@@ -7,7 +7,7 @@ https://leetcode.com/problems/next-greater-element-i/
 https://labuladong.gitee.io/algo/2/20/48/
 
 LC496, LC739, LC503
-
+monotonic stack
 """
 class Solution(object):
     def nextGreaterElement(self, nums1, nums2):
