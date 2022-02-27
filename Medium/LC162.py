@@ -5,7 +5,7 @@
 https://leetcode.com/problems/find-peak-element/
 
 https://leetcode.com/problems/find-peak-element/discuss/50259/My-clean-and-readable-python-solution
-
+LC162, LC153
 """
 class Solution(object):
     def findPeakElement(self, nums):
