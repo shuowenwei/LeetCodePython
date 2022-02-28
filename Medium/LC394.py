@@ -6,6 +6,7 @@ https://leetcode.com/problems/decode-string/
 
 https://leetcode.com/problems/decode-string/discuss/1400105/98-faster-oror-With-and-without-Stack-oror-Cleane-and-Concise
 
+LC726, LC394
 """
 class Solution(object):
     def decodeString(self, s):
@@ -14,25 +15,24 @@ class Solution(object):
         :rtype: str
         """
         # solution 1: using a stack 
-        cur_str = ''
-        num = 0
         stack = []
-        for c in s:
-            # c = s[i]
-            if c.isdigit():
-                num = 10*num + int(c)  
-            elif c == '[':
-                stack.append(cur_str)
+        num = 0
+        res = ''
+        for i, char in enumerate(s):
+            if char.isdigit():
+                num = 10*num + int(char)
+            elif char == '[':
+                stack.append(res)
                 stack.append(num)
-                cur_str = ''
+                res = ''
                 num = 0
-            elif c == ']':
+            elif char == ']': # "3[a2[c]]"
                 pre_num = stack.pop()
-                pre_str = stack.pop()
-                cur_str = pre_str + pre_num*cur_str
-            else: 
-                cur_str += c
-        return cur_str
+                pre_str = stack.pop() 
+                res = pre_str + pre_num * res
+            else:
+                res += char 
+        return res
 
         # solution 2: recursive 
         def dfs(s, p):
