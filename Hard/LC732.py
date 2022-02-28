@@ -5,14 +5,14 @@
 https://leetcode.com/problems/my-calendar-iii/
 
 LC729, LC731, LC732
-LC253, LC732 - greedy - meeting room II 
+LC253==LC732 - greedy - meeting room II 
 """
 class MyCalendarThree(object):
     
     def __init__(self):
         self.starts = []
         self.ends = []
-        self.n = 0
+        self.numOfIntervals = 0
 
     def book(self, start, end):
         """
@@ -22,12 +22,12 @@ class MyCalendarThree(object):
         """
         self.starts.append(start)
         self.ends.append(end)
-        self.n += 1
+        self.numOfIntervals += 1
         self.starts.sort()
         self.ends.sort()
         res, i, j = 0, 0, 0
         count = 0 
-        while i < self.n and j < self.n: 
+        while i < self.numOfIntervals and j < self.numOfIntervals: 
             if self.starts[i] < self.ends[j]:
                 count += 1
                 i += 1

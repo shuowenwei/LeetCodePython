@@ -27,7 +27,8 @@ class MyCalendarTwo(object):
         # if not triple booking
         for s, e in self.calendar:
             if start < e and end > s:
-                self.overlaps.append( (max(start, s), min(end, e)) )
+                self.overlaps.append( (max(start, s), min(end, e)) ) # max left, min right
+
         self.calendar.append((start, end))
         return True
 
