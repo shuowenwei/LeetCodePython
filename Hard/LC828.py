@@ -13,18 +13,17 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        
-        dict_letter2index = {}
-        for letter in set(s):
-            dict_letter2index[letter] = [-1, -1]
+        dict_char2index = {}
+        for char in set(s):
+            dict_char2index[char] = [-1, -1]
         
         res = 0
-        for i, letter in enumerate(s):
-            start, end = dict_letter2index[letter]
+        for i, c in enumerate(s):
+            start, end = dict_char2index[c]
             res += (i - end) * (end - start)
-            dict_letter2index[letter] = [end, i]
-            
-        for letter, index_positions in dict_letter2index.items():
+            dict_char2index[c] = [end, i]
+
+        for c, index_positions in dict_char2index.items():
             start, end = index_positions
             res += (len(s) - end) * (end - start)
         return res 
