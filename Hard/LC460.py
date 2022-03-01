@@ -25,7 +25,7 @@ class DoubleList(object):
         self.tail.prev = self.head 
         self.size = 0
         
-    # // 在链表尾部添加节点 x，时间 O(1)
+    # // 在链表尾部添加节点 x，时间 O(1)cona
     def addLast(self, x): 
         x.prev = self.tail.prev
         x.next = self.tail
