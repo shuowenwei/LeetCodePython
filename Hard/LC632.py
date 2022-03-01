@@ -17,15 +17,15 @@ class Solution(object):
         hp = [(row[0], i, 0) for i, row in enumerate(nums)]
         # print(hp)
         heapify(hp)
-        
-        res = [-2**32, 2**32]
+        left = min(row[0] for row in nums)
         right = max(row[0] for row in nums)
+        res = [left, right]
         while hp:
             left, i, j = heappop(hp)
             if right - left < res[1] - res[0]:
-                res = [left, right]
+                res = [left, right] # check range
             if j + 1 == len(nums[i]):
                 return res 
             v = nums[i][j+1]
             right = max(right, v)
-            heappush(hp, (v, i, j+1))
+            heappush(hp, (v, i, j+1)) # As we pop element A[i][j], we'll replace it with A[i][j+1]
