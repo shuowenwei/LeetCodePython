@@ -16,8 +16,8 @@ def minExpression(f, y):
     
     right = 1
     while f(right) < y:
-        right *= 2
-    left = right / 2
+        right = right * 2
+    left = right // 2
     
     while left <= right:
         mid = (left + right) // 2 

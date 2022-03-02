@@ -28,3 +28,18 @@ class Solution(object):
                 else:
                     dp_table[i][j] = grid[i][j] + min(dp_table[i][j-1], dp_table[i-1][j])
         return dp_table[row-1][col-1]
+
+        # solution 2: top down 
+        row, col = len(grid), len(grid[0])
+        dp_table = {}
+        dp_table[(0,0)] = grid[0][0]
+        def dfs(i, j):
+            if (i,j) in dp_table:
+                return dp_table[(i,j)]
+            res = 2 ** 32
+            for di,dj in [(-1,0), (0,-1)]:
+                if 0 <= i + di <= row - 1 and 0 <= j + dj <= col - 1:
+                    res = min(res, grid[i][j] + dfs(i+di, j+dj) )
+            dp_table[(i,j)] = res 
+            return res 
+        return dfs(row-1, col-1)
