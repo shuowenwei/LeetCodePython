@@ -21,17 +21,17 @@ class Solution(object):
         for s, t in prerequisites:
             graph[s].append(t)
         
-        hasCycle = [False]
-        visited = [False] * numCourses
+        self.hasCycle = False
+        visited = set() #[False] * numCourses
         onPath = [False] * numCourses
         postorder = []
         def traverse(graph, s):
             if onPath[s]:
-                hasCycle[0] = True
-            if visited[s] or hasCycle[0]:
+                self.hasCycle = True
+            if s in visited or self.hasCycle:
                 return
             # // 前序遍历位置
-            visited[s] = True
+            visited.add(s)
             onPath[s] = True
             for neighbor in graph[s]:                
                 traverse(graph, neighbor)
@@ -41,7 +41,7 @@ class Solution(object):
         
         for i in range(numCourses):
             traverse(graph, i)
-            if hasCycle[0]:
+            if self.hasCycle:
                 return []
         return postorder  # wrong: res = postorder[::-1]
 

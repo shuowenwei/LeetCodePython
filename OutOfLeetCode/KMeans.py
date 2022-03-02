@@ -13,7 +13,7 @@ class K_Means:
         for i in range(self.k):
             self.centroids[i] = data[i]
 
-        for i in range(self.max_iter):
+        for _ in range(self.max_iter):
             # each iteration, initialize a new classification dictionary 
             self.classifications = {}
             for i in range(self.k):
