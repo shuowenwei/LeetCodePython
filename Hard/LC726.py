@@ -7,6 +7,7 @@ https://leetcode.com/problems/number-of-atoms/discuss/140802/Python-20-lines-ver
 
 LC726, LC394
 """
+import collections
 class Solution(object):
     def countOfAtoms(self, formula):
         """

@@ -10,6 +10,7 @@ https://labuladong.gitee.io/algo/4/32/136/
 
 LC43, LC224, LC227, LC772, LC150
 """
+import collections
 class Solution(object):
     def calculate(self, s):
         """
