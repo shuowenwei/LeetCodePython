@@ -1,0 +1,55 @@
+
+
+Hello? 
+
+Webpage about Event (HTML) -> event name, location and start_time. 
+
+predictions: 
+{ HTML
+event name: celebration of new year
+location: san fransico, xx
+start time: Jan 1st, 2022 
+} 
+
+Label –>
+Feature extractions: 
+
+HTML: images, text, text_language, number_comments, hyperlinks to other pages, creation time. 
+
+CV_mmodel(image) – e.g ResNet50 
+Langurage_mmodel(text) - e.g. Bert
+Number_comments - continuous variable 
+text_language - categorical variable - need a embedding 
+
+[cv_vector] + [lm_vector] + [continuous] + [categorical] = concat together -> linear_layer -> linear_layer -> .. -> linear_layer -> [1…. .0.5] 
+
+Language Generation Model (latent vector) -> 1 -> 4 -> 8 -> … -> ending_token 
+
+1 to many RNN (LSTM) 
+
+reverse_embedding: [1,4,8,2,9, …, ending_token] -> [celebration of new year, … Jan 1st, 2020]
+
+Ending_token belongs (2022, some date time)
+
+label: event_name + locatin + start_time 
+label [1 2 3 5 7]  
+      [1 2 3 5 7 ]
+prediction [1 9 3 4, 0, 0] – padding 
+
+Loss_function = CCE 
+
+Bleu score
+Perplexity 
+
+
+online training is expensive. 
+
+model weights, feature engineering tools 
+
+[load balancer] [model inference endpoint] [apis to clean data, feature engineering]
+
+[service to monitor data distribution]
+
+[cold start] - 
+
+ 
