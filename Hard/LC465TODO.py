@@ -17,17 +17,17 @@ class Solution(object):
         lstAmount = [v for _, v in dictBanks.items()]
         # lstAmount = [-700, -92, 379, 160, -585, 383, -532, 680, -509, 529, 161, 670, -544]
         self.res = 2 ** 32 
-        def backtracking(lstAmount, index, conuter):
+        def backtracking(lstAmount, start, conuter):
             n = len(lstAmount)
-            while index < n and lstAmount[index] == 0:
-                index += 1
-            if index == n:
+            while start < n and lstAmount[start] == 0:
+                start += 1
+            if start == n:
                 self.res = min(self.res, conuter)
-            for i in range(index, n):
-                if (lstAmount[i] < 0 and lstAmount[index] > 0) or  (lstAmount[i] > 0 and lstAmount[index] < 0):
-                    lstAmount[i] += lstAmount[index]
-                    backtracking(lstAmount, index + 1, conuter + 1)
-                    lstAmount[i] -= lstAmount[index]
+            for i in range(start, n):
+                if (lstAmount[i] < 0 and lstAmount[start] > 0) or (lstAmount[i] > 0 and lstAmount[start] < 0):
+                    lstAmount[i] += lstAmount[start]
+                    backtracking(lstAmount, start + 1, conuter + 1)
+                    lstAmount[i] -= lstAmount[start]
         backtracking(lstAmount, 0, 0)
         print('result from backtracking... ',self.res)
         return self.res
