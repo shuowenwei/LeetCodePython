@@ -2,7 +2,7 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/is-subsequence/submissions/
+https://leetcode.com/problems/is-subsequence/
 
 https://labuladong.gitee.io/algo/4/32/141/
 
