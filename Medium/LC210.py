@@ -4,9 +4,9 @@
 
 https://leetcode.com/problems/course-schedule-ii/
 
-https://labuladong.gitee.io/algo/2/19/35/
+https://labuladong.gitee.io/algo/2/20/37/
 
-LC797, LC207, LC210, LC630
+LC797, LC207, LC210, LC630, LC2115
 LC785, LC886
 """
 class Solution(object):
@@ -18,8 +18,8 @@ class Solution(object):
         """
         import collections
         graph = collections.defaultdict(list)
-        for s, t in prerequisites:
-            graph[s].append(t)
+        for thenCanTake, takeFirst in prerequisites:
+            graph[takeFirst].append(thenCanTake)
         
         self.hasCycle = False
         visited = set() #[False] * numCourses
@@ -43,7 +43,8 @@ class Solution(object):
             traverse(graph, i)
             if self.hasCycle:
                 return []
-        return postorder  # wrong: res = postorder[::-1]
+        # print(postorder[::-1])
+        return postorder[::-1]
 
 numCourses = 2
 prerequisites = [[1,0]]

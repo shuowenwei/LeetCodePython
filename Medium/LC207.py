@@ -4,9 +4,9 @@
 
 https://leetcode.com/problems/course-schedule/
 
-https://labuladong.gitee.io/algo/2/19/35/
+https://labuladong.gitee.io/algo/2/20/37/
 
-LC797, LC207, LC210, LC630
+LC797, LC207, LC210, LC630, LC2115
 LC785, LC886
 """
 class Solution(object):
