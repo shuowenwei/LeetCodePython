@@ -1,0 +1,64 @@
+3 friends in Seattle
+Know the weather in seattle
+P(friend tell you the truth)=2/3 
+
+Input:
+2 Friends said the weather is good, 1 friend said it is bad
+Friend A, B, C
+A=good, B=good, c=bad
+
+Output:
+p(weather=good|A=good, B=good, C=bad)?
+
+P(A | B ) = P(A) P(B) / P(A inter B)
+
+P(friend tell you the truth)=2/3 
+
+p(weather=good) = p(weather=good | )
+
+
+p(weather=good) = 1/3
+P(A tells truth) = 2/3 
+P(B tells truth) = 2/3 
+P(C tells truth) = 2/3 
+
+
+P(good) = p(good | A tells truth) +  p(bad | A do not tells truth) 
+
+p(good|A=good, B=good, C=bad)
+= p(good) * p(A=good|good, B=good|good, C=bad|good) / p(A=good, B=good, C=bad)
+= [ p(good) * p(A=good|good) * P(B=good|good) *P(C=bad|good) ] / p(A=good, B=good, C=bad)
+= [ p(good) * p(A=good|good) * P(B=good|good) *P(C=bad|good) ] / p(A=good, B=good, C=bad)
+= [ p(good) * (2/3) * (2/3) * (1-2/3) ] / p(A=good, B=good, C=bad) 
+= [ p(good) * (4/27) ] / p(A=good) * P(B=good) *P(C=bad) 
+= [ p(good) * (4/27) ] / [(p(A=good, good) + p(A=good, bad)) * ( P(B=good, good) + P(B=good, bad))  * ( P(C=bad, good) + P(C=bad, bad) )]
+=  [ 1/3 * (4/27) ] / [ (2/9 + 4/9 ) * ( 2/9 + 4/9)  * ( 1/9 + 4/9 )]
+= 
+
+
+good: 
+
+good,good,good
+A    B    1-c  
+
+2/3 * 2/3 * (1-2/3) = 4/27 
+
+bad:  
+(1-2/3) * (1-2/3) * 2/3 = 2/27 
+
+     good         bad 
+     truth        lie 
+A    2/3 (good)   1/3 (bad)
+      
+B    good*2/3    bad*1/3
+
+C    good*1/3    good*2/3
+
+
+4/27 / (  4/27  +  2/27 ) = 2/3 
+
+p(good, good, bad|good)/(p(good, good, bad|bad)+p(good, good, bad|good))
+
+
+
+
