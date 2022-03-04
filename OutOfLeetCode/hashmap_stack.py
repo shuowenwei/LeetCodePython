@@ -22,7 +22,8 @@ def evaluateString(s):
             num = 0
         elif char.islower():
             element += char
-        elif (not char.isdigit() and char != ' ') or i == len(s) - 1:
+        # elif (not char.isdigit() and char != ' ') or i == len(s) - 1:
+        elif char in ('+', '-') or i == len(s) - 1:
             if sign == '+':
                 # if coef_string != '':
                 dict_element2count[coef_string+element] += max(num, 1) * coef 
@@ -40,8 +41,9 @@ def evaluateString(s):
             coef = 1
             coef_string = ''
             num = 0
-        print(stack, element, dict_element2count)
+        # print(stack, element, dict_element2count)
     print(dict_element2count)
+    return ''.join(str('+' if v > 0 else '-')+str(v if abs(v) > 1 else '')+k for k,v in sorted(dict_element2count.items()))
 
 s = 'a+2(b-a)'
 # s = 'a+2a(b-c)'
