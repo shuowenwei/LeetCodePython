@@ -15,16 +15,16 @@ class Solution(object):
         :type w: List[int]
         """
         self.preSum = [0] * (len(w) + 1)
-        for i in range(1, len(w)+1):
-            self.preSum[i] = self.preSum[i-1] + w[i-1]
         self.n = len(self.preSum)
+        for i in range(1, self.n):
+            self.preSum[i] = self.preSum[i-1] + w[i-1]
         
     def pickIndex(self):
         """
         :rtype: int
         """
         import random
-        target = random.randint(1, self.preSum[self.n-1]) # // 在闭区间 [1, preSum[n - 1]] 中随机选择一个数字
+        target = random.randint(1, self.preSum[self.n - 1]) # // 在闭区间 [1, preSum[n - 1]] 中随机选择一个数字
         left, right = 0, self.n - 1
         while left <= right:
             mid = left + (right - left) / 2
