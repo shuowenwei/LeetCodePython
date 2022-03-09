@@ -19,13 +19,11 @@ class Solution(object):
                     return True
             return False
         
-        dict_length = {}
+        import collections
+        dict_length = collections.defaultdict(list)
         words.sort(key = lambda x: len(x))
         for w in words:
-            if len(w) not in dict_length:
-                dict_length[len(w)] = [w]
-            else:
-                dict_length[len(w)].append(w)
+            dict_length[len(w)] .append(w)
                 
         final_res = 0 
         dp_table = {}

@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/copy-list-with-random-pointer/
 
-solution: https://leetcode.com/problems/copy-list-with-random-pointer/solution/
+https://leetcode.com/problems/copy-list-with-random-pointer/discuss/258935/Detailed-Explanation-with-Pictures-C%2B%2BJavaScript
 
 """
 """
@@ -15,7 +15,6 @@ class Node:
         self.next = next
         self.random = random
 """
-
 class Solution(object):
     def __init__(self):
         self.dct_oldNode2newNode = {}
@@ -27,12 +26,16 @@ class Solution(object):
         """
         if head is None:
             return None
+        
+        # this is for when head.random is passed in 
         if head in self.dct_oldNode2newNode:
             return self.dct_oldNode2newNode[head]
         
-        node = Node(head.val)
-        self.dct_oldNode2newNode[head] = node
+        # create a new node, with old node's val
+        newNode = Node(head.val)
+        self.dct_oldNode2newNode[head] = newNode
+
+        newNode.next = self.copyRandomList(head.next)
+        newNode.random = self.copyRandomList(head.random)
         
-        node.next = self.copyRandomList(head.next)
-        node.random = self.copyRandomList(head.random)
-        return node
+        return newNode
