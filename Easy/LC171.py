@@ -4,6 +4,7 @@
 
 https://leetcode.com/problems/excel-sheet-column-number/
 
+LC168, LC171
 """
 class Solution(object):
     def titleToNumber(self, s):
