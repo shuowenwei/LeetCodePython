@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/combination-sum/
 
-LC39, LC40
+LC39, LC40, LC1239
 """
 class Solution(object):
     def combinationSum(self, candidates, target):
