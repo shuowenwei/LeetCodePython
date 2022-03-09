@@ -11,8 +11,8 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        n = 0 
-        for i in range( len(s) ): 
-            n +=  ( ord(s[i]) - 64 ) * pow(26,len(s)-i-1)
-            
-        return n 
+        res = 0
+        n = len(columnTitle)
+        for i in range(n):
+            res += (ord(columnTitle[i]) - ord('A') + 1) * 26**(n-i-1)
+        return res 
