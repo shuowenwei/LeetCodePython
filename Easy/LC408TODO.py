@@ -14,19 +14,20 @@ class Solution(object):
         """
         pointer = 0
         num = 0
-        for ab in abbr: 
-            if ab.isdigit():
-                if int(ab) == 0 and num == 0: # 10 is ok 
+        for char in abbr: 
+            if char.isdigit():
+                if int(char) == 0 and num == 0: # 10 is ok 
                     return False
-                num = num * 10 + int(ab)
+                num = num * 10 + int(char)
             else:
                 pointer += num 
                 num = 0 
-                if pointer >= len(word) or word[pointer] != ab:
+                if pointer >= len(word) or word[pointer] != char:
                     return False
                 # when matched, pointer must move to next
                 pointer += 1
-        return num + pointer == len(word) - 1 
+        # print(num, pointer)
+        return num + pointer == len(word) 
 """
 Example 1:
 Given s = "i nternational ization", abbr = "i12iz4n":
@@ -41,3 +42,11 @@ Example 2:
 Given s = "apple", abbr = "a2e":
 Return false.
 """
+s = "apple"
+abbr = "a2le"
+
+s = "internationalization"
+abbr = "i12iz4n"
+
+ob = Solution()
+print(ob.validWordAbbreviation(s, abbr))
