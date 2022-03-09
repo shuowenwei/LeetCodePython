@@ -5,6 +5,7 @@
 https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
 
 refer to https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/discuss/451787/Python-O(m*n*k)-BFS-Solution-with-Explanation
+- BFS
 """
 class Solution(object):
     def shortestPath(self, grid, k):
@@ -42,15 +43,18 @@ class Solution(object):
         # target = (row-1, col-1)
         while q:
             cur_i, cur_j, cur_k = q.popleft()
+            if cur_i == row - 1 and cur_j == col -1:
+                return dp_tabel[(cur_i,cur_j,cur_k)]
+            
             for ni, nj in getNeighbors(cur_i, cur_j):
-                if grid[ni][nj] == 1:
-                    if cur_k > 0 and (ni,nj,cur_k-1) not in visited:
+
+                if grid[ni][nj] == 1 and cur_k > 0:
+                    if (ni,nj,cur_k-1) not in visited:
                         dp_tabel[(ni,nj,cur_k-1)] = dp_tabel[(cur_i,cur_j,cur_k)] + 1
                         visited.add((ni,nj,cur_k-1))
                         q.append((ni,nj,cur_k-1))
+                        
                 if grid[ni][nj] == 0:
-                    if ni == row - 1 and nj == col -1:
-                        return dp_tabel[(cur_i,cur_j,cur_k)] + 1
                     if (ni,nj,cur_k) not in visited:
                         dp_tabel[(ni,nj,cur_k)] = dp_tabel[(cur_i,cur_j,cur_k)] + 1
                         visited.add((ni,nj,cur_k))
