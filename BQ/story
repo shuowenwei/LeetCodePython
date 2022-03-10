@@ -27,16 +27,20 @@ Deal with difficult people:
 - Listen and observe
 
 
-1. Funding Portal R&D - image similarity - from pixel to image embedding 
-2. 
-3. Michael the tester, made it difficult for everyone around him to deal with him 
+1. Funding Portal R&D - image similarity - pixel-to-pixel comparison vs image embedding via ResNet50 
+2. corpus of evidence - 
+3. A tester, half of his time was for our team and half of his time was for another team, slowness is blocking/delaying the release schedule 
 4. Createathon/Hackathon 
    - Won the category, 1st place of 17 teams, but din't get the grand prize in the first year, presentation is more important than technical details of 
    - my manager, who was in the audience, told me to get the main point out is more important than explaining tech details 
-   - observe or know your audience 
+   - know your audience  -  critical feedback 
+   
    - regularization vs regulation
    - transformer/bert vs 
 5. hired the best - interview new graduates, ask the hard questions and stardard coding questions 
+   - biweekly study and presentation groups 
+   - always learn new things 
+   - don't repeat the same work too many times 
 6. insist on parallel processing and scheduled jobs 
 7. doc similiarity in WebADV model 2, using BERT and encoding pages of docs for similiarity
 8. find anormlies in flow logs data, work with network team, cyber security data injection team
