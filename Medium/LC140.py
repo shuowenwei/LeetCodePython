@@ -20,11 +20,11 @@ class Solution(object):
         dp_table = {}
         dict_word = set(wordDict)
         def backtracking(s, dict_word, tmp, index):
-            print(index, tmp)
+            # print(index, tmp)
             if index == len(s):
                 res.append(' '.join(tmp))
                 return
-            for i in range(index, len(s)+1): # this must be len(s)+1 since s[i:j] not including j 
+            for i in range(index, len(s) + 1): # this must be len(s)+1 since s[i:j] not including j 
                 # print('i: ', i)
                 if s[index:i] in wordDict:
                     tmp.append(s[index:i])
