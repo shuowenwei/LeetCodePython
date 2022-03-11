@@ -31,7 +31,7 @@ class UnionFind(object):
             self.parent[parentP] = parentQ
             self.size[parentQ] += self.size[parentP]
         self.cnt -= 1
-        
+    
     def connected(self, p, q):
         return self.find(p) == self.find(q)
     
@@ -47,7 +47,7 @@ class Solution(object):
         row, col = len(grid), len(grid[0])
         uf = UnionFind(col * row)
         visited = set()
-        parent2size = {}
+        parent2size = {} #
         def getOneNeighbors(i, j):
             neighbors = []
             if i > 0 and grid[i-1][j] == 1:
@@ -74,8 +74,8 @@ class Solution(object):
             for j in range(col):
                 if grid[i][j] == 1 and (i,j) not in visited:
                     dfs(i, j)
-                    node = i * col + j
-                    parent2size[uf.find(node)] = uf.getSize(node)
+                    node = i * col + j #
+                    parent2size[uf.find(node)] = uf.getSize(node) #
         res = 0
         for i in range(row):
             for j in range(col):
@@ -89,6 +89,6 @@ class Solution(object):
                         nei_node = ni * col + nj 
                         parents.add(uf.find(nei_node))
                     for p_node in parents:
-                        tmp += uf.getSize(p_node)
+                        tmp += uf.getSize(p_node) # parent2size[p_node]
                     res = max(res, tmp)
         return res
