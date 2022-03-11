@@ -27,3 +27,31 @@ class Solution(object):
         while stack:
             s[stack.pop()] = ''
         return ''.join(s)
+
+        # no stack
+        res = ''
+        left = 0 
+        for char in s:
+            if char == "(":
+                left += 1
+            elif char == ")":
+                if left == 0:
+                    continue
+                else:
+                    left -= 1
+            res += char
+        if left == 0:
+            return res
+        
+        tmp = ''
+        right = 0 
+        for char in res[::-1]:
+            if char == ')':
+                right += 1
+            elif char == '(':
+                if right == 0:
+                    continue
+                else:
+                    right -= 1
+            tmp += char
+        return tmp[::-1]
