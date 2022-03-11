@@ -7,14 +7,14 @@ https://leetcode.com/problems/copy-list-with-random-pointer/
 https://leetcode.com/problems/copy-list-with-random-pointer/discuss/258935/Detailed-Explanation-with-Pictures-C%2B%2BJavaScript
 
 """
-"""
+
 # Definition for a Node.
 class Node:
     def __init__(self, x, next=None, random=None):
         self.val = int(x)
         self.next = next
         self.random = random
-"""
+
 class Solution(object):
     def __init__(self):
         self.dct_oldNode2newNode = {}
