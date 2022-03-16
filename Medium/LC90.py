@@ -6,7 +6,8 @@ https://leetcode.com/problems/subsets-ii/
 
 https://www.youtube.com/watch?v=Vn2v6ajA7U0&list=UU_mYaQAE6-71rjSN6CeCA-g&index=4
 
-backtrack
+backtracking
+LC78, LC90
 """
 class Solution(object):
     def subsetsWithDup(self, nums):
@@ -25,7 +26,7 @@ class Solution(object):
             backtrack(subset, i+1)
             subset.pop()
             
-            # ALl subsets that don't include nums[i]
+            # All subsets that don't include nums[i]
             while i+1 < len(nums) and nums[i] == nums[i+1]:
                 i += 1
             backtrack(subset, i+1)

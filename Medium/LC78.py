@@ -7,7 +7,8 @@ https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
 
 LC698, LC78, LC46, LC77, LC22, LC659
 LC51, LC37
-- backtrack
+- backtracking
+LC78, LC77, LC90
 """
 class Solution(object):
     def subsets(self, nums):
@@ -16,30 +17,30 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        def backtrack(nums, i, tmp):
-            if i == len(nums):
-                res.append(tmp[::])
-                return            
-            # do not put nums[i] in tmp
-            backtrack(nums, i+1, tmp)
-            
-            # put nums[i] in tmp
-            tmp.append(nums[i])
-            backtrack(nums, i+1, tmp)
-            tmp.pop()
-
-        backtrack(nums, 0, [])
+        def backtracking(nums, start, tmp):
+            # // 前序位置，每个节点的值都是一个子集
+            res.append(tmp[::])
+            for i in range(start, len(nums)):
+                tmp.append(nums[i])
+                #  // 通过 start 参数控制树枝的遍历，避免产生重复的子集
+                backtracking(nums, i+1, tmp)
+                tmp.pop()
+        backtracking(nums, 0, [])
         return res 
 
-        # solution 2: 
+        # solution when interview with FB:
         """
         res = []
-        def backtrack(nums, start, tmp):
-            res.append(tmp[::])
+        def backtracking(nums, start, tmp):
+            if start == len(nums):
+                if tmp not in res:
+                    res.append(tmp[:])
+                return 
             for i in range(start, len(nums)):
                 tmp.append(nums[i])
                 backtrack(nums, i+1, tmp)
                 tmp.pop()
+                backtrack(nums, i+1, tmp)
         backtrack(nums, 0, [])
         return res 
         """
