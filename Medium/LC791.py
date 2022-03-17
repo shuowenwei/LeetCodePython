@@ -12,10 +12,11 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        dict_order_list = collections.defaultdict(list)
+        dict_order_list = {}
         for char in order:
-            dict_order_list[char] = list()
-            
+            dict_order_list[char] = []
+        dct_order['not_in_order'] = []
+        
         for char in s:
             if char in dict_order_list:
                 dict_order_list[char].append(char)
@@ -25,6 +26,6 @@ class Solution(object):
         res = []
         for char in order:
             res += dict_order_list[char]
-        res += dict_order_list[-1]
+        res += dict_order_list['not_in_order']
         return ''.join(res)
                 
