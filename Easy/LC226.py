@@ -4,10 +4,9 @@
 
 https://leetcode.com/problems/invert-binary-tree/
 
-https://labuladong.gitee.io/algo/2/18/21/
+https://labuladong.gitee.io/algo/2/19/23/
 
 LC226, LC114, LC116
-
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -16,46 +15,19 @@ LC226, LC114, LC116
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    def flatten(self, root):
+    def invertTree(self, root):
         """
         :type root: TreeNode
-        :rtype: None Do not return anything, modify root in-place instead.
+        :rtype: TreeNode
         """
-        """ # solution: postorder recursion 
         if root is None:
-            return
-        self.flatten(root.left)
-        self.flatten(root.right)
+            return root
         
-        leftTreeStartNode = root.left
-        rightTreeStartNode= root.right
+        tmp = root.right
+        root.right = root.left
+        root.left = tmp
         
-        root.left = None
-        root.right = leftTreeStartNode
+        self.invertTree(root.left)
+        self.invertTree(root.right)
         
-        p = root
-        while p.right is not None:
-            p = p.right    
-        p.right = rightTreeStartNode
-        """
-        # solution, get preOrder list ? 
-        if root is None:
-            return
-        
-        preOrder = []
-        def traverse(root):
-            if root is None:
-                return 
-            preOrder.append(root.val)
-            traverse(root.left)
-            traverse(root.right)
-        
-        traverse(root)
-        if len(preOrder) <= 1:
-            return 
-        root.left = None 
-        p = root 
-        for val in preOrder[1:]: 
-            p.right = TreeNode(val)
-            p = p.right 
-        
+        return root 
