@@ -34,7 +34,7 @@ class Solution(object):
                 res.append(tmp)
         return res 
     
-        # TODO, not passed 
+        # solution 2: refer to LC46
         visited_index = [False] * len(nums)
         nums.sort()
         res = []
