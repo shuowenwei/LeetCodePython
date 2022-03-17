@@ -2,11 +2,9 @@
 """
 @author: Wei, Shuowen
 
-https://leetcode.com/problems/subarray-sum-equals-k
+https://leetcode.com/problems/subarray-sum-equals-k/
 
-solution: https://leetcode.com/problems/subarray-sum-equals-k/discuss/190674/Python-O(n)-Based-on-%22running_sum%22-concept-of-%22Cracking-the-coding-interview%22-book
-
-https://labuladong.gitee.io/algo/2/21/56/
+https://labuladong.gitee.io/algo/2/22/57/
 
 LC303, LC304, LC560, LC528
 """
@@ -30,6 +28,5 @@ class Solution(object):
             #         res += 1
             if preSum[i] - k in dict_hash:
                 res += dict_hash[ preSum[i] - k ]
-                
             dict_hash[ preSum[i] ] += 1 # not dict_hash[ preSum[i] - k ] += 1 !!! 
         return res
