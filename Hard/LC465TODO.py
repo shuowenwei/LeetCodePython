@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/optimal-account-balancing/
 
+LC698, LC465
+Google Onsite Coding Question
 """
 import collections
 class Solution(object):
@@ -16,6 +18,7 @@ class Solution(object):
         dictBanks = {people : sum(lstAmount) for people, lstAmount in dictBanks.items() if sum(lstAmount) != 0 }
         lstAmount = [v for _, v in dictBanks.items()]
         # lstAmount = [-700, -92, 379, 160, -585, 383, -532, 680, -509, 529, 161, 670, -544]
+        print(lstAmount)
         self.res = 2 ** 32 
         def backtracking(lstAmount, start, conuter):
             n = len(lstAmount)
@@ -32,11 +35,46 @@ class Solution(object):
         print('result from backtracking... ',self.res)
         return self.res
 
-
+    def minTransfers_LC698(self, tranctions):
+        dictBanks = collections.defaultdict(list)
+        for p1, p2, amount in tranctions:
+            dictBanks[p1].append(amount)
+            dictBanks[p2].append(-amount)
+        # print(dictBanks)
+        dictBanks = {people : sum(lstAmount) for people, lstAmount in dictBanks.items() if sum(lstAmount) != 0 }
+        lstAmount = [v for _, v in dictBanks.items()]
+        # lstAmount = [-700, -92, 379, 160, -585, 383, -532, 680, -509, 529, 161, 670, -544]
+        
+        print(lstAmount)
+        max_buckets = len(lstAmount)
+        used_nums = [False] * len(lstAmount)
+        lstAmount.sort(key=lambda x: -abs(x))
+        def backtrack(nums, index, each_sum, subset):
+            if index == len(nums):
+                if len(set(subset)) == 1 and subset[0] == each_sum:
+                    return True 
+                else:
+                    return False
+            for i in range(min_k):
+                if subset[i] + nums[index] > each_sum:
+                    continue # pruning here
+                subset[i] += nums[index]
+                if backtrack(nums, index+1, each_sum, subset):
+                    return True
+                subset[i] -= nums[index]
+        
+        for min_k in range(2, max_buckets):
+            print('result from minTransfers_LC698 ... ', min_k)
+            subset = [0] * min_k
+            if backtrack(lstAmount, 0, 0, subset):
+                return min_k 
+        return min_k
+    
+    
 import random 
 peoplle = 'ABCDEFGHIGKLMN'
 tranctions = []
-for _ in range(1000):
+for _ in range(500):
     p1 = random.choice(peoplle)
     p2 = random.choice(peoplle)
     amount = int(random.uniform(1, 100))
@@ -44,6 +82,7 @@ for _ in range(1000):
 
 ob = Solution()
 print(ob.minTransfers(tranctions))
+print(ob.minTransfers_LC698(tranctions))
 
 
     
