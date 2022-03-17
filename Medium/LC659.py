@@ -4,6 +4,7 @@
 
 https://leetcode.com/problems/split-array-into-consecutive-subsequences/
 
+LC659, LC1296
 """
 class Solution(object):
     def isPossible(self, nums):
