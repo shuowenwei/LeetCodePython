@@ -7,6 +7,8 @@ https://leetcode.com/problems/combination-sum-ii/
 https://leetcode.com/problems/combination-sum-ii/discuss/17020/Python-easy-to-understand-backtracking-solution
 
 LC39, LC40, LC1239
+- backtracking
+LC78, LC77, LC46, LC90, LC47, LC39, LC40
 """
 class Solution(object):
     def combinationSum2(self, candidates, target):
@@ -15,20 +17,24 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        res = []
         candidates.sort()
-        def backtracking(nums, target, index, path):
-            if target == 0:
-                res.append(path[::])
-                return
-            for i in range(index, len(nums)):
-                if i > index and nums[i] == nums[i-1]:
-                    continue
-                if nums[i] > target:
-                    break
-                path.append(nums[i])
-                # here, must be i+1, not index+1, this is not full permutation
-                backtracking(nums, target-nums[i], i+1, path) 
+        res = []
+        def backtracking(candidates, target, start, trackSum, path):
+            if target == trackSum:
+                res.append(path[:])
+                return 
+            if target < trackSum: 
+                return 
+            
+            for i in range(start, len(candidates)):
+                if i > start and candidates[i] == candidates[i-1]:
+                    continue 
+                path.append(candidates[i])
+                trackSum += candidates[i]
+                # here, must be i+1, not start+1, this is not full permutation
+                backtracking(candidates, target, i + 1, trackSum, path)
                 path.pop()
-        backtracking(candidates, target, 0, [])
-        return res
+                trackSum -= candidates[i]
+
+        backtracking(candidates, target, 0, 0, [])
+        return res 

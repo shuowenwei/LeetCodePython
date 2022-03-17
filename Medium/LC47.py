@@ -5,36 +5,15 @@
 https://leetcode.com/problems/permutations-ii/
 
 - backtracking
-LC78, LC77, LC46, LC90, LC47
+LC78, LC77, LC46, LC90, LC47, LC39, LC40
 """
 class Solution(object):
     def permuteUnique(self, nums):
         """
         :type nums: List[int]
         :rtype: List[List[int]]
-        """
-        res = []
-        res_index = [] 
-        nums_index = [i for i in range(len(nums))]
-        def backtracking(nums_index, tmp):
-            if len(tmp) == len(nums):
-                res_index.append(tmp[::])
-                return 
-            for index in nums_index:
-                if index in tmp:
-                    continue
-                tmp.append(index)
-                backtracking(nums_index, tmp)
-                tmp.pop()
-        backtracking(nums_index, [])
-        # print(nums_index)
-        for index_combo in res_index:
-            tmp = [nums[i] for i in index_combo]
-            if tmp not in res:
-                res.append(tmp)
-        return res 
-    
-        # solution 2: refer to LC46
+        """    
+        # solution 1: refer to LC46
         visited_index = [False] * len(nums)
         nums.sort()
         res = []
@@ -55,4 +34,27 @@ class Solution(object):
                 tmp.pop()
                 visited_index[i] = False
         backtracking(nums, [])
+        return res 
+    
+    
+        # solution 2: via index
+        res = []
+        res_index = [] 
+        nums_index = [i for i in range(len(nums))]
+        def backtracking(nums_index, tmp):
+            if len(tmp) == len(nums):
+                res_index.append(tmp[::])
+                return 
+            for index in nums_index:
+                if index in tmp:
+                    continue
+                tmp.append(index)
+                backtracking(nums_index, tmp)
+                tmp.pop()
+        backtracking(nums_index, [])
+        # print(nums_index)
+        for index_combo in res_index:
+            tmp = [nums[i] for i in index_combo]
+            if tmp not in res:
+                res.append(tmp)
         return res 

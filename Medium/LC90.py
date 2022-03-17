@@ -7,7 +7,7 @@ https://leetcode.com/problems/subsets-ii/
 https://www.youtube.com/watch?v=Vn2v6ajA7U0&list=UU_mYaQAE6-71rjSN6CeCA-g&index=4
 
 - backtracking
-LC78, LC77, LC46, LC90, LC47
+LC78, LC77, LC46, LC90, LC47, LC39, LC40
 """
 class Solution(object):
     def subsetsWithDup(self, nums):

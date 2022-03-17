@@ -5,6 +5,8 @@
 https://leetcode.com/problems/combination-sum/
 
 LC39, LC40, LC1239
+- backtracking
+LC78, LC77, LC46, LC90, LC47, LC39, LC40
 """
 class Solution(object):
     def combinationSum(self, candidates, target):
@@ -13,18 +15,21 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        res = []
         candidates.sort()
-        def backtracking(nums, target, index, path):
-            if target == 0:
-                res.append(path[::])
-                return
-            for i in range(index, len(nums)):
-                if nums[i] > target:
-                    break
-                path.append(nums[i])
+        res = []
+        def backtracking(candidates, target, start, trackSum, path):
+            if target == trackSum:
+                res.append(path[:])
+                return 
+            if target < trackSum: 
+                return 
+            for i in range(start, len(candidates)):
+                path.append(candidates[i])
+                trackSum += candidates[i]
                 # here, must be i, this is replaceable
-                backtracking(nums, target-nums[i], i, path) 
+                backtracking(candidates, target, i, trackSum, path)
                 path.pop()
-        backtracking(candidates, target, 0, [])
-        return res
+                trackSum -= candidates[i]
+                
+        backtracking(candidates, target, 0, 0, [])
+        return res 
