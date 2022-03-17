@@ -9,7 +9,8 @@ https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
 
 LC698, LC78, LC46, LC77, LC22, LC659
 LC51, LC37, LC47
-- backtrack
+- backtracking
+LC78, LC77, LC46, LC90, LC47
 """
 class Solution(object):
     def permute(self, nums):
@@ -20,11 +21,10 @@ class Solution(object):
         res = [] 
         def backtracking(nums, tmp):
             if len(tmp) == len(nums):
-                res.append(tmp[::])
-                # import copy
-                # res.append(copy.deepcopy(track))
+                res.append(tmp[:])
                 return 
             for n in nums:
+                # // 已经存在 track 中的元素，不能重复选择
                 if n in tmp:
                     continue
                 tmp.append(n)
