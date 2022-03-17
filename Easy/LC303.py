@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/range-sum-query-immutable/
 
-https://labuladong.gitee.io/algo/2/21/56/
+https://labuladong.gitee.io/algo/2/22/57/
 
 LC303, LC304, LC560, LC528
 """
@@ -14,10 +14,11 @@ class NumArray(object):
         """
         :type nums: List[int]
         """
-        self.preSum = [0]*(len(nums)+1)
-        # self.preSum[i] means sum(nums[0:i]), [0,...,i), not include nums[i]
-        for i in range(1, len(nums)+1):
-            self.preSum[i] = self.preSum[i-1] + nums[i-1]
+        n = len(nums)
+        self.preSum = [0] * (n + 1)
+        # self.preSum[i]: sum(nums[0:i]), [0,...,i), not include nums[i]
+        for i in range(1, n + 1):
+            self.preSum[i] = nums[i-1] + self.preSum[i-1]
 
     def sumRange(self, left, right):
         """
@@ -25,6 +26,7 @@ class NumArray(object):
         :type right: int
         :rtype: int
         """
+        # need nums[left] + nums[left + 1] + ... + nums[right], inclusive of left and right
         return self.preSum[right+1] - self.preSum[left]
 
 # Your NumArray object will be instantiated and called as such:
