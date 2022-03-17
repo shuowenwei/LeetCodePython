@@ -21,6 +21,7 @@ class Solution(object):
             
         nums.sort()
         while sum(freq.values()) > 0:
+            # smallest number in sorted nums with freq > 0 to start a sequence [v, v+1, v+2 ... , v+k-1]
             for v in nums:
                 if freq[v] > 0:
                     for i in range(k):
