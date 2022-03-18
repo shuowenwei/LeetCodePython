@@ -11,17 +11,20 @@ class Solution(object):
         :type digits: str
         :rtype: List[str]
         """
-        num2letter = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
         res = []
-        if digits == '':
-            return res 
-        def backtracking(digits, index, tmp):
-            if len(digits) == index:
-                res.append(''.join(tmp))
-                return
-            for char in num2letter[int(digits[index])]:
-                tmp.append(char)
-                backtracking(digits, index + 1, tmp)
-                tmp.pop()
-        backtracking(digits, 0, [])
+        if len(digits) == 0:
+            return res
+
+        num2letter = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+        
+        def backtracking(digits, path, index):
+            if index == len(digits):
+                res.append(''.join(path))
+                return 
+            letters = num2letter[int(digits[index])]
+            for char in letters:
+                path.append(char)
+                backtracking(digits, path, index + 1)
+                path.pop() 
+        backtracking(digits, [], 0)
         return res 
