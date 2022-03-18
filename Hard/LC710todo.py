@@ -25,12 +25,17 @@ class Solution(object):
                 lastIndex -= 1
                 continue
             indexB = self.val2index[b]
-            # swap and b and self.nums[indexB]
+            # swap self.nums[lastIndex] and b and their indices 
             self.nums[indexB] = self.nums[lastIndex]
             self.val2index[self.nums[indexB]] = indexB
             
             self.nums[lastIndex] = b
             self.val2index[b] = lastIndex
+            
+            # swap self.nums[lastIndex] and b and their indices 
+            # self.nums[lastIndex], self.nums[bIndex] = self.nums[bIndex], self.nums[lastIndex]
+            # self.val2index[self.nums[lastIndex]] = lastIndex
+            # self.val2index[self.nums[bIndex]] = bIndex
 
             lastIndex -= 1 
             print('after', self.nums, self.val2index)
@@ -41,7 +46,9 @@ class Solution(object):
         """
         import random
         return random.choice(self.nums[:self.numWhiteElement])
-
+        # n = random.randint(0, self.numWhite - 1)
+        # return self.nums[n]
+        
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(n, blacklist)
 # param_1 = obj.pick()

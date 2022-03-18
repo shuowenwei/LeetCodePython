@@ -29,6 +29,7 @@ class Solution(object):
                 if char == '(':
                     num = helper(s)
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
+                # if (char in ('+','-',')') and char != ' ') or len(s) == 0:
                     if sign == '+':
                         stack.append(num)
                     elif sign == '-':

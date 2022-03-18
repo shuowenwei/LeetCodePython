@@ -20,7 +20,7 @@ class Solution(object):
             sign = '+'
             stack = []
             while len(s) > 0:
-                char = s.pop(0)
+                char = s.popleft()
                 if char.isdigit():
                     num = 10*num + int(char)
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
@@ -38,7 +38,9 @@ class Solution(object):
                     num = 0
             return sum(stack)
 
-        return helper(list(s))
+        import collections 
+        s = collections.deque(s)
+        return helper(s)
     
 
 

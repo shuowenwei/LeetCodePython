@@ -24,14 +24,19 @@ class Solution(object):
             stack = []
             while len(s) > 0:
                 char = s.popleft() # this is faster than using list(s)
+                # if char == ' ': # wrong: "1 + 1 "
+                #     continue
                 if char.isdigit():
                     num = 10*num + int(char)
                 if char == '(':
                     num = helper(s)
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
+                # if (char in ('+','-',')') and char != ' ') or len(s) == 0:
                     if sign == '+':
+                        # print('+', stack, char, sign)
                         stack.append(num)
                     elif sign == '-':
+                        # print('-', stack, char, sign)
                         stack.append(-num)
                     """ refer to LC772 and LC227
                     # // 只要拿出前一个数字做对应运算即可
@@ -41,8 +46,9 @@ class Solution(object):
                         # python 除法向 0 取整的写法
                         stack[-1] = int(stack[-1] / float(num)) # write like this               
                     """
-                    sign = char
+                    sign = char # must be outside, since char can be ')'
                     num = 0
+                    # print('after', stack, char, sign)
                 if char == ')':
                     break
             return sum(stack)
