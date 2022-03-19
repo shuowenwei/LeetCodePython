@@ -35,6 +35,7 @@ class Solution(object):
         print('result from backtracking... ',self.res)
         return self.res
 
+    # solution 2: 
     def minTransfers_LC698(self, tranctions):
         dictBanks = collections.defaultdict(list)
         for p1, p2, amount in tranctions:

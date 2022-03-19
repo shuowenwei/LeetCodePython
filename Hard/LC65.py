@@ -14,25 +14,29 @@ class Solution(object):
         # if len(s.split('.')) > 2 or len(s.split('e')) > 2:
         #     return False
         # corner cases: '.', 'e', '0e', '1e', '005047e+6'
-        dotFlag, eFlag, digitFlag = False, False, False
+        dotFlag = False
+        eFlag = False
+        digitFlag = False
         for i, char in enumerate(s):
             if char in ('+', '-'):
                 if i == 0:
-                    continue
-                elif i > 0 and s[i-1] != 'e':
+                    continue 
+                elif i > 0 and s[i-1] not in ('e','E'):
                     return False
-            elif not char.isdigit() and char not in ('.', 'e', 'E'):
-                return False 
-            elif char in ('e', 'E'):
-                if eFlag or digitFlag is False: 
+            elif not char.isdigit() and char not in ('e','E','.'): 
+                return False
+            elif char in ('e','E'):
+                # can't have more than 1 e/E, must have digit before 
+                if eFlag is True or digitFlag is False:
                     return False
                 eFlag = True
-                digitFlag = False
-            elif char == '.':
-                if dotFlag == True or eFlag == True:
+                digitFlag = False # must reset to False, corner case: '0e'
+            elif char in ('.'):
+                 # can't have more than 1 dot, after e/E it must be integer
+                if dotFlag is True or eFlag is True:
                     return False
-                dotFlag = True
+                dotFlag = True 
             elif char.isdigit():
                 digitFlag = True
                 
-        return digitFlag
+        return digitFlag # corner case: '.'
