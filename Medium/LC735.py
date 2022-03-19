@@ -4,7 +4,6 @@
 
 https://leetcode.com/problems/asteroid-collision/
 
-LC735, LC2126
 """
 class Solution(object):
     def asteroidCollision(self, asteroids):
