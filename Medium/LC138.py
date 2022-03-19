@@ -63,8 +63,8 @@ class Solution(object):
         while oldHead and newHead:
             if oldHead.random in oldNode2newNode:
                 newHead.random = oldNode2newNode[oldHead.random]
-            else:
-                newHead.random = None
+            # else:
+            #     newHead.random = None
             oldHead = oldHead.next
             newHead = newHead.next
             
