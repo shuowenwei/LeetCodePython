@@ -18,6 +18,33 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        if root is None:
+            return []
+        res = []
+        def traverse_dfs(node, row, col):
+            if node is None:
+                return 
+            res.append((node.val, row, col))
+            traverse_dfs(node.left, row + 1, col - 1)
+            traverse_dfs(node.right, row + 1, col + 1)            
+        traverse_dfs(root, 0, 0)
+        res.sort(key = lambda x: [x[2], x[1], x[0]])
+        
+        final_res = []
+        cur_col = res[0][2]
+        tmp = []
+        for val, row, col in res:
+            if cur_col == col: 
+                tmp.append(val)
+            else:
+                final_res.append(tmp[:])
+                tmp = [val]
+                cur_col = col
+        if tmp:
+            final_res.append(tmp[:])
+        return final_res
+    
+        # longer solution 2
         dct_vo2lstVals = collections.defaultdict(list)
         # solution 1: DFS 
         def traverse(node, vo, level):
