@@ -31,20 +31,18 @@ class Solution(object):
         q = collections.deque()
         visited.add(s)
         q.append(s)
-        found = False 
+        keeySearchFlag = True 
         while q:
             cur_s = q.popleft()
             if isValid(cur_s):
-                found = True
                 res.append(cur_s)
-            if found:
-                # check next string in the current q, but not adding any new strings 
-                continue
-            for i in range(len(cur_s)):
-                if cur_s[i] not in ('(', ')'):
-                    continue
-                new_s = cur_s[:i] + cur_s[i+1:]
-                if new_s not in visited:
-                    visited.add(new_s)
-                    q.append(new_s)
+                keeySearchFlag = False
+            if keeySearchFlag:
+                for i in range(len(cur_s)):
+                    if cur_s[i] not in ('(', ')'): # only remove '(' or ')', e.g. '(a)())'
+                        continue
+                    new_s = cur_s[:i] + cur_s[i+1:]
+                    if new_s not in visited: # prune, e.g.: '())))))))))))))....)'
+                        visited.add(new_s)
+                        q.append(new_s)
         return res 
