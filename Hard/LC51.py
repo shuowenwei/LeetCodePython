@@ -44,3 +44,44 @@ class Solution(object):
                 board[row][col] = '.'
         backtracking(n, board, 0)
         return res 
+    
+    
+        # solution 2:rewrite
+        """
+        def isValid(grid, row, col):
+            if 'Q' in grid[row]:
+                return False
+            for r in range(row):
+                if grid[r][col] == 'Q':
+                    return False
+            r, c = row, col
+            while r >=0 and c >= 0:
+                if grid[r][c] == 'Q':
+                    return False
+                r -= 1
+                c -= 1
+                
+            r, c = row, col
+            while r >=0 and c <= n - 1:
+                if grid[r][c] == 'Q':
+                    return False
+                r -= 1
+                c += 1
+            return True 
+        
+        res = []
+        def backtracking(n, row, tmp):
+            if row == n:
+                res.append([''.join(tmp[i]) for i in range(n)])
+                return 
+            for col in range(n):
+                if isValid(tmp, row, col) is False:
+                    continue 
+                tmp[row][col] = 'Q'
+                backtracking(n, row + 1, tmp)
+                tmp[row][col] = '.'
+        tmp = [['.' for _ in range(n)] for _ in range(n)] 
+        print(tmp)
+        backtracking(n, 0, tmp)
+        return res 
+        """
