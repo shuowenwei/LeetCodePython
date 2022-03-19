@@ -34,6 +34,19 @@ class Solution(object):
                 pB = pB.next
         return pA 
 
+        # solution 2: 
+        A, B = headA, headB
+        while headA != headB:
+            headA = headA.next 
+            headB = headB.next
+            if headA == headB: # both None 
+                break
+            if headB is None:
+                headB = A
+            if headA is None:
+                headA = B
+        return headA
+
         """
         if not headA or not headB:
             return None
