@@ -17,34 +17,33 @@ class Solution(object):
         :rtype: List[str]
         """
         res = []
-        def backtracking(num, i, path, value, prev):
-            if len(num) == i: 
+        def backtracking(num, start, path, value, prev):
+            if len(num) == start: 
                 if value == target:
                     res.append(path)
                 return 
-            for j in range(i, len(num)):
-                if j > i and num[i] == '0': # must have j > i: "105", 5
+            for i in range(start, len(num)):
+                if num[start] == '0' and i > start: # must have i > start: "105", 5
                     break # Skip leading zero number
-                cur_num = int(num[i:j+1])
-                if i == 0:
-                    # First num, pick it without adding any operator
-                    backtracking(num, j+1, path+str(cur_num), value + cur_num, cur_num)
+                cur_num = int(num[start: i + 1])
+                if start == 0:
+                    # First num, pick it without adding any operator, e.g. '105', 5 
+                    backtracking(num, i+1, path+str(cur_num), value + cur_num, cur_num)
                 else:
-                    backtracking(num, j+1, path+'+'+str(cur_num), value + cur_num, cur_num)
-                    backtracking(num, j+1, path+'-'+str(cur_num), value - cur_num, - cur_num)
+                    backtracking(num, i+1, path+'+'+str(cur_num), value + cur_num, cur_num)
+                    backtracking(num, i+1, path+'-'+str(cur_num), value - cur_num, - cur_num)
                     # Can imagine with example: 1+2*3*4
-                    backtracking(num, j+1, path+'*'+str(cur_num), value - prev + prev * cur_num, prev * cur_num)
-            
+                    backtracking(num, i+1, path+'*'+str(cur_num), value - prev + prev * cur_num, prev * cur_num)
+
         backtracking(num, 0, '', 0, 0)
         return res 
-
     
-""" somewhere is wrong ...
-        def helper(s): # s is a list
+        # solution 2: Time Limit Exceeded
+        def helper(s): # s is string
             num = 0
             sign = '+'
             stack = []
-            for i in range(len(s)):
+            for i, char in enumerate(s):
                 char = s[i]
                 if char.isdigit():
                     num = 10*num + int(char)
@@ -53,47 +52,28 @@ class Solution(object):
                         stack.append(num)
                     elif sign == '-':
                         stack.append(-num)
-                    # // 只要拿出前一个数字做对应运算即可
                     elif sign == '*':
                         stack[-1] = stack[-1] * num
-                    # elif sign == '/':
-                    #     # python 除法向 0 取整的写法
-                    #     stack[-1] = int(stack[-1] / float(num)) # write like this               
                     sign = char
                     num = 0
             return sum(stack)
         
         res = []
-        total_length = len(num) + len(num) - 1 # length + gaps in between
-        def backtrack(num, total_length, index, target):
-            if index == total_length:
-                # print(helper(list(num.replace(' ',''))))
-                if helper(list(num)) == target:
-                    res.append(''.join(num.split(' ')))
+        def backtrack(num, start, path):
+            if len(num) == start: 
+                if helper(path) == target:
+                    res.append(path)
                 return
-            
-            for sign in ('+', '-', '*'):
-                newNum = num[:index] + sign + num[index:]
-                backtrack(newNum, total_length, index + 2, target)
-            # Prevent cases such as (2+05) which cannot be evaluated using the eval function
-            # Cases such as 12+104 should be acceptable, but not 121+04
-            # test case: "105" 5
-            if num[index] == '0' and num[index-1] not in ('+', '-', '*', '0'): # '00' --x--> 0
-                newNum = num[:index] + ' ' + num[index:]
-                backtrack(newNum, total_length, index + 2, target)
-                
-        backtrack(num, total_length, 1, target)
+            for i in range(start, len(num)):
+                if i > start and num[start] == '0':
+                    break 
+                cur_num = int(num[start: i + 1])
+                if start == 0:
+                    # First num, pick it without adding any operator, e.g. '105', 5 
+                    backtrack(num, i+1, path+str(cur_num))
+                else:
+                    backtrack(num, i+1, path+'+'+str(cur_num))
+                    backtrack(num, i+1, path+'-'+str(cur_num))
+                    backtrack(num, i+1, path+'*'+str(cur_num))
+        backtrack(num, 0, '')
         return res 
-
-# my = ["1+2+3+4+5+6+7+8+9","1+2+3+4+5-6*7+8*9","1+2+3+4-5*6+7*8+9","1+2+3+4-5*6-7+8*9","1+2+3-4*5+6*7+8+9","1+2+3-4*5-6+7*8+9","1+2+3-4*5-6-7+8*9","1+2+3*4+5+6*7-8-9","1+2+3*4*5+6-7-8-9","1+2-3+4*5+6*7-8-9","1+2-3-4-5*6+7+8*9","1+2-3*4+5*6+7+8+9","1+2-3*4-5+6*7+8+9","1+2-3*4-5-6+7*8+9","1+2-3*4-5-6-7+8*9","1+2*3+4*5-6+7+8+9","1+2*3*4+5*6+7-8-9","1+2*3*4-5+6*7-8-9","1-2+3*4*5-6-7+8-9","1-2-3*4+5+6+7*8-9","1-2*3+4+5+6*7+8-9","1-2*3+4+5-6+7*8-9","1-2*3+4*5+6+7+8+9","1-2*3+4*5-6*7+8*9","1-2*3-4+5*6+7+8+9","1-2*3-4-5+6*7+8+9","1-2*3-4-5-6+7*8+9","1-2*3-4-5-6-7+8*9","1-2*3*4-5-6+7+8*9","1*2+3+4+5*6+7+8-9","1*2+3+4-5+6*7+8-9","1*2+3+4-5-6+7*8-9","1*2*3+4+5+6+7+8+9","1*2*3+4+5-6*7+8*9","1*2*3+4-5*6+7*8+9","1*2*3+4-5*6-7+8*9","1*2*3-4*5+6*7+8+9","1*2*3-4*5-6+7*8+9","1*2*3-4*5-6-7+8*9","1*2*3*4+5+6-7+8+9"]   
-
-# lc = ["1*2*3*4*5-6-78+9","1*2*3*4+5+6-7+8+9","1*2*3+4+5+6+7+8+9","1*2*3+4+5-6*7+8*9","1*2*3+4-5*6+7*8+9","1*2*3+4-5*6-7+8*9","1*2*3-4*5+6*7+8+9","1*2*3-4*5-6+7*8+9","1*2*3-4*5-6-7+8*9","1*2*3-45+67+8+9","1*2*34+56-7-8*9","1*2*34-5+6-7-8-9","1*2+3*4-56+78+9","1*2+3+4+5*6+7+8-9","1*2+3+4-5+6*7+8-9","1*2+3+4-5-6+7*8-9","1*2+3+45+67-8*9","1*2+3-45+6+7+8*9","1*2+34+5-6-7+8+9","1*2+34+56-7*8+9","1*2+34-5+6+7-8+9","1*2+34-56+7*8+9","1*2+34-56-7+8*9","1*2-3*4+5+67-8-9","1*2-3+4-5-6*7+89","1*2-3-4*5+67+8-9","1*2-3-4+56-7-8+9","1*2-34+5*6+7*8-9","1*23+4*5-6+7-8+9","1*23-4-56-7+89","1+2*3*4*5+6+7-89","1+2*3*4+5*6+7-8-9","1+2*3*4-5+6*7-8-9","1+2*3+4*5*6+7-89","1+2*3+4*5-6+7+8+9","1+2*3-4-5-6*7+89","1+2*34-5*6+7+8-9","1+2+3*4*5+6-7-8-9","1+2+3*4+5+6*7-8-9","1+2+3*45-6-78-9","1+2+3+4+5+6+7+8+9","1+2+3+4+5-6*7+8*9","1+2+3+4-5*6+7*8+9","1+2+3+4-5*6-7+8*9","1+2+3-4*5+6*7+8+9","1+2+3-4*5-6+7*8+9","1+2+3-4*5-6-7+8*9","1+2+3-45+67+8+9","1+2-3*4*5+6+7+89","1+2-3*4+5*6+7+8+9","1+2-3*4-5+6*7+8+9","1+2-3*4-5-6+7*8+9","1+2-3*4-5-6-7+8*9","1+2-3+4*5+6*7-8-9","1+2-3+45+6-7-8+9","1+2-3+45-6+7+8-9","1+2-3-4-5*6+7+8*9","1+2-3-45-6+7+89","1+2-34+5+6+7*8+9","1+2-34+5+6-7+8*9","1+2-34-5-6+78+9","1+23*4+5-6-7*8+9","1+23*4-5-6*7+8-9","1+23*4-56+7-8+9","1+23+4+5+6+7+8-9","1+23+4-5*6+7*8-9","1+23+4-5-67+89","1+23-4*5+6*7+8-9","1+23-4*5-6+7*8-9","1+23-4-5+6+7+8+9","1+23-4-5-6*7+8*9","1+23-45+67+8-9","1-2*3*4+5-6+78-9","1-2*3*4-5-6+7+8*9","1-2*3+4*5+6+7+8+9","1-2*3+4*5-6*7+8*9","1-2*3+4+5+6*7+8-9","1-2*3+4+5-6+7*8-9","1-2*3+4+56+7-8-9","1-2*3+45-67+8*9","1-2*3-4+5*6+7+8+9","1-2*3-4-5+6*7+8+9","1-2*3-4-5-6+7*8+9","1-2*3-4-5-6-7+8*9","1-2*34+5*6-7+89","1-2+3*4*5-6-7+8-9","1-2+3+4-5*6+78-9","1-2+3+45+6-7+8-9","1-2+3-4*5-6+78-9","1-2+3-45+6-7+89","1-2-3*4+5+6+7*8-9","1-2-3*4-5-6+78-9","1-2-3+4-5+67-8-9","1-2-3+45-6-7+8+9","1-2-34+5+6+78-9","1-2-34+56+7+8+9","1-2-34-5+6+7+8*9","1-23*4+5+6*7+89","1-23+4*5-6*7+89","1-23+4-5+67-8+9","1-23+45-67+89","1-23-4+5+67+8-9","1-23-4-5-6-7+89","12*3*4-5*6-78+9","12*3+4+5+6-7-8+9","12*3+4+5-6+7+8-9","12*3-4-5-6+7+8+9","12*3-4-56+78-9","12+3*4+5+6-7+8+9","12+3*45-6-7-89","12+3+4-56-7+89","12+3-4*5+67-8-9","12+3-45+6+78-9","12+34-5-6-7+8+9","12-3*4*5+6+78+9","12-3*4-5+67-8-9","12-3+4*5+6-7+8+9","12-3+4+56-7-8-9","12-3-4+5*6-7+8+9","12-3-4-56+7+89","12-3-45-6+78+9"]            
-            
-# for m in my:
-#     if m not in lc:
-#         print(m)
-# for c in lc:
-#     if c not in my:
-#         print(c)
-"""
- 
