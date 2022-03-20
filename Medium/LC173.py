@@ -27,7 +27,7 @@ class BSTIterator(object):
         
     def pushLeftBranch(self, node):
         while node:
-            self.leftTrees.append(node)
+            self.stack.append(node)
             node = node.left
 
     def next(self):
