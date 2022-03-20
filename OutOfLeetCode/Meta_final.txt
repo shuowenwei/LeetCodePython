@@ -3,3 +3,9 @@
 
 528. Random Pick with Weight
 
+339. Nested List Weight Sum
+
+408. Valid Word Abbreviation
+
+162. Find Peak Element
+

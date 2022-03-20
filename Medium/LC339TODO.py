@@ -54,7 +54,7 @@ def depthSum(self, nestedList):
                 if elem.isInteger():
                     temp_sum += elem.getInteger() * depth
                 else:
-                    temp_sum += DFS(elem.getList(),depth+1)
+                    temp_sum += dfs(elem.getList(), depth + 1)
             return temp_sum
 
-        return dfs(nestedList, 1)
+        return dfs(nestedList, 1) # start with depth == 1 

@@ -13,29 +13,38 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        import random 
-        distance = [(x**2+y**2, x, y) for x,y in points]
-        
-        def helper(distance, k, res):
+        import random
+        lst_dist = [(x**2 + y**2, x, y) for x, y in points]
+        self.res = []
+        def helper(lst_dist, k):
             if k <= 0:
-                return res
-            random.shuffle(distance)
-            pivot = distance[0][0]
-            left = [d for d in distance if d[0] < pivot]
-            equals = [d for d in distance if d[0] == pivot]
-            # assert len(equals) == 1, 'Error! Answers might not be unique'
-            right = [d for d in distance if d[0] > pivot]
-            if k <= len(left):
-                return helper(left, k, res)
-            elif k - len(left) <= len(equals):
-                for d, x, y in left + equals:
-                    res.append([x, y])
-                return helper(equals, k - len(left + equals), res)
+                return
+            random.shuffle(lst_dist)
+            pivot = lst_dist[0]
+            small = [e for e in lst_dist if e[0] < pivot[0] ]
+            equal = [e for e in lst_dist if e[0] == pivot[0] ]
+            large = [e for e in lst_dist if e[0] > pivot[0] ]
+            if k <= len(small):
+                helper(small, k)
+            # elif k - len(small) <= len(equal): # The answer is guaranteed to be unique
+            #     for d,x,y in small+equal: # must have equal
+            #         self.res.append([x,y])
+            #     helper(equal, k - len(small) - len(equal))
             else:
-                for d, x, y in left + equals:
-                    res.append([x, y])
-                return helper(right, k - len(left + equals), res)
-            # return res
+                for d,x,y in small+equal:
+                    self.res.append([x,y])
+                helper(large, k - len(small) - len(equal) )
 
-        res = helper(distance, k, [])
-        return res 
+        helper(lst_dist, k)
+        return self.res 
+
+        # solution 2, user a minheap via heapq, O(nlog(n))
+        from heapq import heappop, heappush, heapify
+        lst_dist = [(x**2 + y**2, x, y) for x, y in points]
+        heapify(lst_dist)
+        res = []
+        for i in range(k):
+            distance, i, j = heappop(lst_dist)
+            res.append([i,j])
+        return res
+
