@@ -12,20 +12,21 @@ class Solution(object):
         :rtype: str
         """
         stack = []
-        tmp = ''
-        for i in range(len(path)):
-            char = path[i]
-            # print(char, stack)
-            if char != '/': 
-                tmp += char
+        folder = ''
+        for i, char in enumerate(path):
+            if char != '/':
+                folder += char 
             if char == '/' or i == len(path) - 1:
-                if tmp == '..':
+                if folder == '..':
                     if stack:
                         stack.pop()
-                elif tmp in ('.', ''): # '/'
+                # must use elif: e.g. '/../'
+                elif folder in ('', '.'):
                     pass
+                # must use elif 
                 else:
-                    stack.append(tmp)
-                tmp = ''
-        return '/'+'/'.join(stack)
+                    stack.append(folder)
+                folder = ''
+            # print(stack)
+        return '/' + '/'.join(stack)
         
