@@ -16,14 +16,14 @@ class Solution(object):
         """
         # refer to LC1541
         res = 0
-        left = 0 
+        left = 0
         for char in s:
             if char == '(':
                 left += 1
-            if char == ')':
-                left -= 1
-            if left < 0:
-                res += 1
-                left = 0
+            elif char == ')':
+                if left <= 0:
+                    res += 1
+                else:
+                    left -= 1
         return left + res 
                 

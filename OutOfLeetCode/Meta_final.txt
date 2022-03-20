@@ -1,0 +1,5 @@
+
+31. Next Permutation 
+
+528. Random Pick with Weight
+
