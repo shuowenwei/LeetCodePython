@@ -15,30 +15,28 @@ class Solution(object):
         n = len(chars)
         if n < 2:
             return n 
-        fast, slow = 0, 0
-        res = 0
+        slow, fast = 0 , 0
+        n = len(chars)
         count = 0
+        res = ''
         while fast < n:
-            # print(fast, slow, chars[fast], chars[slow], count)
             if chars[fast] == chars[slow]:
                 count += 1
+                fast += 1
             else:
-                chars[res] = chars[slow]
-                res += 1
+                res += chars[slow]
                 if count > 1:
-                    for k in range(len(str(count))):
-                        print(k, count)
-                        chars[res] = list(str(count))[k]
-                        res += 1
+                    res += str(count)
+                else:
+                    pass 
                 slow = fast
-                count = 1
-            fast += 1
-            
-        if fast == n:
-            chars[res] = chars[slow]
-            res += 1
+                count = 1 
+                fast += 1
+        if fast != slow:
+            res += chars[slow]
             if count > 1:
-                for k in range(len(str(count))):
-                    chars[res] = list(str(count))[k]
-                    res += 1
-        return res
+                res += str(count)
+        
+        for i, c in enumerate(res):
+            chars[i] = c
+        return len(res)

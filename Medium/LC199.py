@@ -33,3 +33,19 @@ class Solution(object):
                 if cur.right is not None:
                     q.append(cur.right)
         return res 
+    
+        # dfs: traverse right first, save extra storage space
+        res = []
+        self.max_level = -1 
+        def traverse_dfs(node, level):
+            if node is None:
+                return 
+            if level > self.max_level:
+                res.append(node.val)
+                self.max_level = level
+            # right first, for right size view 
+            traverse_dfs(node.right, level + 1)
+            traverse_dfs(node.left, level + 1)
+            
+        traverse_dfs(root, 0)
+        return res 

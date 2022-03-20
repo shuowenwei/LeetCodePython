@@ -23,8 +23,8 @@ class Solution(object):
  #   4. first decreasing then increasing -> the left-most element is the peak  
  # Therefore, we can find the peak only on its right elements( cut the array to half)
  # The same idea applies to that an element(not the left-most one) is smaller than its left neighbor.
-        left, right = 0, len(nums) - 1
-        while left < right - 1:
+        left, right = 0, len(nums) - 1 
+        while left < right - 1: # must ensure nums[mid +- 1] not out of index 
             mid = left + (right - left) / 2
             if nums[mid] > nums[mid + 1] and nums[mid] > nums[mid - 1]:
                 return mid 
@@ -34,3 +34,18 @@ class Solution(object):
                 right = mid - 1
         #handle condition 1 and 2
         return left if nums[left] >= nums[right] else right
+    
+    
+        # solution 2: O(n), for loop
+        if len(nums) <= 2:
+            return nums.index(max(nums))
+        for i in range(1, len(nums)-1):
+            if nums[i] > nums[i-1] and nums[i] > nums[i+1]:
+                return i 
+        if nums[0] > nums[1]:
+            return 0 
+        else:
+            return len(nums) - 1
+        
+        # Solution 3: or just try to find the max number
+        return nums.index(max(nums))
