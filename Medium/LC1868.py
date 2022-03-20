@@ -7,6 +7,12 @@ https://leetcode.com/problems/product-of-two-run-length-encoded-arrays/
 https://walkccc.me/LeetCode/problems/1868/
 
 LC443, LC1868
+
+Example 1:
+Input: encoded1 = [[1,3],[2,3]], encoded2 = [[6,3],[3,3]]
+Output: [[6,6]]
+Explanation: encoded1 expands to [1,1,1,2,2,2] and encoded2 expands to [6,6,6,3,3,3].
+prodNums = [6,6,6,6,6,6], which is compressed into the run-length encoded array [[6,6]].
 """
 class Solution(object):
     def findRLEArray(self, encoded1, encoded2):
@@ -30,3 +36,6 @@ class Solution(object):
             if encoded2[j][1] == 0:
                 j += 1
         return ans
+
+# Time: O(|\texttt{encoded1}| + |\texttt{encoded2}|)O(∣encoded1∣+∣encoded2∣)
+# Space: O(|\texttt{encoded1}| + |\texttt{encoded2}|)O(∣encoded1∣+∣encoded2∣)
