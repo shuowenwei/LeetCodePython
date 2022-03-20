@@ -11,25 +11,28 @@ class Solution(object):
         :type mat: List[List[int]]
         :rtype: List[int]
         """
-        # https://leetcode.com/problems/diagonal-traverse/discuss/97767/Simply-Python-Solution
-        result = []
-        dd = collections.defaultdict(list)
-        if not mat: 
-            return result
-        # Step 1: Numbers are grouped by the diagonals.
+        res = []
+        if len(mat) == 0:
+            return res 
+        row, col = len(mat), len(mat[0])
         # Numbers in same diagonal have same value of row+col
-        for i in range(0, len(mat)):
-            for j in range(0, len(mat[0])):
-                dd[i+j+1].append(mat[i][j]) # starting indices from 1, hence i+j+1.
-        # Step 2: Place diagonals in the result list.
-        # But remember to reverse numbers in odd diagonals.
-        # print(dd)
-        for k in sorted(dd.keys()):
-            if k % 2==1: dd[k].reverse()
-            result += dd[k]
-        return result
+        d = {}
+        for i in range(row):
+            for j in range(col):
+                if i+j not in d:
+                    d[i+j] = [mat[i][j]]
+                else:
+                    d[i+j].append(mat[i][j])
+        # Place diagonals in the result list. But remember to reverse numbers in odd diagonals
+        for key in sorted(d.keys()):
+            if key % 2 == 0:
+                res += d[key][::-1]
+            else:
+                res += d[key]
+        return res 
 
-        # my long and ugly solution: 
+
+        # Solution 2: my long and ugly solution: 
         direction = 'upRight' # 'downLeft'
         row, col = len(mat), len(mat[0])
         q = collections.deque()
