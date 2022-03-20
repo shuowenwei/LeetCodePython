@@ -18,6 +18,6 @@ class Solution(object):
         elif n < 0:
             return 1 / float(self.myPow(x, -n))
         elif n % 2 == 1:
-            return x * self.myPow(x, n-1)
+            return x * self.myPow(x, n - 1)
         else:
-            return self.myPow(x * x, n / 2)
+            return self.myPow(x * x, n // 2)
