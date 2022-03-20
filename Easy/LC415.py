@@ -13,24 +13,23 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        len_n1, lenn2 = len(num1), len(num2)
-        lst_num1, lst_num2 = list(num1), list(num2)
         res = []
-        carry = 0 
-        while lst_num1 and lst_num2:
-            tmp = int(lst_num1.pop()) + int(lst_num2.pop()) + carry 
-            carry = tmp / 10 
+        l1 = [int(n) for n in num1]
+        l2 = [int(n) for n in num2]
+        carry = 0
+        while l1 and l2:
+            tmp = l1.pop() + l2.pop() + carry 
+            carry = tmp // 10
+            res.append(tmp % 10)
+        while l1:
+            tmp = l1.pop() + carry 
+            carry = tmp // 10
+            res.append(tmp % 10)
+        while l2:
+            tmp = l2.pop() + carry 
+            carry = tmp // 10
             res.append(tmp % 10)
             
-        while lst_num1:
-            tmp = int(lst_num1.pop()) + carry 
-            carry = tmp / 10 
-            res.append(tmp % 10)
-        
-        while lst_num2:
-            tmp = int(lst_num2.pop()) + carry 
-            carry = tmp / 10 
-            res.append(tmp % 10)
         if carry > 0:
             res.append(carry)
-        return ''.join([str(i) for i in res[::-1]])
+        return ''.join([str(r) for r in res[::-1]])
