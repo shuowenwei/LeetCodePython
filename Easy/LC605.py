@@ -48,3 +48,19 @@ class Solution(object):
                 res += 1
                 flowerbed[i] = 1
         return res >= n 
+    
+        # solution 3: long and ugly
+        if 1 not in flowerbed:
+            return (len(flowerbed)+1)/2 >= n 
+        res = 0
+        for i in range(len(flowerbed) - 1):
+            if i == 0 and flowerbed[i] == 0 and flowerbed[i+1] == 0:
+                flowerbed[i] = 1
+                res += 1
+            elif flowerbed[i-1] == 0 and flowerbed[i] == 0 and flowerbed[i+1] == 0:
+                flowerbed[i] = 1
+                res += 1
+            elif i == len(flowerbed) - 2 and flowerbed[i] == 0 and flowerbed[i+1] == 0:
+                flowerbed[i+1] = 1
+                res += 1
+        return res >= n 
