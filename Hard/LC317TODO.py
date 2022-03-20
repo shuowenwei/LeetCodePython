@@ -60,22 +60,21 @@ class Solution:
         def bfs(i,j):
             visited = [[False]*n for _ in range(m)]
             q = collections.deque()
-            q.append((i,j,1))
-            dirs = [[0,1],[0,-1],[-1,0],[1,0]]
+            q.append((i, j, 1))
+            dirs = [[0,1], [0,-1], [-1,0], [1,0]]
             
             while q:
                 i,j,dis = q.popleft()
                 for d in dirs:
-                    x = i+d[0]
-                    y = j+d[1]
-                    if 0<=x<m and 0<=y<n and not visited[x][y] and grid[x][y]==0:
+                    x = i + d[0]
+                    y = j + d[1]
+                    if 0<=x<m and 0<=y<n and not visited[x][y] and grid[x][y] == 0:
                         distance[x][y] += dis
                         reach_num[x][y] += 1
-                        q.append((x,y,dis+1))
+                        q.append((x, y, dis + 1))
                         visited[x][y] = True
                 
-                
-        m,n = len(grid),len(grid[0])
+        m, n = len(grid), len(grid[0])
         distance = [[0]*n for _ in range(m)]
         reach_num = [[0]*n for _ in range(m)]
         building_num = 0
@@ -89,7 +88,7 @@ class Solution:
         min_dist = float('inf')
         for i in range(m):
             for j in range(n):
-                if grid[i][j]==0 and reach_num[i][j]==building_num:
-                    min_dist = min(min_dist,distance[i][j])
+                if grid[i][j]==0 and reach_num[i][j] == building_num:
+                    min_dist = min(min_dist, distance[i][j])
         
         return min_dist if min_dist!=float('inf') else -1
