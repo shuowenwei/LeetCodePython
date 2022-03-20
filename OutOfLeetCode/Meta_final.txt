@@ -20,6 +20,9 @@
 1868. Product of Two Run-Length Encoded Arrays
 
 1570. Dot Product of Two Sparse Vectors
+
+523. Continuous Subarray Sum
+
 71. Simplify Path
 
 498. Diagonal Traverse

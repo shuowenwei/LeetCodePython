@@ -6,7 +6,7 @@ https://leetcode.com/problems/subarray-sum-equals-k/
 
 https://labuladong.gitee.io/algo/2/22/57/
 
-LC303, LC304, LC560, LC528
+LC303, LC304, LC560, LC528, LC523
 """
 class Solution(object):
     def subarraySum(self, nums, k):
