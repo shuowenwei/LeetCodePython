@@ -6,6 +6,7 @@ https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 
 https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/discuss/663204/Super-simple-Python-solution-with-explanation.-Faster-than-100-Memory-Usage-less-than-100
 
+LC301 vs LC1249
 """
 class Solution(object):
     def minRemoveToMakeValid(self, s):
@@ -28,7 +29,7 @@ class Solution(object):
             s[stack.pop()] = ''
         return ''.join(s)
 
-        # no stack
+        # no stack, hence extra Space is: O(1)
         res = ''
         left = 0 
         for char in s:
