@@ -30,6 +30,10 @@ class Solution(object):
             elif leftMax > rightMax:
                 res += rightMax - height[right]
                 right -= 1
+            # elif leftMax == rightMax: # wrong!!!! [2,0,2]
+            #     res += max(0, leftMax - height[left]) + max(0, rightMax - height[right])
+            #     left += 1
+            #     right -= 1
         return res 
     
         """

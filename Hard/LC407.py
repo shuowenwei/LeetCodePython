@@ -6,7 +6,7 @@ https://leetcode.com/problems/trapping-rain-water-ii/
 
 https://leetcode.com/problems/trapping-rain-water-ii/discuss/89473/Heap-with-explanation-and-time-complexity
 
-LC42, LC11, LC407
+LC42, LC11, LC407, LC778
 """
 class Solution(object):
     def trapRainWater(self, heightMap):
@@ -33,7 +33,7 @@ class Solution(object):
             for di, dj in [(1,0), (-1,0), (0,1), (0,-1)]:
                 ni = i + di
                 nj = j + dj
-                if (ni, nj) not in visited and ni >= 0 and nj >= 0 and ni < row and nj < col:
+                if 0 <= ni < row and 0 <= nj < col and (ni, nj) not in visited:
                     visited.add( (ni, nj) )
                     res += max(0, h - heightMap[ni][nj])
                     higherHeight = max(h, heightMap[ni][nj])
