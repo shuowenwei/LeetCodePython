@@ -41,9 +41,10 @@ class DoubleList(object):
         """
         :type x: ListNode
         """
-        x.prev.next = x.next 
-        x.next.prev = x.prev 
-        self.size -= 1 
+        if x not in (self.head, self.tail):
+            x.prev.next = x.next 
+            x.next.prev = x.prev 
+            self.size -= 1 
         
     # // 删除链表中第一个节点，并返回该节点，时间 O(1)
     def removeFirst(self):
@@ -66,27 +67,27 @@ class LRUCache(object):
         self.cap = capacity
         self.cache = DoubleList()
     
-    def makeRecently(self, key):
-        node = self.key2Node[key]
-        self.cache.remove(node) # // 先从链表中删除这个节点
-        self.cache.addLast(node) # // 重新插到队尾
+    # def makeRecently(self, key):
+    #     node = self.key2Node[key]
+    #     self.cache.remove(node) # // 先从链表中删除这个节点
+    #     self.cache.addLast(node) # // 重新插到队尾
         
-    def addRecently(self, key, val):
-        newNode = ListNode(key, val)
-        self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
-        self.key2Node[key] = newNode # // 别忘了在 key2Node 中添加 key 的映射
+    # def addRecently(self, key, val):
+    #     newNode = ListNode(key, val)
+    #     self.cache.addLast(newNode) # // 链表尾部就是最近使用的元素
+    #     self.key2Node[key] = newNode # // 别忘了在 key2Node 中添加 key 的映射
         
-    def deleteKey(self, key): 
-        node = self.key2Node[key]
-        self.cache.remove(node) # // 从链表中删除
-        self.key2Node.pop(key) # // 从 map 中删除
+    # def deleteKey(self, key): 
+    #     node = self.key2Node[key]
+    #     self.cache.remove(node) # // 从链表中删除
+    #     self.key2Node.pop(key) # // 从 map 中删除
 
-    def removeLeastRecently(self):
-        deletedNode = self.cache.removeFirst()
-        deletedKey = deletedNode.key
-        # print('key to remove:', deletedKey, self.key2Node.get(deletedKey))
-        if self.key2Node.get(deletedKey) is not None:
-            del self.key2Node[deletedKey]
+    # def removeLeastRecently(self):
+    #     deletedNode = self.cache.removeFirst()
+    #     deletedKey = deletedNode.key
+    #     # print('key to remove:', deletedKey, self.key2Node.get(deletedKey))
+    #     if self.key2Node.get(deletedKey) is not None:
+    #         del self.key2Node[deletedKey]
         
     def get(self, key):
         """
@@ -104,16 +105,21 @@ class LRUCache(object):
         :type value: int
         :rtype: None
         """
-        if self.key2Node.get(key): 
-            self.deleteKey(key)
-            self.addRecently(key, val)
+        if key in self.key2Node:
+            node = self.key2Node[key]
+            self.doubleList.removeNode(node)
+            node.val = value 
+            self.doubleList.insertTail(node)
             return # must return here if key exists !!!
         
-        if self.cap == self.cache.getSize():
-            # // 删除最久未使用的元素
-            self.removeLeastRecently()
-        # // 添加为最近使用的元素
-        self.addRecently(key, val)
+        newNode = Node(value, key)
+        self.key2Node[key] = newNode
+        if self.doubleList.size == self.cap:
+            first = self.doubleList.removeFirst()  # // 删除最久未使用的元素
+            if first is not None:
+                del self.key2Node[first.key]
+        self.doubleList.insertTail(newNode) # // 添加为最近使用的元素
+        
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
