@@ -22,7 +22,7 @@ class Solution(object):
         :rtype: bool
         """
         fast, slow = head, head
-        while fast is not None and fast.next is not None: 
+        while fast and fast.next: 
             fast = fast.next.next
             slow = slow.next
             if fast == slow:
