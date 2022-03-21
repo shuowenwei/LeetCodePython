@@ -9,7 +9,9 @@ https://leetcode.com/problems/integer-to-english-words/discuss/70688/Python-Clea
 """
 class Solution(object):
     def __init__(self):
-        self.lessThan20 =["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"]
+        self.lessThan20 =["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten",
+                          "Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen",
+                          "Seventeen","Eighteen","Nineteen"]
         self.tens = ["","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"]
         self.thousands = ["","Thousand","Million","Billion"]
 
@@ -36,4 +38,3 @@ class Solution(object):
                 res = self.helper(num % 1000) + self.thousands[i] + " " + res
             num = num / 1000
         return res.strip()
-
