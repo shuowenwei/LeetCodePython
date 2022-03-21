@@ -7,6 +7,8 @@ https://leetcode.com/problems/cutting-ribbons/
 https://walkccc.me/LeetCode/problems/1891/
 
 LC875, LC1011, lC1891
+
+go read https://www.geeksforgeeks.org/maximum-length-possible-by-cutting-n-given-woods-into-at-least-k-pieces/
 """
 class Solution(object):
     def maxLength(self, ribbons, k):

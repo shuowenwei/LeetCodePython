@@ -15,24 +15,24 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        wordDict = set(wordDict)
         dp_table = {}
-        dict_word = set(wordDict)
-        def dp(s, dict_word):
-            if s == '' or s in dict_word:
+        def dp(s):
+            if s == '' or s in wordDict:
                 dp_table[s] = True
-                return True
+                return True 
             if s in dp_table:
                 return dp_table[s]
-            res = False
+            res = False 
             for i in range(len(s)):
-                if s[:i] in dict_word:
+                if s[:i] in wordDict:
                     dp_table[s[:i]] = True
-                    if dp(s[i:], dict_word) is True:
-                        res = True 
+                    if dp(s[i:]) is True:
+                        res = True
                         break # this makes it faster
             dp_table[s] = res
             return res
-        return dp(s, dict_word)
+        return dp(s)
 
         # solution 2: bottom up
         dp = [False] * (len(s) + 1)

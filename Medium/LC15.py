@@ -30,7 +30,7 @@ class Solution(object):
             
             left = i + 1 
             right = length - 1
-            while( left < right):
+            while left < right:
                 threeSum = nums[i]+nums[left]+nums[right]
                 if threeSum == 0:
                     res.append( [nums[i], nums[left], nums[right]] )
