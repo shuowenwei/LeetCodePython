@@ -6,6 +6,7 @@ https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
 
 https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/discuss/1010057/JavaPython-Binary-Search-100
 
+LC1732, LC1986
 """
 class Solution(object):
     def minimumTimeRequired(self, jobs, k):
