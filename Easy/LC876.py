@@ -23,5 +23,5 @@ class Solution(object):
         while fast is not None and fast.next is not None: 
             fast = fast.next.next
             slow = slow.next 
-        return slow # 需要注意的是，如果链表长度为偶数，也就是说中点有两个的时候，我们这个解法返回的节点是靠后的那个节点。
-        
+        # 需要注意的是，如果链表长度为偶数，也就是说中点有两个的时候，我们这个解法返回的节点是靠后的那个节点。
+        return slow

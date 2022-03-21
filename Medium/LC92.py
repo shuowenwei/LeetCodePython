@@ -64,4 +64,6 @@ class Solution(object):
             pre = cur
             cur = nxt
         return pre
+        # pre is the new head, 
+        # cur is till
         """
