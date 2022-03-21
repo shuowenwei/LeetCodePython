@@ -15,19 +15,19 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        # solution 2: dp, must facter than backtrack
+        
         dp_table = {}
-        def dp(nums, i, diff):
-            if i == len(nums):
+        def dp(nums, start, diff):
+            if len(nums) == start:
                 if diff == 0:
                     return 1
                 else:
                     return 0
-            if (i, diff) in dp_table:
-                return dp_table[(i, diff)]
-            res = dp(nums, i+1, diff+nums[i]) + dp(nums, i+1, diff-nums[i])
-            dp_table[(i, diff)] = res
-            return res
+            if (start, diff) in dp_table:
+                return dp_table[(start, diff)]
+            res = dp(nums, start + 1, diff + nums[start]) + dp(nums, start + 1, diff - nums[start])
+            dp_table[(start, diff)] = res
+            return res 
         return dp(nums, 0, target)
         
         # solution 1: backtrack, Time Limit Exceeded, 时间复杂度为 O(2^N)，N 为 nums 的大小

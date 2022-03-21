@@ -88,7 +88,7 @@ class Solution:
         min_dist = float('inf')
         for i in range(m):
             for j in range(n):
-                if grid[i][j]==0 and reach_num[i][j] == building_num:
+                if grid[i][j] == 0 and reach_num[i][j] == building_num:
                     min_dist = min(min_dist, distance[i][j])
         
         return min_dist if min_dist!=float('inf') else -1
