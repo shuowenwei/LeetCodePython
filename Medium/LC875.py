@@ -8,6 +8,8 @@ https://labuladong.gitee.io/algo/2/21/59/
 https://mp.weixin.qq.com/s/E2cyJwMVxRosaU2-bZyTjA
 
 LC704, LC34, LC875, LC1101, LC410
+
+LC875, LC1011, lC1891
 """
 class Solution(object):
     def minEatingSpeed(self, piles, h):
@@ -27,12 +29,13 @@ class Solution(object):
         left, right = 1, 10**9
         while left <= right: # left boundary template
             mid = left + (right-left)/2
-            if getHours(mid) == h:
-                right = mid - 1
-            elif getHours(mid) < h:
+            if getHours(mid) < h:
                 right = mid - 1
             elif getHours(mid) > h:
                 left = mid + 1
-        return left
+            elif getHours(mid) == h:
+                 # // 搜索左侧边界，则需要收缩右侧边界
+                right = mid - 1
+        return left # or right + 1
     
         
