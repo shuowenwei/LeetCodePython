@@ -4,7 +4,6 @@
 
 https://leetcode.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks/
 
-
 refer to LC698, LC465
 
 LC1732, LC1986

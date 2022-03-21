@@ -32,13 +32,13 @@ class Solution(object):
             if fast == slow:
                 # slow meet fast, reset slow to head
                 break
-                
-        if fast is None or fast.next is None: # no cycle
+        
+        if fast is None or fast.next is None: # break due to condition in "while", hence no cycle
             return None
         else:
             slow = head # or fast = head
             while slow != fast:
                 fast = fast.next 
                 slow = slow.next
-            return slow # return fast
+            return slow # or return fast
             
