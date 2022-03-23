@@ -17,9 +17,9 @@ class Solution(object):
         """
         n = len(nums)
         farthest = 0
-        for i in range(n):
+        for i, val in enumerate(nums):
             # // 不断计算能跳到的最远距离
-            farthest = max(farthest, i+nums[i])
+            farthest = max(farthest, i + val) 
             # early stop: e.g: [0]
             if farthest >= n-1:
                 return True
