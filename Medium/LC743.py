@@ -4,10 +4,9 @@
 
 https://leetcode.com/problems/network-delay-time/
 
-labuladong: https://labuladong.gitee.io/algo/1/10/
+https://labuladong.gitee.io/algo/2/20/45/
 
 LC743, LC1514, LC1631
-
 """
 class Solution(object):
     def networkDelayTime(self, times, n, k):
@@ -27,10 +26,10 @@ class Solution(object):
         heapq.heapify(hp)
         elapsedTime = [0] + [2**31-1]*n
         while hp:
-            time, node = heapq.heappop(hp)
-            if time < elapsedTime[node]:
-                elapsedTime[node] = time
-                for v, w in graph[node]:
-                    heapq.heappush(hp, (time+w, v))
-        mx = max(elapsedTime)
-        return mx if mx < 2**31-1 else -1
+            time, src_node = heapq.heappop(hp)
+            if time < elapsedTime[src_node]:
+                elapsedTime[src_node] = time
+                for dst, weight in graph[src_node]:
+                    heapq.heappush(hp, (time + weight, dst))
+                    
+        return max(elapsedTime) if max(elapsedTime) < 2**31-1 else -1
