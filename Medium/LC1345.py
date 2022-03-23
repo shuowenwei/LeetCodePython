@@ -5,7 +5,7 @@
 https://leetcode.com/problems/jump-game-iv/
 
 LC55, LC45 - greedy
-LC1345
+LC1306, LC1345
 """
 class Solution(object):
     def minJumps(self, arr):

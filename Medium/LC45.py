@@ -7,7 +7,7 @@ https://leetcode.com/problems/jump-game-ii/
 https://labuladong.gitee.io/algo/3/27/105/
 
 LC55, LC45 - greedy
-LC1345
+LC1306, LC1345
 """
 class Solution(object):
     def jump(self, nums):
@@ -16,14 +16,13 @@ class Solution(object):
         :rtype: int
         """
         n = len(nums)
-        res = [2**32]*n
-        res[0] = 0
-        for i in range(n):
-            for jump in range(nums[i]+1):
-                # print(i, jump, ":", res)
-                if i+jump < n:
-                    res[i+jump] = min(res[i+jump], res[i] + 1)
-        return res[n-1]
+        dp = [2**32] * n
+        dp[0] = 0
+        for i, distance in enumerate(nums):
+            for d in range(distance + 1): # don't forget '+1', since d will be [0, distance-1]
+                if i + d < n:   
+                    dp[i + d] = min(dp[i + d], dp[i] + 1)
+        return dp[n-1]
             
         # solution 2: dp with memo table
         """
