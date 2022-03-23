@@ -13,43 +13,28 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
+        import collections 
         n = len(arr)
         if n <= 1:
             return 0 
-        dict_index = {}
-        for i, a in enumerate(arr):
-            if a in dict_index:
-                dict_index[a].append(i)
-            else:
-                dict_index[a] = [i]
-        res = [2**32] * n
-        res[0] = 0
+        dict_index = collections.defaultdict(list)
+        for i, val in enumerate(arr):
+            dict_index[val].append(i)
         # BFS
         from collections import deque 
         q = deque()
-        q.append(0)
         visited = set()
+        step = 0
+        q.append((0, step))
         visited.add(0)
         while q:
-            cur_index = q.popleft()
+            cur_index, step = q.popleft()
             if cur_index == n-1:
-                return res[cur_index]
-            if arr[cur_index] in dict_index:
-                for next_index in dict_index[arr[cur_index]]:
-                    if next_index not in visited:
-                        visited.add(next_index)
-                        res[next_index] = res[cur_index] + 1 
-                        q.append(next_index)
-                # very very important to avoid double calculating 
-                del dict_index[arr[cur_index]]
-
-            if cur_index + 1 < n and cur_index + 1 not in visited:
-                visited.add(cur_index + 1)
-                res[cur_index+1] = res[cur_index] + 1
-                q.append(cur_index+1)
-                
-            if cur_index - 1 >= 0 and cur_index - 1 not in visited:
-                visited.add(cur_index - 1)
-                res[cur_index-1] = res[cur_index] + 1
-                q.append(cur_index-1)
+                return step
+            for next_index in set(dict_index[arr[cur_index]] + [cur_index + 1, cur_index - 1]):
+                if 0 <= next_index < n and next_index not in visited:
+                    visited.add(next_index)
+                    q.append((next_index, step + 1)) 
+            # very very important to avoid double calculating 
+            del dict_index[arr[cur_index]]
                 
