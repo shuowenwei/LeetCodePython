@@ -10,7 +10,8 @@ JUMPGAME
 翻转链表的前k个节点，如果k大于链表长度，就不翻转，返回原链表。
 Minimum Window Substring
 Meeting room
-next greater number
+496. Next Greater Element
+503. Next Greater Element ii
 LC354 套娃问题
 331. Verify Preorder Serialization of a Binary Tree
 word break II

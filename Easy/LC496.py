@@ -17,7 +17,7 @@ class Solution(object):
         :rtype: List[int]
         """
         # All integers in nums1 and nums2 are unique.
-        res = dict()
+        dctNum1toIndex = dict()
         stack = []
         for i in range(len(nums2)-1, -1, -1):
             while stack and stack[-1] <= nums2[i]:
@@ -28,11 +28,11 @@ class Solution(object):
             #     else:
             #         break
             if len(stack) == 0:
-                res[nums2[i]] = - 1
+                dctNum1toIndex[nums2[i]] = - 1
             else:
-                res[nums2[i]] = stack[-1]
+                dctNum1toIndex[nums2[i]] = stack[-1]
             stack.append(nums2[i])
         
         # All the integers of nums1 also appear in nums2.
-        return [res[n] for n in nums1]
+        return [dctNum1toIndex[n] for n in nums1]
             
