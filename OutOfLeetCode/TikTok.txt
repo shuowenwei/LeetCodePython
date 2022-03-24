@@ -1,6 +1,7 @@
 https://www.1point3acres.com/bbs/thread-859860-1-1.html
 
-serialize and deserialize binary tree
+297. Serialize and Deserialize Binary Tree
+331. Verify Preorder Serialization of a Binary Tree
 JUMPGAME
 743. Network Delay Time 网络延迟 -- heap
 286 Walls and Gates
@@ -8,12 +9,11 @@ JUMPGAME
 LC354. 套娃问题
 146 LRU缓存
 567 Permutation in string
-翻转链表的前k个节点，如果k大于链表长度，就不翻转，返回原链表。
-Minimum Window Substring
-Meeting room
+LC25. Reverse Nodes in k-Group vs 翻转链表的前k个节点，如果k大于链表长度，就不翻转，返回原链表。
+76. Minimum Window Substring
+252. Meeting room ii
 496. Next Greater Element
 503. Next Greater Element ii
-331. Verify Preorder Serialization of a Binary Tree
 word break II
 given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them
 LC299 公牛和奶牛
