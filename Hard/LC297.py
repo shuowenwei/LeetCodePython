@@ -126,8 +126,8 @@ class Codec:
             rootVal = preorder.pop(0)
             root = TreeNode(int(rootVal))
             indexRootValInorder = inorder.index(rootVal)
-            root.left = reconstruction(preorder, inorder[0:indexRootValInorder])
-            root.right = reconstruction(preorder, inorder[indexRootValInorder+1:])
+            root.left = reconstruction(preorder, inorder[0 : indexRootValInorder])
+            root.right = reconstruction(preorder, inorder[indexRootValInorder + 1 : ])
             return root
         root = reconstruction(preorder, inorder)
         return root 
