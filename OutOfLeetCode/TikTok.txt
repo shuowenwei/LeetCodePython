@@ -18,9 +18,9 @@ LC25. Reverse Nodes in k-Group vs 翻转链表的前k个节点，如果k大于�
 140. Word Break II
 given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them
 LC299. Bulls and Cows 公牛和奶牛
-LC341 flat List of list
+LC341. flat List of list
 shuffle array
-LC 随机数索引
+398. Random Pick Index? 随机数索引
 LC528. Random Pick with Weight 按照权重生成随机数
 295. Find Median from Data Stream
 LC124 binary tree maximum path sum
