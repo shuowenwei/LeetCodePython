@@ -6,6 +6,8 @@ https://leetcode.com/problems/decode-string/
 
 https://leetcode.com/problems/decode-string/discuss/1400105/98-faster-oror-With-and-without-Stack-oror-Cleane-and-Concise
 
+time and space complexity is O(m), where m is size of our answer
+
 LC726, LC394
 """
 class Solution(object):
