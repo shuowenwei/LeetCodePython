@@ -17,7 +17,7 @@ LC25. Reverse Nodes in k-Group vs 翻转链表的前k个节点，如果k大于�
 503. Next Greater Element ii
 140. Word Break II
 given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them
-LC299 公牛和奶牛
+LC299. Bulls and Cows 公牛和奶牛
 LC341 flat List of list
 shuffle array
 LC 随机数索引
