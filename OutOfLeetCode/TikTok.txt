@@ -4,7 +4,8 @@ serialize and deserialize binary tree
 JUMPGAME
 743. Network Delay Time 网络延迟 -- heap
 286 Walls and Gates
-300 最长递增子序列
+300. Longest Increasing Subsequence 最长递增子序列
+LC354. 套娃问题
 146 LRU缓存
 567 Permutation in string
 翻转链表的前k个节点，如果k大于链表长度，就不翻转，返回原链表。
@@ -12,7 +13,6 @@ Minimum Window Substring
 Meeting room
 496. Next Greater Element
 503. Next Greater Element ii
-LC354 套娃问题
 331. Verify Preorder Serialization of a Binary Tree
 word break II
 given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them

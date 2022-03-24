@@ -4,10 +4,10 @@
 
 https://leetcode.com/problems/longest-increasing-subsequence/
 
-https://labuladong.gitee.io/algo/3/23/67/
+https://labuladong.gitee.io/algo/3/25/77/
 
-LC509, LC322
-LC300, LC354 -> binary search
+LC300, LC354, LC1996 -> binary search
+LC509, LC322 
 """
 class Solution(object):
     def lengthOfLIS(self, nums):
@@ -19,14 +19,14 @@ class Solution(object):
         for i in range(len(nums)):
             for j in range(i):
                 if nums[i] > nums[j]:
-                    dp_table[i] = max(dp_table[i], dp_table[j]+1)
+                    dp_table[i] = max(dp_table[i], dp_table[j] + 1)
         # print(dp_table)
         return max(dp_table) # not dp_table[len(nums)-1]
         
         # solution 2: 其实最长递增子序列和一种叫做 patience game 的纸牌游戏有关，甚至有一种排序方法就叫做 patience sorting（耐心排序
         """
         piles = 0 # // 牌堆数初始化为 0
-        top = [0]*len(nums)
+        top = [0]*len(nums) # assuming no negative number in the sequence
         for i in range(len(nums)):
             poker = nums[i] # // 要处理的扑克牌
             # /***** 搜索左侧边界的二分查找 *****/

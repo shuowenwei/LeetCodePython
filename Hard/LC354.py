@@ -4,8 +4,9 @@
 
 https://leetcode.com/problems/russian-doll-envelopes/
 
-https://labuladong.gitee.io/algo/3/24/76/
-LC300, LC354
+https://labuladong.gitee.io/algo/3/25/77/
+
+LC300, LC354, LC1996
 """
 class Solution(object):
     def maxEnvelopes(self, envelopes):
@@ -15,8 +16,9 @@ class Solution(object):
         """
         # solution 1: O(n^2): Time Limit Exceeded
         n = len(envelopes)
-        dp_table = [1]*n
-        envelopes = sorted(envelopes, key=lambda x: (x[0], -x[1])) # 对其高度 h 进行降序排序
+        dp_table = [1] * n
+        envelopes.sort(key=lambda x: (x[0], -x[1])) # 对其高度 h 进行降序排序
+        # nums = [height for _, height in envelopes]
         for i in range(n): 
             for j in range(i, n): 
                 # Time Limit Exceeded	
@@ -24,7 +26,7 @@ class Solution(object):
                 #     dp_table[j] = max(dp_table[j], 1 + dp_table[i])
                 # 对于宽度 w 相同的数对，要对其高度 h 进行降序排序。因为两个宽度相同的信封不能相互包含的，逆序排序保证在 w 相同的数对中最多只选取一个。
                 if envelopes[j][1] > envelopes[i][1]:
-                    dp_table[j] = max(dp_table[j], 1 + dp_table[i])
+                    dp_table[j] = max(dp_table[j], dp_table[i] + 1)
         return res
 
         # solution 2: O(nlog(n)): passed, refer to LC300 LongestIncreasingSubsequence
