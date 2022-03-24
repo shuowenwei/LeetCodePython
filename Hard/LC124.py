@@ -17,15 +17,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        res = [-2**32]
+        self.res = -2**32
         def traverse(node):
             if node is None:
                 return 0 
             leftMaxVal = max(traverse(node.left), 0)
             rightMaxVal = max(traverse(node.right), 0) 
             # postorder operation
-            res[0] = max(res[0], node.val + leftMaxVal + rightMaxVal) 
+            self.res = max(self.res, node.val + leftMaxVal + rightMaxVal) 
             return node.val + max(leftMaxVal, rightMaxVal)
         
         traverse(root)
-        return res[0]
+        return self.res
