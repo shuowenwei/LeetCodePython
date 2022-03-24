@@ -61,16 +61,20 @@ class Solution(object):
         # https://leetcode.com/problems/word-search/discuss/27660/Python-dfs-solution-with-comments.
         if len(word) == 0:
             return True
+        
         def backtrack(board, i, j, word, visited):
-            row, col = len(board), len(board[0])
             if len(word) == 0:
                 return True
             if i<0 or i>=row or j<0 or j>= col or board[i][j] != word[0] or (i,j) in visited:
                 return False
             visited.add((i,j))
-            res = backtrack(board, i+1, j, word[1:], visited) or backtrack(board, i-1, j, word[1:], visited) or backtrack(board, i, j+1, word[1:], visited) or backtrack(board, i, j-1, word[1:], visited)
+            # if backtrack(board, i+1, j, word[1:], visited) or backtrack(board, i-1, j, word[1:], visited) or backtrack(board, i, j+1, word[1:], visited) or backtrack(board, i, j-1, word[1:], visited):
+            #     return True
+            for di, dj in [(1,0), (-1,0), (0,1), (0,-1)]:
+                if backtrack(board, i + di, j + dj, word[1:], visited):
+                    return True
             visited.remove((i,j))
-            return res 
+
         visited = set()
         row, col = len(board), len(board[0])
         for i in range(row):
