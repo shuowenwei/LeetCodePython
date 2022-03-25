@@ -28,9 +28,8 @@ class Solution:
         while right < len(s): 
             c = s[right]
             right += 1 
-            if need.get(c) is not None:
-                if c in window: 
-                    window[c] += 1
+            if c in need: # A.K.A: c in window:
+                window[c] += 1
                 if window[c] == need[c]:
                     valid += 1
             # print(left, right, valid, len(need),need, window, s[match_start: match_start + match_length])
@@ -40,7 +39,7 @@ class Solution:
                     match_length = right - left
                 d = s[left]
                 left += 1
-                if need.get(d) is not None:
+                if d in need: # A.K.A: d in window:
                     if window[d] == need[d]:
                         valid -= 1
                     window[d] -= 1
