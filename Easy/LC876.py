@@ -7,6 +7,7 @@ https://leetcode.com/problems/middle-of-the-linked-list/
 https://labuladong.gitee.io/algo/2/17/16/
 
 LC21, LC23, LC141, LC142, LC876, LC160, LC19
+LC876, LC148
 """
 # Definition for singly-linked list.
 # class ListNode(object):

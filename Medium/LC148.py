@@ -4,8 +4,9 @@
 
 https://leetcode.com/problems/sort-list/
 
-https://leetcode.com/problems/sort-list/discuss/46711/Python-easy-to-understand-merge-sort-solution
+https://leetcode.com/problems/sort-list/discuss/892759/Python-O(n-log-n-log-n)-merge-sort-explained
 
+LC876, LC148
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -19,32 +20,31 @@ class Solution(object):
         :rtype: ListNode
         """
         # solution 1: merge sort 
-        if not head or not head.next:
-            return head
-        fast, slow = head.next, head
-        while fast and fast.next:
-            fast = fast.next.next
+        if not head or not head.next: return head
+        mid = self.getMid(head)
+        left = self.sortList(head)
+        right = self.sortList(mid)
+        return self.merge(left, right)
+    
+    def getMid(self, head): # refer to LC876
+        slow, fast = head, head
+        while fast.next and fast.next.next:
             slow = slow.next
-        start = slow.next
+            fast = fast.next.next
+        mid = slow.next
         slow.next = None
-        l, r = self.sortList(head), self.sortList(start)
-        return self.merge(l, r)
-        
-        
-    def merge(self, l, r):
-        if not l or not r:
-            return l or r
-        dummy = p = ListNode(0)
-        while l and r:
-            if l.val < r.val:
-                p.next = l
-                l = l.next
+        return mid
+    
+    def merge(self, head1, head2):
+        dummy = tail = ListNode(None)
+        while head1 and head2:
+            if head1.val < head2.val:
+                tail.next, tail, head1 = head1, head1, head1.next
             else:
-                p.next = r
-                r = r.next
-            p = p.next
-        p.next = l or r
+                tail.next, tail, head2 = head2, head2, head2.next
+        tail.next = head1 or head2
         return dummy.next
+
 
         # my long and ugly heap solutiono 
         from heapq import heappush, heappop
