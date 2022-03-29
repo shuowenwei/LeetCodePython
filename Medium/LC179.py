@@ -18,7 +18,7 @@ class Solution(object):
         strNums = [str(n) for n in nums]
         strNums.sort(cmp=compare,reverse=True)
         return str(int(''.join(strNums))) # e.g: '00'
-
+    
     # build-in function
     def largestNumber1(self, nums):
         if not any(nums):
