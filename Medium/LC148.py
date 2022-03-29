@@ -4,6 +4,8 @@
 
 https://leetcode.com/problems/sort-list/
 
+https://leetcode.com/problems/sort-list/discuss/46711/Python-easy-to-understand-merge-sort-solution
+
 """
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -16,8 +18,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-class Solution(object):
-    def sortList(self, head):
+        # solution 1: merge sort 
         if not head or not head.next:
             return head
         fast, slow = head.next, head
