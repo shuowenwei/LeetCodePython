@@ -15,7 +15,7 @@ class Solution(object):
         :rtype: int
         """
         # Sort by attack in increasing order and by defence in decreasing order.
-        # Now travel from last idx and maintain max, if defence of this is less than max add it to ans.
+        # Now travel from last idx and maintain max, if defence of this is less than max add it to res
         # In case of tie in attacks and max defence is of same attack, it wont be considered as we sorted defence in decreasing order.
         n = len(properties)
         properties.sort(key =lambda x:(x[0], -x[1]))

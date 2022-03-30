@@ -6,8 +6,7 @@ https://leetcode.com/problems/minimum-window-substring/
 
 https://labuladong.gitee.io/algo/1/9/
 
-lC76, LC567, LC438, LC3
-
+LC76, LC567, LC438, LC30
 """
 class Solution:
     def minWindow(self, s, t):
