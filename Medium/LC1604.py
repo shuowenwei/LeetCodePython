@@ -19,9 +19,11 @@ class Solution(object):
         
         res = []
         for name, lstTime in dctName2Times.items():
+            if len(lstTime) <= 2:
+                continue
             lstTime.sort()
-            for i, time in enumerate(lstTime):
-                if i >= 2 and time - lstTime[i-2] <= 60:
+            for i in range(len(lstTime) - 2):
+                if lstTime[i+2] - lstTime[i] <= 60:
                     res.append(name)
                     break 
         return sorted(res)

@@ -3,3 +3,257 @@
 
 margin_call.py
 house_street_trades.py
+
+https://www.1point3acres.com/bbs/thread-807470-1-1.html
+
+第一题：Course Schedule Mid
+Each course at our university has at most one prerequisite that must be taken first. No two courses share a prerequisite.
+There is only one path through the program.
+Write a function that takes a list of (prerequisite, course) pairs, and returns the name  of the course that the student 
+will be taking when they are halfway through their program. (If a track has an even number of courses, and therefore has 
+two "middle" courses,   you should return the first one.)
+  Sample input 1: (arbitrarily ordered)
+  const prereqs_courses1 = [
+      ["Foundations of Computer Science", "Operating Systems"],
+      ["Data Structures", "Algorithms"],
+      ["Computer Networks", "Computer Architecture"],
+      ["Algorithms", "Foundations of Computer Science"],
+      ["Computer Architecture", "Data Structures"],
+      ["Software Design", "Computer Networks"]
+  ]
+  In this case, the order of the courses in the program is:
+      Software Design
+      Computer Networks
+      Computer Architecture
+      Data Structures
+      Algorithms
+      Foundations of Computer Science
+      Operating Systems
+  Sample output 1:
+      "Data Structures"
+  Sample input 2:
+  prereqs_courses2 = [
+      ["Data Structures", "Algorithms"],
+      ["Algorithms", "Foundations of Computer Science"],
+      ["Foundations of Computer Science", "Logic"]
+  ]
+  Sample output 2:
+      "Algorithms"
+  Sample input 3:
+  prereqs_courses3 = [
+      ["Data Structures", "Algorithms"],
+  ]
+  Sample output 3:
+      "Data Structures"
+  Complexity analysis variables:
+  n: number of pairs in the input
+第一题 FollowUp：Course Schedule (多个Path)
+/*
+Students may decide to take different "tracks" or sequences of courses in the Computer Science curriculum. 
+There may be more than one track that includes the same course, but each student follows a single linear 
+track from a "root" node to a "leaf" node. In the graph below, their path always moves left to right.
+Write a function that takes a list of (source, destination) pairs, and returns the name of all of the courses 
+that the students could be taking when they are halfway through their track of courses.
+Sample input 1:
+all_courses_1 = [
+    ["Logic", "COBOL"],
+    ["Data Structures", "Algorithms"],
+    ["Creative Writing", "Data Structures"],
+    ["Algorithms", "COBOL"],
+    ["Intro to Computer Science", "Data Structures"],
+    ["Logic", "Compilers"],
+    ["Data Structures", "Logic"],
+    ["Graphics", "Networking"],
+    ["Networking", "Algorithms"],
+    ["Creative Writing", "System Administration"],
+    ["Databases", "System Administration"],
+    ["Creative Writing", "Databases"],
+    ["Intro to Computer Science", "Graphics"],
+]
+Sample output 1 (in any order):
+          ["Data Structures", "Networking", "Creative Writing", "Databases"]
+All paths through the curriculum (midpoint *highlighted*):
+Intro to C.S. -> Graphics -> *Networking* -> Algorithms -> Cobol
+Intro to C.S. -> *Data Structures* -> Algorithms -> COBOL
+Intro to C.S. -> *Data Structures* -> Logic -> COBOL
+Intro to C.S. -> *Data Structures* -> Logic -> Compiler
+Creative Writing -> *Databases* -> System Administration
+*Creative Writing* -> System Administration
+Creative Writing -> *Data Structures* -> Algorithms -> COBOL
+Creative Writing -> *Data Structures* -> Logic -> COBOL
+Creative Writing -> *Data Structures* -> Logic -> Compilers
+Sample input 2:
+all_courses_2 = [
+    ["Course_3", "Course_7"],
+    ["Course_0", "Course_1"],
+    ["Course_1", "Course_2"],
+    ["Course_2", "Course_3"],
+    ["Course_3", "Course_4"],
+    ["Course_4", "Course_5"],
+    ["Course_5", "Course_6"],
+]
+Sample output 2 (in any order):
+["Course_2", "Course_3"]
+Complexity analysis variables:
+n: number of pairs in the input
+*/
+
+
+第二题：Resource Access Log
+/**
+Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time, 
+the ID of the user making the access, and the resource ID.
+The access time is represented as seconds since 00:00:00, and all times are assumed to be in the same day.
+For example:
+logs1 = [
+["58523", "user_1", "resource_1"],
+["62314", "user_2", "resource_2"],
+["54001", "user_1", "resource_3"],
+["200", "user_6", "resource_5"],
+["215", "user_6", "resource_4"],
+["54060", "user_2", "resource_3"],
+["53760", "user_3", "resource_3"],
+["58522", "user_22", "resource_1"],
+["53651", "user_5", "resource_3"],
+["2", "user_6", "resource_1"],
+["100", "user_6", "resource_6"],
+["400", "user_7", "resource_2"],
+["100", "user_8", "resource_6"],
+["54359", "user_1", "resource_3"],
+]
+Example 2:
+logs2 = [
+["300", "user_1", "resource_3"],
+["599", "user_1", "resource_3"],
+["900", "user_1", "resource_3"],
+["1199", "user_1", "resource_3"],
+["1200", "user_1", "resource_3"],
+["1201", "user_1", "resource_3"],
+["1202", "user_1", "resource_3"]
+]
+
+Question 1 - Write a function that takes the logs and returns each users min and max access timestamp
+Example Output:
+user_3:[53760,53760]
+user_2:[54060,62314]
+user_1:[54001,58523]
+user_7:[400,400]
+user_6:[2,215]
+user_5:[53651,53651]
+user_4:[58522,58522]
+user_8:[100,100]
+*/
+
+第二题FollowUp：
+/*
+Question 2 - Write a function that takes the logs and returns the resource with the highest number of accesses 
+in any 5 minute window, together with how many accesses it saw.
+Expected Output:
+most_requested_resource(logs1) # => ('resource_3', 3) 
+
+Follow Up Question 3 -Follow Up Question 3 -
+Write a function that takes the logs as input, builds the transition graph and returns it as an adjacency 
+list with probabilities. Add START and END states. 
+Specifically, for each resource, we want to compute a list of every possible next step taken by any user, 
+together with the corresponding probabilities. The list of resources should include START but not END, 
+since by definition END is a terminal state.
+
+Expected output for logs1:
+transition_graph(logs1) # =>
+{{
+'START': {'resource_1': 0.25, 'resource_2': 0.125, 'resource_3': 0.5, 'resource_6': 0.125},
+'resource_1': {'resource_6': 0.333, 'END': 0.667},
+'resource_2': {'END': 1.0},
+'resource_3': {'END': 0.4, 'resource_1': 0.2, 'resource_2': 0.2, 'resource_3': 0.2},
+'resource_4': {'END': 1.0},
+'resource_5': {'resource_4': 1.0},
+'resource_6': {'END': 0.5, 'resource_5': 0.5}
+}}
+For example, of 8 total users, 4 users have resource_3 as a first visit (user_1, user_2, user_3, user_5), 
+2 users have resource_1 as a first visit (user_6, user_22), 
+1 user has resource_2 as a first visit (user_7), and 1 user has resource_6 (user_8) 
+so the possible next steps for START are resource_3 with probability 4/8, resource_1 with probability 2/8, 
+and resource_2 and resource_6 with probability 1/8.
+These are the resource paths per user for the first logs example, ordered by access time:
+{{
+'user_1': ['resource_3', 'resource_3', 'resource_1'],
+'user_2': ['resource_3', 'resource_2'],
+'user_3': ['resource_3'],
+'user_5': ['resource_3'],
+'user_6': ['resource_1', 'resource_6', 'resource_5', 'resource_4'],
+'user_7': ['resource_2'],
+'user_8': ['resource_6'],
+'user_22': ['resource_1'],
+}}
+Ex‍‍‍‍‌‌‍‌‍‍‍‌‌‍‍‍pected output for logs2:
+transition_graph(logs2) # =>
+{{
+'START': {'resource_3': 1.0},
+'resource_3': {'resource_3: 0.857, 'END': 0.143}
+}
+*/
+第三题：Employee Badge Time
+/*
+We are working on a security system for a badged-access room in our company's building.
+We want to find employees who badged into our secured room unusually often. We have an unordered 
+list of names and entry times over a single day. Access times are given as numbers up to four digits 
+in length using 24-hour time, such as "800" or "2250".
+Write a function that finds anyone who badged into the room three or more times in a one-hour period. 
+Your function should return each of the employees who fit that criteria, plus the times that they badged 
+in during the one-hour period. If there are multiple one-hour periods where this was true for an employee, 
+just return the first one.
+badge_times = [
+  ["Paul",     "1355"],
+  ["Jennifer", "1910"],
+  ["John",      "835"],
+  ["John",      "830"],
+  ["Paul",     "1315"],
+  ["John",     "1615"],
+  ["John",     "1640"],
+  ["Paul",     "1405"],
+  ["John",      "855"],
+  ["John",      "930"],
+  ["John",      "915"],
+  ["John",      "730"],
+  ["John",      "940"],
+  ["Jennifer", "1335"],
+  ["Jennifer",  "730"],
+  ["John",     "1630"],
+  ["Jennifer",    "5"]
+]
+Expected output (in any order)
+  John:  830  835  855  915  930
+  Paul: 1315 1355 1405
+n: length of the badge records array
+*/
+第三题 FollowUp：Largest Group in Room
+/*
+We want to find employees who badged into our secured room together often. Given an unordered list of 
+names and access times over a single day, find the largest group of people that were in the room together 
+during two or more separate time periods, and the times when they were all present.
+badge_records = [
+["Paul", "1214", "enter"],
+["Paul", "830", "enter"],
+["Curtis", "1100", "enter"],
+["Paul", "903", "exit"],
+["John", "908", "exit"],
+["Paul", "1235", "exit"],
+["Jennifer", "900", "exit"],
+["Curtis", "1330", "exit"],
+["John", "815", "enter"],
+["Jennifer", "1217", "enter"],
+["Curtis", "745", "enter"],
+["John", "1230", "enter"],
+["Jennifer", "800", "enter"],
+["John", "1235", "exit"],
+["Curtis", "810", "exit"],
+["Jennifer", "1240", "exit"],
+]
+Expected output:
+John, Paul, Jennifer: 830 to 900, 1230 to 1235
+For this input data:
+From 830 til 900, the room contains Jennifer, John, and Paul.
+From 1230 til 1235, the room contains Curtis, Paul, Jennifer, and John.
+The group "Jennifer, John, Paul" exists at both of these times, and is the largest group that exists multiple times.
+You should note that the group is a subset of the people in the room from 1230 to 1235
+*/
