@@ -88,7 +88,7 @@ def getTransitionGraph(logs):
 print(getTransitionGraph(logs1))
 
 """
-第二题：Resource Access Log
+第二题: Resource Access Log
 Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time, 
 the ID of the user making the access, and the resource ID.
 The access time is represented as seconds since 00:00:00, and all times are assumed to be in the same day.
@@ -132,7 +132,7 @@ user_4:[58522,58522]
 user_8:[100,100]
 */
 
-第二题FollowUp：
+第二题FollowUp:
 /*
 Question 2 - Write a function that takes the logs and returns the resource with the highest number of accesses 
 in any 5 minute window, together with how many accesses it saw.
