@@ -42,8 +42,70 @@ def getEmployeeBadgeThree(badge_times):
                 res[name].add(lstTimes[i+1][1])
                 res[name].add(lstTimes[i+2][1])
     return res 
-print(getEmployeeBadgeThree(badge_times))
+# print(getEmployeeBadgeThree(badge_times))
 
+# John, Paul, Jennifer: 830 to 900, 1230 to 1235
+# For this input data:
+# From 830 til 900, the room contains Jennifer, John, and Paul.
+# From 1230 til 1235, the room contains Curtis, Paul, Jennifer, and John.
+
+badge_records = [
+["Paul", "1214", "enter"],
+["Paul", "830", "enter"],
+["Curtis", "1100", "enter"],
+["Paul", "903", "exit"],
+["John", "908", "exit"],
+["Paul", "1235", "exit"],
+["Jennifer", "900", "exit"],
+["Curtis", "1330", "exit"],
+["John", "815", "enter"],
+["Jennifer", "1217", "enter"],
+["Curtis", "745", "enter"],
+["John", "1230", "enter"],
+["Jennifer", "800", "enter"],
+["John", "1235", "exit"],
+["Curtis", "810", "exit"],
+["Jennifer", "1240", "exit"],
+]
+
+[['Curtis', '745', 'enter'], 
+ ['Jennifer', '800', 'enter'], 
+ ['Curtis', '810', 'exit'], 
+ ['John', '815', 'enter'], 
+ ['Paul', '830', 'enter'], 
+ ['Jennifer', '900', 'exit'], 
+ ['Paul', '903', 'exit'], 
+ ['John', '908', 'exit'], 
+ ['Curtis', '1100', 'enter'], 
+ ['Paul', '1214', 'enter'], 
+ ['Jennifer', '1217', 'enter'], 
+ ['John', '1230', 'enter'], 
+ ['Paul', '1235', 'exit'], 
+ ['John', '1235', 'exit'], 
+ ['Jennifer', '1240', 'exit'], 
+ ['Curtis', '1330', 'exit'] 
+]
+def getStr2Time(time):
+    new_time = time
+    new_time = '000' + time
+    new_time = new_time[-4:]
+    hour, minute = new_time[:2], new_time[2:]
+    return hour * 60 + minute
+
+def getLargestGroup(badge_records):
+    dctStrTime2Time = {}
+    for name, time, action in badge_records:
+        dctStrTime2Time[time] = getStr2Time(time)
+    badge_records.sort(key = lambda x: dctStrTime2Time[x[1]])
+    print(badge_records)
+    insideRoom = []
+    name
+    for name, time, action in badge_records:
+        if action == 'enter':
+            insideRoom.append(name)
+        
+    pass 
+getLargestGroup(badge_records)
 """
 第三题: Employee Badge Time
 /*
@@ -79,6 +141,7 @@ Expected output (in any order)
   Paul: 1315 1355 1405
 n: length of the badge records array
 */
+
 第三题 FollowUp: Largest Group in Room
 /*
 We want to find employees who badged into our secured room together often. Given an unordered list of 
