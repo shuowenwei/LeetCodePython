@@ -61,6 +61,32 @@ def getHighestAccessedResource(logs):
     return max_r, max_freq
 print(getHighestAccessedResource(logs1))
 
+def getTransitionGraph(logs):
+    dctUser2TimeResource = collections.defaultdict(list)
+    for time, user, resource in logs:
+        dctUser2TimeResource[user].append((int(time), resource))
+
+    dctResource2Next = collections.defaultdict(list)
+    for user, time_resource in dctUser2TimeResource.items():
+        time_resource.sort(key = lambda x: x[0])
+        cur_resource = 'START'
+        for i in range(len(time_resource)):
+            next_resource = time_resource[i][1]
+            dctResource2Next[cur_resource].append(next_resource)
+            cur_resource = next_resource
+        dctResource2Next[cur_resource].append('END')
+    # print(dctResource2Next)
+    
+    dctGraph = collections.defaultdict(list)
+    for key, lstResource in dctResource2Next.items():
+        for r in set(lstResource):
+            prob = lstResource.count(r) / float(len(lstResource))
+            prob = round(prob, 3)
+            dctGraph[key].append((r, prob))
+    return dctGraph
+
+print(getTransitionGraph(logs1))
+
 """
 第二题：Resource Access Log
 Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time, 
@@ -113,7 +139,7 @@ in any 5 minute window, together with how many accesses it saw.
 Expected Output:
 most_requested_resource(logs1) # => ('resource_3', 3) 
 
-Follow Up Question 3 -Follow Up Question 3 -
+Follow Up Question 3 -
 Write a function that takes the logs as input, builds the transition graph and returns it as an adjacency 
 list with probabilities. Add START and END states. 
 Specifically, for each resource, we want to compute a list of every possible next step taken by any user, 

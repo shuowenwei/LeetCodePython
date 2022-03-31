@@ -151,7 +151,7 @@ in any 5 minute window, together with how many accesses it saw.
 Expected Output:
 most_requested_resource(logs1) # => ('resource_3', 3) 
 
-Follow Up Question 3 -Follow Up Question 3 -
+Follow Up Question 3 -
 Write a function that takes the logs as input, builds the transition graph and returns it as an adjacency 
 list with probabilities. Add START and END states. 
 Specifically, for each resource, we want to compute a list of every possible next step taken by any user, 
