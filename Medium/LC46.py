@@ -18,24 +18,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res = [] 
-        def backtracking(nums, tmp):
-            if len(tmp) == len(nums):
-                res.append(tmp[:])
-                return 
-            for n in nums: # no dups in the nums 
-                # // 已经存在 track 中的元素，不能重复选择
-                if n in tmp:
-                    continue
-                tmp.append(n)
-                backtracking(nums, tmp)
-                tmp.pop()
-        backtracking(nums, [])
-        return res 
-    
-        # solution 2: refer to LC47
+        # refer to LC47
         visited_index = [False] * len(nums)
-        nums.sort()
+        # nums.sort() # not necessary since there's no duplicates 
         res = []
         def backtracking(nums, tmp):
             if len(tmp) == len(nums):

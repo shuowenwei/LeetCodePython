@@ -17,7 +17,6 @@ https://www.1point3acres.com/bbs/thread-859860-1-1.html
 503. Next Greater Element ii
 79. word search
 140. Word Break II
-    given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them
 299. Bulls and Cows 公牛和奶牛
 341. flat List of list
 384. Shuffle an Array
@@ -25,7 +24,10 @@ https://www.1point3acres.com/bbs/thread-859860-1-1.html
 528. Random Pick with Weight 按照权重生成随机数
 295. Find Median from Data Stream
 124 binary tree maximum path sum
-Given an array of points where points = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
-The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
 394. Decode String
 1428. Leftmost Column with at Least a One
+
+Given an array of points where points = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
+The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+
+given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them
