@@ -29,8 +29,7 @@ class Solution(object):
             c = s[right]
             right += 1 
             if need.get(c) is not None:
-                if c in window: 
-                    window[c] += 1
+                window[c] += 1
                 if window[c] == need[c]:
                     valid += 1
             else:
