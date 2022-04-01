@@ -23,7 +23,10 @@ class Solution(object):
         # print(dp_table)
         return max(dp_table) # not dp_table[len(nums)-1]
         
-        # solution 2: 其实最长递增子序列和一种叫做 patience game 的纸牌游戏有关，甚至有一种排序方法就叫做 patience sorting（耐心排序
+        # solution 2: 其实最长递增子序列和一种叫做 patience game 的纸牌游戏有关，甚至有一种排序方法就叫做 patience sorting（耐心排序)
+        # 只能把点数小的牌压到点数比它大的牌上；
+        # 如果当前牌点数较大没有可以放置的堆，则新建一个堆，把这张牌放进去；
+        # 如果当前牌有多个堆可供选择，则选择最左边的那一堆放置。
         """
         piles = 0 # // 牌堆数初始化为 0
         top = [0]*len(nums) # assuming no negative number in the sequence
@@ -47,3 +50,4 @@ class Solution(object):
             top[left] = poker 
         return piles
         """
+        

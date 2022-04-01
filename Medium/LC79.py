@@ -36,15 +36,15 @@ class Solution(object):
                 neighbors.append((i,j+1))
             return neighbors
         
-        res = [False]
+        self.res = False
         def backtrack(board, word, index, path):
             # print(path, '--', 'index:', index, '--')
             m, n = len(board), len(board[0])
             if index == len(word):
-                res.append(True)
-                return  
-            if len(path) == 0:
-                return 
+                self.res = True
+                return
+            # if len(path) == 0:
+            #     return 
             for (i,j) in path:
                 if board[i][j] == word[index] and (i,j) not in visited:
                     # print(board[i][j], index)
@@ -52,10 +52,9 @@ class Solution(object):
                     neighbors = getNeighbors(i,j,m,n)
                     backtrack(board, word, index+1, neighbors)
                     visited.pop()
-                else:
-                    continue
+
         backtrack(board, word, 0, path)   
-        return res[-1]
+        return self.res
 
         # solution refer to 
         # https://leetcode.com/problems/word-search/discuss/27660/Python-dfs-solution-with-comments.
