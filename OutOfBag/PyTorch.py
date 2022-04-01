@@ -9,6 +9,8 @@ Created on Thu Mar 22 10:01:27 2019
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
 
 class PureCNN(nn.Module):
     
@@ -217,7 +219,7 @@ def evaluate(model, iterator, criterion, device):
     epoch_acc = 0
     model.eval()
     with torch.no_grad():
-        for x, y in iterator:#tqdm.tqdm(iterator):
+        for x, y in iterator: #tqdm.tqdm(iterator):
             x, y = x.to(device), y.to(device).unsqueeze(1)
             preds = model(x)
             loss = criterion(preds, y)
@@ -269,7 +271,8 @@ itos.insert(0, '_unk_')
 stoi = collections.defaultdict(lambda:0, {v:k for k,v in enumerate(itos)})
 len(itos)
 
-
+optimizer = optim.AdamW(lstmnet.parameters(), lr=init_lr, weight_decay=0.0001) # L2 regularization: 0.001, 0.0001 
+loss = nn.CrossEntropyLoss()
 
 for cNum, config in enumerate(configs, 1):
     print(f'| cNum: {cNum:03}/{len(configs):03} | Config: {config}')
