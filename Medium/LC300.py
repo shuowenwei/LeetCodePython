@@ -31,18 +31,21 @@ class Solution(object):
         piles = 0 # // 牌堆数初始化为 0
         top = [0]*len(nums) # assuming no negative number in the sequence
         for i in range(len(nums)):
+            
             poker = nums[i] # // 要处理的扑克牌
+            
             # /***** 搜索左侧边界的二分查找 *****/
             left, right = 0, piles
             while left < right:
-                mid = (right + left)/2
+                mid = left + (right - left) // 2
                 if top[mid] > poker:
                     right = mid 
                 elif top[mid] < poker:
                     left = mid + 1 
-                else:
+                else: # top[mid] == poker:
                     right = mid 
             # /*********************************/
+            
             # // 没找到合适的牌堆，新建一堆
             if left == piles:
                 piles += 1 
