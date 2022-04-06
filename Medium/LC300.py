@@ -22,7 +22,7 @@ class Solution(object):
                     dp_table[i] = max(dp_table[i], dp_table[j] + 1)
         # print(dp_table)
         return max(dp_table) # not dp_table[len(nums)-1]
-        
+
         # solution 2: 其实最长递增子序列和一种叫做 patience game 的纸牌游戏有关，甚至有一种排序方法就叫做 patience sorting（耐心排序)
         # 只能把点数小的牌压到点数比它大的牌上；
         # 如果当前牌点数较大没有可以放置的堆，则新建一个堆，把这张牌放进去；
