@@ -42,7 +42,7 @@ class Solution(object):
                     right = mid 
                 elif top[mid] < poker:
                     left = mid + 1 
-                else: # top[mid] == poker:
+                else: # elif top[mid] == poker:
                     right = mid 
             # /*********************************/
             
