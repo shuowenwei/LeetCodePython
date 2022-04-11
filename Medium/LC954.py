@@ -6,6 +6,7 @@ https://leetcode.com/problems/array-of-doubled-pairs/
 
 LC954, LC2007
 """
+import collections
 class Solution(object):
     def canReorderDoubled(self, arr):
         """

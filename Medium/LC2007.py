@@ -8,6 +8,7 @@ https://leetcode.com/problems/find-original-array-from-doubled-array/discuss/147
 
 LC954, LC2007
 """
+import collections
 class Solution(object):
     def findOriginalArray(self, changed):
         """
