@@ -31,3 +31,6 @@ Given an array of points where points = [xi, yi] represents a point on the X-Y p
 The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
 
 given an array of 0, 1, split the array into 3 parts so that the value in binary is the same of all of them
+
+
+How to Get Fair Results from a Biased Coin: http://yilinmo.github.io/fair-results-from-a-biased-coin
