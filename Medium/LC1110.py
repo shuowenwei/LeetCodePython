@@ -42,5 +42,19 @@ class Solution(object):
         dfs(root, True)
         return res 
             
+        # more precise solution
+        dct_to_delete = {node for node in to_delete}
+        res = []
+        def dfs(node, is_root):
+            if node is None:
+                return None
+            isInDelete = node.val in dct_to_delete
+            if is_root is True and isInDelete is False:
+                res.append(node)
+            node.left = dfs(node.left, isInDelete)
+            node.right = dfs(node.right, isInDelete)
+            return None if isInDelete else node
+        dfs(root, True)
+        return res 
             
         
