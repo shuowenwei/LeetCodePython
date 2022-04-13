@@ -42,8 +42,7 @@ class Solution(object):
         n = len(nums)
         res = [0 for i in range(n-k+1)]
         for i in range(n):
-            # either both the heaps will have equal number of elements or max-heap will have
-            # one more element than the min-heap
+            # len(max-heap) == len(min-heap) + 0 or 1
             if len(self.min_heap) == len(self.max_heap):
                 heappush(self.min_heap, nums[i])
                 heappush(self.max_heap, -heappop(self.min_heap))
