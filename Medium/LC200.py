@@ -6,10 +6,9 @@ https://leetcode.com/problems/number-of-islands/
 
 solution: https://leetcode.com/problems/number-of-islands/discuss/56340/Python-Simple-DFS-Solution
 
-labuladong: https://labuladong.gitee.io/algo/1/7/
+https://labuladong.github.io/algo/4/29/108/
 
 LC200, LC1254, LC1020, LC695, LC1905, LC694
-
 """
 class Solution(object):
     def numIslands(self, grid):
@@ -17,26 +16,27 @@ class Solution(object):
         :type grid: List[List[str]]
         :rtype: int
         """
+        # solution 1: DFS with flooding the grid
         """
-        solution 1: 
-        if not grid:
-            return 0 
-        res = 0
-        def searchIsland(grid, i, j):
-            if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]) or grid[i][j] != '1':
+        if len(grid) == 0:
+            return 0
+        row, col = len(grid), len(grid[0])
+        def dfs(grid, i, j):
+            if i < 0 or i > row-1 or j < 0 or j > col - 1 or grid[i][j] != '1':
                 return 
-            grid[i][j] = '#'
-            searchIsland(grid, i+1, j)
-            searchIsland(grid, i-1, j)
-            searchIsland(grid, i, j+1)
-            searchIsland(grid, i, j-1)
-            
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
+            grid[i][j] = '#' # flood it
+            dfs(grid, i - 1, j)
+            dfs(grid, i + 1, j)
+            dfs(grid, i, j - 1)
+            dfs(grid, i, j + 1)
+              
+        res = 0
+        for i in range(row):
+            for j in range(col):
                 if grid[i][j] == '1':
-                    searchIsland(grid, i, j)
                     res += 1
-        return res 
+                    dfs(grid, i, j)
+        return res
         """
         # solution 2: without change grid 
         m, n = len(grid), len(grid[0])
