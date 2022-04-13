@@ -31,32 +31,27 @@ class Solution(object):
             if j < col-1:
                 neighbors.append((i, j+1))
             return neighbors
-
+        
         q = deque()
         visited = set()
         dp_tabel = {}
-        # initial setup
-        q.append( (0,0,k) )
-        dp_tabel[(0,0,k)] = 0
+        direction = [[1,0], [-1,0], [0,1], [0,-1]]
+        q.append((0,0,k))
         visited.add((0,0,k))
-        # dp_tabel[(row-1,col-1,k)] = -1 # if not ever updated after emptying queue
-        # target = (row-1, col-1)
+        dp_tabel[(0,0,k)] = 0
         while q:
-            cur_i, cur_j, cur_k = q.popleft()
-            if cur_i == row - 1 and cur_j == col -1:
-                return dp_tabel[(cur_i,cur_j,cur_k)]
-            
-            for ni, nj in getNeighbors(cur_i, cur_j):
-
-                if grid[ni][nj] == 1 and cur_k > 0:
-                    if (ni,nj,cur_k-1) not in visited:
-                        dp_tabel[(ni,nj,cur_k-1)] = dp_tabel[(cur_i,cur_j,cur_k)] + 1
-                        visited.add((ni,nj,cur_k-1))
-                        q.append((ni,nj,cur_k-1))
-                        
+            i,j,k = q.popleft()
+            if i == row - 1 and j == col - 1: # target = (row-1, col-1)
+                return dp_tabel[(i,j,k)]
+            for ni, nj in getNeighbors(i,j):
+                if grid[ni][nj] == 1 and k > 0:
+                    if (ni,nj,k-1) not in visited:
+                        dp_tabel[(ni,nj,k-1)] = dp_tabel[(i,j,k)] + 1
+                        q.append((ni,nj,k-1))
+                        visited.add((ni,nj,k-1))
                 if grid[ni][nj] == 0:
-                    if (ni,nj,cur_k) not in visited:
-                        dp_tabel[(ni,nj,cur_k)] = dp_tabel[(cur_i,cur_j,cur_k)] + 1
-                        visited.add((ni,nj,cur_k))
-                        q.append((ni,nj,cur_k))
+                    if (ni,nj,k) not in visited:
+                        dp_tabel[(ni,nj,k)] = dp_tabel[(i,j,k)] + 1
+                        q.append((ni,nj,k))
+                        visited.add((ni,nj,k))
         return -1 

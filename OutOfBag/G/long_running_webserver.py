@@ -17,6 +17,8 @@ Output :
 1000002 --> 2  (since the first process is still running, timestamp 1000002 would have two processes running)
 1000005 --> 2  (since the first process is still running, timestamp 1000005 would have two processes running)
 1001000 --> 1
+
+similiar to LC1834
 """
 
 from heapq import heappush, heappop
