@@ -35,6 +35,23 @@ class Solution(object):
         print('result from backtracking... ',self.res)
         return self.res
 
+        # another way of writing backtrcking here: https://www.youtube.com/watch?v=B8pPWgLa2lQ
+        def backtracking_2(idx, lstAmount):
+            while idx < len(lstAmount) and lstAmount[idx] == 0:
+                idx += 1
+            if idx == len(lstAmount):
+                return 0 
+            res = 2 ** 32 
+            for i in range(idx+1, len(lstAmount)):
+                if lstAmount[idx] * lstAmount[i] < 0:
+                    lstAmount[i] += lstAmount[idx]
+                    res = min(res, 1 + backtracking_2(idx + 1, lstAmount))
+                    lstAmount[i] -= lstAmount[idx]
+            return res 
+        return backtracking_2(0)
+
+
+
     # solution 2: 
     def minTransfers_LC698(self, tranctions):
         dictBanks = collections.defaultdict(list)
