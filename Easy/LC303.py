@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/range-sum-query-immutable/
 
-https://labuladong.gitee.io/algo/2/22/57/
+https://labuladong.github.io/algo/2/18/21/
 
 LC303, LC304, LC560, LC528
 """

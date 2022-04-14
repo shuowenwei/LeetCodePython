@@ -4,24 +4,22 @@
 
 https://leetcode.com/problems/range-sum-query-2d-immutable
 
-https://labuladong.gitee.io/algo/2/21/56/
+https://labuladong.github.io/algo/2/18/21/
 
 LC303, LC304, LC560, LC528
-
-solution reference link:  https://leetcode.com/problems/range-sum-query-2d-immutable/discuss/75448/Sharing-My-Python-solution 
 """
 class NumMatrix(object):
-
+    
     def __init__(self, matrix):
         """
         :type matrix: List[List[int]]
         """
         if matrix is None or not matrix: 
             return 
-        m, n = len(matrix), len(matrix[0]) 
-        self.matrix_sums = [[0 for j in range(n+1)] for i in range(m+1)] 
-        for i in range(1,m+1):
-            for j in range(1,n+1):
+        row, col = len(matrix), len(matrix[0]) 
+        self.matrix_sums = [[0 for j in range(col+1)] for i in range(row+1)] 
+        for i in range(1,row + 1):
+            for j in range(1,col + 1):
                 self.matrix_sums[i][j] = matrix[i-1][j-1] + self.matrix_sums[i-1][j] + self.matrix_sums[i][j-1] - self.matrix_sums[i-1][j-1]
             
     def sumRegion(self, row1, col1, row2, col2): 
