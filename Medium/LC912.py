@@ -37,6 +37,21 @@ class Solution(object):
         res.extend(l1[i:] or l2[j:])
         return res
     
+# https://leetcode.com/problems/sort-an-array/discuss/277127/7-line-quicksort-to-write-in-interviews-(Python)
+# 7-line quicksort to write in interviews (Python)
+import random
+def quicksort(self, nums):
+    if len(nums) <= 1:
+        return nums
+
+    pivot = random.choice(nums)
+    lt = [v for v in nums if v < pivot]
+    eq = [v for v in nums if v == pivot]
+    gt = [v for v in nums if v > pivot]
+
+    return self.quicksort(lt) + eq + self.quicksort(gt)
+
+
     # other solutions: 
     # https://leetcode.com/problems/sort-an-array/discuss/276916/Python-bubble-insertion-selection-quick-merge-heap
 class Solution:
@@ -106,8 +121,8 @@ class Solution:
             self.mergeSort(L)
             self.mergeSort(R)
 
+            #the merge part
             i = j = k = 0
-
             while i < len(L) and j < len(R): 
                 if L[i] < R[j]: 
                     nums[k] = L[i] 
@@ -153,48 +168,3 @@ class Solution:
         for i in range(n)[::-1]: 
             nums[i], nums[0] = nums[0], nums[i]
             heapify(nums, i, 0) 
-Sort Objects:
-
-[Pyhon]
-
-class Node:
-    def __init__(self, val):
-        self.val = val
-
-    def __cmp__(self, other):
-        if self.val < other.val:
-            return -1
-        elif self.val > other.val:
-            return 1
-        else:
-            return 0
-
-class Solution(object):
-    def sortArray(self, nums):
-        nodes = [Node(n) for n in nums]
-        return [node.val for node in sorted(nodes)]
-[Pyhon3] notice, in python3, we don't have __cmp__(self, other) any more
-
-class Node:
-    def __init__(self, val):
-        self.val = val
-    
-    # lt means less than, le means less or equal than etc.
-    def __lt__(self, other):
-        return self.val < other.val
-    # incase you need more logic
-    # def __le__(self, other):
-    #     return self.val <= other.val
-    # def __eq__(self, other):
-    #     return self.val == other.val
-    # def __ne__(self, other):
-    #     return self.val != other.val
-    # def __gt__(self, other):
-    #     return self.val > other.val
-    # def __ge__(self, other):
-    #     return self.val >= other.val
-
-class Solution:
-    def sortArray(self, nums: List[int]) -> List[int]:
-        nodes = [Node(n) for n in nums]
-        return [node.val for node in sorted(nodes)]
