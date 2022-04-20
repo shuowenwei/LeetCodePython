@@ -15,7 +15,7 @@ class Solution(object):
         :rtype: List[int]
         """
         tasks_index = [(t[0], t[1], index) for index, t in enumerate(tasks)]
-        tasks_index.sort(key = lambda x: x[0])
+        tasks_index.sort(key = lambda x: [x[0], x[2]])
         
         from heapq import heappush, heappop
         res = []
@@ -28,6 +28,7 @@ class Solution(object):
                 enter, processtime, index = tasks_index[pointer]
                 heappush(hp, (processtime, index))
                 pointer += 1
+                
             if hp:
                 processtime, index = heappop(hp)
                 cur_time += processtime
