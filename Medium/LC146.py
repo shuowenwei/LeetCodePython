@@ -66,7 +66,41 @@ class LRUCache(object):
         self.key2Node = dict() # key:int --> node: ListNode
         self.cap = capacity
         self.cache = DoubleList()
-    
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if self.key2Node.get(key) is None:
+            return -1 
+        # self.makeRecently(key)
+        node = self.key2Node[key]
+        self.cache.remove(node) # // 先从链表中删除这个节点
+        self.cache.addLast(node) # // 重新插到队尾
+        return self.key2Node[key].val
+
+    def put(self, key, val):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        if key in self.key2Node:
+            node = self.key2Node[key]
+            self.cache.remove(node)
+            node.val = value 
+            self.cache.insertTail(node)
+            return # must return here if key exists !!!
+
+        newNode = Node(value, key)
+        self.key2Node[key] = newNode
+        if self.cache.size == self.cap:
+            first = self.cache.removeFirst()  # // 删除最久未使用的元素
+            if first is not None:
+                del self.key2Node[first.key]
+        self.cache.insertTail(newNode) # // 添加为最近使用的元素
+
     # def makeRecently(self, key):
     #     node = self.key2Node[key]
     #     self.cache.remove(node) # // 先从链表中删除这个节点
@@ -88,81 +122,6 @@ class LRUCache(object):
     #     # print('key to remove:', deletedKey, self.key2Node.get(deletedKey))
     #     if self.key2Node.get(deletedKey) is not None:
     #         del self.key2Node[deletedKey]
-        
-    def get(self, key):
-        """
-        :type key: int
-        :rtype: int
-        """
-        if self.key2Node.get(key) is None:
-            return -1 
-        self.makeRecently(key)
-        return self.key2Node[key].val
-    
-    def put(self, key, val):
-        """
-        :type key: int
-        :type value: int
-        :rtype: None
-        """
-        if key in self.key2Node:
-            node = self.key2Node[key]
-            self.doubleList.removeNode(node)
-            node.val = value 
-            self.doubleList.insertTail(node)
-            return # must return here if key exists !!!
-        
-        newNode = Node(value, key)
-        self.key2Node[key] = newNode
-        if self.doubleList.size == self.cap:
-            first = self.doubleList.removeFirst()  # // 删除最久未使用的元素
-            if first is not None:
-                del self.key2Node[first.key]
-        self.doubleList.insertTail(newNode) # // 添加为最近使用的元素
-        
-
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
-
-# class LRUCache(object):
-
-#     def __init__(self, capacity):
-#         """
-#         :type capacity: int
-#         """
-#         from collections import OrderedDict
-#         self.dic = OrderedDict()  # not intented to use OrderedDict()
-#         self.remain = capacity 
-
-#     def get(self, key):
-#         """
-#         :type key: int
-#         :rtype: int
-#         """
-#         if key not in self.dic:
-#             return -1 
-#         val = self.dic.pop(key)
-#         self.dic[key] = val 
-#         return val 
-        
-
-#     def put(self, key, value):
-#         """
-#         :type key: int
-#         :type value: int
-#         :rtype: void
-#         """
-#         if key in self.dic:
-#             self.dic.pop(key)
-#         else:
-#             if self.remain > 0: 
-#                 self.remain -= 1 
-#             else: # self.dic is full 
-#                 self.dic.popitem(last=False)
-#         self.dic[key] = value
-
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
