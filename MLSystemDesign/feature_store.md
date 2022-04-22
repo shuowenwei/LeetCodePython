@@ -1,7 +1,9 @@
 
+
 https://feast.dev/blog/what-is-a-feature-store/
 
 
+https://www.featurestore.org/feature-store-summit-videos
 
 Feature stores make it easy to:
 
