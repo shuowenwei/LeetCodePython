@@ -23,7 +23,6 @@ import collections
 def getEmployeeBadgeThree(badge_times):
     dctName2Times = collections.defaultdict(list)
     for name, time in badge_times:
-        new_time = time
         new_time = '000' + time
         new_time = new_time[-4:]
         hour, minute = new_time[:2], new_time[2:]
@@ -33,22 +32,24 @@ def getEmployeeBadgeThree(badge_times):
     for name, lstTimes in dctName2Times.items():
         if len(lstTimes) <= 2:
             continue 
-        lstTimes.sort(key=lambda x:x[0])
-        print(name, lstTimes)
+        lstTimes.sort(key = lambda x: x[0])
+        # print(name, lstTimes)
         for i in range(len(lstTimes) - 2):
             if lstTimes[i+2][0] - lstTimes[i][0] <= 60:
-                print(name, lstTimes[i][1])
+                print(name, lstTimes[i][1], lstTimes[i+1][1], lstTimes[i+2][1])
                 res[name].add(lstTimes[i][1])
                 res[name].add(lstTimes[i+1][1])
                 res[name].add(lstTimes[i+2][1])
-    return res 
-# print(getEmployeeBadgeThree(badge_times))
+    return [[name, sorted(list(setTimes))] for name, setTimes in res.items()]
+print(getEmployeeBadgeThree(badge_times))
+# Expected output (in any order)
+#   John:  830  835  855  915  930
+#   Paul: 1315 1355 1405
 
-# John, Paul, Jennifer: 830 to 900, 1230 to 1235
-# For this input data:
-# From 830 til 900, the room contains Jennifer, John, and Paul.
-# From 1230 til 1235, the room contains Curtis, Paul, Jennifer, and John.
 
+
+###############################################################
+# follow up:  
 badge_records = [
 ["Paul", "1214", "enter"],
 ["Paul", "830", "enter"],
@@ -66,24 +67,6 @@ badge_records = [
 ["John", "1235", "exit"],
 ["Curtis", "810", "exit"],
 ["Jennifer", "1240", "exit"],
-]
-
-[['Curtis', '745', 'enter'], 
- ['Jennifer', '800', 'enter'], 
- ['Curtis', '810', 'exit'], 
- ['John', '815', 'enter'], 
- ['Paul', '830', 'enter'], 
- ['Jennifer', '900', 'exit'], 
- ['Paul', '903', 'exit'], 
- ['John', '908', 'exit'], 
- ['Curtis', '1100', 'enter'], 
- ['Paul', '1214', 'enter'], 
- ['Jennifer', '1217', 'enter'], 
- ['John', '1230', 'enter'], 
- ['Paul', '1235', 'exit'], 
- ['John', '1235', 'exit'], 
- ['Jennifer', '1240', 'exit'], 
- ['Curtis', '1330', 'exit'] 
 ]
 def getStr2Time(time):
     new_time = time
@@ -103,9 +86,8 @@ def getLargestGroup(badge_records):
     for name, time, action in badge_records:
         if action == 'enter':
             insideRoom.append(name)
-        
-    pass 
-getLargestGroup(badge_records)
+    pass
+# getLargestGroup(badge_records)
 """
 第三题: Employee Badge Time
 /*

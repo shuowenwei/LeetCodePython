@@ -27,4 +27,4 @@ class Solution(object):
                 if lstTime[i+2] - lstTime[i] <= 60:
                     res.append(name)
                     break 
-        return sorted(res)
+        return sorted(res) # Sort the names in ascending order alphabetically
