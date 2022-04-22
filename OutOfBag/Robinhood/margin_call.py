@@ -1,92 +1,72 @@
-# refer to https://leetcode.com/discuss/interview-question/1052406/robinhood-telephonic-interviewreject
 """
-Given a stream of incoming "buy" and "sell" orders (as lists of limit price, quantity, and side, like
-["155", "3", "buy"]), determine the total quantity (or number of "shares") executed.
+https://leetcode.com/discuss/interview-question/882324/robinhood-phone-screen
 
-A "buy" order can be executed if there is a corresponding "sell" order with a price that is less than or
-equal to the price of the "buy" order.
-Similarly, a "sell" order can be executed if there is a corresponding "buy" order with a price that is
-greater than or equal to the price of the "sell" order.
-It is possible that an order does not execute immediately if it isn't paired to a counterparty. In that 
-case, you should keep track of that order and execute it at a later time when a pairing order is found.
+depends they ask questions regarding to trading for onsite:
+input will be a list of trades, as of timestamp, symbol, B/S, quantity, price
+[["2", "NVDA", "B", "10", "10"],
+["3", "GOOG", "B", "20", "5"],
+["10", "NVDA", "S", "5", "15"]]
 
-You should ensure that orders are filled immediately at the best possible price. That is, an order 
-should be executed when it is processed, if possible. Further, "buy" orders should execute at the 
-lowest possible price and "sell" orders at the highest possible price at the time the order is handled.
+consolidate the orders
+[["CASH", "875"],
+["NVDA", "5"],
+["GOOG", "20"]]
 
-Note that orders can be partially executed.
+and then do a margin call , anytime you hit a negative cash balance you sell trades 
+until cash is positive and then continue with the next trades.
 
-sell 3
-sell 2
-sell 1 
---------
-buy 3
-buy 2
-buy 1
+refer to: https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=825477&ctid=232523
+
+股票交易的log，包括 timestamp, name, quantity, price，初始cash是1000刀，
+第一问要求print out最终剩下的cash和股票的数量，不考虑cash不够的情况。
+第二问要考虑marginal call的情况，就是如果cash不够直接买入，强制卖出现有的股价最高的股票，直到有足够的cash。
+如果有同一个股票有多个价格，按最近的价格计算。
+
 """
 
-import heapq
-def returnExceutedShares(orders):
-    buyMaxHeap, sellMinHeap = [], []
-    executedShares = 0
-    for price, shares, orderType in orders: # Time O(NlogN)
-        price, shares = int(price), int(shares)
-        initShares = shares
+logs = [["2", "NVDA", "B", "10", "10"],
+["3", "GOOG", "B", "20", "5"],
+["10", "NVDA", "S", "5", "15"],
+["13", "GOOG", "B", "50", "20"],
+]
+import collections
+import math
+from heapq import heappop, heappush
+def getMarginCall(logs, cash = 1000):
+    logs = [[float(time), symbol, action, float(quantity), float(price)] for time, symbol, action, quantity, price in logs]
+    logs.sort(key = lambda x: x[0])
+    res = {'cash': cash}
+    dctSymbol2Price = collections.defaultdict(float)
+    hp_bought = []
+    for time, symbol, action, quantity, price in logs:
+        dctSymbol2Price[symbol] = price # overwrite with latest price
+        if action == 'S':
+            cash = cash + quantity * price
+            res[symbol] -= quantity
+            heappush(hp_bought, [-price, symbol])
+
+        if action == 'B':
+            cash = cash - quantity * price
+            if symbol not in res:
+                res[symbol] = quantity
+            else: 
+                res[symbol] += quantity
+                
+            while cash < 0:
+                price, symbol = heappop(hp_bought)
+                # highest_price = -price
+                if res[symbol] * dctSymbol2Price[symbol] + cash > 0:
+                    minUnits = math.ceil(float(-cash) / dctSymbol2Price[symbol])
+                    res[symbol] -= minUnits
+                    cash += minUnits * dctSymbol2Price[symbol]
+                    heappush(hp_bought, [-dctSymbol2Price[symbol], symbol])
+                else:
+                    cash += res[symbol] * dctSymbol2Price[symbol]
+            
+            heappush(hp_bought, [-price, symbol])
+                
+        res['cash'] = cash
+        print(time, '--->', res)
         
-        if orderType == 'buy':
-            while shares > 0 and len(sellMinHeap) > 0:
-                minSellPrice, minSellShares = sellMinHeap[0]
-                if minSellPrice <= price:
-                    # Check if the sell shares less than or equal to price
-                    heapq.heappop(sellMinHeap)
-                    if shares < minSellShares:
-                        # Execute all shares and re push remainders into sellMinHeap
-                        heapq.heappush(sellMinHeap, (minSellPrice, minSellShares - shares))
-                        shares = 0
-                    else:
-                        # Execute minSellShares
-                        shares -= minSellShares
-                else:
-                    # If not, break
-                    break
-            if shares > 0:
-                heapq.heappush(buyMaxHeap, (-price, shares))
-        else: # orderType == 'sell':
-            while shares > 0 and len(buyMaxHeap) > 0:
-                maxBuyPrice, maxBuyShares = -buyMaxHeap[0][0], buyMaxHeap[0][1]
-                if maxBuyPrice >= price:
-                    # Check if the buy shares greater than or equal to price
-                    heapq.heappop(buyMaxHeap)
-                    if shares < maxBuyShares:
-                        # Execute all shares and re push remainders into buyMaxHeap
-                        heapq.heappush(buyMaxHeap, (-maxBuyPrice, maxBuyShares - shares))
-                        shares = 0
-                    else:
-                        # Execute maxBuyShares
-                        shares -= maxBuyShares
-                else:
-                    break
-            if shares > 0:
-                heapq.heappush(sellMinHeap, (price, shares))
-        executedShares += (initShares - shares)
-    return executedShares
-
-if __name__ == '__main__':
-    assert returnExceutedShares([
-        ['150', '5', 'buy'],    # Order A
-        ['190', '1', 'sell'],   # Order B
-        ['200', '1', 'sell'],   # Order C
-        ['100', '9', 'buy'],    # Order D
-        ['140', '8', 'sell'],   # Order E
-        ['210', '4', 'buy'],    # Order F
-    ]) == 9
-
-orders = [
-        ['150', '5', 'buy'],    # Order A
-        ['190', '1', 'sell'],   # Order B
-        ['200', '1', 'sell'],   # Order C
-        ['100', '9', 'buy'],    # Order D
-        ['140', '8', 'sell'],   # Order E
-        ['210', '4', 'buy'],    # Order F
-    ]
-print(returnExceutedShares(orders))
+    return res
+print(getMarginCall(logs)) 

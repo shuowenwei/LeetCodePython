@@ -26,6 +26,7 @@ logs2 = [
 ]
 
 import collections 
+# question 1
 def getUserMaxMinAccessTime(logs):
     dctUser2Time = dict()
     for time, user, resource in logs:
@@ -36,13 +37,14 @@ def getUserMaxMinAccessTime(logs):
     return  dctUser2Time
 # print(getUserMaxMinAccessTime(logs1))
 
+# question 2
 def getHighestAccessedResource(logs):
     dctResource2Freq = collections.defaultdict(int)
-    time2resource = [(int(time), resource) for time, user, resource in logs]
+    time2resource = [(int(time), resource) for time, _, resource in logs]
     time2resource.sort(key = lambda x: x[0])
-    print(time2resource)
+    # print(time2resource)
     left, right = 0, 0
-    max_r = ''
+    max_accessed_resource = ''
     max_freq = 0
     while right < len(time2resource):
         while time2resource[right][0] - time2resource[left][0] <= 300:
@@ -51,16 +53,17 @@ def getHighestAccessedResource(logs):
             # print('***', enter_r, dctResource2Freq)
             if dctResource2Freq[enter_r] > max_freq:
                 max_freq = dctResource2Freq[enter_r]
-                max_r = enter_r
+                max_accessed_resource = enter_r
             right += 1
             if right == len(time2resource):
                 break
         exit_r = time2resource[left][1]
         dctResource2Freq[exit_r] -= 1
         left += 1
-    return max_r, max_freq
+    return max_accessed_resource, max_freq
 print(getHighestAccessedResource(logs1))
 
+# question 3
 def getTransitionGraph(logs):
     dctUser2TimeResource = collections.defaultdict(list)
     for time, user, resource in logs:
@@ -89,8 +92,8 @@ print(getTransitionGraph(logs1))
 
 """
 第二题: Resource Access Log
-Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time, 
-the ID of the user making the access, and the resource ID.
+Suppose we have an unsorted log file of accesses to web resources. 
+Each log entry consists of an access time, the ID of the user making the access, and the resource ID.
 The access time is represented as seconds since 00:00:00, and all times are assumed to be in the same day.
 For example:
 logs1 = [
@@ -119,7 +122,6 @@ logs2 = [
 ["1201", "user_1", "resource_3"],
 ["1202", "user_1", "resource_3"]
 ]
-
 Question 1 - Write a function that takes the logs and returns each users min and max access timestamp
 Example Output:
 user_3:[53760,53760]
@@ -132,14 +134,14 @@ user_4:[58522,58522]
 user_8:[100,100]
 */
 
-第二题FollowUp:
+第二题 FollowUp:
 /*
 Question 2 - Write a function that takes the logs and returns the resource with the highest number of accesses 
 in any 5 minute window, together with how many accesses it saw.
 Expected Output:
 most_requested_resource(logs1) # => ('resource_3', 3) 
 
-Follow Up Question 3 -
+第二题 Follow Up Question 3 -
 Write a function that takes the logs as input, builds the transition graph and returns it as an adjacency 
 list with probabilities. Add START and END states. 
 Specifically, for each resource, we want to compute a list of every possible next step taken by any user, 
