@@ -12,8 +12,8 @@ prereqs_courses2 = [
       ["Algorithms", "Foundations of Computer Science"],
       ["Foundations of Computer Science", "Logic"]
   ]
-import collections
 
+import collections
 def courseSchedule(prereqs_course):
     all_courses = set()
     indegree = collections.defaultdict(int)
@@ -23,8 +23,8 @@ def courseSchedule(prereqs_course):
         all_courses.add(thenCanTake)
         graph[takeFirst].add(thenCanTake)
         indegree[thenCanTake] += 1
-        
-    count = 0 
+
+    count = 0
     starters = [c for c in all_courses if indegree[c] == 0]
     q = collections.deque(starters)
     course_order = []
@@ -35,16 +35,15 @@ def courseSchedule(prereqs_course):
         for nxt in graph[cur]:
             indegree[nxt] -= 1
             if indegree[nxt] == 0:
-                q.append(nxt)       
+                q.append(nxt)
     if len(course_order) % 2 == 0:
         mid = len(course_order) // 2 - 1
     else:
         mid = len(course_order) // 2
+    # print(course_order)
     return course_order[mid]
-# print(courseSchedule(prereqs_courses1))
-# print(courseSchedule(prereqs_courses2))
-
-
+# print(courseSchedule(prereqs_courses1)) # Data Structures
+# print(courseSchedule(prereqs_courses2)) # Algorithms
 
 all_courses_1 = [
     ["Logic", "COBOL"],
@@ -82,27 +81,27 @@ def courseScheduleAllPath(prereqs_course):
 
     all_path = []
     starters = [c for c in all_courses if indegree[c] == 0]
-    # print('starters', starters)
-    def backtracking(node, path, tmpGraph, tmpIndegree):
-        if len(tmpGraph[node]) == 0:
+    print('starters', starters)
+    def backtracking(node, path, graph):#, tmpIndegree):
+        if len(graph[node]) == 0:
             all_path.append(path[:])
             return
-        for nxt_node in tmpGraph[node]:
+        for nxt_node in graph[node]:
             path.append(nxt_node)
-            tmpIndegree[nxt_node] -= 1
+            # tmpIndegree[nxt_node] -= 1
             onPath[nxt_node] = True 
-            backtracking(nxt_node, path, tmpGraph, tmpIndegree)
+            backtracking(nxt_node, path, graph)#, tmpIndegree)
             path.pop()
-            tmpIndegree[nxt_node] += 1
+            # tmpIndegree[nxt_node] += 1
             onPath[nxt_node] = False
 
     for start in starters:
-        onPath = {c:False for c in all_courses}
-        tmpGraph = graph
-        tmpIndegree = indegree
-        backtracking(start, [start], tmpGraph, tmpIndegree)
+        onPath = {course:False for course in all_courses}
+        # tmpGraph = graph
+        # tmpIndegree = indegree
+        backtracking(start, [start], graph)#, tmpIndegree)
 
-    # print('all_path', len(all_path), all_path)
+    print('all_path', len(all_path), all_path)
     res = []
     for path in all_path:
         if len(path) % 2 == 0:
@@ -114,7 +113,7 @@ def courseScheduleAllPath(prereqs_course):
 
 print(courseScheduleAllPath(all_courses_1))
 print(courseScheduleAllPath(all_courses_2))
-    
+
 """
 第一题：Course Schedule Mid
 Each course at our university has at most one prerequisite that must be taken first. No two courses share a prerequisite.
