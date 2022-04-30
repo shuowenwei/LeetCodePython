@@ -17,17 +17,16 @@ class Solution(object):
         :rtype: List[str]
         """
         res = []
-        dp_table = {}
         dict_word = set(wordDict)
-        def backtracking(s, dict_word, tmp, index):
+        def backtracking(s, dict_word, tmp, start):
             # print(index, tmp)
-            if index == len(s):
+            if start == len(s):
                 res.append(' '.join(tmp))
                 return
-            for i in range(index, len(s) + 1): # this must be len(s)+1 since s[i:j] not including j 
+            for i in range(start, len(s) + 1): # this must be len(s)+1 since s[i:j] not including j 
                 # print('i: ', i)
-                if s[index:i] in wordDict:
-                    tmp.append(s[index:i])
+                if s[start:i] in wordDict:
+                    tmp.append(s[start:i])
                     # print(tmp, index, i)
                     backtracking(s, dict_word, tmp, i)
                     tmp.pop()
