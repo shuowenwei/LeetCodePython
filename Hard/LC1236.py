@@ -23,5 +23,21 @@ class Solution(object):
                 dp_table[j] = min(dp_table[j], 1 + dp_table[max(0, i-rg)])
         return dp_table[n] if dp_table[n] < 2 ** 32 else - 1
 
-        # solution 2:
+        # solution 2: refer to LC1024 solution 2: 
+        covers = []
+        for i, rg in enumerate(ranges):
+            covers.append([max(0, i-rg), min(n, i+rg)])
+        covers.sort()
         
+        time = n 
+        start = -1 
+        end = 0 
+        res = 0 
+        for left, right in covers:
+            if end >= time or left > end:
+                break
+            elif start < left <= end:
+                res += 1
+                start = end 
+            end = max(end, right)
+        return res if end >= time else -1

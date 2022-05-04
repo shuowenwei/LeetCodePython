@@ -35,14 +35,15 @@ class Solution(object):
         return -1 
         
         # solution 2: refer to https://leetcode.com/problems/video-stitching/discuss/270036/JavaC%2B%2BPython-Greedy-Solution-O(1)-Space
+        clips.sort(key = lambda x: x[0])
         start = -1 
         end = 0 
         res = 0 
-        for i, j in sorted(clips):
-            if end >= time or i > end:
+        for left, right in clips:
+            if end >= time or left > end:
                 break
-            elif start < i <= end:
+            elif start < left <= end:
                 res += 1
                 start = end 
-            end = max(end, j)
+            end = max(end, right)
         return res if end >= time else -1
