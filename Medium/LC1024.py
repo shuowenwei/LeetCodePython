@@ -4,9 +4,11 @@
 
 https://leetcode.com/problems/video-stitching/
 
-https://labuladong.gitee.io/algo/3/27/104/
+https://labuladong.github.io/algo/3/27/101/
 
 LC435, LC452, LC253, LC1024 - greedy
+
+LC45, LC1024, LC1236 - greedy
 """
 class Solution(object):
     def videoStitching(self, clips, time):
@@ -32,3 +34,15 @@ class Solution(object):
                 return res
         return -1 
         
+        # solution 2: refer to https://leetcode.com/problems/video-stitching/discuss/270036/JavaC%2B%2BPython-Greedy-Solution-O(1)-Space
+        start = -1 
+        end = 0 
+        res = 0 
+        for i, j in sorted(clips):
+            if end >= time or i > end:
+                break
+            elif start < i <= end:
+                res += 1
+                start = end 
+            end = max(end, j)
+        return res if end >= time else -1
