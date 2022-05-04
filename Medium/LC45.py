@@ -8,6 +8,8 @@ https://labuladong.gitee.io/algo/3/27/105/
 
 LC55, LC45 - greedy
 LC1306, LC1345
+
+LC45, LC1024, LC1236 - greedy
 """
 class Solution(object):
     def jump(self, nums):
@@ -42,4 +44,16 @@ class Solution(object):
             return res 
         return dp(nums, 0)
         """
+
+        #solution 3: greedy, refer to https://leetcode.com/problems/jump-game-ii/discuss/18014/Concise-O(n)-one-loop-JAVA-solution-based-on-Greedy
+        jumps = 0
+        curEnd = 0 
+        curFarthest = 0 
+        for i in range(len(nums) - 1): # here, must be "len(nums)-1", cannot reach the last index 
+            curFarthest = max(curFarthest, i + nums[i])
+            # print(i, curEnd, curFarthest, jumps)
+            if i == curEnd:
+                jumps += 1 
+                curEnd = curFarthest
+        return jumps
         
