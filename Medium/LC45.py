@@ -57,3 +57,21 @@ class Solution(object):
                 curEnd = curFarthest
         return jumps
         
+        # solution 3: refer to LC1024 solution 2
+        covers = []
+        for i, rg in enumerate(nums):
+            covers.append([max(0, i), min(len(nums) - 1, i+rg)])
+        covers.sort()
+        
+        time = len(nums) - 1 
+        start = -1 
+        end = 0 
+        res = 0 
+        for left, right in covers:
+            if end >= time or left > end:
+                break
+            elif start < left <= end:
+                res += 1
+                start = end 
+            end = max(end, right)
+        return res if end >= time else -1
