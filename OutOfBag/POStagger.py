@@ -76,20 +76,23 @@ class LSTMTagger(nn.Module):
     def forward(self, sentence):
         ''' Define the feedforward behavior of the model.'''
         # create embedded word vectors for each word in a sentence
-        print(sentence, '--length-->', len(sentence))
+        # print(sentence, '--length-->', len(sentence))
         embeds = self.word_embeddings(sentence)
-        print('embeds:', embeds.size())
+        # print('embeds:', embeds.size())
         # get the output and hidden state by passing the lstm over our word embeddings
         # the lstm takes in our embeddings and hiddent state
         lstm_out, self.hidden = self.lstm(embeds.view(len(sentence), 1, -1), self.hidden)
-        print('lstm_out:', lstm_out.size())
-        print('self.hidden', self.hidden[0].size(), self.hidden[1].size())
+        # print('lstm_out:', lstm_out.size())
+        # print('self.hidden', self.hidden[0].size(), self.hidden[1].size())
         # get the scores for the most likely tag for a word
         tag_outputs = self.hidden2tag(lstm_out.view(len(sentence), -1))
         tag_scores = F.log_softmax(tag_outputs, dim=1)
         
         return tag_scores
 
+# If you apply Pytorch’s CrossEntropyLoss to your output layer,
+# you get the same result as applying Pytorch’s NLLLoss to a
+# LogSoftmax layer added after your original output layer.
 
 
 # the embedding dimension defines the size of our word vectors
@@ -102,6 +105,7 @@ model = LSTMTagger(EMBEDDING_DIM, HIDDEN_DIM, len(word2idx), len(tag2idx))
 
 # define our loss and optimizer
 loss_function = nn.NLLLoss()
+# loss_function = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
 
