@@ -200,7 +200,7 @@ def train(model, iterator, optimizer, criterion, device):
     model.train()
     for x, y in iterator: #tqdm.tqdm(iterator):
         x, y = x.to(device), y.to(device).unsqueeze(1)
-        optimizer.zero_grad()
+        model.zero_grad() #optimizer.zero_grad()
         preds = model(x)
         loss = criterion(preds, y)
         acc = binary_accuracy(preds, y)
