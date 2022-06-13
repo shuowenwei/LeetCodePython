@@ -21,6 +21,7 @@ class Solution(object):
             # base case 是 i 走完 s1 或 j 走完 s2，可以直接返回另一个字符串剩下的长度。
             if i == -1: return j+1
             if j == -1: return i+1
+            # if -1 in (i,j): return max(i+1, j+1) # optimized a little bit
             
             if (i, j) in dp_table:
                 return dp_table[(i, j)]
