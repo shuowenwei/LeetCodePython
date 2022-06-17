@@ -17,21 +17,22 @@ class Solution(object):
         :rtype: List[int]
         """
         # All integers in nums1 and nums2 are unique.
-        dctNum1toIndex = dict()
+        dctNum1toIndex = dict() # num1's number' next greater number's index in nums2
         stack = []
         for i in range(len(nums2)-1, -1, -1):
-            while stack and stack[-1] <= nums2[i]:
-                    stack.pop()
+            cur = nums2[i]
+            while stack and stack[-1] <= cur:
+                stack.pop()
             # while stack:
-            #     if stack[-1] <= nums2[i]:
+            #     if stack[-1] <= cur:
             #         stack.pop()
             #     else:
             #         break
             if len(stack) == 0:
-                dctNum1toIndex[nums2[i]] = - 1
+                dctNum1toIndex[cur] = - 1
             else:
-                dctNum1toIndex[nums2[i]] = stack[-1]
-            stack.append(nums2[i])
+                dctNum1toIndex[cur] = stack[-1]
+            stack.append(cur)
         
         # All the integers of nums1 also appear in nums2.
         return [dctNum1toIndex[n] for n in nums1]
