@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/next-greater-element-ii/
 
-https://labuladong.gitee.io/algo/2/20/48/
+https://labuladong.github.io/algo/2/21/60/
 
 LC496, LC739, LC503
 monotonic stack

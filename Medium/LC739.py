@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/daily-temperatures/
 
-https://labuladong.gitee.io/algo/2/20/48/
+https://labuladong.github.io/algo/2/21/60/
 
 LC496, LC739, LC503
 monotonic stack
@@ -17,7 +17,7 @@ class Solution(object):
         """
         n = len(temperatures)
         res = [0] * n
-        stack = []
+        stack = [] # index of highest temperature on the right
         for i in range(n - 1, -1, -1):
             while stack and temperatures[stack[-1]] <= temperatures[i]:
                 stack.pop()
