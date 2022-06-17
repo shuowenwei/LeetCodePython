@@ -50,7 +50,7 @@ class Solution(object):
                     num = 0
                     # print('after', stack, char, sign)
                 if char == ')':
-                    break
+                    break # or "return sum(stack)" here
             return sum(stack)
         return helper(collections.deque(s)) # this is faster than using list(s)
         """
