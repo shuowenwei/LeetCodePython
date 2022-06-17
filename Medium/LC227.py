@@ -41,6 +41,3 @@ class Solution(object):
         import collections 
         s = collections.deque(s)
         return helper(s)
-    
-
-
