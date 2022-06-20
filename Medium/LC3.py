@@ -19,23 +19,21 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        # just use the template
         res = 0 
-        tmp_len = 0 
+        substring_len = 0 
         window = {char: 0 for char in s}
         left, right = 0, 0 
-        valid = 0
         while right < len(s): 
-            c = s[right]
+            char = s[right]
             right += 1
-            window[c] += 1
-            tmp_len += 1
-            while window[c] > 1:
-                d = s[left]
+            window[char] += 1
+            substring_len += 1
+            while window[char] > 1: # shink windown until each char only appear one time
+                deleteChar = s[left]
                 left += 1
-                window[d] -= 1
-                tmp_len -= 1
-            res = max(res, tmp_len) 
+                window[deleteChar] -= 1
+                substring_len -= 1
+            res = max(res, substring_len) 
         return res
         """
         maxSubstringLen = 0
