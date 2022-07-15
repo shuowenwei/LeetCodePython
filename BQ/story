@@ -51,4 +51,5 @@ self-introduction:
 10. Karen used to message me at 11pm
 11. deploying HHRv5 model, due to python 
 12. HHRv5 model, deep learning vs random forest, how to handle conflict of interests 
-
+13. WebADV team is trying to develop a model to classify long sentence model, I join the team midway and uncovered that the oversampling of the minority class happens before the train/test split, hence the model doesn't work well on real production data even though it performs well in testing dataset 
+14. WebADV team is trying to develop a model to classify long sentence model LSTM --> 1D CNN to solve the long sentence problem
