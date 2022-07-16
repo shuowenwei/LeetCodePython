@@ -30,14 +30,13 @@ self-introduction:
 - building end-to-end ML solutions, not just the model part
 -  
 
-1. Funding Portal R&D - image similarity - pixel-to-pixel comparison vs image embedding via ResNet50 
+1. Funding Portal R&D - image similarity - pixel-to-pixel comparison vs image embedding via ResNet50 - take a calculated risk before taking actions - meet obstacles but still achieve the goal (two weeks towards to deadline and CV is not really my area)
 2. corpus of evidence - 
 3. A tester, half of his time was for our team and half of his time was for another team, slowness is blocking/delaying the release schedule 
 4. Createathon/Hackathon 
    - Won the category, 1st place of 17 teams, but din't get the grand prize in the first year, presentation is more important than technical details of 
    - my manager, who was in the audience, told me to get the main point out is more important than explaining tech details 
    - know your audience  -  critical feedback 
-   
    - regularization vs regulation
    - transformer/bert vs 
 5. hired the best - interview new graduates, ask the hard questions and stardard coding questions 
@@ -49,12 +48,17 @@ self-introduction:
 8. find anormlies in flow logs data, work with network team, cyber security data injection team
 9. newly promoted engineer managers who are micro-manageing is very difficult to work with.
 10. Karen used to message me at 11pm
-11. deploying HHRv5 model, due to python 
-12. HHRv5 model, deep learning vs random forest, how to handle conflict of interests 
+11. deploying HHRv5 model, due to python lib's lenght of dealing input, found the issue and solved it
+12. HHRv5 model, deep learning vs random forest, how to handle conflict of interests. And why I am not satisfied with some something I decide to change it.
+   - in regression test of a pool of 200 bad guys, RF captures 90+ while MLP captures 160+
 13. WebADV team is trying to develop a model to classify long sentence model, 
    - I join the team midway and uncovered that the oversampling of the minority class happens before the train/test split,hence the model doesn't work well on real production data even though it performs well in testing dataset
    - we uncovered the root cause and resolve the issue internally ffirst, before presenting it to our manager, and evatually we demoed to our business  partners.
 14. WebADV team is trying to develop a model to classify long sentence model LSTM --> I proposed a 1D CNN model to solve the long sentence problem, rather than LSTM or GRU
+15. Manager ask details to be included in the JIRA tickets for better budget management. I don't fully agree with it but I go with it. I pushed back in our monthly 1:1. -- Group decision where I don't disagree. 
+16. "anticipate" the need of customrers -- take the corpus of evidence (needle in the haystack) / hotmail -- customers don't know what they want, we work along the way 
+17. "half way to the goal" -- autoencoders model (unsurprised learning) without enough manpower to evaluate the results (a bigger problem we didn't realize in the beginning) 
+18. WebADV model selection, we tried TF-IDF, LSTM, 1-D CNN to deal with long sentence problem -- "deliver" vs "standard" -- transformer (2017.10) just came out and BERT (2019.5) was very new. It's was June to Sept back in 2019 and we didn't have time to try out BERT 
 
 
 how  do you manage such a big team which most of people are working remotely? 
