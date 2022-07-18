@@ -1,23 +1,9 @@
 how to deal with negative feedback? failure? 
 
-how to handle a conflict? 
-- time conflict 
-S: Kiran used to message me at 11pm
-T: 
-A: 
-R: 
+how to handle a conflict? - time conflict - Kiran used to message me at 11pm
 
-Customer Obsession / time commitment
-S: 
-T:
-A:
-R: 
+Invent and Simplify - Funding Portal R&D - image similarity - from pixel to image embedding
 
-Invent and Simplify
-S: Funding Portal R&D - image similarity - from pixel to image embedding
-T: 
-A: 
-R: 
 
 Deal with difficult people: 
 - why difficult? insecurity, low self-esteem and fear, boredom, power, lack awareness 
@@ -27,7 +13,7 @@ Deal with difficult people:
 - Listen and observe
 
 self-introduction: 
-- building end-to-end ML solutions, not just the model part
+- building end-to-end ML solutions, 
 -  
 
 1. Funding Portal R&D - image similarity - pixel-to-pixel comparison vs image embedding via ResNet50 - take a calculated risk before taking actions - meet obstacles but still achieve the goal (two weeks towards to deadline and CV is not really my area)
@@ -49,7 +35,7 @@ self-introduction:
 9. newly promoted engineer managers who are micro-manageing is very difficult to work with.
 10. Karen used to message me at 11pm
 11. deploying HHRv5 model, due to python lib's lenght of dealing input, found the issue and solved it
-12. HHRv5 model, deep learning vs random forest, how to handle conflict of interests. And why I am not satisfied with some something I decide to change it.
+12. HHRv5 model, deep learning vs random forest, how to handle conflict of interests. And why I am not satisfied with some something I decide to change it. A great idea but not getting supported.
    - in regression test of a pool of 200 bad guys, RF captures 90+ while MLP captures 160+
 13. WebADV team is trying to develop a model to classify long sentence model, 
    - I join the team midway and uncovered that the oversampling of the minority class happens before the train/test split,hence the model doesn't work well on real production data even though it performs well in testing dataset
