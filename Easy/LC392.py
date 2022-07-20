@@ -33,15 +33,13 @@ class Solution(object):
             left = 0
             right = len(nums) - 1 
             while left <= right: # break when left == right + 1 
-                mid = (left + right) / 2 
+                mid = left + (right - left) / 2 
                 if nums[mid] == target:
                     right = mid - 1 
                 elif nums[mid] < target:
                     left = mid + 1 
                 elif nums[mid] > target:
                     right = mid - 1
-            # if left > len(nums) - 1  or nums[left] != target: 
-            #     return -1 
             return left
         
         dict_t = {}
@@ -58,7 +56,7 @@ class Solution(object):
             
             pos = left_bound(dict_t[s[i]], j)
             # print(pos, 'target: ', j)
-            if pos == -1 or pos == len(dict_t[s[i]]):
+            if pos == len(dict_t[s[i]]):
                 return False 
             j = dict_t[s[i]][pos] + 1
         return True
