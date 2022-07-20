@@ -24,7 +24,7 @@ class Solution(object):
             elif targetSum == node.val and node.left is None and node.right is None:
                 return True
             else:
-                return dfs(node.left, targetSum - root.val) or dfs(node.right, targetSum - root.val)
+                return dfs(node.left, targetSum - node.val) or dfs(node.right, targetSum - node.val)
         
         return dfs(root, targetSum)
 
@@ -34,7 +34,7 @@ class Solution(object):
         #     elif targetSum == curSum and node.left is None and node.right is None:
         #         return True
         #     else:
-        #         print(targetSum, curSum, root.val)
-        #         return dfs(node.left, targetSum, curSum + root.val) or dfs(node.right, targetSum, curSum + root.val)
+        #         print(targetSum, curSum, node.val)
+        #         return dfs(node.left, targetSum, curSum + node.val) or dfs(node.right, targetSum, curSum + node.val)
         
         # return dfs(root, targetSum, 0)
