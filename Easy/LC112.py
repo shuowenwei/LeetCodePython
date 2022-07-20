@@ -28,13 +28,12 @@ class Solution(object):
         
         return dfs(root, targetSum)
 
-        # def dfs(node, targetSum, curSum):
-        #     if node is None:
-        #         return False
-        #     elif targetSum == curSum and node.left is None and node.right is None:
-        #         return True
-        #     else:
-        #         print(targetSum, curSum, node.val)
-        #         return dfs(node.left, targetSum, curSum + node.val) or dfs(node.right, targetSum, curSum + node.val)
-        
-        # return dfs(root, targetSum, 0)
+        # another way of coding it: 
+        def dfs(node, targetSum, curSum):
+            if node is None:
+                return False
+            elif targetSum == curSum + node.val and node.left is None and node.right is None:
+                return True
+            else:
+                return dfs(node.left, targetSum, curSum + node.val) or dfs(node.right, targetSum, curSum + node.val)
+        return dfs(root, targetSum, 0)
