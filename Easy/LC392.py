@@ -6,7 +6,7 @@ https://leetcode.com/problems/is-subsequence/
 
 https://labuladong.gitee.io/algo/4/32/141/
 
-LC392
+LC392, LC792
 - BinarySearch
 """
 class Solution(object):
