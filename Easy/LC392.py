@@ -50,13 +50,13 @@ class Solution(object):
                 dict_t[char].append(i)
         # print(dict_t)
         j = 0 # 串 t 上的指针
-        for i in range(len(s)):
-            if s[i] not in dict_t:
+        for char in s:
+            if char not in dict_t:
                 return False
             
-            pos = left_bound(dict_t[s[i]], j)
+            pos = left_bound(dict_t[char], j)
             # print(pos, 'target: ', j)
-            if pos == len(dict_t[s[i]]):
+            if pos == len(dict_t[char]):
                 return False 
-            j = dict_t[s[i]][pos] + 1
+            j = dict_t[char][pos] + 1
         return True

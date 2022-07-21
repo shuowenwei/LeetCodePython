@@ -39,22 +39,21 @@ class Solution(object):
                 
         def isSubsequence(word, s):
             ps = 0 # pointer on s 
-            for w in word:
-                if w not in dict_s:
+            for char in word:
+                if char not in dict_s:
                     return False 
                 
-                pos = left_bound(dict_s[w], ps)
-                if pos == len(dict_s[w]):
+                pos = left_bound(dict_s[char], ps)
+                if pos == len(dict_s[char]):
                     return False
-                ps = dict_s[w][pos] + 1 
+                ps = dict_s[char][pos] + 1 
             return True
     
         res = 0 
         for word in words:
             if isSubsequence(word, s):
                 res += 1
-        return res 
-        
+        return res
         
         # Solution 2: Time Limit Exceeded
         # refer to LC392
