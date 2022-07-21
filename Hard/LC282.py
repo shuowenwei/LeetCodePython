@@ -17,9 +17,9 @@ class Solution(object):
         :rtype: List[str]
         """
         res = []
-        def backtracking(num, start, path, value, prev):
-            if len(num) == start: 
-                if value == target:
+        def backtracking(path, start, val, pre_val):
+            if start == len(num):
+                if val == target:
                     res.append(path)
                 return 
             for i in range(start, len(num)):
@@ -27,15 +27,14 @@ class Solution(object):
                     break # Skip leading zero number
                 cur_num = int(num[start: i + 1])
                 if start == 0:
-                    # First num, pick it without adding any operator, e.g. '105', 5 
-                    backtracking(num, i+1, path+str(cur_num), value + cur_num, cur_num)
+                    backtracking(path + str(cur_num), i+1, val + cur_num, cur_num)
                 else:
-                    backtracking(num, i+1, path+'+'+str(cur_num), value + cur_num, cur_num)
-                    backtracking(num, i+1, path+'-'+str(cur_num), value - cur_num, - cur_num)
-                    # Can imagine with example: 1+2*3*4
-                    backtracking(num, i+1, path+'*'+str(cur_num), value - prev + prev * cur_num, prev * cur_num)
+                    backtracking(path+'+'+str(cur_num), i+1, val + cur_num, cur_num)
+                    backtracking(path+'-'+str(cur_num), i+1, val - cur_num, -cur_num)
+                    # e.g: 1+2*3*4
+                    backtracking(path+'*'+str(cur_num), i+1, val - pre_val + pre_val*cur_num, pre_val*cur_num)
 
-        backtracking(num, 0, '', 0, 0)
+        backtracking('', 0, 0, 0)
         return res 
     
         # solution 2: Time Limit Exceeded
