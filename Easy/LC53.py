@@ -14,9 +14,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # the key of this problem is how to define the dp table: 
+        
         # 以 nums[i] 为结尾的「最大子数组和」为 dp[i]。
         dp_table = [0]*len(nums)
-        
         dp_table[0] = nums[0]
         for i in range(1, len(nums)):
             dp_table[i] = max(nums[i], nums[i] + dp_table[i-1])

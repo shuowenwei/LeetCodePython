@@ -38,6 +38,27 @@ class Solution(object):
             return res 
         return dp(word1, word2, len(word1)-1, len(word2)-1)
 
+        # another way of writing solution 1:
+        """
+        dp_table = {}
+        def dp(word1, word2, i, j):
+            if i == len(word1):
+                return len(word2) - j
+            if j == len(word2):
+                return len(word1) - i
+            if (i,j) in dp_table:
+                return dp_table[(i,j)]
+            if word1[i] == word2[j]:
+                res = dp(word1, word2, i+1, j+1)
+            else:
+                res = 1 + min(dp(word1, word2, i+1, j+1), 
+                              dp(word1, word2, i, j+1), 
+                              dp(word1, word2, i+1, j)) 
+            dp_table[(i,j)] = res 
+            return res 
+        return dp(word1, word2, 0, 0)
+        """
+
         # solution 2: 唯一不同的是，DP table 是自底向上求解，递归解法是自顶向下求解：
         """
         m, n = len(word1), len(word2)
