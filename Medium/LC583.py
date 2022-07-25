@@ -39,9 +39,9 @@ class Solution(object):
         """
         # solution 2: refer to LC72
         dp_table = {}
-        # 定义：dp(i, j) 返回 s1[0..i] 和 s2[0..j] 的最小编辑距离
+        # 定义: dp(i, j) 返回 s1[0..i] 和 s2[0..j] 的最小编辑距离
         def dp(word1, word2, i, j):
-            # base case 是 i 走完 s1 或 j 走完 s2，可以直接返回另一个字符串剩下的长度。
+            # base case 是 i 走完 s1 或 j 走完 s2, 可以直接返回另一个字符串剩下的长度。
             if i == -1: return j+1
             if j == -1: return i+1
             
@@ -50,8 +50,8 @@ class Solution(object):
             if word1[i] == word2[j]:
                 res = dp(word1, word2, i-1, j-1)
             else:
-                res = 1 + min(dp(word1, word2, i, j-1), # delete: # 直接把 s[j] 这个字符删掉,前移 j，继续跟 i 对比
-                              dp(word1, word2, i-1, j)) # delete: # 直接把 s[i] 这个字符删掉,前移 i，继续跟 j 对比
+                res = 1 + min(dp(word1, word2, i, j-1), # delete: # 直接把 s[j] 这个字符删掉,前移 j, 继续跟 i 对比
+                              dp(word1, word2, i-1, j)) # delete: # 直接把 s[i] 这个字符删掉,前移 i, 继续跟 j 对比
             dp_table[(i, j)] = res 
             return res
         return dp(word1, word2, len(word1)-1, len(word2)-1)
