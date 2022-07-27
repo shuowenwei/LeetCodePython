@@ -19,10 +19,11 @@ class Solution(object):
         res = [0] * n
         stack = [] # index of highest temperature on the right
         for i in range(n - 1, -1, -1):
-            while stack and temperatures[stack[-1]] <= temperatures[i]:
+            cur_temp = temperatures[i]
+            while stack and temperatures[stack[-1]] <= cur_temp:
                 stack.pop()
             # while stack:
-            #     if temperatures[stack[-1]] <= temperatures[i]:
+            #     if temperatures[stack[-1]] <= cur_temp:
             #         stack.pop()
             #     else:
             #         break
