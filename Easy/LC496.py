@@ -20,20 +20,19 @@ class Solution(object):
         dctNum1toIndex = dict() # num1's number' next greater number's index in nums2
         stack = []
         for i in range(len(nums2)-1, -1, -1):
-            cur = nums2[i]
-            while stack and stack[-1] <= cur:
+            cur_n2 = nums2[i]
+            while stack and stack[-1] <= cur_n2:
                 stack.pop()
             # while stack:
-            #     if stack[-1] <= cur:
+            #     if stack[-1] <= cur_n2:
             #         stack.pop()
             #     else:
             #         break
             if len(stack) == 0:
-                dctNum1toIndex[cur] = - 1
+                dctNum1toIndex[cur_n2] = - 1
             else:
-                dctNum1toIndex[cur] = stack[-1]
-            stack.append(cur)
+                dctNum1toIndex[cur_n2] = stack[-1]
+            stack.append(cur_n2)
         
         # All the integers of nums1 also appear in nums2.
         return [dctNum1toIndex[n] for n in nums1]
-            
