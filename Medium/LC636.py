@@ -17,19 +17,26 @@ class Solution(object):
         """
         res = [0] * n
         stack = []
-        consumed_time = 0 
         for log in logs:
-            fid, status, time = log.split(':')
+            func_id, status, time = log.split(':')
+            func_id = int(func_id)
+            time = int(time)
+            
             if status == 'start':
-                stack.append((fid, status, time))
-            elif status == 'end':
-                pre_id, status, start_time = stack.pop() 
-                # print(fid, status, time)
-                # print(stack[-1][0], stack[-1][1], stack[-1][2])
-                res[int(pre_id)] += int(time) + 1 - int(start_time)
-                timeSpent = int(time) + 1 - int(start_time)
+                stack.append((func_id, status, time))
+            elif status == 'end': 
+                pre_func_id, _, pre_time = stack.pop()
+                assert pre_func_id == func_id, 'wrong func id, not matching' # just like '(' and ')'
+                res[pre_func_id] += time + 1 - pre_time
+                timeSpent = time + 1 - pre_time
                 if stack:
-                    next_id, status, timeSpentByNextProcess = stack[-1]
-                    res[int(next_id)] -= timeSpent 
-        return res
+                    next_func_id, _, _ = stack[-1]
+                    res[next_func_id] -= timeSpent
+            # print(res)
+        return res 
 
+
+# n = 2
+# logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
+# sol = Solution()
+# sol.exclusiveTime(n, logs)
