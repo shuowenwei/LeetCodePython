@@ -4,10 +4,7 @@
 
 https://leetcode.com/problems/parallel-courses-iii/
 
-https://leetcode.com/problems/parallel-courses-iii/discuss/1537479/C%2B%2BPython-Topology-Sort-O(M%2B-N)-Clean-and-Concise
-
 LC1494, LC2050
-topology sort
 """
 class Solution(object):
     def minimumTime(self, n, relations, time):
@@ -17,6 +14,7 @@ class Solution(object):
         :type time: List[int]
         :rtype: int
         """
+        # Wrong Answer
         import collections
         graph = collections.defaultdict(list)
         inDegree = [0] * n
