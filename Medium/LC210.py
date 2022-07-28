@@ -8,6 +8,7 @@ https://labuladong.gitee.io/algo/2/20/37/
 
 LC797, LC207, LC210, LC630, LC2115
 LC785, LC886
+topology sort: LC207, LC210, LC2050
 """
 class Solution(object):
     def findOrder(self, numCourses, prerequisites):
@@ -46,31 +47,28 @@ class Solution(object):
         # print(postorder[::-1])
         return postorder[::-1]
 
-        # BFS
+        # Soltion 2: BFS with TopologySort 
         import collections 
         graph = collections.defaultdict(list)
         inDegree = collections.defaultdict(int)
-        for thenTake, takefirst in prerequisites: 
-            graph[takefirst].append(thenTake)
-            inDegree[thenTake] += 1 
         
-        starters = [course for course in range(numCourses) if inDegree[course] == 0] 
-        q = collections.deque(starters)
-        numCourseCanBeTaken = 0 
+        for nextCourse, prevCourse in prerequisites:
+            graph[prevCourse].append(nextCourse)
+            inDegree[nextCourse] += 1
+            
+        startCourses = [c for c in range(numCourses) if inDegree[c] == 0]
+        q = collections.deque(startCourses)
         res = []
         while q:
             cur_course = q.popleft()
-            numCourseCanBeTaken += 1
             res.append(cur_course)
-            for nei_course in graph[cur_course]:
-                inDegree[nei_course] -= 1 
-                if inDegree[nei_course] == 0:
-                    q.append(nei_course)
-        # print(res, count)
-        if numCourseCanBeTaken != numCourses: # // 存在环，拓扑排序不存在
-            return []
-        else:
-            return res
+            for next_course in graph[cur_course]:
+                inDegree[next_course] -= 1 
+                if inDegree[next_course] == 0:
+                    q.append(next_course)
+        # print(res)
+        return res if len(res) == numCourses else []
+        # if len(res) != numCourses: # // 存在环，拓扑排序不存在
     
 numCourses = 2
 prerequisites = [[1,0]]
