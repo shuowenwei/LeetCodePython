@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/random-pick-with-weight/
 
-https://labuladong.gitee.io/algo/2/21/66/
+https://labuladong.github.io/algo/2/20/30/
 
 LC303, LC304, LC560, LC528
 """
@@ -24,7 +24,7 @@ class Solution(object):
         :rtype: int
         """
         import random
-        target = random.randint(1, self.preSum[self.n - 1]) # // 在闭区间 [1, preSum[n - 1]] 中随机选择一个数字
+        target = random.randint(1, self.preSum[self.n - 1]) # // 在闭区间 [1, preSum[n - 1]] 中随机选择一个数字, or self.preSum[-1]
         left, right = 0, self.n - 1
         while left <= right:
             mid = left + (right - left) / 2
