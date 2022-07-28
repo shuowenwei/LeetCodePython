@@ -19,12 +19,12 @@ class Solution(object):
         from heapq import heappush, heappop
         hp = []
         start = 0 
-        courses.sort(key = lambda x: x[1])
-        for time, endTime in courses:
-            start += time
-            heappush(hp, -time) # hp is courses taken 
-            if start > endTime:
-                lastLongestCourse = - heappop(hp)
-                start -= lastLongestCourse
+        courses.sort(key = lambda x: x[1]) # Sort all the courses by their ending time
+        for duration, endTime in courses:
+            start += duration
+            heappush(hp, -duration) # max heap 
+            while start > endTime: # if is also fine, because each time we only need to remove at most one element from the pq
+                #keep removing the longest duration course until they all end before endTime
+                longestDurationCourse = - heappop(hp)
+                start -= longestDurationCourse
         return len(hp)
-    
