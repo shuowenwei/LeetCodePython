@@ -23,3 +23,7 @@ input = 'abbcccb'
 k = 3
 print(strCompression(input, k))
 
+
+input = 'abbccccbbaaabbbbb'
+k = 4
+print(strCompression(input, k))
