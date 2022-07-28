@@ -29,7 +29,7 @@ class CommissionEmployee(SalaryEmployee):
         fixed = super().calculate_payroll()
         return fixed + self.commission
 
-
+#############################################################################
 
 class Manager(SalaryEmployee):
     def work(self, hours):
@@ -46,3 +46,8 @@ class SalesPerson(CommissionEmployee):
 class FactoryWorker(HourlyEmployee):
     def work(self, hours):
         print(f'{self.name} manufactures gadgets for {hours} hours.')
+
+
+
+class TemporarySecretary(HourlyEmployee, Secretary):
+    pass
