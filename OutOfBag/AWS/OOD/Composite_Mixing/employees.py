@@ -14,23 +14,26 @@ from productivity import (
 
 # In employees.py
 
-class Employee:
+from representations import AsDictionaryMixin
+
+class Employee(AsDictionaryMixin):
     def __init__(self, id, name, address, role, payroll):
         self.id = id
         self.name = name
         self.address = address
-        self.role = role
-        self.payroll = payroll
+        self._role = role
+        self._payroll = payroll
+
 
     def work(self, hours):
-        duties = self.role.perform_duties(hours)
+        duties = self._role.perform_duties(hours)
         print(f'Employee {self.id} - {self.name}:')
         print(f'- {duties}')
         print('')
-        self.payroll.track_work(hours)
+        self._payroll.track_work(hours)
 
     def calculate_payroll(self):
-        return self.payroll.calculate_payroll()
+        return self._payroll.calculate_payroll()
 
 class Manager(Employee, ManagerRole, SalaryPolicy):
     def __init__(self, id, name, weekly_salary):

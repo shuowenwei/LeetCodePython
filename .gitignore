@@ -3,4 +3,7 @@ OutOfBag/Socure/*
 OutOfBag/Socure/ieee-fraud-detection.zip
 OutOfBag/AWS/OOD/__pycache__/*
 OutOfBag/AWS/OOD/multiple_inheritance/__pycache__/*
-OutOfBag/AWS/OOD/multiple_inheritance_Composite/__pycache__/*
+OutOfBag/AWS/OOD/Composite/__pycache__/*
+OutOfBag/AWS/OOD/Composite_Mixing/__pycache__/*
+OutOfBag/AWS/OOD/Composite_Mixing/__pycache__/contacts.cpython-39.pyc
+OutOfBag/AWS/OOD/Composite_Mixing/__pycache__/employees.cpython-39.pyc

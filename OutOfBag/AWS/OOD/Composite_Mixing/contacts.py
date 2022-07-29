@@ -1,6 +1,8 @@
 # In contacts.py
 
-class Address:
+from representations import AsDictionaryMixin
+
+class Address(AsDictionaryMixin):
     def __init__(self, street, city, state, zipcode, street2=''):
         self.street = street
         self.street2 = street2
@@ -13,8 +15,7 @@ class Address:
         if self.street2:
             lines.append(self.street2)
         lines.append(f'{self.city}, {self.state} {self.zipcode}')
-        return '\n'.join(lines)
-    
+        return '\n'.join(lines)    
 
 class AddressBook:
     def __init__(self):
