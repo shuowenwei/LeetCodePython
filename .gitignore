@@ -2,3 +2,5 @@ test.py
 OutOfBag/Socure/*
 OutOfBag/Socure/ieee-fraud-detection.zip
 OutOfBag/AWS/OOD/__pycache__/*
+OutOfBag/AWS/OOD/multiple_inheritance/__pycache__/*
+OutOfBag/AWS/OOD/multiple_inheritance_Composite/__pycache__/*
