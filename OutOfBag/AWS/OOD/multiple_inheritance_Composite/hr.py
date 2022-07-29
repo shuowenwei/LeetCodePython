@@ -7,6 +7,9 @@ class PayrollSystem:
         for employee in employees:
             print(f'Payroll for: {employee.id} - {employee.name}')
             print(f'- Check amount: {employee.calculate_payroll()}')
+            if employee.address:
+                print('- Sent to:')
+                print(employee.address)
             print('')
 
 class SalaryPolicy:
