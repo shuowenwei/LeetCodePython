@@ -1,3 +1,5 @@
+# https://realpython.com/inheritance-composition-python/#:~:text=They%20allow%20you%20to%20inherit,is%20known%20as%20duck%20typing.
+
 # In program.py
 
 from hr import PayrollSystem, HourlyPolicy
