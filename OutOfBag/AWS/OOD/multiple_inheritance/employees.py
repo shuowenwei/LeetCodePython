@@ -48,6 +48,6 @@ class FactoryWorker(HourlyEmployee):
         print(f'{self.name} manufactures gadgets for {hours} hours.')
 
 
-
 class TemporarySecretary(HourlyEmployee, Secretary):
-    pass
+    def __init__(self, id, name, hours_worked, hour_rate):
+        super().__init__(id, name, hours_worked, hour_rate)
