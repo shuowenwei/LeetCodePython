@@ -170,13 +170,19 @@ class ParkingFloor:
         self.__info_portals = {}
         self.__display_board = ParkingDisplayBoard()
 
+        # self.__free_handicapped_spot_count = 0 
+        # self.__free_compact_spot_count = 0 
+        # self.__free_large_spot_count = 0 
+        # self.__free_motorbike_spot_count = 0 
+        # self.__free_electric_spot_count = 0 
+
     def add_parking_spot(self, spot):
         switcher = {
             ParkingSpotType.HANDICAPPED: self.__handicapped_spots.put(spot.get_number(), spot),
-            ParkingSpotType.COMPACT: __compact_spots.put(spot.get_number(), spot),
-            ParkingSpotType.LARGE: __large_spots.put(spot.get_number(), spot),
-            ParkingSpotType.MOTORBIKE: __motorbike_spots.put(spot.get_number(), spot),
-            ParkingSpotType.ELECTRIC: __electric_spots.put(spot.get_number(), spot),
+            ParkingSpotType.COMPACT: self.__compact_spots.put(spot.get_number(), spot),
+            ParkingSpotType.LARGE: self.__large_spots.put(spot.get_number(), spot),
+            ParkingSpotType.MOTORBIKE: self.__motorbike_spots.put(spot.get_number(), spot),
+            ParkingSpotType.ELECTRIC: self.__electric_spots.put(spot.get_number(), spot),
             }
         switcher.get(spot.get_type(), 'Wrong parking spot type')
 
@@ -211,14 +217,14 @@ class ParkingFloor:
 
     def free_spot(self, spot):
         spot.remove_vehicle()
-        switcher = {
-                    ParkingSpotType.HANDICAPPED: self.__free_handicapped_spot_count += 1,
-                    ParkingSpotType.COMPACT: self.__free_compact_spot_count += 1,
-                    ParkingSpotType.LARGE: self.__free_large_spot_count += 1,
-                    ParkingSpotType.MOTORBIKE: self.__free_motorbike_spot_count += 1,
-                    ParkingSpotType.ELECTRIC: self.__free_electric_spot_count += 1,
-                    }
-        switcher(spot.get_type(), 'Wrong parking spot type!')
+        # switcher = {
+        #             ParkingSpotType.HANDICAPPED: self.__free_handicapped_spot_count += 1,
+        #             ParkingSpotType.COMPACT: self.__free_compact_spot_count += 1,
+        #             ParkingSpotType.LARGE: self.__free_large_spot_count += 1,
+        #             ParkingSpotType.MOTORBIKE: self.__free_motorbike_spot_count += 1,
+        #             ParkingSpotType.ELECTRIC: self.__free_electric_spot_count += 1,
+        #             }
+        # switcher(spot.get_type(), 'Wrong parking spot type!')
     
 # ParkingDisplayBoard: This class encapsulates a parking display board:
 class ParkingDisplayBoard:
