@@ -43,7 +43,7 @@ class Solution(object):
         romans = [ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" ]
         res = ''
         for i in range(len(integers)):
-            while num >= integers[i]:
+            while num >= integers[i]: # must be >=, not >
                 num = num - integers[i]
                 res += romans[i]
         return res 
