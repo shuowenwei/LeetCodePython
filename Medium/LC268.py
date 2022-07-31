@@ -7,6 +7,8 @@ https://leetcode.com/problems/missing-number/
 https://labuladong.gitee.io/algo/4/30/120/
 
 LC172, LC793, LC204, LC372, LC268
+
+LC41, LC268, LC287, LC442, LC448
 """
 class Solution(object):
     def missingNumber(self, nums):

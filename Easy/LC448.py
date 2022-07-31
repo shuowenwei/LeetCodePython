@@ -6,6 +6,7 @@ https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 
 solution: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/discuss/313703/Python-3
 
+LC41, LC268, LC287, LC442, LC448
 """
 
 class Solution(object):
