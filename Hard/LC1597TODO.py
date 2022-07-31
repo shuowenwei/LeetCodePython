@@ -57,8 +57,8 @@ class Solution(object):
         return nodeStack[-1]
 
 sol = Solution()
-s = '2-3/(5*2)+1'
-# s = "3*4-2*5"
+# s = '2-3/(5*2)+1'
+s = "3*4-2*5"
 res = sol.exoTree(s)
 print(res.val)
 

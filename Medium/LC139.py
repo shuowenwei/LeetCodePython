@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/word-break/
 
-https://leetcode.com/problems/concatenated-words/discuss/836924/Python-Template-Word-Break-I-Word-Break-II-Concatenated-Words
+https://mp.weixin.qq.com/s/iL7tCl6pqw0fTatGSemY-g
 
 LC139, LC140, LC472
 """
@@ -15,6 +15,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        # DP
         wordDict = set(wordDict)
         dp_table = {}
         def dp(s):
@@ -35,6 +36,7 @@ class Solution(object):
         return dp(s)
 
         # solution 2: bottom up
+        # https://leetcode.com/problems/concatenated-words/discuss/836924/Python-Template-Word-Break-I-Word-Break-II-Concatenated-Words
         dp = [False] * (len(s) + 1)
         dp[0] = True
         dict_word = set(wordDict)

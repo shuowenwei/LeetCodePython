@@ -27,6 +27,8 @@ class Solution(object):
                 return 
             
             for i in range(start, len(candidates)):
+                # Each number in candidates may only be used once in the combination.
+                # Note: The solution set must not contain duplicate combinations
                 if i > start and candidates[i] == candidates[i-1]:
                     continue 
                 path.append(candidates[i])

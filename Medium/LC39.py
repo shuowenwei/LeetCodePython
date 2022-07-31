@@ -21,9 +21,10 @@ class Solution(object):
             if target == trackSum:
                 res.append(path[:])
                 return 
-            if target < trackSum: 
+            if target < trackSum: # all numbers in candidates are positive
                 return 
             for i in range(start, len(candidates)):
+                # All elements of candidates are distinct.
                 path.append(candidates[i])
                 trackSum += candidates[i]
                 # here, must be i, this is replaceable
