@@ -31,7 +31,7 @@ class Solution(object):
                 left = mid + 1 
             if nums[mid] > target:
                 right = mid - 1
-        if left > len(nums)-1 or nums[left] != target:
+        if left > len(nums)-1 or nums[left] != target: # didn't find, out of band
             return res 
         res[0] = left
         
@@ -45,7 +45,7 @@ class Solution(object):
                 left = mid + 1 
             if nums[mid] > target:
                 right = mid - 1
-        if right < 0 or nums[right] != target:
+        if right < 0 or nums[right] != target: # didn't find, out of band
             return res
         res[1] = right
         return res
