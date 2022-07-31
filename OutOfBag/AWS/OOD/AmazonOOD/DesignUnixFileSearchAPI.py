@@ -5,22 +5,18 @@ from typing import List
 # File
 # - no need to implement different files & directories as that will not be used in this system
 
-
 class File:
     def __init__(self, name, size):
         self.name = name
         self.size = size
         self.children = []
         self.is_directory = False if '.' in name else True
-        self.children = []
         self.extension = name.split(".")[1] if '.' in name else ""
 
     def __repr__(self):
         return "{"+self.name+"}"
 
 # Filters
-
-
 class Filter(ABC):
     def __init__(self):
         pass
@@ -29,14 +25,12 @@ class Filter(ABC):
     def apply(self, file):
         pass
 
-
 class MinSizeFilter(Filter):
     def __init__(self, size):
         self.size = size
 
     def apply(self, file):
         return file.size > self.size
-
 
 class ExtensionFilter(Filter):
     def __init__(self, extension):
@@ -45,9 +39,7 @@ class ExtensionFilter(Filter):
     def apply(self, file):
         return file.extension == self.extension
 
-
 # LinuxFindCommand
-
 class LinuxFind():
     def __init__(self):
         self.filters: List[Filter] = []
@@ -70,7 +62,7 @@ class LinuxFind():
                 for child in curr_root.children:
                     queue.append(child)
             else:
-                for filter in self.filters:
+                for filter in self.filters: # OR condition, if one filter returns True, add to found_files
                     if filter.apply(curr_root):
                         found_files.append(curr_root)
                         print(curr_root)
@@ -92,7 +84,7 @@ class LinuxFind():
                 is_valid = True
                 for filter in self.filters:
                     if not filter.apply(curr_root):
-                        is_valid = False
+                        is_valid = False # AND condition, all filters must return True to add to found_files
                         break
                 if is_valid:
                     found_files.append(curr_root)
