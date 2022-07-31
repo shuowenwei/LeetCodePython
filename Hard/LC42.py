@@ -44,24 +44,24 @@ class Solution(object):
         n = len(height)
         leftMax, rightMax = [0]*n, [0]*n
         
-        currMax = 0
-        for i in range(n):
-            if height[i] > currMax:
-                currMax = height[i] 
-            leftMax[i] = currMax
+        curLeftMax = 0
+        for left in range(n):
+            if height[left] > curLeftMax:
+                curLeftMax = height[left] 
+            leftMax[left] = curLeftMax
         
-        currMax = 0 
-        for j in range(n-1, -1, -1):
-            if height[j] > currMax:
-                currMax = height[j] 
-            rightMax[j] = currMax
+        curRightMax = 0 
+        for right in range(n-1, -1, -1):
+            if height[right] > curRightMax:
+                curRightMax = height[right] 
+            rightMax[right] = curRightMax
         
         res = 0 
         # print(leftMax)
         # print(rightMax)
         for i in range(n):
-            res += max(0, min(leftMax[i], rightMax[i]) - height[i]) 
             # can't holdn negative amount of water
+            res += max(0, min(leftMax[i], rightMax[i]) - height[i])
         return res 
         """
         
