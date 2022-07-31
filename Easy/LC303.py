@@ -14,10 +14,10 @@ class NumArray(object):
         """
         :type nums: List[int]
         """
-        n = len(nums)
-        self.preSum = [0] * (n + 1)
+        self.preSum = [0] * (len(nums) + 1)
+        self.n = len(self.preSum)
         # self.preSum[i]: sum(nums[0:i]), [0,...,i), not include nums[i]
-        for i in range(1, n + 1):
+        for i in range(1, self.n):
             self.preSum[i] = nums[i-1] + self.preSum[i-1]
 
     def sumRange(self, left, right):
