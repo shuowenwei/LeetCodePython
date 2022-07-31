@@ -10,7 +10,7 @@ class File:
         self.name = name
         self.size = size
         self.children = []
-        self.is_directory = False if '.' in name else True
+        self.is_directory = False if '.' in name else True # folder has no extension, file has an extenion seperated by '.'
         self.extension = name.split(".")[1] if '.' in name else ""
 
     def __repr__(self):
@@ -32,6 +32,13 @@ class MinSizeFilter(Filter):
     def apply(self, file):
         return file.size > self.size
 
+class MaxSizeFilter(Filter):
+    def __init__(self, size):
+        self.size = size
+
+    def apply(self, file):
+        return file.size < self.size
+
 class ExtensionFilter(Filter):
     def __init__(self, extension):
         self.extension = extension
@@ -39,16 +46,53 @@ class ExtensionFilter(Filter):
     def apply(self, file):
         return file.extension == self.extension
 
+from enum import Enum
+class OperatorType(Enum):
+    OR = 1
+    AND = 2
+
 # LinuxFindCommand
 class LinuxFind():
-    def __init__(self):
+    def __init__(self, operatorType = OperatorType.OR):
         self.filters: List[Filter] = []
-
+        self.operatorType = operatorType
+        
     def add_filter(self, given_filter):
         # validate given_filter is a filter
         if isinstance(given_filter, Filter):
             self.filters.append(given_filter)
 
+    def setOpertorType(self, operatorType: OperatorType):
+        self.operatorType = operatorType
+        
+    def apply_filtering(self, root):
+        found_files = []
+
+        # bfs
+        queue = deque()
+        queue.append(root)
+        while queue:
+            curr_root = queue.popleft()
+            if curr_root.is_directory:
+                for child in curr_root.children:
+                    queue.append(child)
+            else:
+                if self.operatorType == OperatorType.OR:
+                    for filter in self.filters: # OR condition, if one filter returns True, add to found_files
+                        if filter.apply(curr_root):
+                            found_files.append(curr_root)
+                            break
+                elif self.operatorType == OperatorType.AND:
+                    is_valid = True
+                    for filter in self.filters:
+                        if not filter.apply(curr_root):
+                            is_valid = False # AND condition, all filters must return True to add to found_files
+                            break
+                    if is_valid:
+                        found_files.append(curr_root)
+                        
+        return found_files
+    
     def apply_OR_filtering(self, root):
         found_files = []
 
@@ -56,7 +100,6 @@ class LinuxFind():
         queue = deque()
         queue.append(root)
         while queue:
-            # print(queue)
             curr_root = queue.popleft()
             if curr_root.is_directory:
                 for child in curr_root.children:
@@ -65,7 +108,7 @@ class LinuxFind():
                 for filter in self.filters: # OR condition, if one filter returns True, add to found_files
                     if filter.apply(curr_root):
                         found_files.append(curr_root)
-                        print(curr_root)
+                        # print(curr_root)
                         break
         return found_files
 
@@ -88,10 +131,13 @@ class LinuxFind():
                         break
                 if is_valid:
                     found_files.append(curr_root)
-                    print(curr_root)
+                    # print(curr_root)
 
         return found_files
 
+# Some suggestions:
+# 1. I would prefer to use two different classes (derived from the same base class representing a "node" in file system) for file and directory. Not based on the file name since not all files have extension, especially in Linux.
+# 2. You can delegate the filter functionality to another object and create another two filter object derived from the same filter base class, namely, "AndFilter" and "OrFilter". So you don't need to replicate your dfs for both filtering types.
 
 f1 = File("root_300", 300)
 
@@ -125,3 +171,12 @@ my_linux_find.add_filter(txt_filter)
 
 print(my_linux_find.apply_OR_filtering(f1))
 print(my_linux_find.apply_AND_filtering(f1))
+
+
+
+
+print(my_linux_find.apply_filtering(f1))
+my_linux_find = LinuxFind(OperatorType.AND)
+my_linux_find.add_filter(greater5_filter)
+my_linux_find.add_filter(txt_filter)
+print(my_linux_find.apply_filtering(f1))
