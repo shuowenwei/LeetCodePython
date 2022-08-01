@@ -17,6 +17,7 @@ class Solution(object):
         :rtype: str
         """
         # solution 1: using a stack 
+        # 2[abc]3[cd]ef
         stack = []
         num = 0
         res = ''
@@ -26,11 +27,11 @@ class Solution(object):
             elif char == '[':
                 stack.append(res)
                 stack.append(num)
-                res = ''
+                res = '' # a new res, with stack = [res, num]
                 num = 0
-            elif char == ']': # "3[a2[c]]"
-                pre_num = stack.pop()
-                pre_str = stack.pop() 
+            elif char == ']':
+                pre_num = stack.pop() # stack = [..., res, num]  -> cur_res
+                pre_str = stack.pop() # stack = [..., res, num]  -> cur_res 
                 res = pre_str + pre_num * res
             else:
                 res += char 

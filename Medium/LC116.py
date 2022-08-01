@@ -42,7 +42,7 @@ class Solution(object):
         """
         if root and root.left and root.right: 
             root.left.next = root.right
-            if root.next: # 5 is 2's right child, 6 is 3' left child
+            if root.next: # 2's right child 5, need to connect to 6, which is 3' left child
                 root.right.next = root.next.left
             self.connect(root.left)
             self.connect(root.right)

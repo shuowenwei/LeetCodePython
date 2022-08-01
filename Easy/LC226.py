@@ -20,14 +20,27 @@ class Solution(object):
         :type root: TreeNode
         :rtype: TreeNode
         """
+        # solution 1: pre-order 
         if root is None:
             return root
-        
+        # you can do it in pre-order
         tmp = root.right
         root.right = root.left
         root.left = tmp
         
         self.invertTree(root.left)
         self.invertTree(root.right)
+        
+        return root 
+    
+        # solution 2: post-order 
+        if root is None:
+            return None
+        
+        left = self.invertTree(root.left)
+        right = self.invertTree(root.right)
+        
+        root.left = right
+        root.right = left
         
         return root 
