@@ -4,7 +4,7 @@
 
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
-labuladong: https://labuladong.gitee.io/algo/1/9/
+https://labuladong.gitee.io/algo/1/9/
 
 lC76, LC567, LC438, LC3
 
