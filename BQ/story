@@ -41,7 +41,7 @@ self-introduction:
    - I join the team midway and uncovered that the oversampling of the minority class happens before the train/test split,hence the model doesn't work well on real production data even though it performs well in testing dataset
    - we uncovered the root cause and resolve the issue internally ffirst, before presenting it to our manager, and evatually we demoed to our business  partners.
 14. WebADV team is trying to develop a model to classify long sentence model LSTM --> I proposed a 1D CNN model to solve the long sentence problem, rather than LSTM or GRU
-15. Manager ask details to be included in the JIRA tickets for better budget management. I don't fully agree with it but I go with it. I pushed back in our monthly 1:1. -- Group decision where I don't disagree. 
+15. Manager ask details to be included in the JIRA tickets for better budget management. I don't fully agree with it but I go with it. I pushed back in our monthly 1:1. -- Group decision where I don't disagree. ?
 16. "anticipate" the need of customrers -- take the corpus of evidence (needle in the haystack) / hotmail -- customers don't know what they want, we work along the way 
 17. "half way to the goal" -- autoencoders model (unsurprised learning) without enough manpower to evaluate the results (a bigger problem we didn't realize in the beginning) 
 18. WebADV model selection, we tried TF-IDF, LSTM, 1-D CNN to deal with long sentence problem -- Q:"deliver" vs "standard"? -- transformer (2017.10) just came out and BERT (2019.5) was very new. It's was June to Sept back in 2019 and we didn't have time to try out BERT 
