@@ -25,7 +25,7 @@ class Solution(object):
                 char = s.popleft() # this is faster than using list(s)
                 if char.isdigit():
                     num = 10*num + int(char)
-                
+                # must use 'if:', not 'elif:'
                 if char == '(':
                     num = helper(s)
                 if (not char.isdigit() and char != ' ') or len(s) == 0:

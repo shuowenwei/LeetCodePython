@@ -23,6 +23,7 @@ class Solution(object):
                 char = s.popleft()
                 if char.isdigit():
                     num = 10*num + int(char)
+                # must use 'if:', not 'elif:'
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
                     if sign == '+':
                         stack.append(num)

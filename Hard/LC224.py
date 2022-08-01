@@ -28,8 +28,9 @@ class Solution(object):
                 #     continue
                 if char.isdigit():
                     num = 10*num + int(char)
+                # must use 'if:', not 'elif:'
                 if char == '(':
-                    num = helper(s)
+                    num = helper(s) # must use deque(s) to keep poping out s, e.g. "(1+(4+5+2)-3)+(6+8)"
                 if (not char.isdigit() and char != ' ') or len(s) == 0:
                 # if (char in ('+','-',')') and char != ' ') or len(s) == 0:
                     if sign == '+':
