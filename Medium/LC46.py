@@ -20,7 +20,7 @@ class Solution(object):
         """
         # refer to LC47
         visited_index = [False] * len(nums)
-        # nums.sort() # not necessary since there's no duplicates 
+        # nums.sort() # not necessary since there's no duplicates in nums 
         res = []
         def backtracking(nums, tmp):
             if len(tmp) == len(nums):

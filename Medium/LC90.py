@@ -9,7 +9,7 @@ https://www.youtube.com/watch?v=Vn2v6ajA7U0&list=UU_mYaQAE6-71rjSN6CeCA-g&index=
 LC698, LC465
 LC51, LC37
 - backtracking
-LC78, LC77, LC46, LC90, LC47, LC39, LC40
+LC78, LC77, LC46, LC90, LC47, LC39, LC40, LC216
 """
 class Solution(object):
     def subsetsWithDup(self, nums):
@@ -24,11 +24,11 @@ class Solution(object):
             for i in range(start, len(nums)):
                 # // 剪枝逻辑，值相同的相邻树枝，只遍历第一条
                 if i > start and nums[i] == nums[i-1]:
-                    continue 
+                    continue
                 tmp.append(nums[i])
                 backtracking(nums, i+1, tmp)
                 tmp.pop()
-        backtracking(nums, 0, []) 
+        backtracking(nums, 0, [])
         return res 
     
         # solution 2: 

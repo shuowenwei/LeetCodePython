@@ -8,7 +8,7 @@ https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
 LC698, LC659
 LC51, LC37
 - backtracking
-LC78, LC77, LC46, LC90, LC47, LC39, LC40
+LC78, LC77, LC46, LC90, LC47, LC39, LC40, LC216
 """
 class Solution(object):
     def subsets(self, nums):
@@ -38,9 +38,9 @@ class Solution(object):
                 return 
             for i in range(start, len(nums)):
                 tmp.append(nums[i])
-                backtrack(nums, i+1, tmp)
+                backtracking(nums, i+1, tmp)
                 tmp.pop()
-                backtrack(nums, i+1, tmp)
-        backtrack(nums, 0, [])
+                backtracking(nums, i+1, tmp)
+        backtracking(nums, 0, [])
         return res 
         """

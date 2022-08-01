@@ -8,7 +8,7 @@ https://mp.weixin.qq.com/s/qT6WgR6Qwn7ayZkI3AineA
 LC698, LC465
 LC51, LC37
 - backtracking
-LC78, LC77, LC46, LC90, LC47, LC39, LC40
+LC78, LC77, LC46, LC90, LC47, LC39, LC40, LC216
 """
 class Solution(object):
     def combine(self, n, k):
@@ -29,6 +29,6 @@ class Solution(object):
                 #  // 通过 start 参数控制树枝的遍历，避免产生重复的子集
                 backtracking(n, k, i+1, tmp)
                 tmp.pop()
-        backtracking(n, k, 1, [])
+        backtracking(n, k, 1, []) # because it's [1...n]
         return res 
         
