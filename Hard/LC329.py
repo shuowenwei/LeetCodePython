@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-@author: Wei, Shuowen
-
-https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
-
-"""
 class Solution(object):
     def longestIncreasingPath(self, matrix):
         """
@@ -25,32 +18,33 @@ class Solution(object):
                 largerNieghbors.append((i, j+1))
             return largerNieghbors
         
-        graph = {}
-        sorted_values = []
+        listLargerNieghbors = {}
+        sorted_values = [] # each value and its indices in the matrix
         for i in range(row):
             for j in range(col):
                 sorted_values.append((matrix[i][j], i, j))
-                graph[(i, j)] = getLargerNeighbors(matrix, i,j)
+                listLargerNieghbors[(i, j)] = getLargerNeighbors(matrix, i,j)
         
-        # print(graph)
+        # print(listLargerNieghbors)
         sorted_values.sort(key=lambda x: x[0])
-        started = set()
+        started = set() # do not contain the starting point of the longest path
         dp_table = {}
         def dfs(i, j):
             if (i, j) in dp_table:
                 return dp_table[(i, j)]
             res = 1
-            if len(graph[(i, j)]) == 0:
+            if len(listLargerNieghbors[(i, j)]) == 0:
                 return res
             else:
-                for ni, nj in graph[(i, j)]:
+                for ni, nj in listLargerNieghbors[(i, j)]:
                     started.add((ni,nj))
                     res = max(res, 1 + dfs(ni, nj))
             dp_table[(i, j)] = res
             return res
+        
         final_res = 1
         for s in sorted_values:
-            val, i, j = s
+            _, i, j = s
             if (i,j) not in started:
                 final_res = max(final_res, dfs(i,j) )
         return final_res
