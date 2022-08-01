@@ -16,7 +16,7 @@ self-introduction:
 - building end-to-end ML solutions, 
 -  
 
-1. Funding Portal R&D - image similarity - pixel-to-pixel comparison vs image embedding via ResNet50 - take a calculated risk before taking actions - meet obstacles but still achieve the goal (two weeks towards to deadline and CV is not really my area)
+1. Funding Portal R&D - image similarity - pixel-to-pixel comparison vs image embedding via ResNet50 - take a calculated risk before taking actions? - meet obstacles but still achieve the goal (two weeks towards to deadline and CV is not really my area)?
 2. corpus of evidence - 
 3. A tester, half of his time was for our team and half of his time was for another team, slowness is blocking/delaying the release schedule 
 4. Createathon/Hackathon 
@@ -44,8 +44,9 @@ self-introduction:
 15. Manager ask details to be included in the JIRA tickets for better budget management. I don't fully agree with it but I go with it. I pushed back in our monthly 1:1. -- Group decision where I don't disagree. 
 16. "anticipate" the need of customrers -- take the corpus of evidence (needle in the haystack) / hotmail -- customers don't know what they want, we work along the way 
 17. "half way to the goal" -- autoencoders model (unsurprised learning) without enough manpower to evaluate the results (a bigger problem we didn't realize in the beginning) 
-18. WebADV model selection, we tried TF-IDF, LSTM, 1-D CNN to deal with long sentence problem -- "deliver" vs "standard" -- transformer (2017.10) just came out and BERT (2019.5) was very new. It's was June to Sept back in 2019 and we didn't have time to try out BERT 
+18. WebADV model selection, we tried TF-IDF, LSTM, 1-D CNN to deal with long sentence problem -- Q:"deliver" vs "standard"? -- transformer (2017.10) just came out and BERT (2019.5) was very new. It's was June to Sept back in 2019 and we didn't have time to try out BERT 
 
+My Qs:
 
 how  do you manage such a big team which most of people are working remotely? 
 what are the evaluation criterias for annual performance reivew etc? 
