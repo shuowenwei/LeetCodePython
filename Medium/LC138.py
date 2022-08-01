@@ -63,6 +63,7 @@ class Solution(object):
         while oldHead and newHead:
             if oldHead.random in oldNode2newNode:
                 newHead.random = oldNode2newNode[oldHead.random]
+            # or just: newHead.random = dctOldNode2NewNode.get(oldHead.random)
             # else:
             #     newHead.random = None
             oldHead = oldHead.next

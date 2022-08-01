@@ -8,7 +8,7 @@ https://labuladong.gitee.io/algo/2/21/62/
 https://mp.weixin.qq.com/s/Yq49ZBEW3DJx6nXk1fMusw
 
 LC316==LC1081
-tag: monotonic-stack
+monotonic stack
 """
 class Solution(object):
     def smallestSubsequence(self, s):
@@ -28,13 +28,14 @@ class Solution(object):
             charCount[e] -= 1 # // 每遍历过一个字符，都将对应的计数减一
             if e in isInStack:
                 continue
-            while len(stack) > 0 and stack[-1] > e:
-                # // 若之后不存在栈顶元素了，则停止 pop
+            while len(stack) > 0 and ord(stack[-1]) > ord(e):
                 if charCount[stack[-1]] == 0: # debug! 
+                    # // 若之后不存在栈顶元素了，则停止 pop
                     break
-                # // 若之后还有，则可以 pop
-                tmp = stack.pop()
-                isInStack.remove(tmp)
+                else:
+                    # // 若之后还有，则可以 pop
+                    tmp = stack.pop()
+                    isInStack.remove(tmp)
             stack.append(e)
             isInStack.add(e)
         return ''.join(stack)
