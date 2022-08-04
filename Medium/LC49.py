@@ -4,6 +4,7 @@
 
 https://leetcode.com/problems/group-anagrams/
 
+LC49, LC72
 """
 class Solution(object):
     def groupAnagrams(self, strs):
