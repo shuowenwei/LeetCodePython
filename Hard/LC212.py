@@ -13,7 +13,7 @@ class TrieNode(object):
     # Initialize your data structure here.
     def __init__(self):
         self.children = collections.defaultdict(TrieNode)
-        self.end_node = False
+        self.is_end = False
 
 class Trie(object):
 
@@ -25,10 +25,10 @@ class Trie(object):
         :type word: str
         :rtype: None
         """
-        current = self.root
-        for letter in word:
-            current = current.children[letter]
-        current.end_node = True
+        curNode = self.root
+        for char in word:
+            curNode = curNode.children[char]
+        curNode.is_end = True
         
 class Solution(object):
     def findWords(self, board, words):
@@ -37,32 +37,26 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[str]
         """
-        self.num_words = len(words)
         res = []
         trie = Trie()
         for word in words:
             trie.insert(word)
         
+        row, col = len(board), len(board[0])
         def backtracking(board, node, i, j, path, res):
-            if self.num_words == 0:
-                return 
-            row, col = len(board), len(board[0])
-            if node.end_node:
+            if node.is_end:
                 res.append(path)
-                node.end_node = False
-                self.num_words -= 1
-
+                node.is_end = False # prevent over-counting
             if i<0 or i>=row or j<0 or j>= col:
-                return 
+                return            
             tmp = board[i][j]
             if tmp not in node.children:
-                return
+                return 
             board[i][j] = '#'
             for di, dj in [(1,0), (0,1), (-1,0), (0,-1)]:
                 backtracking(board, node.children[tmp], i+di, j+dj, path+tmp, res)
             board[i][j] = tmp
 
-        row, col = len(board), len(board[0])
         for i in range(row):
             for j in range(col):
                 backtracking(board, trie.root, i, j, '', res)
