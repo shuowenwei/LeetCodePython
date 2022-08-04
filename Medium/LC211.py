@@ -24,10 +24,10 @@ class WordDictionary(object):
         :type word: str
         :rtype: None
         """
-        current = self.root
-        for letter in word:
-            current = current.children[letter]
-        current.is_word = True
+        curNode = self.root
+        for char in word:
+            curNode = curNode.children[char]
+        curNode.is_word = True
 
     def search(self, word):
         """
