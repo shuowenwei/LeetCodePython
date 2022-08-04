@@ -25,47 +25,46 @@ class Trie(object):
         :type word: str
         :rtype: None
         """
-        current = self.root
-        for letter in word:
-            current = current.children[letter]
-        current.is_word = True
+        curNode = self.root
+        for char in word:
+            curNode = curNode.children[char]
+        curNode.is_word = True
 
-    def search(self, word):
-        """
-        :type word: str
-        :rtype: bool
-        """
-        current = self.root
-        for letter in word:
-            current = current.children.get(letter)
-            if current is None:
-                return False
-        return current.is_word 
+    # def search(self, word):
+    #     """
+    #     :type word: str
+    #     :rtype: bool
+    #     """
+    #     curNode = self.root
+    #     for char in word:
+    #         curNode = curNode.children.get(char)
+    #         if curNode is None:
+    #             return False
+    #     return curNode.is_word 
 
-    def startsWith(self, prefix):
-        """
-        :type prefix: str
-        :rtype: bool
-        """
-        current = self.root
-        for letter in prefix:
-            current = current.children.get(letter)
-            if current is None:
-                return False
-        return True
+    # def startsWith(self, prefix):
+    #     """
+    #     :type prefix: str
+    #     :rtype: bool
+    #     """
+    #     curNode = self.root
+    #     for char in prefix:
+    #         curNode = curNode.children.get(char)
+    #         if curNode is None:
+    #             return False
+    #     return True
     
     def shortestPrefix(self, query):
-        current = self.root
+        curNode = self.root
         res = ''
-        for i in range(len(query)):
-            if current is None:
+        for char in query:
+            if curNode is None:
                 return ''
-            if current.is_word:
-                return res # query[:i] won't work, for single letter input such as 'a'
-            letter = query[i]
-            current = current.children[letter]
-            res += letter
-        if current.is_word is False:
+            if curNode.is_word:
+                return res # char won't work, for single letter input such as 'a'
+            curNode = curNode.children[char]
+            res += char
+        if curNode.is_word is False:
             return res
         return res
         
