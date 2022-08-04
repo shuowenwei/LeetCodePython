@@ -64,8 +64,8 @@ class Trie(object):
                 return res # char won't work, for single letter input such as 'a'
             curNode = curNode.children[char]
             res += char
-        if curNode.is_word is False:
-            return res
+        # if curNode.is_word is False:
+        #     return res
         return res
         
 class Solution(object):
