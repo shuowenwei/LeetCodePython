@@ -51,6 +51,7 @@ replicaset.apps/webapp-deployment-649d7fb885   1         1         1       47s
 - try ```kubectl get pod```
 - to see more details about something: ```kubectl describe service webapp-service```, or ```kubectl describe pod webapp-deployment-649d7fb885-2jcg4``` 
 - to see logs and stream it, run ```kubectl logs webapp-deployment-649d7fb885-2jcg4 -f```
+- to make changes to db or web file ```kubectl delete -f webapp.yaml & kubectl apply -f webapp.yaml```
 
 ## access the service from web
 - To see all the services ```kubectl get svc``` 
