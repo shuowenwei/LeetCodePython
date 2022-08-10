@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: webapp-deployment # an arbitrary name
   labels:
     app: webapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: webapp
@@ -23,17 +23,17 @@ spec:
         - name: USER_NAME
           valueFrom:
             secretKeyRef:
-              name: mongo-secret
+              name: mongo-secret # should match mongo-secret.yaml's name
               key: mongo-user
         - name: USER_PWD
           valueFrom:
             secretKeyRef:
-              name: mongo-secret
+              name: mongo-secret # should match mongo-secret.yaml's name
               key: mongo-password 
         - name: DB_URL
           valueFrom:
             configMapKeyRef:
-              name: mongo-config
+              name: mongo-config # should match mongo-config.yaml's name
               key: mongo-url
 ---
 apiVersion: v1
@@ -41,11 +41,15 @@ kind: Service
 metadata:
   name: webapp-service
 spec:
-  type: NodePort
+  type: NodePort # this is external service, required a 3rd port in line 51
   selector:
     app: webapp
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 30100
+      port: 3000 # this can be any port number 
+      targetPort: 3000 # match the containerPort, line 21
+      nodePort: 30100 # refer to https://kubernetes.io/docs/concepts/services-networking/service/, it must within the range 30000 ~ 32767
+
+# type: Service type
+# Default = ClusterIP, an internal Service 
+# NodePort, an external service, exposes the Service on each Node's IP at a static port

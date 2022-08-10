@@ -1,44 +1,50 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo-deployment
-  labels:
+  name: mongo-deployment # an arbitrary name
+  labels: # You can give any K8s component a label, Labels are key/value pairs that are attached to K8s resources. Identifier which should be meaningful and relvant to users
     app: mongo
-spec:
-  replicas: 1
-  selector:
+spec: # Deployment specific specification
+  replicas: 1 # how many Pods you want to create? 
+  selector: # identify a set of resources, match all Pods with label "app: mongo", hence the matchLabels
     matchLabels:
       app: mongo
-  template:
-    metadata:
+  template: # Main Part: Blueprint for Pods. template: configuration for Pod. Why? Because Deployment manages Pod
+    metadata: # has its own "metadata" and "spec" section
       labels:
         app: mongo
     spec:
-      containers:
+      containers: # list of containers/applications (mostly one app per pod)
       - name: mongodb
-        image: mongo:5.0
+        image: mongo:5.0 # which image? 
         ports:
-        - containerPort: 27017
+        - containerPort: 27017 # which port?, see https://hub.docker.com/_/mongo for MongoDB port, 27017
         env:
-        - name: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_INITDB_ROOT_USERNAME # required field, refer to https://hub.docker.com/_/mongo
           valueFrom:
             secretKeyRef:
-              name: mongo-secret
+              name: mongo-secret # should match mongo-secret.yaml's name
               key: mongo-user
-        - name: MONGO_INITDB_ROOT_PASSWORD
+        - name: MONGO_INITDB_ROOT_PASSWORD # required field, refer to https://hub.docker.com/_/mongo
           valueFrom:
             secretKeyRef:
-              name: mongo-secret
+              name: mongo-secret # should match mongo-secret.yaml's name
               key: mongo-password  
----
+--- # '---' = you can have multiple YAML configurations within 1 file 
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo-service
+  name: mongo-service # an arbitrary name
 spec:
   selector:
-    app: mongo
+    app: mongo # this should match the pood to forward to requests to, here it's line 15 "app: mongo"
   ports:
     - protocol: TCP
-      port: 27017
-      targetPort: 27017
+      port: 27017 # any port number is fine, say 80, 8080 
+      targetPort: 27017 # this should match the containerPort of Deployment, line 21 "27017"
+
+# Label
+# Labels do not provide uniqueness, e.g.: all Pod replicas will have the same label
+# Each pod has a unique name, but they can share the same label, so we can identify all the pods replicas of the same application using a label
+# for Pod, a label is a required field
+# for other components, a label is optional but good practise to set them 

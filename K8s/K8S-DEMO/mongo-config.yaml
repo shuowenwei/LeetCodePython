@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mongo-config
-data:
-  mongo-url: mongo-service
+  name: mongo-config # an arbitrary name
+data: # the actual contents, key-value pairs 
+  mongo-url: mongo-service # this will be the Service name of MongoDB, which will be the endpoint of MongoDB
+# Reference Secret & ConfigMap Resources
+# these external configurations can now be referenced by different Deployments 
