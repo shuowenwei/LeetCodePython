@@ -1,10 +1,11 @@
 public class Sony extends Company{
 	@Override
-                     public int price(){ 
-                        return 20;
-	  }
+	public int price(){ 
+		return 20;
+	}
+	
 	@Override
 	public String pack(){
-	         return "Sony CD";
-     	}		
+        return "Sony CD";
+    }		
 }//End of the Sony class.
