@@ -1,5 +1,4 @@
-public class ExportingProcess 
-
+public class ExportingProcess
 {
 	
     private long processNo;

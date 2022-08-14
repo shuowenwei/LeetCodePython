@@ -4,40 +4,31 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class ObjectPoolDemo
-
 {
-	
-	
-          private ObjectPool<ExportingProcess> pool;
-	
-	      private AtomicLong processNo=new AtomicLong(0);
-	
-	
-	       public void setUp() 
-	       
-	       {
-       
-	    	// Create a pool of objects of type ExportingProcess.
-	    	   
-	       /*Parameters:
-                 
-              1) Minimum number of special ExportingProcess instances residing in the pool = 4
-             
-              2) Maximum number of special ExportingProcess instances residing in the pool = 10
-               
-              3) Time in seconds for periodical checking of minObjects / maxObjects conditions in a separate thread = 5.
+    private ObjectPool<ExportingProcess> pool;
+
+    private AtomicLong processNo=new AtomicLong(0);
+
+    public void setUp() 
+    {
+    // Create a pool of objects of type ExportingProcess.
         
-          -->When the number of ExportingProcess instances is less than minObjects, missing instances will be created.
-           
-          -->When the number of ExportingProcess instances is greater than maxObjects, too many instances will be removed.
-           
-          -->If the validation interval is negative, no periodical checking of minObjects / maxObjects conditions 
-             in a separate thread take place. These boundaries are ignored then.
-             
-             
-           */
-	    	   
-	    	   
+    /*Parameters:
+            
+        1) Minimum number of special ExportingProcess instances residing in the pool = 4
+        
+        2) Maximum number of special ExportingProcess instances residing in the pool = 10
+        
+        3) Time in seconds for periodical checking of minObjects / maxObjects conditions in a separate thread = 5.
+
+    -->When the number of ExportingProcess instances is less than minObjects, missing instances will be created.
+    
+    -->When the number of ExportingProcess instances is greater than maxObjects, too many instances will be removed.
+    
+    -->If the validation interval is negative, no periodical checking of minObjects / maxObjects conditions 
+        in a separate thread take place. These boundaries are ignored then.
+        
+    */
         pool = new ObjectPool<ExportingProcess>(4, 10, 5)
         {
             protected ExportingProcess createObject()
@@ -47,9 +38,7 @@ public class ObjectPoolDemo
             }
         };
     }
-	
-	
-	
+		
 	public void tearDown() 
 	{
         pool.shutdown();
@@ -71,6 +60,17 @@ public class ObjectPoolDemo
         executor.execute(new ExportingTask(pool, 6));
         executor.execute(new ExportingTask(pool, 7));
         executor.execute(new ExportingTask(pool, 8));
+        // executor.execute(new ExportingTask(pool, 9));
+        // executor.execute(new ExportingTask(pool, 10));
+        // executor.execute(new ExportingTask(pool, 11));
+        // executor.execute(new ExportingTask(pool, 12));
+        // executor.execute(new ExportingTask(pool, 13));
+        // executor.execute(new ExportingTask(pool, 14));
+        // executor.execute(new ExportingTask(pool, 15));
+        // executor.execute(new ExportingTask(pool, 16));
+        // executor.execute(new ExportingTask(pool, 17));
+        // executor.execute(new ExportingTask(pool, 18));
+        // executor.execute(new ExportingTask(pool, 19));
 
         executor.shutdown();
         try {
@@ -81,9 +81,8 @@ public class ObjectPoolDemo
                e.printStackTrace();
               }
     }
-	
-   
-    
+
+
     public static void main(String args[])
     { 
     	
@@ -91,8 +90,6 @@ public class ObjectPoolDemo
     	op.setUp();
     	op.tearDown();
     	op.testObjectPool();
-    	
-    	
-   } 
+    }
 
 }//End of the ObjectPoolDemo class.
