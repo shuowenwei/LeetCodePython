@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-
 public class BankManager implements Employee {
 	
 	 private int id;
@@ -12,9 +10,9 @@ public class BankManager implements Employee {
 
 	 public BankManager(int id,String name,double salary)
 	 {
-	  this.id=id;	 
-	  this.name = name;
-	  this.salary = salary;
+		this.id=id;	 
+		this.name = name;
+		this.salary = salary;
 	 }
 	 
 	 List<Employee> employees = new ArrayList<Employee>();
@@ -28,34 +26,34 @@ public class BankManager implements Employee {
 	 @Override
 	 public Employee getChild(int i) 
 	 {
-	  return employees.get(i);
+	  	return employees.get(i);
 	 }
 
 	 @Override
 	 public void remove(Employee employee) {
-	  employees.remove(employee);
+	  	employees.remove(employee);
 	 }	
 	 
 	 @Override
 	 public int getId() 
 	 {
-	  return id;
+	 	return id;
 	 }
 	 
 	 @Override
 	 public String getName() 
 	 {
-	  return name;
+	  	return name;
 	 }
 	 
     @Override
 	 public double getSalary()
 	 {
-	  return salary;
+	  	return salary;
 	 }
 
 	 @Override
-	 public void print() 
+	 	public void print() 
 	 {
 		 
 	  System.out.println("==========================");
@@ -65,8 +63,7 @@ public class BankManager implements Employee {
 	  System.out.println("==========================");
 	  
 	  Iterator<Employee> it = employees.iterator();
-	  
-	      while(it.hasNext())
+	  while(it.hasNext())
 	     {
 	        Employee employee = it.next();
 	        employee.print();

@@ -1,9 +1,7 @@
 
 public interface Employee 
-
-{
-	
-	public  int getId();
+{	
+	public int getId();
 	
 	public String getName();
 	
@@ -16,5 +14,4 @@ public interface Employee
     public void remove(Employee employee);
     
     public Employee getChild(int i);
-   
 }

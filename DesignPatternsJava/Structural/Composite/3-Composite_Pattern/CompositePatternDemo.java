@@ -19,6 +19,6 @@ public class CompositePatternDemo {
 		  manager1.print();
                                       
              
-                    }
+    }
 
 }

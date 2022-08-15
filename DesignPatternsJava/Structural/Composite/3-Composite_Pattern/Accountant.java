@@ -1,11 +1,9 @@
 public class Accountant implements Employee
 {
-	
 	/*
-    In this class,there are many methods which are not applicable to cashier because
+    In this class,there are many methods which are not applicable to accountant because
     it is a leaf node.
-*/
-
+    */
     private int id;
 	private String name;
     private double salary;
@@ -57,8 +55,4 @@ public class Accountant implements Employee
    public void remove(Employee employee) {
        //this is leaf node so this method is not applicable to this class.
    }
-
-
-
-
 }
