@@ -7,7 +7,7 @@ public class ObjectPoolDemo
 {
     private ObjectPool<ExportingProcess> pool;
 
-    private AtomicLong processNo=new AtomicLong(0);
+    private AtomicLong processNo = new AtomicLong(0);
 
     public void setUp() 
     {
@@ -27,7 +27,6 @@ public class ObjectPoolDemo
     
     -->If the validation interval is negative, no periodical checking of minObjects / maxObjects conditions 
         in a separate thread take place. These boundaries are ignored then.
-        
     */
         pool = new ObjectPool<ExportingProcess>(4, 10, 5)
         {
@@ -51,7 +50,6 @@ public class ObjectPoolDemo
     	ExecutorService executor = Executors.newFixedThreadPool(8);
 
         // execute 8 tasks in separate threads
-        
         executor.execute(new ExportingTask(pool, 1));
         executor.execute(new ExportingTask(pool, 2));
         executor.execute(new ExportingTask(pool, 3));
@@ -60,17 +58,6 @@ public class ObjectPoolDemo
         executor.execute(new ExportingTask(pool, 6));
         executor.execute(new ExportingTask(pool, 7));
         executor.execute(new ExportingTask(pool, 8));
-        // executor.execute(new ExportingTask(pool, 9));
-        // executor.execute(new ExportingTask(pool, 10));
-        // executor.execute(new ExportingTask(pool, 11));
-        // executor.execute(new ExportingTask(pool, 12));
-        // executor.execute(new ExportingTask(pool, 13));
-        // executor.execute(new ExportingTask(pool, 14));
-        // executor.execute(new ExportingTask(pool, 15));
-        // executor.execute(new ExportingTask(pool, 16));
-        // executor.execute(new ExportingTask(pool, 17));
-        // executor.execute(new ExportingTask(pool, 18));
-        // executor.execute(new ExportingTask(pool, 19));
 
         executor.shutdown();
         try {

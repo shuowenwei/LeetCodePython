@@ -11,11 +11,11 @@ public abstract class ObjectPool<T>
   ConcurrentLinkedQueue is a thread-safe queue based on linked nodes. 
   
   Because the queue follows FIFO technique (first-in-first-out).
-  
 */        
-	
    private ConcurrentLinkedQueue<T> pool;     
- /*	
+ 
+
+   /*	
    ScheduledExecutorService starts a special task in a separate thread and observes the minimum and maximum number of objects 
    in the pool periodically in a specified time (with parameter validationInterval). 
    
@@ -24,20 +24,22 @@ public abstract class ObjectPool<T>
    When the number of objects is greater than the maximum, too many instances will be removed. 
    
    This is sometimes useful for the balance of memory consuming objects in the pool.
-*/
-   
+*/  
    private ScheduledExecutorService executorService;
+
+
     /*
      * Creates the pool.
      *
      * @param minObjects : the minimum number of objects residing in the pool
      */
-
     public ObjectPool(final int minObjects) 
     {
         // initialize pool	
         initialize(minObjects);
     }
+
+
     /*
       Creates the pool.
      
@@ -51,7 +53,6 @@ public abstract class ObjectPool<T>
       
       When the number of objects is greater than maxObjects, too many instances will be removed.
     */
-    
     public ObjectPool(final int minObjects, final int maxObjects, final long validationInterval) 
     {
         // initialize pool	
@@ -81,6 +82,7 @@ public abstract class ObjectPool<T>
         }, validationInterval, validationInterval, TimeUnit.SECONDS);
     }
 
+
   /*
       Gets the next free object from the pool. If the pool doesn't contain any objects,
       a new object will be created and given to the caller of this method back.
@@ -96,12 +98,12 @@ public abstract class ObjectPool<T>
         return object;
     }
     
+
     /*
       Returns object back to the pool.
      
       @param object object to be returned
     */
-    
     public void returnObject(T object) {
         if (object == null) {
             return;
@@ -109,21 +111,21 @@ public abstract class ObjectPool<T>
         this.pool.offer(object);
     }
     
+
     /*
         Shutdown this pool. 
     */
-    
     public void shutdown(){
         if (executorService != null){
             executorService.shutdown();
         }
     }
 
+
     /*
          Creates a new object.     
          @return T new object
     */
-
     protected abstract T createObject();
 
     private void initialize(final int minObjects)    
