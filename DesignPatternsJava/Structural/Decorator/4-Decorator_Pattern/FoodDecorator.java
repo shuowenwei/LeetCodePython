@@ -1,13 +1,12 @@
 
 public abstract class FoodDecorator implements Food
-
 {
 	private Food newFood;
 	
 	public FoodDecorator(Food newFood)
 	{
 		
-		this.newFood=newFood;
+		this.newFood = newFood;
 		
 	}
 	
@@ -17,7 +16,6 @@ public abstract class FoodDecorator implements Food
 		return newFood.prepareFood(); 
 		
 	}
-	
 	
 	public double foodPrice()
 	{

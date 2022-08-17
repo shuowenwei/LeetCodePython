@@ -1,15 +1,11 @@
 
 public class NonVegFood extends FoodDecorator{
 
-	
-	
 	public NonVegFood(Food newFood) 
 	{
 		super(newFood);
 		
 	}
-	
-	
 	
 	public String prepareFood()
 	{
@@ -17,12 +13,9 @@ public class NonVegFood extends FoodDecorator{
 		
 	}
 	
-	
 	public double foodPrice()
 	{
-		return super.foodPrice()+150.0;
-		
+		return super.foodPrice()+150.0;		
 	}
-
 
 }
