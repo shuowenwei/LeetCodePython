@@ -9,7 +9,7 @@ public class RealInternetAccess implements OfficeInternetAccess {
 
 	@Override
 	public void grantInternetAccess() {
-		System.out.println(" \n Internet Access granted for employee: "+ employeeName);
+		System.out.println(" \n Internet Access granted for employee: " + employeeName);
 	}
 
 }
