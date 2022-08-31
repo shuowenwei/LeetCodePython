@@ -1,9 +1,8 @@
-package DesignPatternsJava.Behavioral.State;
 
 public class StatePatternDemo {
 
-	Controller controller;
-	StatePatternDemo(String con) {
+	   Controller controller;
+	   StatePatternDemo(String con) {
 	      controller = new Controller();
 		  //the following trigger should be made by the user
 	      if(con.equalsIgnoreCase("management"))
@@ -16,12 +15,16 @@ public class StatePatternDemo {
 	      controller.log();
 	      controller.close();
 	      controller.update();
-	}
+	   }
 	   
-	public static void main(String args[]) {
+	   
+	   public static void main(String args[]) {
 
-		new StatePatternDemo(args[0]);
-		
-	}
+		   new StatePatternDemo(args[0]);
+		   
+	   }
+	   
+	
+	
 	
 }

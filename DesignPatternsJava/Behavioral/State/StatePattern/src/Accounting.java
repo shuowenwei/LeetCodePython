@@ -1,12 +1,10 @@
-package DesignPatternsJava.Behavioral.State;
 
-public class Sales implements Connection {
+public class Accounting implements Connection {
 	
-	  @Override
+	   @Override
 	   public void open() {
-	      System.out.println("open database for sales");
+	      System.out.println("open database for accounting");
 	   }
-
 	   @Override
 	   public void close() {
 	      System.out.println("close the database");
@@ -19,7 +17,8 @@ public class Sales implements Connection {
 	   
 	   @Override
 	   public void update() {
-		   System.out.println("Sales has been updated");
+		   System.out.println("Accounting has been updated");
 	   }
+	   
 
 }

@@ -1,4 +1,3 @@
-package DesignPatternsJava.Behavioral.State;
 
 public class Controller {
 	
@@ -23,7 +22,6 @@ public class Controller {
 	   public void setManagementConnection() {
 		   con  = management;
 	   }
-
 	   public void open() {
 		   con .open();
 	   }
@@ -36,5 +34,6 @@ public class Controller {
 	   public void update() {
 		   con .update();
 	   }
+	   
 
 }

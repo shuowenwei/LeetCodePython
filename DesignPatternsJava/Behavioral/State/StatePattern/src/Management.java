@@ -1,4 +1,3 @@
-package DesignPatternsJava.Behavioral.State;
 
 public class Management implements Connection {
 	
@@ -6,7 +5,6 @@ public class Management implements Connection {
 	   public void open() {
 	      System.out.println("open database for Management");
 	   }
-
 	   @Override
 	   public void close() {
 	      System.out.println("close the database");
