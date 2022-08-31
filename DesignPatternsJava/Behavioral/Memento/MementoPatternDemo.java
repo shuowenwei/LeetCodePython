@@ -10,8 +10,10 @@ public class MementoPatternDemo {
             
           originator.setState("State #1");  
           careTaker.add(originator.saveStateToMemento());  
+
           originator.setState("State #2");  
           careTaker.add(originator.saveStateToMemento());  
+          
           originator.setState("State #3");  
           careTaker.add(originator.saveStateToMemento());  
           originator.setState("State #4");  

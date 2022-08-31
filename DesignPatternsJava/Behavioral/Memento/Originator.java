@@ -19,5 +19,6 @@ public class Originator {
    
    public void getStateFromMemento(Memento Memento){  
       state = Memento.getState();  
-   }  
-}// End of the Originator class.  
+   }
+
+}// End of the Originator class.
