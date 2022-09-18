@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+pyproject.toml
+src/__init__.py
+src/__main__.py
+src/feed.py
+src/viewer.py
+src/realpython_reader.egg-info/PKG-INFO
+src/realpython_reader.egg-info/SOURCES.txt
+src/realpython_reader.egg-info/dependency_links.txt
+src/realpython_reader.egg-info/entry_points.txt
+src/realpython_reader.egg-info/requires.txt
+src/realpython_reader.egg-info/top_level.txt

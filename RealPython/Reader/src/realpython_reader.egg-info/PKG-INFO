@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: realpython-reader
+Version: 1.0.0
+Summary: Read the latest Real Python tutorials
+Author-email: Real Python <info@realpython.com>
+Project-URL: Homepage, https://github.com/realpython/reader
+Keywords: feed,reader,tutorial
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+
+
+- https://realpython.com/pypi-publish-python-package/
+
