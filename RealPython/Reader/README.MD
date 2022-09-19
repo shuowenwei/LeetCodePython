@@ -1,3 +1,6 @@
+## refer to https://realpython.com/pypi-publish-python-package/#use-the-real-python-reader
+## refer to https://github.com/realpython/reader
+
 # Real Python Feed Reader
 
 The Real Python Feed Reader is a basic [web feed](https://en.wikipedia.org/wiki/Web_feed) reader that can download the latest Real Python tutorials from the [Real Python feed](https://realpython.com/contact/#rss-atom-feed).

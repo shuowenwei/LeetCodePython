@@ -1,12 +1,16 @@
-feedparser>=5.2.0
+feedparser
 html2text
 
 [:python_version < "3.11"]
 tomli
 
+[build]
+build
+twine
+
 [dev]
 black
 bumpver
 isort
-pip-tools
+mypy
 pytest

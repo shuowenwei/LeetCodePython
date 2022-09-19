@@ -1,10 +1,16 @@
 LICENSE
 MANIFEST.in
 pyproject.toml
+setup.py
 src/__init__.py
 src/__main__.py
 src/feed.py
 src/viewer.py
+src/reader/__init__.py
+src/reader/__main__.py
+src/reader/config.toml
+src/reader/feed.py
+src/reader/viewer.py
 src/realpython_reader.egg-info/PKG-INFO
 src/realpython_reader.egg-info/SOURCES.txt
 src/realpython_reader.egg-info/dependency_links.txt
