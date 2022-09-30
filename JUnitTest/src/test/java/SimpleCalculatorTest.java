@@ -8,6 +8,14 @@ class SimpleCalculatorTest  {
     void twoPlusTwoShouldEqualFour(){
         // var calculator = new SimpleCalculator();
        SimpleCalculator calculator = new SimpleCalculator();
-        assertEquals(calculator.add(2,2), 4);
+       assertEquals(calculator.add(2,2), 4);
+       assertTrue(calculator.add(2,2) == 4);
+    }
+
+    @Test
+    void threePlusSeverShouldEqualTen(){
+        // var calculator = new SimpleCalculator();
+        SimpleCalculator calculator = new SimpleCalculator();
+        assertEquals(calculator.add(3,7), 10);
     }
 }
