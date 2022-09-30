@@ -6,8 +6,8 @@ class SimpleCalculatorTest  {
 
     @Test
     void twoPlusTwoShouldEqualFour(){
-        var calculator = new SimpleCalculator();
-//        SimpleCalculator calculator = new SimpleCalculator();
+        // var calculator = new SimpleCalculator();
+       SimpleCalculator calculator = new SimpleCalculator();
         assertEquals(calculator.add(2,2), 4);
     }
 }
