@@ -29,7 +29,7 @@ public class OptionalTutorial {
                 .orElse(0));
     }
 
-    private static Optional<Cat> findCatByName(Optional<String> name){
+    private static Optional<Cat> findCatByName(String name){
         Cat cat = new Cat(name, 3);
         return Optional.ofNullable(cat);
     }
