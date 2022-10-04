@@ -9,6 +9,7 @@ public class LinkedListExample {
         namesLinkedList.add("George");
         namesLinkedList.add("Ringo");
         System.out.println(namesLinkedList.get(2));
+        namesLinkedList.add(1, "Jerry");
 
         String[] names = new String[4]; // array is has a fixed size
         ArrayList<String> namesArrayList = new ArrayList<>(); // default size is 10?
@@ -17,6 +18,9 @@ public class LinkedListExample {
         namesArrayList.add("George");
         namesArrayList.add("Ringo");
         System.out.println(namesArrayList.get(2));
+        namesArrayList.add(1, "Jerry");
 
+//        {"John", "Paul", "George", "Ringo"}
+//        {"John", "Jerry", "Paul", "George", "Ringo"}
     }
 }
