@@ -1,15 +1,21 @@
-import java.util.Optional;
+// import java.util.Optional;
 
 public class Cat {
 
-    String name;
-    int age;
+    private final String name;
+    private int age;
+
+    public Cat(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName(){
+        return name;
+    }
+
     public int getAge() {
         return age;
     }
 
-    public Cat(String n, int a){
-     name = n;
-     age = a;
-    }
 }
