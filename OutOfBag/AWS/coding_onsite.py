@@ -19,7 +19,7 @@ T5,C2,A
 
 Sequence of visits for each customer: 
 
-C1 = A -> B -> C -> D -> E
+C1 = A -> B -> C -> D -> E -> A 
 
 C2 = E -> B -> C -> D -> A
 
